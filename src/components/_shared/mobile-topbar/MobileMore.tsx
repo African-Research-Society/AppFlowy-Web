@@ -20,7 +20,7 @@ function MobileMore({ onClose }: { onClose: () => void }) {
         label: t('template.label'),
         icon: <TemplateIcon />,
         onClick: () => {
-          window.open('https://appflowy.com/templates', '_blank');
+          window.open('https://africanresearchsociety.org', '_blank');
         },
       },
       {

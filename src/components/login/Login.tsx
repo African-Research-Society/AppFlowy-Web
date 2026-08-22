@@ -68,7 +68,7 @@ export function Login({ redirectTo }: { redirectTo: string }) {
           className={'flex w-full cursor-pointer flex-col items-center justify-center gap-5'}
         >
           <Logo className={'h-9 w-9'} />
-          <div className={'text-xl font-semibold'}>{t('welcomeTo')} AppFlowy</div>
+          <div className={'text-xl font-semibold'}>{t('welcomeTo')} ARS Workspace</div>
         </div>
         <EmailLogin redirectTo={redirectTo} />
         <div
@@ -78,7 +78,7 @@ export function Login({ redirectTo }: { redirectTo: string }) {
         >
           <span>{t('web.signInAgreement')} </span>
           <a
-            href={'https://appflowy.com/terms'}
+            href={'https://africanresearchsociety.org/terms'}
             target={'_blank'}
             className={'text-text-secondary underline'}
             rel='noreferrer'
@@ -87,7 +87,7 @@ export function Login({ redirectTo }: { redirectTo: string }) {
           </a>{' '}
           {t('web.and')}{' '}
           <a
-            href={'https://appflowy.com/privacy'}
+            href={'https://africanresearchsociety.org/privacy'}
             target={'_blank'}
             className={'text-text-secondary underline'}
             rel='noreferrer'
@@ -136,7 +136,7 @@ export function Login({ redirectTo }: { redirectTo: string }) {
         <Separator className={'w-[320px] max-w-full'} />
         <div
           onClick={() => {
-            window.location.href = 'https://appflowy.com';
+            window.location.href = 'https://africanresearchsociety.org';
           }}
           className={
             'flex w-full cursor-pointer items-center justify-center gap-2 text-xs font-medium text-text-secondary'

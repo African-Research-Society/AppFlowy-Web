@@ -1840,39 +1840,39 @@
   "Brand": {
     "Skyline": {
       "$type": "color",
-      "$value": "#00b5ff"
+      "$value": "#2e9e6b"
     },
     "Aqua": {
       "$type": "color",
-      "$value": "#00c8ff"
+      "$value": "#5cc493"
     },
     "Violet": {
       "$type": "color",
-      "$value": "#9327ff"
+      "$value": "#6d5ae0"
     },
     "Amethyst": {
       "$type": "color",
-      "$value": "#8427e0"
+      "$value": "#5b46c4"
     },
     "Berry": {
       "$type": "color",
-      "$value": "#e3006d"
+      "$value": "#a33227"
     },
     "Coral": {
       "$type": "color",
-      "$value": "#fb006d"
+      "$value": "#e59a90"
     },
     "Golden": {
       "$type": "color",
-      "$value": "#f7931e"
+      "$value": "#7f5a0c"
     },
     "Amber": {
       "$type": "color",
-      "$value": "#ffbd00"
+      "$value": "#e8b23a"
     },
     "Lemon": {
       "$type": "color",
-      "$value": "#ffce00"
+      "$value": "#f6cf6b"
     }
   },
   "Other_Colors": {

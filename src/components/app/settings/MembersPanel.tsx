@@ -54,7 +54,7 @@ import type { TFunction } from 'i18next';
 type PeopleTab = 'members' | 'groups';
 type GroupDetailTab = 'general' | 'members';
 const GROUP_EXCLUDED_WORKSPACE_ROLES = [Role.Guest];
-const PEOPLE_GUIDE_URL = 'https://appflowy.com/guide/getting-started-with-appflowy';
+const PEOPLE_GUIDE_URL = 'https://africanresearchsociety.org';
 const SCIM_GROUP_SOURCE = 'scim';
 const MEMBERS_TABLE_GRID_COLUMNS = 'grid-cols-[minmax(0,2fr)_minmax(120px,1fr)_minmax(0,2fr)_32px]';
 const PEOPLE_TABLE_HEADER_CLASS_NAME =

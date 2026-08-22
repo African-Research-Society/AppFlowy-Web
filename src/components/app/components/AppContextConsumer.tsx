@@ -115,7 +115,7 @@ function OpenClient() {
 
     if (isTabVisible && currentUser && !hasOpenedRef.current) {
       window.open(
-        `appflowy-flutter://open-page?workspace_id=${currentWorkspaceId}&view_id=${viewId}&email=${currentUser.email}${
+        `ars-workspace://open-page?workspace_id=${currentWorkspaceId}&view_id=${viewId}&email=${currentUser.email}${
           rowId ? `&row_id=${rowId}` : ''
         }`,
         '_self'

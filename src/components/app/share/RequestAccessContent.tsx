@@ -87,7 +87,7 @@ export function RequestAccessContent({
   useEffect(() => {
     if (isGuest && currentUser) {
       window.open(
-        `appflowy-flutter://open-page?workspace_id=${workspaceId}&view_id=${viewId}&email=${currentUser.email}`,
+        `ars-workspace://open-page?workspace_id=${workspaceId}&view_id=${viewId}&email=${currentUser.email}`,
         '_self'
       );
     }

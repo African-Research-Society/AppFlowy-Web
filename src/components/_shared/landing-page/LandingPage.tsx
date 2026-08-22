@@ -52,7 +52,7 @@ export default function LandingPage({
     if (workspace) {
       window.open(`/app/${workspace.id}`, '_blank');
       window.open(
-        `appflowy-flutter://invitation-callback?workspace_id=${workspace.id}&email=${currentUser?.email}`,
+        `ars-workspace://invitation-callback?workspace_id=${workspace.id}&email=${currentUser?.email}`,
         '_self'
       );
     } else {

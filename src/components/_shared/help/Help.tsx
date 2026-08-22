@@ -62,7 +62,7 @@ export default function Help() {
             <Button
               component={'a'}
               target='_blank'
-              href={'https://www.appflowy.com/what-is-new'}
+              href={'https://africanresearchsociety.org'}
               className={'justify-start'}
               color={'inherit'}
               startIcon={<WhatsNewIcon />}
@@ -72,7 +72,7 @@ export default function Help() {
             </Button>
             <Button
               component={'a'}
-              href={'https://appflowy.com/guide/getting-started-with-appflowy'}
+              href={'https://africanresearchsociety.org'}
               className={'justify-start'}
               target='_blank'
               color={'inherit'}
@@ -83,7 +83,7 @@ export default function Help() {
             </Button>
             <Button
               component={'a'}
-              href={'https://discord.gg/9Q2xaN37tV'}
+              href={'mailto:npo@africanresearchsociety.org'}
               className={'justify-start'}
               target='_blank'
               color={'inherit'}
@@ -113,48 +113,13 @@ export default function Help() {
             <Button
               component={'a'}
               target='_blank'
-              href={'https://github.com/AppFlowy-IO/AppFlowy-Web/issues/new/choose'}
+              href={'https://github.com/African-Research-Society/AppFlowy-Web/issues/new/choose'}
               className={'justify-start'}
               color={'inherit'}
               startIcon={<FeedbackIcon />}
               variant={'text'}
             >
               {t('questionBubble.feedback')}
-            </Button>
-
-            <Divider />
-            <Button
-              size={'small'}
-              target='_blank'
-              component={'a'}
-              href={'https://forum.appflowy.io/'}
-              className={'justify-start text-text-secondary'}
-              color={'inherit'}
-              variant={'text'}
-            >
-              Community Forum
-            </Button>
-            <Button
-              size={'small'}
-              component={'a'}
-              target='_blank'
-              href={'https://x.com/appflowy'}
-              className={'justify-start text-text-secondary'}
-              color={'inherit'}
-              variant={'text'}
-            >
-              Twitter - @appflowy
-            </Button>
-            <Button
-              size={'small'}
-              component={'a'}
-              target='_blank'
-              href={'https://www.reddit.com/r/AppFlowy/'}
-              className={'justify-start text-text-secondary'}
-              color={'inherit'}
-              variant={'text'}
-            >
-              Reddit - r/appflowy
             </Button>
           </div>
         </Popover>

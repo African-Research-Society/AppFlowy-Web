@@ -14,8 +14,8 @@ import { openUrl } from '@/utils/url';
 
 const ZIP_ACCEPT = '.zip,application/zip,application/x-zip,application/x-zip-compressed';
 
-const IMPORT_GUIDE_URL = 'https://appflowy.com/guide/import-from-AppFlowy';
-const BACKUP_GUIDE_URL = 'https://appflowy.com/guide/back-up-your-data';
+const IMPORT_GUIDE_URL = 'https://africanresearchsociety.org';
+const BACKUP_GUIDE_URL = 'https://africanresearchsociety.org';
 
 export function ManageDataPanel() {
   const { t } = useTranslation();

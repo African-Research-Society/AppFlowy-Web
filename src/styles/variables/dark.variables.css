@@ -3,7 +3,7 @@
     --text-title: #e2e9f2;
     --text-caption: #87a0bf;
     --text-placeholder: #6f748c;
-    --text-link-default: #00bcf0;
+    --text-link-default: #e8b23a;
     --text-link-hover: #52d1f4;
     --text-link-pressed: #009fd1;
     --text-link-disabled: #005174;
@@ -16,13 +16,13 @@
     --line-default: #2e2e2e;
     --line-on-toolbar: #99a6b8;
     --line-card: #384967;
-    --fill-default: #00bcf0;
+    --fill-default: #e8b23a;
     --fill-hover: #005174;
     --fill-toolbar: #0f111c;
     --fill-selector: #232b38;
     --fill-list-active: #3c4557;
     --fill-list-hover: #2b394c;
-    --content-blue-400: #00bcf0;
+    --content-blue-400: #e8b23a;
     --content-blue-300: #52d1f4;
     --content-blue-600: #009fd1;
     --content-blue-100: #005174;
@@ -38,7 +38,7 @@
     --bg-base: #232b38;
     --bg-mask: #000000b2;
     --bg-tips: #005174;
-    --bg-brand: #2c144b;
+    --bg-brand: #0b0c15;
     --function-error: #d32772;
     --function-error-hover: #d36f8b;
     --function-error-opacity: rgba(211, 39, 114, 0.1);
@@ -82,8 +82,8 @@
     --new-gradient3: linear-gradient(180deg, #ff84bf 0%, #ffdd7b 100%);
     --new-gradient4: linear-gradient(180deg, #ffdd7b 0%, #87ffab 100%);
     --new-gradient5: linear-gradient(180deg, #89d7fe 0%, #7a81ff 100%);
-    --new-gradient6: linear-gradient(180deg, #00b5ff 0%, #9225ff 100%);
-    --new-gradient7: linear-gradient(180deg, #9327ff 0%, #e7348a 100%);
+    --new-gradient6: linear-gradient(180deg, #f6cf6b 0%, #e8b23a 100%);
+    --new-gradient7: linear-gradient(180deg, #e8b23a 0%, #2e9e6b 100%);
     --new-gradient8: linear-gradient(180deg, #e3006d 0%, #ffbd00 100%);
     --new-gradient9: linear-gradient(180deg, #ffbd00 0%, #00bc38 100%);
     --new-gradient10: linear-gradient(180deg, #1cf8e3 0%, #4b32fe 100%);

@@ -18,13 +18,13 @@ function SomethingError({ error }: { error: Error }) {
         Submit an issue on our{' '}
         <a
           className={'text-text-action underline'}
-          href={'https://github.com/AppFlowy-IO/AppFlowy/issues/new?template=bug_report.yaml'}
+          href={'https://github.com/African-Research-Society/AppFlowy-Web/issues/new/choose'}
         >
           Github
         </a>{' '}
         page that describes your error
       </div>
-      <img src={emptyImageSrc} alt={'AppFlowy'} />
+      <img src={emptyImageSrc} alt={'ARS Workspace'} />
     </div>
   );
 }

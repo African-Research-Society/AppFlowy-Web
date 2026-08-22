@@ -159,7 +159,7 @@ describe('MembersPanel workspace group parity', () => {
 
     const learnMore = screen.getByRole('link', { name: 'workspace.learnMore' });
 
-    expect(learnMore.getAttribute('href')).toBe('https://appflowy.com/guide/getting-started-with-appflowy');
+    expect(learnMore.getAttribute('href')).toBe('https://africanresearchsociety.org');
     expect(learnMore.getAttribute('target')).toBe('_blank');
   });
 

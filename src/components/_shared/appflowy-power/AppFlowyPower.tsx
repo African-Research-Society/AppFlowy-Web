@@ -16,7 +16,7 @@ function AppFlowyPower({ divider, width }: { divider?: boolean; width?: number }
 
       <div
         onClick={() => {
-          window.open('https://appflowy.com', '_blank');
+          window.open('https://africanresearchsociety.org', '_blank');
         }}
         style={{
           width,

@@ -1,11 +1,11 @@
 
 :root {
-    --bg-selection: #00bcf026;
+    --bg-selection: #e8b23a33;
     --text-title: #333333;
     --text-caption: #828282;
     --text-placeholder: #b5bbd3;
     --text-disabled: #e0e0e0;
-    --text-link-default: #00bcf0;
+    --text-link-default: #7f5a0c;
     --text-link-hover: #52d1f4;
     --text-link-pressed: #009fd1;
     --text-link-disabled: #e0f8ff;
@@ -19,13 +19,13 @@
     --line-on-toolbar: #4f4f4f;
     --line-card: #1F23291E;
     --fill-toolbar: #333333;
-    --fill-default: #00bcf0;
+    --fill-default: #e8b23a;
     --fill-hover: #52d1f4;
     --fill-pressed: #009fd1;
     --fill-active: #e0f8ff;
     --fill-list-hover: #1F23290F;
     --fill-list-active: #f9fafd;
-    --content-blue-400: #00bcf0;
+    --content-blue-400: #e8b23a;
     --content-blue-300: #52d1f4;
     --content-blue-600: #009fd1;
     --content-blue-700: #0079a5;
@@ -34,15 +34,15 @@
     --content-blue-100: #e0f8ff;
     --content-blue-200: #00729680;
     --content-blue-50: #f2fcff;
-    --content-on-fill-hover: #00bcf0;
+    --content-on-fill-hover: #e8b23a;
     --content-on-fill: #ffffff;
     --content-on-tag: #4f4f4f;
     --bg-body: #ffffff;
     --bg-base: #F7F8FC;
     --bg-mask: #0000008C;
     --bg-tips: #e0f8ff;
-    --bg-brand: #2c144b;
-    --function-error: #fb006d;
+    --bg-brand: #0b0c15;
+    --function-error: #a33227;
     --function-error-hover: #ff4f8a;
     --function-error-opacity: rgba(251, 0, 109, 0.1);
     --function-warning: #ffd667;
@@ -51,7 +51,7 @@
     --function-success: #66cf80;
     --function-success-hover: #66cf00;
     --function-success-opacity: rgba(102, 207, 128, 0.1);
-    --function-info: #00bcf0;
+    --function-info: #5b46c4;
     --tint-purple: #E8E0FF;
     --badge-purple: #AB8DFF;
     --tint-pink: #FFE7FD;
@@ -85,15 +85,15 @@
     --new-gradient3: linear-gradient(180deg, #FF84BF 0%, #FFDD7B 100%);
     --new-gradient4: linear-gradient(180deg, #FFDD7B 0%, #87FFAB 100%);
     --new-gradient5: linear-gradient(180deg, #89D7FE 0%, #7A81FF 100%);
-    --new-gradient6: linear-gradient(180deg, #00B5FF 0%, #9225FF 100%);
-    --new-gradient7: linear-gradient(180deg, #9327FF 0%, #E7348A 100%);
+    --new-gradient6: linear-gradient(180deg, #F6CF6B 0%, #E8B23A 100%);
+    --new-gradient7: linear-gradient(180deg, #E8B23A 0%, #2E9E6B 100%);
     --new-gradient8: linear-gradient(180deg, #E3006D 0%, #FFBD00 100%);
     --new-gradient9: linear-gradient(180deg, #FFBD00 0%, #00BC38 100%);
     --new-gradient10: linear-gradient(180deg, #1CF8E3 0%, #4B32FE 100%);
     --bg-header: #FFFFFFCC;
     --bg-footer: #FFFFFFCC;
     --note-header: #EDEFF3;
-    --billing-primary: #8427e0;
+    --billing-primary: #5b46c4;
     --billing-primary-hover: #9f3ae6;
     --ai-primary: #D08EED;
     --writer-placeholder: #007296;

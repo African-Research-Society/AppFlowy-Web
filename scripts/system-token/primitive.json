@@ -96,72 +96,72 @@
   "Blue": {
     "100": {
       "$type": "color",
-      "$value": "#e3f6ff"
+      "$value": "#fbf4df"
     },
     "150": {
       "$type": "color",
-      "$value": "#c6ecff"
+      "$value": "#f9edcf"
     },
     "200": {
       "$type": "color",
-      "$value": "#a9e2ff"
+      "$value": "#f8e7bd"
     },
     "300": {
       "$type": "color",
-      "$value": "#80d2ff"
+      "$value": "#f6cf6b"
     },
     "400": {
       "$type": "color",
-      "$value": "#4ec1ff"
+      "$value": "#efc152"
     },
     "500": {
       "$type": "color",
-      "$value": "#00b5ff"
+      "$value": "#e8b23a"
     },
     "600": {
       "$type": "color",
-      "$value": "#0092d6"
+      "$value": "#c4952f"
     },
     "700": {
       "$type": "color",
-      "$value": "#0078c0"
+      "$value": "#9c7522"
     },
     "800": {
       "$type": "color",
-      "$value": "#0065a9"
+      "$value": "#7f5a0c"
     },
     "900": {
       "$type": "color",
-      "$value": "#00508f"
+      "$value": "#6b4b09"
     },
     "1000": {
       "$type": "color",
-      "$value": "#003c77"
+      "$value": "#5e430b"
     },
     "alpha-blue-200-85": {
       "$type": "color",
-      "$value": "#a9e2ffd9"
+      "$value": "#f8e7bdd9"
     },
     "alpha-blue-500-10": {
       "$type": "color",
-      "$value": "#00b5ff1a"
+      "$value": "#e8b23a1a"
     },
     "alpha-blue-500-15": {
       "$type": "color",
-      "$value": "#00b5ff26"
+      "$value": "#e8b23a26"
     },
     "alpha-blue-500-20": {
       "$type": "color",
-      "$value": "#00b5ff33",
+      "$value": "#e8b23a33",
       "$description": "Text Selected Effect"
     },
     "alpha-blue-700-75": {
       "$type": "color",
-      "$value": "#0078c0bf"
+      "$value": "#9c7522bf"
     },
     "alpha-blue-800-85": {
       "$type": "color",
-      "$value": "#0065a9d9"
+      "$value": "#7f5a0cd9"
     }
   },
   "Green": {
@@ -209,51 +209,51 @@
   "Purple": {
     "100": {
       "$type": "color",
-      "$value": "#f1e0ff"
+      "$value": "#ece8fb"
     },
     "200": {
       "$type": "color",
-      "$value": "#e1b3ff"
+      "$value": "#d4ccf7"
     },
     "300": {
       "$type": "color",
-      "$value": "#d185ff"
+      "$value": "#a99bf0"
     },
     "400": {
       "$type": "color",
-      "$value": "#bc58ff"
+      "$value": "#8b7be8"
     },
     "500": {
       "$type": "color",
-      "$value": "#9327ff"
+      "$value": "#6d5ae0"
     },
     "600": {
       "$type": "color",
-      "$value": "#7a1dcc"
+      "$value": "#5b46c4"
     },
     "700": {
       "$type": "color",
-      "$value": "#6617b3"
+      "$value": "#4b39a3"
     },
     "800": {
       "$type": "color",
-      "$value": "#55138f"
+      "$value": "#3b2d80"
     },
     "900": {
       "$type": "color",
-      "$value": "#470c72"
+      "$value": "#322566"
     },
     "1000": {
       "$type": "color",
-      "$value": "#380758"
+      "$value": "#2c2260"
     },
     "alpha-purple-900-60": {
       "$type": "color",
-      "$value": "#470c7299"
+      "$value": "#32256699"
     },
     "alpha-purple-100-60": {
       "$type": "color",
-      "$value": "#f1e0ff99"
+      "$value": "#ece8fb99"
     }
   },
   "Magenta": {

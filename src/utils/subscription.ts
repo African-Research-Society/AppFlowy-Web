@@ -7,7 +7,7 @@
 import { Subscription, SubscriptionPlan } from '@/application/types';
 import { getConfigValue } from '@/utils/runtime-config';
 
-const OFFICIAL_HOSTNAMES = new Set(['beta.appflowy.cloud', 'test.appflowy.cloud', 'localhost']);
+const OFFICIAL_HOSTNAMES = new Set(['workspace.africanresearchsociety.org', 'localhost']);
 const PRO_ACCESS_PLANS = new Set([SubscriptionPlan.Pro, SubscriptionPlan.Team]);
 
 function getBaseUrlHostname(): string | null {

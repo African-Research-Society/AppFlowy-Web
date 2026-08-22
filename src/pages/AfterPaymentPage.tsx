@@ -6,7 +6,7 @@ import LandingPage from '@/components/_shared/landing-page/LandingPage';
 
 function AfterPaymentPage() {
   const openAppFlowy = useCallback(() => {
-    window.open(`appflowy-flutter://payment-success/${window.location.search || ''}`, '_self');
+    window.open(`ars-workspace://payment-success/${window.location.search || ''}`, '_self');
   }, []);
   const { t } = useTranslation();
 

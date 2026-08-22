@@ -269,10 +269,10 @@ function ApproveRequestPage() {
               components={{
                 email: (
                   <span
-                    onClick={() => window.open(`mailto:support@appflowy.io`, '_blank')}
+                    onClick={() => window.open(`mailto:npo@africanresearchsociety.org`, '_blank')}
                     className={'cursor-pointer text-text-action underline'}
                   >
-                    support@appflowy.io
+                    npo@africanresearchsociety.org
                   </span>
                 ),
               }}
