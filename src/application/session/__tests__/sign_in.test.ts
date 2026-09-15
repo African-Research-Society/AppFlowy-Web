@@ -31,6 +31,7 @@ Object.defineProperty(window, 'location', {
       hrefValue = v;
     },
     origin: 'http://localhost',
+    replace: (value: string) => { hrefValue = value; },
   },
 });
 
@@ -266,5 +267,24 @@ describe('afterAuth', () => {
     localStorage.setItem('redirectTo', '/settings');
     afterAuth();
     expect(localStorage.getItem('redirectTo')).toBeNull();
+  });
+});
+
+
+describe('ARS embedded sign-in', () => {
+  it('returns to the fixed ARS dashboard without token fragments', () => {
+    hrefValue = 'http://localhost/auth/callback?ars_team=00000000-0000-4000-8000-000000000001&ars_path=%2Fapp%2Fworkspace#access_token=secret&refresh_token=private';
+    afterAuth();
+    const target = new URL(hrefValue);
+    expect(target.origin).toBe('https://africanresearchsociety.org');
+    expect(target.pathname).toBe('/dashboard/workspace');
+    expect(target.searchParams.get('connected')).toBe('1');
+    expect(target.hash).toBe('');
+    expect(hrefValue).not.toContain('secret');
+  });
+  it('does not allow a requested editor path to change the return origin', () => {
+    hrefValue = 'http://localhost/auth/callback?ars_team=00000000-0000-4000-8000-000000000001&ars_path=https%3A%2F%2Fevil.test';
+    afterAuth();
+    expect(new URL(hrefValue).searchParams.has('path')).toBe(false);
   });
 });

@@ -1,10 +1,12 @@
+import { lazy } from 'react';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+
 import { AUTH_CALLBACK_PATH } from '@/application/session/sign_in';
 import NotFound from '@/components/error/NotFound';
+import { ArsEmbed } from '@/components/integrations/ArsEmbed';
 import withAppWrapper from '@/components/main/withAppWrapper';
 
 import '@/styles/app.scss';
-import { lazy } from 'react';
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
 import { Toaster } from '../ui/sonner';
 
@@ -19,6 +21,8 @@ const PublishPage = lazy(() => import('@/pages/PublishPage'));
 
 const AppMain = withAppWrapper(() => {
   return (
+    <>
+    <ArsEmbed />
     <Routes>
       <Route path={'/:namespace/:publishName'} element={<PublishPage />} />
       <Route path={'/login'} element={<LoginPage />} />
@@ -32,6 +36,7 @@ const AppMain = withAppWrapper(() => {
       <Route path='/app/*' element={<AppRouter />} />
       <Route path='*' element={<NotFound />} />
     </Routes>
+    </>
   );
 });
 

@@ -130,6 +130,24 @@ export function buildLoginUrl(params: LoginUrlParams = {}): string {
 }
 
 export function afterAuth() {
+  // A fixed ARS origin and fixed dashboard route avoid extending the general
+  // redirect allowlist. Never carry the callback's token fragment back to ARS.
+  const callback = new URL(window.location.href);
+  const arsTeam = callback.searchParams.get('ars_team');
+
+  if (callback.pathname === AUTH_CALLBACK_PATH && arsTeam && /^[a-f0-9-]{36}$/.test(arsTeam)) {
+    const back = new URL('/dashboard/workspace', 'https://africanresearchsociety.org');
+
+    back.searchParams.set('team', arsTeam);
+    back.searchParams.set('connected', '1');
+    const path = callback.searchParams.get('ars_path');
+
+    if (path && /^\/[A-Za-z0-9/_-]*$/.test(path)) back.searchParams.set('path', path);
+    clearRedirectTo();
+    window.location.replace(back.toString());
+    return;
+  }
+
   const redirectTo = getRedirectTo();
 
   clearRedirectTo();

@@ -28,7 +28,7 @@ function CurrentWorkspace({
           void onChangeWorkspace(selectedId);
         }}
       >
-        <AppFlowyLogo className='!h-full !w-[118px]' />
+        <AppFlowyLogo className='ars-app-brand !h-full !w-[118px]' />
       </div>
     );
   }

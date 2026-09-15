@@ -47,3 +47,4 @@
         opacity: 0.4;
     }
 }
+html[data-ars-embed="true"] .ars-app-brand { display: none; }
