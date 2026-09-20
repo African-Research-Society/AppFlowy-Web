@@ -7,7 +7,7 @@ export function serializeEmbedRefreshCookie(token: string, protocol: string) {
   if (!value || value.length > 3500) return null;
   const secure = protocol === 'https:';
   return `${EMBED_REFRESH_COOKIE}=${value}; Path=/; Max-Age=2592000${
-    secure ? '; Secure; SameSite=None' : '; SameSite=Lax'
+    secure ? '; Secure; SameSite=None; Partitioned' : '; SameSite=Lax'
   }`;
 }
 
@@ -41,7 +41,7 @@ export function clearEmbedRefreshCookie(protocol?: string) {
       (protocol ?? (typeof window === 'undefined' ? 'https:' : window.location.protocol)) ===
       'https:';
     document.cookie = `${EMBED_REFRESH_COOKIE}=; Path=/; Max-Age=0${
-      secure ? '; Secure; SameSite=None' : '; SameSite=Lax'
+      secure ? '; Secure; SameSite=None; Partitioned' : '; SameSite=Lax'
     }`;
   } catch {
     /* ignore */
@@ -134,7 +134,7 @@ export async function restoreEmbedSession(input: {
   if (input.hasToken) return 'ready';
   try {
     if (input.hasStorageAccess && !(await input.hasStorageAccess())) {
-      await input.requestStorageAccess?.();
+      /* Storage Access requires a user gesture; pointerdown retries restore. */
     }
   } catch {
     /* Storage Access API is best-effort after the first-party Connect visit. */

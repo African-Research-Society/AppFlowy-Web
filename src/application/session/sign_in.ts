@@ -142,6 +142,15 @@ export function afterAuth() {
   const callback = new URL(window.location.href);
   const arsTeam = callback.searchParams.get('ars_team');
 
+  if (callback.pathname === AUTH_CALLBACK_PATH && callback.searchParams.get('ars_notes') === '1') {
+    const path = callback.searchParams.get('ars_path');
+    clearRedirectTo();
+    window.location.replace(
+      path && /^\/app\/[a-f0-9-]{36}(?:\/[a-f0-9-]{36})?$/i.test(path) ? path : '/app'
+    );
+    return;
+  }
+
   if (callback.pathname === AUTH_CALLBACK_PATH && arsTeam && /^[a-f0-9-]{36}$/.test(arsTeam)) {
     const back = new URL(
       '/dashboard/workspace',

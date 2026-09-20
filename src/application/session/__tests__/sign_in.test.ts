@@ -305,6 +305,22 @@ describe('ARS embedded sign-in', () => {
     expect(new URL(hrefValue).origin).toBe('https://www.africanresearchsociety.org');
     expect(hrefValue).not.toContain('secret');
   });
+  it('opens a notes page from the flags-off Workspace handoff', () => {
+    hrefValue =
+      'http://localhost/auth/callback?ars_notes=1&ars_path=%2Fapp%2F11111111-1111-4111-8111-111111111111%2F22222222-2222-4222-8222-222222222222#access_token=secret';
+    afterAuth();
+    expect(hrefValue).toBe(
+      '/app/11111111-1111-4111-8111-111111111111/22222222-2222-4222-8222-222222222222'
+    );
+    expect(hrefValue).not.toContain('secret');
+  });
+
+  it('ignores an untrusted notes handoff path', () => {
+    hrefValue = 'http://localhost/auth/callback?ars_notes=1&ars_path=https%3A%2F%2Fevil.example';
+    afterAuth();
+    expect(hrefValue).toBe('/app');
+  });
+
   it('ignores an untrusted return origin', () => {
     hrefValue =
       'http://localhost/auth/callback?ars_team=00000000-0000-4000-8000-000000000001&ars_origin=https%3A%2F%2Fevil.example';

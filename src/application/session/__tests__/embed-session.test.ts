@@ -17,6 +17,7 @@ describe('embed refresh cookie', () => {
     expect(cookie).toContain(`${EMBED_REFRESH_COOKIE}=refresh-token`);
     expect(cookie).toContain('SameSite=None');
     expect(cookie).toContain('Secure');
+    expect(cookie).toContain('Partitioned');
     expect(cookie).not.toMatch(/access|SECRET/i);
     expect(parseEmbedRefreshCookie(cookie!)).toBe('refresh-token');
     expect(serializeEmbedRefreshCookie('a'.repeat(4000), 'https:')).toBeNull();
@@ -115,7 +116,7 @@ describe('allowEmbedWorkspaceRedirect', () => {
 });
 
 describe('restoreEmbedSession', () => {
-  it('refreshes from the cookie after storage access and does not invent a token', async () => {
+  it('refreshes from a visible cookie and does not invent a token', async () => {
     const refresh = jest.fn(async () => undefined);
     const requestStorageAccess = jest.fn(async () => undefined);
     await expect(
@@ -126,27 +127,26 @@ describe('restoreEmbedSession', () => {
       })
     ).resolves.toBe('ready');
     expect(refresh).not.toHaveBeenCalled();
-    let jar = '';
     await expect(
       restoreEmbedSession({
         hasToken: false,
-        cookie: () => jar,
+        cookie: () => `${EMBED_REFRESH_COOKIE}=refresh-token`,
         refresh,
         hasStorageAccess: async () => false,
-        requestStorageAccess: async () => {
-          jar = `${EMBED_REFRESH_COOKIE}=refresh-token`;
-          await requestStorageAccess();
-        },
+        requestStorageAccess,
       })
     ).resolves.toBe('restored');
-    expect(requestStorageAccess).toHaveBeenCalled();
+    expect(requestStorageAccess).not.toHaveBeenCalled();
     expect(refresh).toHaveBeenCalledWith('refresh-token');
     await expect(
       restoreEmbedSession({
         hasToken: false,
         cookie: '',
         refresh,
+        hasStorageAccess: async () => false,
+        requestStorageAccess,
       })
     ).resolves.toBe('missing');
+    expect(requestStorageAccess).not.toHaveBeenCalled();
   });
 });

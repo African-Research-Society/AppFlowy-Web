@@ -81,11 +81,15 @@ export function ArsEmbed() {
     let restoreOutcome: 'ready' | 'restored' | 'missing' | null = null;
     const onAppPath = location.pathname === '/app' || location.pathname.startsWith('/app/');
     const announce = () => {
+      if (restoreOutcome === 'missing') {
+        send('session-expired');
+        return;
+      }
+      if (restoreOutcome !== 'ready' && restoreOutcome !== 'restored') return;
       if (onAppPath) {
         send('ready');
         if (location.pathname.startsWith('/app/')) send('navigation', { path: location.pathname });
       }
-      if (location.pathname === '/login' && restoreOutcome === 'missing') send('session-expired');
     };
     const receive = (event: MessageEvent) => {
       if (event.source !== window.parent || event.data?.channel !== 'ars-app' || event.data.version !== 1) return;
@@ -106,20 +110,45 @@ export function ArsEmbed() {
 
     const off = on(EventType.SESSION_INVALID, () => send('session-expired'));
     const expired = on(EventType.SESSION_EXPIRED, () => send('session-expired'));
+    const restore = () =>
+      restoreEmbedSession({
+        hasToken: isTokenValid(),
+        cookie: () => document.cookie,
+        refresh: (token) => refreshToken(token),
+        hasStorageAccess: document.hasStorageAccess?.bind(document),
+      });
     const requestAccess = () => {
-      void document.requestStorageAccess?.().catch(() => undefined);
+      void (async () => {
+        try {
+          await document.requestStorageAccess?.();
+        } catch {
+          /* Storage Access API is best-effort after the first-party Connect visit. */
+        }
+        if (cancelled || (restoreOutcome !== 'missing' && restoreOutcome !== null)) return;
+        const outcome = await restore();
+        if (cancelled) return;
+        restoreOutcome = outcome;
+        if (outcome === 'restored' || (outcome === 'ready' && location.pathname === '/login')) {
+          window.location.replace(
+            embedReturnPath({
+              pathname: location.pathname,
+              referrer: document.referrer,
+              origin: window.location.origin,
+              search: location.search,
+              inIframe,
+              savedPath: savedEmbedPath(),
+            })
+          );
+          return;
+        }
+        announce();
+      })();
     };
 
     window.addEventListener('message', receive);
     window.addEventListener('pointerdown', requestAccess, { once: true });
     let cancelled = false;
-    void restoreEmbedSession({
-      hasToken: isTokenValid(),
-      cookie: () => document.cookie,
-      refresh: (token) => refreshToken(token),
-      hasStorageAccess: document.hasStorageAccess?.bind(document),
-      requestStorageAccess: document.requestStorageAccess?.bind(document),
-    })
+    void restore()
       .then((outcome) => {
         if (cancelled) return;
         restoreOutcome = outcome;
@@ -141,7 +170,7 @@ export function ArsEmbed() {
       .catch(() => {
         if (cancelled) return;
         restoreOutcome = 'missing';
-        if (location.pathname === '/login') send('session-expired');
+        announce();
       });
     return () => {
       cancelled = true;
