@@ -3,7 +3,11 @@ import { useEffect, useState } from 'react';
 import { ViewLayout } from '@/application/types';
 import { useAppView, useAppViewId } from '@/components/app/app.hooks';
 
-import { arsPostMessageOrigin, buildSendToDesignMessage } from './send-to-design';
+import {
+  arsPostMessageOrigin,
+  buildSendToDesignMessage,
+  documentViewFromPath,
+} from './send-to-design';
 
 export function SendToDesign() {
   const viewId = useAppViewId();
@@ -24,9 +28,11 @@ export function SendToDesign() {
       type='button'
       data-testid='ars-send-to-design'
       onClick={() => {
+        const page = documentViewFromPath(window.location.pathname);
         window.parent.postMessage(
           buildSendToDesignMessage({
             viewId,
+            workspaceId: page?.workspaceId,
             title: view.name,
           }),
           arsPostMessageOrigin(document.documentElement.dataset.arsParent)

@@ -47,14 +47,19 @@ export function sendToDesignTitle(name?: string) {
 
 export function buildSendToDesignMessage(input: {
   viewId: string;
+  workspaceId?: string;
   title?: string;
 }) {
   if (!UUID.test(input.viewId)) throw new Error('Invalid view');
+  if (input.workspaceId && !UUID.test(input.workspaceId)) {
+    throw new Error('Invalid workspace');
+  }
   return {
     channel: 'ars-app' as const,
     version: 1 as const,
     type: 'send-to-design' as const,
     viewId: input.viewId,
+    ...(input.workspaceId ? { workspaceId: input.workspaceId } : {}),
     title: sendToDesignTitle(input.title),
   };
 }

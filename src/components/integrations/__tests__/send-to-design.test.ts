@@ -7,10 +7,11 @@ import {
 } from '../send-to-design';
 
 describe('buildSendToDesignMessage', () => {
-  it('sends viewId and title only', () => {
+  it('sends ids and title only', () => {
     expect(
       buildSendToDesignMessage({
         viewId: '22222222-2222-4222-8222-222222222222',
+        workspaceId: '11111111-1111-4111-8111-111111111111',
         title: 'Launch poster',
       })
     ).toEqual({
@@ -18,6 +19,7 @@ describe('buildSendToDesignMessage', () => {
       version: 1,
       type: 'send-to-design',
       viewId: '22222222-2222-4222-8222-222222222222',
+      workspaceId: '11111111-1111-4111-8111-111111111111',
       title: 'Launch poster',
     });
   });
@@ -25,10 +27,18 @@ describe('buildSendToDesignMessage', () => {
   it('never includes a brief body', () => {
     const message = buildSendToDesignMessage({
       viewId: '22222222-2222-4222-8222-222222222222',
+      workspaceId: '11111111-1111-4111-8111-111111111111',
       title: 'Launch poster',
     });
-    expect(Object.keys(message)).toEqual(['channel', 'version', 'type', 'viewId', 'title']);
-    expect(JSON.stringify(message)).not.toMatch(/token|SECRET|prompt/i);
+    expect(Object.keys(message)).toEqual([
+      'channel',
+      'version',
+      'type',
+      'viewId',
+      'workspaceId',
+      'title',
+    ]);
+    expect(JSON.stringify(message)).not.toMatch(/token|SECRET|prompt|transcript/i);
   });
 
   it('caps and defaults the title', () => {
