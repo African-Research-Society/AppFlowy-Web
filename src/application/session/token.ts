@@ -1,5 +1,6 @@
 import { emit, EventType } from '@/application/session/event';
 import { purgeAllOutbox } from '@/application/sync-outbox';
+import { clearEmbedRefreshCookie, writeEmbedRefreshCookie } from '@/application/session/embed-session';
 
 const TOKEN_STORAGE_KEY = 'token';
 
@@ -118,6 +119,7 @@ function memoizeParsedToken(rawToken: string | null, parsed: GoTrueAuthToken | n
 
 function removeStoredToken() {
   memoizeParsedToken(null, null);
+  clearEmbedRefreshCookie();
 
   try {
     window.localStorage.removeItem(TOKEN_STORAGE_KEY);
@@ -136,6 +138,7 @@ export function saveGoTrueAuth(tokenData: string): boolean {
 
   try {
     window.localStorage.setItem(TOKEN_STORAGE_KEY, serialized);
+    writeEmbedRefreshCookie(parsed.refresh_token);
   } catch {
     return false;
   }

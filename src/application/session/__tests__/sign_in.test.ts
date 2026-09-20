@@ -287,4 +287,17 @@ describe('ARS embedded sign-in', () => {
     afterAuth();
     expect(new URL(hrefValue).searchParams.has('path')).toBe(false);
   });
+  it('returns to an allowlisted www origin when the hub asked for it', () => {
+    hrefValue =
+      'http://localhost/auth/callback?ars_team=00000000-0000-4000-8000-000000000001&ars_origin=https%3A%2F%2Fwww.africanresearchsociety.org';
+    afterAuth();
+    expect(new URL(hrefValue).origin).toBe('https://www.africanresearchsociety.org');
+    expect(hrefValue).not.toContain('secret');
+  });
+  it('ignores an untrusted return origin', () => {
+    hrefValue =
+      'http://localhost/auth/callback?ars_team=00000000-0000-4000-8000-000000000001&ars_origin=https%3A%2F%2Fevil.example';
+    afterAuth();
+    expect(new URL(hrefValue).origin).toBe('https://africanresearchsociety.org');
+  });
 });

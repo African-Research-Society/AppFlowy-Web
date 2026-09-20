@@ -29,15 +29,21 @@ export function resolveArsParentOrigin(input: {
   } catch {
     /* malformed referrer is not an embed signal */
   }
-  if (new URLSearchParams(input.search).get('ars_embed') === '1') {
-    return ARS_PARENT_ORIGIN;
-  }
   return null;
+}
+
+export function isArsParentOrigin(origin: string) {
+  return ARS_PARENT_ORIGINS.has(origin);
+}
+
+export function arsReturnOrigin(requested?: string | null) {
+  if (requested && ARS_PARENT_ORIGINS.has(requested)) return requested;
+  return ARS_PARENT_ORIGIN;
 }
 
 export function arsPostMessageOrigin(stored?: string | null) {
   if (stored && ARS_PARENT_ORIGINS.has(stored)) return stored;
-  return ARS_PARENT_ORIGIN;
+  return null;
 }
 
 export function sendToDesignTitle(name?: string) {

@@ -29,13 +29,15 @@ export function SendToDesign() {
       data-testid='ars-send-to-design'
       onClick={() => {
         const page = documentViewFromPath(window.location.pathname);
+        const parentOrigin = arsPostMessageOrigin(document.documentElement.dataset.arsParent);
+        if (!parentOrigin) return;
         window.parent.postMessage(
           buildSendToDesignMessage({
             viewId,
             workspaceId: page?.workspaceId,
             title: view.name,
           }),
-          arsPostMessageOrigin(document.documentElement.dataset.arsParent)
+          parentOrigin
         );
       }}
       style={{

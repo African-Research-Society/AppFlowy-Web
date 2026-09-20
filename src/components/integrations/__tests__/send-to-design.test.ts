@@ -1,7 +1,9 @@
 import {
   arsPostMessageOrigin,
+  arsReturnOrigin,
   buildSendToDesignMessage,
   documentViewFromPath,
+  isArsParentOrigin,
   resolveArsParentOrigin,
   sendToDesignTitle,
 } from '../send-to-design';
@@ -82,21 +84,27 @@ describe('resolveArsParentOrigin', () => {
     ).toBe('https://africanresearchsociety.org');
   });
 
-  it('falls back to ars_embed=1 when the referrer is stripped', () => {
+  it('waits for a parent hello when the referrer is stripped', () => {
     expect(
       resolveArsParentOrigin({
         isIframe: true,
         referrer: '',
         search: '?ars_embed=1',
       })
-    ).toBe('https://africanresearchsociety.org');
+    ).toBeNull();
+    expect(isArsParentOrigin('https://www.africanresearchsociety.org')).toBe(true);
+    expect(isArsParentOrigin('https://evil.example')).toBe(false);
   });
 
-  it('keeps www for postMessage after handshake', () => {
+  it('keeps www for postMessage after handshake and refuses an unknown parent', () => {
     expect(arsPostMessageOrigin('https://www.africanresearchsociety.org')).toBe(
       'https://www.africanresearchsociety.org'
     );
-    expect(arsPostMessageOrigin('https://evil.example')).toBe('https://africanresearchsociety.org');
+    expect(arsPostMessageOrigin('https://evil.example')).toBeNull();
+    expect(arsReturnOrigin('https://www.africanresearchsociety.org')).toBe(
+      'https://www.africanresearchsociety.org'
+    );
+    expect(arsReturnOrigin('https://evil.example')).toBe('https://africanresearchsociety.org');
   });
 
   it('ignores a top-level window and a malformed referrer', () => {

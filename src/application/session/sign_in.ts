@@ -1,3 +1,4 @@
+import { arsReturnOrigin } from '@/components/integrations/send-to-design';
 import { Log } from '@/utils/log';
 
 export function saveRedirectTo(redirectTo: string) {
@@ -136,7 +137,10 @@ export function afterAuth() {
   const arsTeam = callback.searchParams.get('ars_team');
 
   if (callback.pathname === AUTH_CALLBACK_PATH && arsTeam && /^[a-f0-9-]{36}$/.test(arsTeam)) {
-    const back = new URL('/dashboard/workspace', 'https://africanresearchsociety.org');
+    const back = new URL(
+      '/dashboard/workspace',
+      arsReturnOrigin(callback.searchParams.get('ars_origin'))
+    );
 
     back.searchParams.set('team', arsTeam);
     back.searchParams.set('connected', '1');
