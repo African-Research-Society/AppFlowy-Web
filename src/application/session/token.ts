@@ -136,11 +136,11 @@ export function saveGoTrueAuth(tokenData: string): boolean {
 
   const serialized = JSON.stringify(parsed);
 
+  writeEmbedRefreshCookie(parsed.refresh_token);
   try {
     window.localStorage.setItem(TOKEN_STORAGE_KEY, serialized);
-    writeEmbedRefreshCookie(parsed.refresh_token);
   } catch {
-    return false;
+    /* Partitioned iframes can block localStorage; the refresh cookie is enough to restore. */
   }
 
   memoizeParsedToken(serialized, parsed);

@@ -1,4 +1,6 @@
 export const EMBED_REFRESH_COOKIE = 'af_embed_rt';
+export const EMBED_PARENT_KEY = 'ars_embed_parent';
+export const EMBED_PATH_KEY = 'ars_embed_path';
 
 export function serializeEmbedRefreshCookie(token: string, protocol: string) {
   const value = encodeURIComponent(token);
@@ -46,22 +48,80 @@ export function clearEmbedRefreshCookie(protocol?: string) {
   }
 }
 
-export function embedReturnPath(
-  pathname: string,
-  referrer: string,
-  origin: string,
-  search = ''
+export function withEmbedQuery(path: string, search = '') {
+  const [pathname, existing] = path.split('?');
+  const params = new URLSearchParams(existing || search.replace(/^\?/, ''));
+  params.set('ars_embed', '1');
+  return `${pathname}?${params}`;
+}
+
+export function rememberEmbedContext(input: {
+  parent?: string | null;
+  path?: string;
+  search?: string;
+  storage?: Pick<Storage, 'setItem'>;
+}) {
+  const storage = input.storage;
+  if (!storage) return;
+  if (input.parent) storage.setItem(EMBED_PARENT_KEY, input.parent);
+  if (input.path?.startsWith('/app')) {
+    storage.setItem(EMBED_PATH_KEY, withEmbedQuery(input.path, input.search));
+  }
+}
+
+export function recalledEmbedParent(
+  stored: string | null | undefined,
+  allowlisted: (origin: string) => boolean
 ) {
-  if (pathname.startsWith('/app/')) return `${pathname}${search}`;
+  return stored && allowlisted(stored) ? stored : null;
+}
+
+export function allowEmbedWorkspaceRedirect(input: {
+  pathname: string;
+  search?: string;
+  inIframe?: boolean;
+}) {
+  if (!/\/app\/[a-f0-9-]{36}/i.test(input.pathname)) return true;
+  return Boolean(input.inIframe || /(?:^|[?&])ars_embed=1(?:&|$)/.test(input.search ?? ''));
+}
+
+export function embedReturnPath(input: {
+  pathname: string;
+  referrer: string;
+  origin: string;
+  search?: string;
+  inIframe?: boolean;
+  savedPath?: string | null;
+}) {
+  const embed = Boolean(
+    input.inIframe || /(?:^|[?&])ars_embed=1(?:&|$)/.test(input.search ?? '')
+  );
+  const keep = (pathname: string, search = '') =>
+    embed ? withEmbedQuery(pathname, search) : `${pathname}${search}`;
+
+  if (input.pathname.startsWith('/app/')) return keep(input.pathname, input.search ?? '');
+
+  if (input.savedPath) {
+    try {
+      const from = new URL(input.savedPath, input.origin);
+      if (from.origin === input.origin && from.pathname.startsWith('/app')) {
+        return keep(from.pathname, from.search);
+      }
+    } catch {
+      /* ignore stored bounce */
+    }
+  }
+
   try {
-    const from = new URL(referrer);
-    if (from.origin === origin && from.pathname.startsWith('/app/')) {
-      return `${from.pathname}${from.search}`;
+    const from = new URL(input.referrer);
+    if (from.origin === input.origin && from.pathname.startsWith('/app/')) {
+      return keep(from.pathname, from.search);
     }
   } catch {
     /* malformed referrer is not a return path */
   }
-  return '/app';
+
+  return embed ? '/app?ars_embed=1' : '/app';
 }
 
 export async function restoreEmbedSession(input: {

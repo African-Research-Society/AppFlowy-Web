@@ -1,7 +1,14 @@
 import { useContext, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
-import { embedReturnPath, restoreEmbedSession } from '@/application/session/embed-session';
+import {
+  EMBED_PARENT_KEY,
+  EMBED_PATH_KEY,
+  embedReturnPath,
+  recalledEmbedParent,
+  rememberEmbedContext,
+  restoreEmbedSession,
+} from '@/application/session/embed-session';
 import { EventType, on } from '@/application/session/event';
 import { invalidToken, isTokenValid } from '@/application/session/token';
 import { refreshToken } from '@/application/services/js-services/http/gotrue';
@@ -15,20 +22,34 @@ import {
 
 export { ARS_PARENT_ORIGIN };
 
+function savedEmbedPath() {
+  try {
+    return sessionStorage.getItem(EMBED_PATH_KEY);
+  } catch {
+    return null;
+  }
+}
+
 export function ArsEmbed() {
   const location = useLocation();
   const setDark = useContext(ThemeModeContext)?.setDark;
 
   useEffect(() => {
+    const inIframe = window.parent !== window;
     let parentOrigin = resolveArsParentOrigin({
-      isIframe: window.parent !== window,
+      isIframe: inIframe,
       referrer: document.referrer,
       search: location.search,
     });
+    if (!parentOrigin && inIframe) {
+      try {
+        parentOrigin = recalledEmbedParent(sessionStorage.getItem(EMBED_PARENT_KEY), isArsParentOrigin);
+      } catch {
+        /* sessionStorage can be unavailable in privacy-restricted iframe contexts. */
+      }
+    }
     const waiting =
-      !parentOrigin &&
-      window.parent !== window &&
-      new URLSearchParams(location.search).get('ars_embed') === '1';
+      !parentOrigin && inIframe && new URLSearchParams(location.search).get('ars_embed') === '1';
     if (!parentOrigin && !waiting) {
       delete document.documentElement.dataset.arsEmbed;
       delete document.documentElement.dataset.arsParent;
@@ -38,26 +59,36 @@ export function ArsEmbed() {
       parentOrigin = origin;
       document.documentElement.dataset.arsEmbed = 'true';
       document.documentElement.dataset.arsParent = origin;
+      rememberEmbedContext({
+        parent: origin,
+        path: location.pathname,
+        search: location.search,
+        storage: sessionStorage,
+      });
     };
     if (parentOrigin) bind(parentOrigin);
+    if (location.pathname.startsWith('/app')) {
+      rememberEmbedContext({
+        path: location.pathname,
+        search: location.search,
+        storage: sessionStorage,
+      });
+    }
     const send = (type: string, extra = {}) => {
       if (!parentOrigin) return;
       window.parent.postMessage({ channel: 'ars-app', version: 1, type, ...extra }, parentOrigin);
     };
+    let restoreOutcome: 'ready' | 'restored' | 'missing' | null = null;
+    const onAppPath = location.pathname === '/app' || location.pathname.startsWith('/app/');
     const announce = () => {
-      if (location.pathname.startsWith('/app/')) {
+      if (onAppPath) {
         send('ready');
-        send('navigation', { path: location.pathname });
+        if (location.pathname.startsWith('/app/')) send('navigation', { path: location.pathname });
       }
-      if (location.pathname === '/login') send('session-expired');
+      if (location.pathname === '/login' && restoreOutcome === 'missing') send('session-expired');
     };
     const receive = (event: MessageEvent) => {
-      if (
-        event.source !== window.parent ||
-        event.data?.channel !== 'ars-app' ||
-        event.data.version !== 1
-      )
-        return;
+      if (event.source !== window.parent || event.data?.channel !== 'ars-app' || event.data.version !== 1) return;
       if (!parentOrigin) {
         if (event.data.type === 'hello' && isArsParentOrigin(event.origin)) {
           bind(event.origin);
@@ -75,8 +106,12 @@ export function ArsEmbed() {
 
     const off = on(EventType.SESSION_INVALID, () => send('session-expired'));
     const expired = on(EventType.SESSION_EXPIRED, () => send('session-expired'));
+    const requestAccess = () => {
+      void document.requestStorageAccess?.().catch(() => undefined);
+    };
 
     window.addEventListener('message', receive);
+    window.addEventListener('pointerdown', requestAccess, { once: true });
     let cancelled = false;
     void restoreEmbedSession({
       hasToken: isTokenValid(),
@@ -87,14 +122,17 @@ export function ArsEmbed() {
     })
       .then((outcome) => {
         if (cancelled) return;
-        if (outcome === 'restored') {
+        restoreOutcome = outcome;
+        if (outcome === 'restored' || (outcome === 'ready' && location.pathname === '/login')) {
           window.location.replace(
-            embedReturnPath(
-              location.pathname,
-              document.referrer,
-              window.location.origin,
-              location.search
-            )
+            embedReturnPath({
+              pathname: location.pathname,
+              referrer: document.referrer,
+              origin: window.location.origin,
+              search: location.search,
+              inIframe,
+              savedPath: savedEmbedPath(),
+            })
           );
           return;
         }
@@ -102,6 +140,7 @@ export function ArsEmbed() {
       })
       .catch(() => {
         if (cancelled) return;
+        restoreOutcome = 'missing';
         if (location.pathname === '/login') send('session-expired');
       });
     return () => {
@@ -109,6 +148,7 @@ export function ArsEmbed() {
       off();
       expired();
       window.removeEventListener('message', receive);
+      window.removeEventListener('pointerdown', requestAccess);
     };
   }, [location.pathname, location.search, setDark]);
 

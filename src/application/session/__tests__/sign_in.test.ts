@@ -221,6 +221,17 @@ describe('afterAuth', () => {
     expect(window.location.href).toBe('/app');
   });
 
+  it('follows an embedded workspace path after login', () => {
+    localStorage.setItem(
+      'redirectTo',
+      '/app/550e8400-e29b-41d4-a716-446655440000/22222222-2222-4222-8222-222222222222?ars_embed=1'
+    );
+    afterAuth();
+    expect(window.location.href).toBe(
+      '/app/550e8400-e29b-41d4-a716-446655440000/22222222-2222-4222-8222-222222222222?ars_embed=1'
+    );
+  });
+
   it('redirects to /app when a stored UUID path uses uppercase hex characters', () => {
     localStorage.setItem('redirectTo', '/app/550E8400-E29B-41D4-A716-446655440000');
     afterAuth();

@@ -135,13 +135,14 @@ describe('GoTrue token storage', () => {
     getItem.mockRestore();
   });
 
-  it('does not emit or throw when storage writes are blocked', () => {
+  it('keeps the embed refresh cookie when storage writes are blocked', () => {
     const setItem = jest.spyOn(Storage.prototype, 'setItem').mockImplementation(() => {
       throw new DOMException('Storage is blocked', 'SecurityError');
     });
 
-    expect(saveGoTrueAuth(JSON.stringify(createToken()))).toBe(false);
-    expect(emitMock).not.toHaveBeenCalled();
+    expect(saveGoTrueAuth(JSON.stringify(createToken()))).toBe(true);
+    expect(emitMock).toHaveBeenCalledWith(EventType.SESSION_REFRESH, expect.any(String));
+    expect(document.cookie).toContain('af_embed_rt=refresh-token');
 
     setItem.mockRestore();
   });

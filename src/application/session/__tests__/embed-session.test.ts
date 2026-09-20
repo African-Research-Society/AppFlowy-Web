@@ -1,7 +1,12 @@
 import {
+  allowEmbedWorkspaceRedirect,
+  EMBED_PARENT_KEY,
+  EMBED_PATH_KEY,
   EMBED_REFRESH_COOKIE,
   embedReturnPath,
   parseEmbedRefreshCookie,
+  recalledEmbedParent,
+  rememberEmbedContext,
   restoreEmbedSession,
   serializeEmbedRefreshCookie,
 } from '../embed-session';
@@ -19,22 +24,93 @@ describe('embed refresh cookie', () => {
 });
 
 describe('embedReturnPath', () => {
+  const workspace =
+    '/app/11111111-1111-4111-8111-111111111111/22222222-2222-4222-8222-222222222222';
+
   it('returns to the Workspace document after a login bounce', () => {
     expect(
-      embedReturnPath(
-        '/login',
-        'https://workspace.example/app/11111111-1111-4111-8111-111111111111/22222222-2222-4222-8222-222222222222?ars_embed=1',
-        'https://workspace.example'
-      )
-    ).toBe(
-      '/app/11111111-1111-4111-8111-111111111111/22222222-2222-4222-8222-222222222222?ars_embed=1'
-    );
+      embedReturnPath({
+        pathname: '/login',
+        referrer: `https://workspace.example${workspace}?ars_embed=1`,
+        origin: 'https://workspace.example',
+      })
+    ).toBe(`${workspace}?ars_embed=1`);
     expect(
-      embedReturnPath('/app/ws/view', '', 'https://workspace.example', '?ars_embed=1')
+      embedReturnPath({
+        pathname: '/app/ws/view',
+        referrer: '',
+        origin: 'https://workspace.example',
+        search: '?ars_embed=1',
+      })
     ).toBe('/app/ws/view?ars_embed=1');
-    expect(embedReturnPath('/login', 'https://evil.example/app/x', 'https://workspace.example')).toBe(
-      '/app'
-    );
+    expect(
+      embedReturnPath({
+        pathname: '/login',
+        referrer: 'https://evil.example/app/x',
+        origin: 'https://workspace.example',
+      })
+    ).toBe('/app');
+  });
+
+  it('keeps the embed query when the login referrer is the ARS parent', () => {
+    expect(
+      embedReturnPath({
+        pathname: '/login',
+        referrer: 'https://africanresearchsociety.org/dashboard/workspace',
+        origin: 'https://workspace.example',
+        inIframe: true,
+        savedPath: `${workspace}?ars_embed=1`,
+      })
+    ).toBe(`${workspace}?ars_embed=1`);
+    expect(
+      embedReturnPath({
+        pathname: '/login',
+        referrer: 'https://africanresearchsociety.org/dashboard/workspace',
+        origin: 'https://workspace.example',
+        inIframe: true,
+      })
+    ).toBe('/app?ars_embed=1');
+  });
+});
+
+describe('rememberEmbedContext', () => {
+  it('stores an allowlisted parent and an embed workspace path', () => {
+    const store = new Map<string, string>();
+    rememberEmbedContext({
+      parent: 'https://www.africanresearchsociety.org',
+      path: '/app/ws/view',
+      search: '',
+      storage: { setItem: (key, value) => store.set(key, value) },
+    });
+    expect(store.get(EMBED_PARENT_KEY)).toBe('https://www.africanresearchsociety.org');
+    expect(store.get(EMBED_PATH_KEY)).toBe('/app/ws/view?ars_embed=1');
+    expect(
+      recalledEmbedParent(store.get(EMBED_PARENT_KEY), (origin) => origin.endsWith('africanresearchsociety.org'))
+    ).toBe('https://www.africanresearchsociety.org');
+    expect(recalledEmbedParent('https://evil.example', () => false)).toBeNull();
+  });
+});
+
+describe('allowEmbedWorkspaceRedirect', () => {
+  it('allows a workspace path only inside the embed', () => {
+    expect(
+      allowEmbedWorkspaceRedirect({
+        pathname: '/app/11111111-1111-4111-8111-111111111111',
+      })
+    ).toBe(false);
+    expect(
+      allowEmbedWorkspaceRedirect({
+        pathname: '/app/11111111-1111-4111-8111-111111111111',
+        search: '?ars_embed=1',
+      })
+    ).toBe(true);
+    expect(
+      allowEmbedWorkspaceRedirect({
+        pathname: '/app/11111111-1111-4111-8111-111111111111',
+        inIframe: true,
+      })
+    ).toBe(true);
+    expect(allowEmbedWorkspaceRedirect({ pathname: '/settings' })).toBe(true);
   });
 });
 

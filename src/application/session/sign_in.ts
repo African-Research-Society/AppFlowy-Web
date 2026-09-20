@@ -1,3 +1,9 @@
+import {
+  allowEmbedWorkspaceRedirect,
+  EMBED_PATH_KEY,
+  embedReturnPath,
+  withEmbedQuery,
+} from '@/application/session/embed-session';
 import { arsReturnOrigin } from '@/components/integrations/send-to-design';
 import { Log } from '@/utils/log';
 
@@ -153,6 +159,13 @@ export function afterAuth() {
   }
 
   const redirectTo = getRedirectTo();
+  const inIframe = window.self !== window.top;
+  let savedPath: string | null = null;
+  try {
+    savedPath = sessionStorage.getItem(EMBED_PATH_KEY);
+  } catch {
+    savedPath = null;
+  }
 
   clearRedirectTo();
 
@@ -160,7 +173,7 @@ export function afterAuth() {
     const safeRedirectTo = getSafeRedirectUrl(redirectTo);
 
     if (!safeRedirectTo) {
-      window.location.href = '/app';
+      window.location.href = inIframe ? '/app?ars_embed=1' : '/app';
       return;
     }
 
@@ -172,9 +185,21 @@ export function afterAuth() {
     const hasUserSpecificIds = /\/app\/[a-f0-9-]{36}/i.test(pathname);
 
     if (hasUserSpecificIds) {
-      // Don't redirect to user-specific pages from previous sessions
-      Log.info('[Auth] afterAuth: blocking user-specific redirect, going to /app', { pathname });
-      window.location.href = '/app';
+      if (
+        allowEmbedWorkspaceRedirect({
+          pathname,
+          search: url.search,
+          inIframe,
+        })
+      ) {
+        const next = withEmbedQuery(url.pathname, url.search);
+        Log.info('[Auth] afterAuth: following embedded workspace path', { pathname });
+        window.location.href = next;
+      } else {
+        // Don't redirect to user-specific pages from previous sessions
+        Log.info('[Auth] afterAuth: blocking user-specific redirect, going to /app', { pathname });
+        window.location.href = '/app';
+      }
     } else if (pathname === '/' || !pathname) {
       // Preserve query params and hash but redirect to /app path
       url.pathname = '/app';
@@ -184,6 +209,14 @@ export function afterAuth() {
       Log.info('[Auth] afterAuth: redirecting to saved destination', { pathname });
       window.location.href = safeRedirectTo;
     }
+  } else if (inIframe) {
+    window.location.href = embedReturnPath({
+      pathname: '/login',
+      referrer: document.referrer,
+      origin: window.location.origin,
+      inIframe: true,
+      savedPath,
+    });
   } else {
     Log.info('[Auth] afterAuth: no redirectTo saved, going to /app');
     window.location.href = '/app';
