@@ -30,10 +30,14 @@ export function sendToDesignWorkspaceId(input: {
 export function canSendPageToDesign(input: {
   parentOrigin?: string | null;
   viewId?: string | null;
+  workspaceId?: string | null;
   isDocument?: boolean;
   pathname?: string;
 }) {
   if (!input.parentOrigin || !input.viewId || !UUID.test(input.viewId)) return false;
+  if (!sendToDesignWorkspaceId({ workspaceId: input.workspaceId, pathname: input.pathname })) {
+    return false;
+  }
   if (input.isDocument === true) return true;
   if (input.isDocument === false) return false;
   const page = documentViewFromPath(input.pathname ?? '');
@@ -91,7 +95,7 @@ export function sendToDesignHandoffHref(input: {
 }) {
   if (!ARS_PARENT_ORIGINS.has(input.parentOrigin)) return null;
   if (!UUID.test(input.viewId)) return null;
-  if (input.workspaceId && !UUID.test(input.workspaceId)) return null;
+  if (!input.workspaceId || !UUID.test(input.workspaceId)) return null;
   const url = new URL('/dashboard', input.parentOrigin);
   url.searchParams.set('view', input.viewId.toLowerCase());
   if (input.workspaceId) {
@@ -129,7 +133,7 @@ export function buildSendToDesignMessage(input: {
   title?: string;
 }) {
   if (!UUID.test(input.viewId)) throw new Error('Invalid view');
-  if (input.workspaceId && !UUID.test(input.workspaceId)) {
+  if (!input.workspaceId || !UUID.test(input.workspaceId)) {
     throw new Error('Invalid workspace');
   }
   return {
@@ -137,7 +141,7 @@ export function buildSendToDesignMessage(input: {
     version: 1 as const,
     type: 'send-to-design' as const,
     viewId: input.viewId,
-    ...(input.workspaceId ? { workspaceId: input.workspaceId } : {}),
+    workspaceId: input.workspaceId,
     title: sendToDesignTitle(input.title),
   };
 }

@@ -197,6 +197,35 @@ describe('sendToDesignHandoffHref', () => {
   const viewId = '22222222-2222-4222-8222-222222222222';
   const workspaceId = '11111111-1111-4111-8111-111111111111';
 
+  it('does not hand off a view without its workspace', () => {
+    expect(
+      sendToDesignHandoffHref({
+        parentOrigin: 'https://africanresearchsociety.org',
+        viewId,
+      })
+    ).toBeNull();
+    expect(() =>
+      buildSendToDesignMessage({
+        viewId,
+      })
+    ).toThrow(/workspace/i);
+    expect(
+      canSendPageToDesign({
+        parentOrigin: 'https://africanresearchsociety.org',
+        viewId,
+        isDocument: true,
+      })
+    ).toBe(false);
+    expect(
+      canSendPageToDesign({
+        parentOrigin: 'https://africanresearchsociety.org',
+        viewId,
+        workspaceId,
+        isDocument: true,
+      })
+    ).toBe(true);
+  });
+
   it('returns to the hub with page ids and an optional title', () => {
     expect(
       sendToDesignHandoffHref({

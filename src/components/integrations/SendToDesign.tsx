@@ -17,6 +17,7 @@ export function SendToDesign() {
   const workspaceId = useCurrentWorkspaceIdOptional();
   const [parentOrigin, setParentOrigin] = useState<string | null>(null);
   const [embedded, setEmbedded] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const sync = () => {
@@ -39,6 +40,7 @@ export function SendToDesign() {
     !canSendPageToDesign({
       parentOrigin,
       viewId,
+      workspaceId,
       isDocument: view ? view.layout === ViewLayout.Document : undefined,
       pathname,
     })
@@ -46,6 +48,18 @@ export function SendToDesign() {
     return null;
   }
   return (
+    <div
+      style={{
+        position: 'fixed',
+        top: 12,
+        right: 12,
+        zIndex: 40,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'flex-end',
+        gap: 8,
+      }}
+    >
     <button
       type='button'
       data-testid='ars-send-to-design'
@@ -55,6 +69,10 @@ export function SendToDesign() {
             workspaceId,
             pathname: window.location.pathname,
           });
+          if (!handoffWorkspace) {
+            setError('Workspace is required');
+            return;
+          }
           if (embedded) {
             window.parent.postMessage(
               buildSendToDesignMessage({
@@ -72,16 +90,16 @@ export function SendToDesign() {
             workspaceId: handoffWorkspace,
             title: view?.name,
           });
-          if (href) window.location.assign(href);
-        } catch {
-          /* Invalid page ids must not break the editor. */
+          if (!href) {
+            setError('Could not open Design on the hub');
+            return;
+          }
+          window.location.assign(href);
+        } catch (err) {
+          setError(err instanceof Error ? err.message : 'Could not open Design on the hub');
         }
       }}
       style={{
-        position: 'fixed',
-        top: 12,
-        right: 12,
-        zIndex: 40,
         border: 0,
         borderRadius: 8,
         padding: '8px 12px',
@@ -94,5 +112,19 @@ export function SendToDesign() {
     >
       Create design from this page
     </button>
+    {error ? (
+      <p
+        role='alert'
+        style={{
+          margin: 0,
+          maxWidth: 240,
+          color: '#b42318',
+          fontSize: 12,
+        }}
+      >
+        {error}
+      </p>
+    ) : null}
+    </div>
   );
 }
