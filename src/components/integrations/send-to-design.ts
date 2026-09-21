@@ -16,6 +16,19 @@ export function documentViewFromPath(path: string): {
   return { workspaceId: match[1], viewId: match[2] };
 }
 
+export function canSendPageToDesign(input: {
+  parentOrigin?: string | null;
+  viewId?: string | null;
+  isDocument?: boolean;
+  pathname?: string;
+}) {
+  if (!input.parentOrigin || !input.viewId || !UUID.test(input.viewId)) return false;
+  if (input.isDocument === true) return true;
+  if (input.isDocument === false) return false;
+  const page = documentViewFromPath(input.pathname ?? '');
+  return Boolean(page && page.viewId.toLowerCase() === input.viewId.toLowerCase());
+}
+
 export function resolveArsParentOrigin(input: {
   isIframe: boolean;
   referrer: string;

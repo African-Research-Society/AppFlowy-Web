@@ -6,6 +6,7 @@ import { useAppView, useAppViewId } from '@/components/app/app.hooks';
 import {
   arsPostMessageOrigin,
   buildSendToDesignMessage,
+  canSendPageToDesign,
   documentViewFromPath,
   sendToDesignHandoffHref,
 } from './send-to-design';
@@ -30,20 +31,32 @@ export function SendToDesign() {
     return () => observer.disconnect();
   }, []);
 
-  if (!parentOrigin || !viewId || view?.layout !== ViewLayout.Document) return null;
+  const pathname = typeof window === 'undefined' ? '' : window.location.pathname;
+  if (
+    !parentOrigin ||
+    !viewId ||
+    !canSendPageToDesign({
+      parentOrigin,
+      viewId,
+      isDocument: view ? view.layout === ViewLayout.Document : undefined,
+      pathname,
+    })
+  ) {
+    return null;
+  }
   return (
     <button
       type='button'
       data-testid='ars-send-to-design'
       onClick={() => {
         try {
-          const page = documentViewFromPath(window.location.pathname);
+          const target = documentViewFromPath(window.location.pathname);
           if (embedded) {
             window.parent.postMessage(
               buildSendToDesignMessage({
                 viewId,
-                workspaceId: page?.workspaceId,
-                title: view.name,
+                workspaceId: target?.workspaceId,
+                title: view?.name,
               }),
               parentOrigin
             );
@@ -52,7 +65,7 @@ export function SendToDesign() {
           const href = sendToDesignHandoffHref({
             parentOrigin,
             viewId,
-            workspaceId: page?.workspaceId,
+            workspaceId: target?.workspaceId,
           });
           if (href) window.location.assign(href);
         } catch {

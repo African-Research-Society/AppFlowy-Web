@@ -3,6 +3,7 @@ import {
   arsPostMessageOrigin,
   arsReturnOrigin,
   buildSendToDesignMessage,
+  canSendPageToDesign,
   documentViewFromPath,
   firstPartyHubParent,
   isArsParentOrigin,
@@ -81,6 +82,40 @@ describe('documentViewFromPath', () => {
       workspaceId: '11111111-1111-4111-8111-111111111111',
       viewId: '22222222-2222-4222-8222-222222222222',
     });
+  });
+
+  it('treats a freshly published notes path as a document when the outline misses', () => {
+    const viewId = '22222222-2222-4222-8222-222222222222';
+    const pathname = `/app/11111111-1111-4111-8111-111111111111/${viewId}`;
+    expect(
+      canSendPageToDesign({
+        parentOrigin: 'https://africanresearchsociety.org',
+        viewId,
+        pathname,
+      })
+    ).toBe(true);
+    expect(
+      canSendPageToDesign({
+        parentOrigin: 'https://africanresearchsociety.org',
+        viewId,
+        isDocument: false,
+        pathname,
+      })
+    ).toBe(false);
+    expect(
+      canSendPageToDesign({
+        parentOrigin: 'https://africanresearchsociety.org',
+        viewId,
+        pathname: '/app/11111111-1111-4111-8111-111111111111',
+      })
+    ).toBe(false);
+    expect(
+      canSendPageToDesign({
+        parentOrigin: null,
+        viewId,
+        pathname,
+      })
+    ).toBe(false);
   });
 });
 
