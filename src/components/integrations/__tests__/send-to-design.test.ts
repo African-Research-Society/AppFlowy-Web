@@ -4,6 +4,7 @@ import {
   arsReturnOrigin,
   buildSendToDesignMessage,
   documentViewFromPath,
+  firstPartyHubParent,
   isArsParentOrigin,
   recalledHubParent,
   rememberHubParent,
@@ -191,5 +192,22 @@ describe('sendToDesignHandoffHref', () => {
       'https://www.africanresearchsociety.org'
     );
     expect(recalledHubParent('https://evil.example')).toBeNull();
+  });
+
+  it('keeps first-party Send to Design pointed at the hub', () => {
+    expect(firstPartyHubParent({})).toBe('https://africanresearchsociety.org');
+    expect(
+      firstPartyHubParent({
+        referrer: 'https://www.africanresearchsociety.org/workspace',
+      })
+    ).toBe('https://www.africanresearchsociety.org');
+    expect(
+      firstPartyHubParent({
+        stored: 'https://www.africanresearchsociety.org',
+      })
+    ).toBe('https://www.africanresearchsociety.org');
+    expect(firstPartyHubParent({ referrer: 'https://evil.example' })).toBe(
+      'https://africanresearchsociety.org'
+    );
   });
 });

@@ -44,6 +44,21 @@ export function recalledHubParent(stored?: string | null) {
   return stored && ARS_PARENT_ORIGINS.has(stored) ? stored : null;
 }
 
+export function firstPartyHubParent(input: {
+  referrer?: string;
+  stored?: string | null;
+}) {
+  return (
+    resolveArsParentOrigin({
+      isIframe: false,
+      referrer: input.referrer ?? '',
+      search: '',
+    }) ??
+    recalledHubParent(input.stored) ??
+    ARS_PARENT_ORIGIN
+  );
+}
+
 export function sendToDesignHandoffHref(input: {
   parentOrigin: string;
   viewId: string;

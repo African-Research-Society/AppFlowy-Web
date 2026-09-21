@@ -17,6 +17,7 @@ import { ThemeModeContext } from '@/components/main/useAppThemeMode';
 import {
   ARS_HUB_PARENT_KEY,
   ARS_PARENT_ORIGIN,
+  firstPartyHubParent,
   isArsParentOrigin,
   recalledHubParent,
   rememberHubParent,
@@ -57,15 +58,15 @@ export function ArsEmbed() {
     }
     if (!inIframe) {
       delete document.documentElement.dataset.arsEmbed;
-      if (parentOrigin) {
-        document.documentElement.dataset.arsParent = parentOrigin;
-        try {
-          rememberHubParent(parentOrigin, sessionStorage);
-        } catch {
-          /* ignore */
-        }
-      } else {
-        delete document.documentElement.dataset.arsParent;
+      const hub = firstPartyHubParent({
+        referrer: document.referrer,
+        stored: parentOrigin,
+      });
+      document.documentElement.dataset.arsParent = hub;
+      try {
+        rememberHubParent(hub, sessionStorage);
+      } catch {
+        /* ignore */
       }
       return;
     }
