@@ -66,6 +66,7 @@ export function SendToDesign() {
             parentOrigin,
             viewId,
             workspaceId: target?.workspaceId,
+            title: view?.name,
           });
           if (href) window.location.assign(href);
         } catch {

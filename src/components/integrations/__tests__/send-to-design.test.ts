@@ -175,15 +175,16 @@ describe('sendToDesignHandoffHref', () => {
   const viewId = '22222222-2222-4222-8222-222222222222';
   const workspaceId = '11111111-1111-4111-8111-111111111111';
 
-  it('returns to the hub with page ids only', () => {
+  it('returns to the hub with page ids and an optional title', () => {
     expect(
       sendToDesignHandoffHref({
         parentOrigin: 'https://www.africanresearchsociety.org',
         viewId,
         workspaceId,
+        title: 'Launch poster',
       })
     ).toBe(
-      `https://www.africanresearchsociety.org/dashboard?view=${viewId}&workspace=${workspaceId}`
+      `https://www.africanresearchsociety.org/dashboard?view=${viewId}&workspace=${workspaceId}&title=Launch+poster`
     );
     expect(
       sendToDesignHandoffHref({

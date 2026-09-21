@@ -76,6 +76,7 @@ export function sendToDesignHandoffHref(input: {
   parentOrigin: string;
   viewId: string;
   workspaceId?: string;
+  title?: string;
 }) {
   if (!ARS_PARENT_ORIGINS.has(input.parentOrigin)) return null;
   if (!UUID.test(input.viewId)) return null;
@@ -84,6 +85,10 @@ export function sendToDesignHandoffHref(input: {
   url.searchParams.set('view', input.viewId.toLowerCase());
   if (input.workspaceId) {
     url.searchParams.set('workspace', input.workspaceId.toLowerCase());
+  }
+  const title = sendToDesignTitle(input.title);
+  if (title && title !== 'Untitled brief') {
+    url.searchParams.set('title', title);
   }
   return url.toString();
 }
