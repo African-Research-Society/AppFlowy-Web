@@ -224,14 +224,26 @@ describe('afterAuth', () => {
   });
 
   it('follows an embedded workspace path after login', () => {
-    localStorage.setItem(
-      'redirectTo',
-      '/app/550e8400-e29b-41d4-a716-446655440000/22222222-2222-4222-8222-222222222222?ars_embed=1'
-    );
-    afterAuth();
-    expect(window.location.href).toBe(
-      '/app/550e8400-e29b-41d4-a716-446655440000/22222222-2222-4222-8222-222222222222?ars_embed=1'
-    );
+    const top = Object.getOwnPropertyDescriptor(window, 'top');
+    const referrer = Object.getOwnPropertyDescriptor(document, 'referrer');
+    Object.defineProperty(window, 'top', { configurable: true, value: {} });
+    Object.defineProperty(document, 'referrer', {
+      configurable: true,
+      get: () => 'https://www.africanresearchsociety.org/dashboard/workspace',
+    });
+    try {
+      localStorage.setItem(
+        'redirectTo',
+        '/app/550e8400-e29b-41d4-a716-446655440000/22222222-2222-4222-8222-222222222222?ars_embed=1&access_token=SECRET'
+      );
+      afterAuth();
+      expect(window.location.href).toBe(
+        '/app/550e8400-e29b-41d4-a716-446655440000/22222222-2222-4222-8222-222222222222?ars_embed=1'
+      );
+    } finally {
+      if (top) Object.defineProperty(window, 'top', top);
+      if (referrer) Object.defineProperty(document, 'referrer', referrer);
+    }
   });
 
   it('redirects to /app when a stored UUID path uses uppercase hex characters', () => {
@@ -331,5 +343,27 @@ describe('ARS embedded sign-in', () => {
       'http://localhost/auth/callback?ars_team=00000000-0000-4000-8000-000000000001&ars_origin=https%3A%2F%2Fevil.example';
     afterAuth();
     expect(new URL(hrefValue).origin).toBe('https://africanresearchsociety.org');
+  });
+
+  it('does not follow a user-specific workspace from a top-level ars_embed login', () => {
+    localStorage.setItem(
+      'redirectTo',
+      '/app/550e8400-e29b-41d4-a716-446655440000/22222222-2222-4222-8222-222222222222?ars_embed=1&access_token=SECRET&prompt=hidden&brief=body&transcript=spoken&audio=clip.mp3'
+    );
+    afterAuth();
+    expect(window.location.href).toBe('/app');
+    expect(window.location.href).not.toMatch(/SECRET|hidden|body|spoken|clip/);
+  });
+
+  it('does not carry a protocol-relative editor path on the ARS callback', () => {
+    hrefValue =
+      'http://localhost/auth/callback?ars_team=00000000-0000-4000-8000-000000000001&ars_origin=https%3A%2F%2Fwww.africanresearchsociety.org&ars_path=%2F%2Fevil';
+    afterAuth();
+    const target = new URL(hrefValue);
+
+    expect(target.origin).toBe('https://www.africanresearchsociety.org');
+    expect(target.pathname).toBe('/dashboard/workspace');
+    expect(target.searchParams.get('path')).toBeNull();
+    expect(hrefValue).not.toContain('evil');
   });
 });

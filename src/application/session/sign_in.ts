@@ -1,10 +1,12 @@
 import {
   allowEmbedWorkspaceRedirect,
+  EMBED_PARENT_KEY,
   EMBED_PATH_KEY,
   embedReturnPath,
+  embedWorkspaceParentAllowed,
   withEmbedQuery,
 } from '@/application/session/embed-session';
-import { arsReturnOrigin, rememberHubParent } from '@/components/integrations/send-to-design';
+import { arsReturnOrigin, isArsParentOrigin, rememberHubParent } from '@/components/integrations/send-to-design';
 import { Log } from '@/utils/log';
 
 export function saveRedirectTo(redirectTo: string) {
@@ -166,7 +168,7 @@ export function afterAuth() {
     back.searchParams.set('connected', '1');
     const path = callback.searchParams.get('ars_path');
 
-    if (path && /^\/[A-Za-z0-9/_-]*$/.test(path)) back.searchParams.set('path', path);
+    if (path && /^\/(?!\/)[A-Za-z0-9/_-]*$/.test(path)) back.searchParams.set('path', path);
     clearRedirectTo();
     window.location.replace(back.toString());
     return;
@@ -175,11 +177,21 @@ export function afterAuth() {
   const redirectTo = getRedirectTo();
   const inIframe = window.self !== window.top;
   let savedPath: string | null = null;
+  let storedParent: string | null = null;
   try {
     savedPath = sessionStorage.getItem(EMBED_PATH_KEY);
+    storedParent = sessionStorage.getItem(EMBED_PARENT_KEY);
   } catch {
     savedPath = null;
+    storedParent = null;
   }
+  const parentAllowed = embedWorkspaceParentAllowed({
+    inIframe,
+    referrer: document.referrer,
+    origin: window.location.origin,
+    storedParent,
+    allowlisted: isArsParentOrigin,
+  });
 
   clearRedirectTo();
 
@@ -204,6 +216,7 @@ export function afterAuth() {
           pathname,
           search: url.search,
           inIframe,
+          parentAllowed,
         })
       ) {
         const next = withEmbedQuery(url.pathname, url.search);

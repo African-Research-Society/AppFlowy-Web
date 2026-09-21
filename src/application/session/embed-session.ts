@@ -48,11 +48,24 @@ export function clearEmbedRefreshCookie(protocol?: string) {
   }
 }
 
-export function withEmbedQuery(path: string, search = '') {
-  const [pathname, existing] = path.split('?');
-  const params = new URLSearchParams(existing || search.replace(/^\?/, ''));
-  params.set('ars_embed', '1');
-  return `${pathname}?${params}`;
+/**
+ * Embed URLs carry the editor pathname and `ars_embed=1` only.
+ * Query strings and fragments can hold tokens, briefs, prompts, transcripts, or audio.
+ */
+export function withEmbedQuery(path: string, _search = '') {
+  const pathname = path.split(/[?#]/)[0] ?? '';
+  if (
+    !pathname.startsWith('/') ||
+    pathname.startsWith('//') ||
+    pathname.includes('\\') ||
+    pathname.includes('\n') ||
+    pathname.includes('\r') ||
+    pathname.includes('\t') ||
+    pathname.includes('\0')
+  ) {
+    return '/app?ars_embed=1';
+  }
+  return `${pathname}?ars_embed=1`;
 }
 
 export function rememberEmbedContext(input: {
@@ -80,9 +93,36 @@ export function allowEmbedWorkspaceRedirect(input: {
   pathname: string;
   search?: string;
   inIframe?: boolean;
+  parentAllowed?: boolean;
 }) {
   if (!/\/app\/[a-f0-9-]{36}/i.test(input.pathname)) return true;
-  return Boolean(input.inIframe || /(?:^|[?&])ars_embed=1(?:&|$)/.test(input.search ?? ''));
+  return Boolean(input.inIframe && input.parentAllowed);
+}
+
+/**
+ * A stored workspace redirect is only for an iframe whose parent is the hub.
+ * `ars_embed=1` on a top-level login is not that parent.
+ * A foreign referrer is never upgraded by a previously stored hub origin.
+ */
+export function embedWorkspaceParentAllowed(input: {
+  inIframe: boolean;
+  referrer: string;
+  origin: string;
+  storedParent?: string | null;
+  allowlisted: (origin: string) => boolean;
+}) {
+  if (!input.inIframe) return false;
+  if (!input.referrer) return Boolean(input.storedParent && input.allowlisted(input.storedParent));
+  try {
+    const url = new URL(input.referrer);
+    if (url.username || url.password) return false;
+    if (url.protocol !== 'https:' && url.protocol !== 'http:') return false;
+    if (input.allowlisted(url.origin)) return true;
+    if (url.origin !== input.origin) return false;
+  } catch {
+    return false;
+  }
+  return Boolean(input.storedParent && input.allowlisted(input.storedParent));
 }
 
 export function embedReturnPath(input: {

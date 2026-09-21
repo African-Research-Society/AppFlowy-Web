@@ -53,6 +53,28 @@ describe('embedReturnPath', () => {
     ).toBe('/app');
   });
 
+  it('drops credentials, briefs, prompts, transcripts, and audio from the embed return URL', () => {
+    const dirty = `${workspace}?ars_embed=1&access_token=SECRET&refresh_token=PRIVATE&prompt=hidden&brief=body&transcript=spoken&audio=clip.mp3#access_token=FRAGMENT`;
+
+    expect(
+      embedReturnPath({
+        pathname: '/login',
+        referrer: `https://workspace.example${dirty}`,
+        origin: 'https://workspace.example',
+        inIframe: true,
+      })
+    ).toBe(`${workspace}?ars_embed=1`);
+    expect(
+      embedReturnPath({
+        pathname: '/login',
+        referrer: '',
+        origin: 'https://workspace.example',
+        inIframe: true,
+        savedPath: dirty,
+      })
+    ).toBe(`${workspace}?ars_embed=1`);
+  });
+
   it('keeps the embed query when the login referrer is the ARS parent', () => {
     expect(
       embedReturnPath({
@@ -104,11 +126,18 @@ describe('allowEmbedWorkspaceRedirect', () => {
         pathname: '/app/11111111-1111-4111-8111-111111111111',
         search: '?ars_embed=1',
       })
-    ).toBe(true);
+    ).toBe(false);
     expect(
       allowEmbedWorkspaceRedirect({
         pathname: '/app/11111111-1111-4111-8111-111111111111',
         inIframe: true,
+      })
+    ).toBe(false);
+    expect(
+      allowEmbedWorkspaceRedirect({
+        pathname: '/app/11111111-1111-4111-8111-111111111111',
+        inIframe: true,
+        parentAllowed: true,
       })
     ).toBe(true);
     expect(allowEmbedWorkspaceRedirect({ pathname: '/settings' })).toBe(true);
