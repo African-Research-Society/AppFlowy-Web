@@ -16,6 +16,17 @@ export function documentViewFromPath(path: string): {
   return { workspaceId: match[1], viewId: match[2] };
 }
 
+export function sendToDesignWorkspaceId(input: {
+  workspaceId?: string | null;
+  pathname?: string;
+}) {
+  if (input.workspaceId && UUID.test(input.workspaceId)) {
+    return input.workspaceId.toLowerCase();
+  }
+  const fromPath = documentViewFromPath(input.pathname ?? '');
+  return fromPath?.workspaceId.toLowerCase();
+}
+
 export function canSendPageToDesign(input: {
   parentOrigin?: string | null;
   viewId?: string | null;

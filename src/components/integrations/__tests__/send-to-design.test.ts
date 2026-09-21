@@ -12,6 +12,7 @@ import {
   resolveArsParentOrigin,
   sendToDesignHandoffHref,
   sendToDesignTitle,
+  sendToDesignWorkspaceId,
 } from '../send-to-design';
 
 describe('buildSendToDesignMessage', () => {
@@ -57,6 +58,27 @@ describe('buildSendToDesignMessage', () => {
 
   it('rejects an invalid view id', () => {
     expect(() => buildSendToDesignMessage({ viewId: 'not-a-view' })).toThrow(/view/i);
+  });
+});
+
+describe('sendToDesignWorkspaceId', () => {
+  const live = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa';
+  const pathWorkspace = '11111111-1111-4111-8111-111111111111';
+  const viewId = '22222222-2222-4222-8222-222222222222';
+
+  it('prefers the live workspace over a stale pathname', () => {
+    expect(
+      sendToDesignWorkspaceId({
+        workspaceId: live,
+        pathname: `/app/${pathWorkspace}/${viewId}`,
+      })
+    ).toBe(live);
+    expect(
+      sendToDesignWorkspaceId({
+        pathname: `/app/${pathWorkspace}/${viewId}`,
+      })
+    ).toBe(pathWorkspace);
+    expect(sendToDesignWorkspaceId({ workspaceId: 'not-a-workspace' })).toBeUndefined();
   });
 });
 

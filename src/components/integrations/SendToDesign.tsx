@@ -1,19 +1,20 @@
 import { useEffect, useState } from 'react';
 
 import { ViewLayout } from '@/application/types';
-import { useAppView, useAppViewId } from '@/components/app/app.hooks';
+import { useAppView, useAppViewId, useCurrentWorkspaceIdOptional } from '@/components/app/app.hooks';
 
 import {
   arsPostMessageOrigin,
   buildSendToDesignMessage,
   canSendPageToDesign,
-  documentViewFromPath,
   sendToDesignHandoffHref,
+  sendToDesignWorkspaceId,
 } from './send-to-design';
 
 export function SendToDesign() {
   const viewId = useAppViewId();
   const view = useAppView(viewId);
+  const workspaceId = useCurrentWorkspaceIdOptional();
   const [parentOrigin, setParentOrigin] = useState<string | null>(null);
   const [embedded, setEmbedded] = useState(false);
 
@@ -50,12 +51,15 @@ export function SendToDesign() {
       data-testid='ars-send-to-design'
       onClick={() => {
         try {
-          const target = documentViewFromPath(window.location.pathname);
+          const handoffWorkspace = sendToDesignWorkspaceId({
+            workspaceId,
+            pathname: window.location.pathname,
+          });
           if (embedded) {
             window.parent.postMessage(
               buildSendToDesignMessage({
                 viewId,
-                workspaceId: target?.workspaceId,
+                workspaceId: handoffWorkspace,
                 title: view?.name,
               }),
               parentOrigin
@@ -65,7 +69,7 @@ export function SendToDesign() {
           const href = sendToDesignHandoffHref({
             parentOrigin,
             viewId,
-            workspaceId: target?.workspaceId,
+            workspaceId: handoffWorkspace,
             title: view?.name,
           });
           if (href) window.location.assign(href);
