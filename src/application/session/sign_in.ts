@@ -4,7 +4,7 @@ import {
   embedReturnPath,
   withEmbedQuery,
 } from '@/application/session/embed-session';
-import { arsReturnOrigin } from '@/components/integrations/send-to-design';
+import { arsReturnOrigin, rememberHubParent } from '@/components/integrations/send-to-design';
 import { Log } from '@/utils/log';
 
 export function saveRedirectTo(redirectTo: string) {
@@ -144,6 +144,11 @@ export function afterAuth() {
 
   if (callback.pathname === AUTH_CALLBACK_PATH && callback.searchParams.get('ars_notes') === '1') {
     const path = callback.searchParams.get('ars_path');
+    try {
+      rememberHubParent(arsReturnOrigin(callback.searchParams.get('ars_origin')), sessionStorage);
+    } catch {
+      /* sessionStorage can be unavailable in privacy-restricted contexts. */
+    }
     clearRedirectTo();
     window.location.replace(
       path && /^\/app\/[a-f0-9-]{36}(?:\/[a-f0-9-]{36})?$/i.test(path) ? path : '/app'

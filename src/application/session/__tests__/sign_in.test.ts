@@ -1,3 +1,4 @@
+import { ARS_HUB_PARENT_KEY } from '@/components/integrations/send-to-design';
 import { afterAuth, buildLoginUrl, getSafeRedirectUrl, isSafeRedirectUrl, saveRedirectTo } from '../sign_in';
 
 // Mock localStorage
@@ -37,6 +38,7 @@ Object.defineProperty(window, 'location', {
 
 beforeEach(() => {
   localStorageMock.clear();
+  sessionStorage.clear();
   hrefValue = 'http://localhost/login';
 });
 
@@ -307,10 +309,13 @@ describe('ARS embedded sign-in', () => {
   });
   it('opens a notes page from the flags-off Workspace handoff', () => {
     hrefValue =
-      'http://localhost/auth/callback?ars_notes=1&ars_path=%2Fapp%2F11111111-1111-4111-8111-111111111111%2F22222222-2222-4222-8222-222222222222#access_token=secret';
+      'http://localhost/auth/callback?ars_notes=1&ars_origin=https%3A%2F%2Fwww.africanresearchsociety.org&ars_path=%2Fapp%2F11111111-1111-4111-8111-111111111111%2F22222222-2222-4222-8222-222222222222#access_token=secret';
     afterAuth();
     expect(hrefValue).toBe(
       '/app/11111111-1111-4111-8111-111111111111/22222222-2222-4222-8222-222222222222'
+    );
+    expect(sessionStorage.getItem(ARS_HUB_PARENT_KEY)).toBe(
+      'https://www.africanresearchsociety.org'
     );
     expect(hrefValue).not.toContain('secret');
   });

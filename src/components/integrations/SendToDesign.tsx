@@ -7,38 +7,57 @@ import {
   arsPostMessageOrigin,
   buildSendToDesignMessage,
   documentViewFromPath,
+  sendToDesignHandoffHref,
 } from './send-to-design';
 
 export function SendToDesign() {
   const viewId = useAppViewId();
   const view = useAppView(viewId);
+  const [parentOrigin, setParentOrigin] = useState<string | null>(null);
   const [embedded, setEmbedded] = useState(false);
 
   useEffect(() => {
-    const sync = () => setEmbedded(document.documentElement.dataset.arsEmbed === 'true');
+    const sync = () => {
+      setEmbedded(document.documentElement.dataset.arsEmbed === 'true');
+      setParentOrigin(arsPostMessageOrigin(document.documentElement.dataset.arsParent));
+    };
     sync();
     const observer = new MutationObserver(sync);
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-ars-embed'] });
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['data-ars-embed', 'data-ars-parent'],
+    });
     return () => observer.disconnect();
   }, []);
 
-  if (!embedded || !viewId || view?.layout !== ViewLayout.Document) return null;
+  if (!parentOrigin || !viewId || view?.layout !== ViewLayout.Document) return null;
   return (
     <button
       type='button'
       data-testid='ars-send-to-design'
       onClick={() => {
-        const page = documentViewFromPath(window.location.pathname);
-        const parentOrigin = arsPostMessageOrigin(document.documentElement.dataset.arsParent);
-        if (!parentOrigin) return;
-        window.parent.postMessage(
-          buildSendToDesignMessage({
+        try {
+          const page = documentViewFromPath(window.location.pathname);
+          if (embedded) {
+            window.parent.postMessage(
+              buildSendToDesignMessage({
+                viewId,
+                workspaceId: page?.workspaceId,
+                title: view.name,
+              }),
+              parentOrigin
+            );
+            return;
+          }
+          const href = sendToDesignHandoffHref({
+            parentOrigin,
             viewId,
             workspaceId: page?.workspaceId,
-            title: view.name,
-          }),
-          parentOrigin
-        );
+          });
+          if (href) window.location.assign(href);
+        } catch {
+          /* Invalid page ids must not break the editor. */
+        }
       }}
       style={{
         position: 'fixed',

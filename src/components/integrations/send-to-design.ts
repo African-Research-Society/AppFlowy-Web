@@ -1,6 +1,7 @@
-const UUID = /^[a-f0-9-]{36}$/;
+const UUID = /^[a-f0-9-]{36}$/i;
 
 export const ARS_PARENT_ORIGIN = 'https://africanresearchsociety.org';
+export const ARS_HUB_PARENT_KEY = 'ars_hub_parent';
 const ARS_PARENT_ORIGINS = new Set([
   ARS_PARENT_ORIGIN,
   'https://www.africanresearchsociety.org',
@@ -10,7 +11,7 @@ export function documentViewFromPath(path: string): {
   workspaceId: string;
   viewId: string;
 } | null {
-  const match = /^\/app\/([a-f0-9-]{36})\/([a-f0-9-]{36})$/.exec(path);
+  const match = /^\/app\/([a-f0-9-]{36})\/([a-f0-9-]{36})\/?$/i.exec(path);
   if (!match || !UUID.test(match[1]) || !UUID.test(match[2])) return null;
   return { workspaceId: match[1], viewId: match[2] };
 }
@@ -20,7 +21,6 @@ export function resolveArsParentOrigin(input: {
   referrer: string;
   search: string;
 }): string | null {
-  if (!input.isIframe) return null;
   try {
     if (input.referrer) {
       const origin = new URL(input.referrer).origin;
@@ -30,6 +30,34 @@ export function resolveArsParentOrigin(input: {
     /* malformed referrer is not an embed signal */
   }
   return null;
+}
+
+export function rememberHubParent(
+  origin: string | null | undefined,
+  storage?: Pick<Storage, 'setItem'> | null
+) {
+  if (!origin || !storage || !ARS_PARENT_ORIGINS.has(origin)) return;
+  storage.setItem(ARS_HUB_PARENT_KEY, origin);
+}
+
+export function recalledHubParent(stored?: string | null) {
+  return stored && ARS_PARENT_ORIGINS.has(stored) ? stored : null;
+}
+
+export function sendToDesignHandoffHref(input: {
+  parentOrigin: string;
+  viewId: string;
+  workspaceId?: string;
+}) {
+  if (!ARS_PARENT_ORIGINS.has(input.parentOrigin)) return null;
+  if (!UUID.test(input.viewId)) return null;
+  if (input.workspaceId && !UUID.test(input.workspaceId)) return null;
+  const url = new URL('/dashboard', input.parentOrigin);
+  url.searchParams.set('view', input.viewId.toLowerCase());
+  if (input.workspaceId) {
+    url.searchParams.set('workspace', input.workspaceId.toLowerCase());
+  }
+  return url.toString();
 }
 
 export function isArsParentOrigin(origin: string) {

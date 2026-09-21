@@ -15,8 +15,11 @@ import { refreshToken } from '@/application/services/js-services/http/gotrue';
 import { ThemeModeContext } from '@/components/main/useAppThemeMode';
 
 import {
+  ARS_HUB_PARENT_KEY,
   ARS_PARENT_ORIGIN,
   isArsParentOrigin,
+  recalledHubParent,
+  rememberHubParent,
   resolveArsParentOrigin,
 } from './send-to-design';
 
@@ -41,15 +44,33 @@ export function ArsEmbed() {
       referrer: document.referrer,
       search: location.search,
     });
-    if (!parentOrigin && inIframe) {
+    if (!parentOrigin) {
       try {
-        parentOrigin = recalledEmbedParent(sessionStorage.getItem(EMBED_PARENT_KEY), isArsParentOrigin);
+        parentOrigin =
+          recalledHubParent(sessionStorage.getItem(ARS_HUB_PARENT_KEY)) ??
+          (inIframe
+            ? recalledEmbedParent(sessionStorage.getItem(EMBED_PARENT_KEY), isArsParentOrigin)
+            : null);
       } catch {
         /* sessionStorage can be unavailable in privacy-restricted iframe contexts. */
       }
     }
+    if (!inIframe) {
+      delete document.documentElement.dataset.arsEmbed;
+      if (parentOrigin) {
+        document.documentElement.dataset.arsParent = parentOrigin;
+        try {
+          rememberHubParent(parentOrigin, sessionStorage);
+        } catch {
+          /* ignore */
+        }
+      } else {
+        delete document.documentElement.dataset.arsParent;
+      }
+      return;
+    }
     const waiting =
-      !parentOrigin && inIframe && new URLSearchParams(location.search).get('ars_embed') === '1';
+      !parentOrigin && new URLSearchParams(location.search).get('ars_embed') === '1';
     if (!parentOrigin && !waiting) {
       delete document.documentElement.dataset.arsEmbed;
       delete document.documentElement.dataset.arsParent;

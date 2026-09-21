@@ -1,10 +1,14 @@
 import {
+  ARS_HUB_PARENT_KEY,
   arsPostMessageOrigin,
   arsReturnOrigin,
   buildSendToDesignMessage,
   documentViewFromPath,
   isArsParentOrigin,
+  recalledHubParent,
+  rememberHubParent,
   resolveArsParentOrigin,
+  sendToDesignHandoffHref,
   sendToDesignTitle,
 } from '../send-to-design';
 
@@ -70,6 +74,12 @@ describe('documentViewFromPath', () => {
     expect(
       documentViewFromPath('/app/11111111-1111-4111-8111-111111111111/22222222-2222-4222-8222-222222222222/extra')
     ).toBeNull();
+    expect(
+      documentViewFromPath('/app/11111111-1111-4111-8111-111111111111/22222222-2222-4222-8222-222222222222/')
+    ).toEqual({
+      workspaceId: '11111111-1111-4111-8111-111111111111',
+      viewId: '22222222-2222-4222-8222-222222222222',
+    });
   });
 });
 
@@ -107,14 +117,14 @@ describe('resolveArsParentOrigin', () => {
     expect(arsReturnOrigin('https://evil.example')).toBe('https://africanresearchsociety.org');
   });
 
-  it('ignores a top-level window and a malformed referrer', () => {
+  it('accepts a top-level ARS referrer so flags-off notes can Send to Design', () => {
     expect(
       resolveArsParentOrigin({
         isIframe: false,
         referrer: 'https://africanresearchsociety.org/',
-        search: '?ars_embed=1',
+        search: '?ars_notes=1',
       })
-    ).toBeNull();
+    ).toBe('https://africanresearchsociety.org');
     expect(
       resolveArsParentOrigin({
         isIframe: true,
@@ -122,5 +132,64 @@ describe('resolveArsParentOrigin', () => {
         search: '',
       })
     ).toBeNull();
+  });
+});
+
+describe('sendToDesignHandoffHref', () => {
+  const viewId = '22222222-2222-4222-8222-222222222222';
+  const workspaceId = '11111111-1111-4111-8111-111111111111';
+
+  it('returns to the hub with page ids only', () => {
+    expect(
+      sendToDesignHandoffHref({
+        parentOrigin: 'https://www.africanresearchsociety.org',
+        viewId,
+        workspaceId,
+      })
+    ).toBe(
+      `https://www.africanresearchsociety.org/dashboard?view=${viewId}&workspace=${workspaceId}`
+    );
+    expect(
+      sendToDesignHandoffHref({
+        parentOrigin: 'https://evil.example',
+        viewId,
+      })
+    ).toBeNull();
+    expect(
+      sendToDesignHandoffHref({
+        parentOrigin: 'https://africanresearchsociety.org',
+        viewId: 'not-a-view',
+      })
+    ).toBeNull();
+    expect(
+      sendToDesignHandoffHref({
+        parentOrigin: 'https://africanresearchsociety.org',
+        viewId: viewId.toUpperCase(),
+        workspaceId: workspaceId.toUpperCase(),
+      })
+    ).toBe(
+      `https://africanresearchsociety.org/dashboard?view=${viewId}&workspace=${workspaceId}`
+    );
+    const href = sendToDesignHandoffHref({
+      parentOrigin: 'https://africanresearchsociety.org',
+      viewId,
+      workspaceId,
+    });
+    expect(href).not.toMatch(/token|SECRET|prompt|transcript/i);
+  });
+
+  it('remembers only an allowlisted hub parent', () => {
+    const store = new Map<string, string>();
+    rememberHubParent('https://www.africanresearchsociety.org', {
+      setItem: (key, value) => store.set(key, value),
+    });
+    rememberHubParent('https://evil.example', {
+      setItem: (key, value) => store.set(key, value),
+    });
+    expect(store.get(ARS_HUB_PARENT_KEY)).toBe('https://www.africanresearchsociety.org');
+    expect(recalledHubParent(store.get(ARS_HUB_PARENT_KEY))).toBe(
+      'https://www.africanresearchsociety.org'
+    );
+    expect(recalledHubParent('https://evil.example')).toBeNull();
   });
 });
