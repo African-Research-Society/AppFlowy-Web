@@ -7,6 +7,22 @@ const ARS_PARENT_ORIGINS = new Set([
   'https://www.africanresearchsociety.org',
 ]);
 
+function isLoopbackHubOrigin(origin: string) {
+  try {
+    const url = new URL(origin);
+    if (url.origin !== origin) return false;
+    if (url.protocol !== 'http:' && url.protocol !== 'https:') return false;
+    const host = url.hostname.toLowerCase();
+    return host === 'localhost' || host === '127.0.0.1' || host === '[::1]';
+  } catch {
+    return false;
+  }
+}
+
+function allowsArsParent(origin: string) {
+  return ARS_PARENT_ORIGINS.has(origin) || isLoopbackHubOrigin(origin);
+}
+
 export function documentViewFromPath(path: string): {
   workspaceId: string;
   viewId: string;
@@ -52,7 +68,7 @@ export function resolveArsParentOrigin(input: {
   try {
     if (input.referrer) {
       const origin = new URL(input.referrer).origin;
-      if (ARS_PARENT_ORIGINS.has(origin)) return origin;
+      if (allowsArsParent(origin)) return origin;
     }
   } catch {
     /* malformed referrer is not an embed signal */
@@ -64,12 +80,12 @@ export function rememberHubParent(
   origin: string | null | undefined,
   storage?: Pick<Storage, 'setItem'> | null
 ) {
-  if (!origin || !storage || !ARS_PARENT_ORIGINS.has(origin)) return;
+  if (!origin || !storage || !allowsArsParent(origin)) return;
   storage.setItem(ARS_HUB_PARENT_KEY, origin);
 }
 
 export function recalledHubParent(stored?: string | null) {
-  return stored && ARS_PARENT_ORIGINS.has(stored) ? stored : null;
+  return stored && allowsArsParent(stored) ? stored : null;
 }
 
 export function firstPartyHubParent(input: {
@@ -93,7 +109,7 @@ export function sendToDesignHandoffHref(input: {
   workspaceId?: string;
   title?: string;
 }) {
-  if (!ARS_PARENT_ORIGINS.has(input.parentOrigin)) return null;
+  if (!allowsArsParent(input.parentOrigin)) return null;
   if (!UUID.test(input.viewId)) return null;
   if (!input.workspaceId || !UUID.test(input.workspaceId)) return null;
   const url = new URL('/dashboard', input.parentOrigin);
@@ -109,16 +125,16 @@ export function sendToDesignHandoffHref(input: {
 }
 
 export function isArsParentOrigin(origin: string) {
-  return ARS_PARENT_ORIGINS.has(origin);
+  return allowsArsParent(origin);
 }
 
 export function arsReturnOrigin(requested?: string | null) {
-  if (requested && ARS_PARENT_ORIGINS.has(requested)) return requested;
+  if (requested && allowsArsParent(requested)) return requested;
   return ARS_PARENT_ORIGIN;
 }
 
 export function arsPostMessageOrigin(stored?: string | null) {
-  if (stored && ARS_PARENT_ORIGINS.has(stored)) return stored;
+  if (stored && allowsArsParent(stored)) return stored;
   return null;
 }
 

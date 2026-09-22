@@ -162,6 +162,10 @@ describe('resolveArsParentOrigin', () => {
     ).toBeNull();
     expect(isArsParentOrigin('https://www.africanresearchsociety.org')).toBe(true);
     expect(isArsParentOrigin('https://evil.example')).toBe(false);
+    expect(isArsParentOrigin('http://localhost:3000')).toBe(true);
+    expect(isArsParentOrigin('http://127.0.0.1:3000')).toBe(true);
+    expect(isArsParentOrigin('http://localhost.evil.com')).toBe(false);
+    expect(arsReturnOrigin('http://localhost:3000')).toBe('http://localhost:3000');
   });
 
   it('keeps www for postMessage after handshake and refuses an unknown parent', () => {
