@@ -47,11 +47,11 @@ export function ArsEmbed() {
     });
     if (!parentOrigin) {
       try {
-        parentOrigin =
-          recalledHubParent(sessionStorage.getItem(ARS_HUB_PARENT_KEY)) ??
-          (inIframe
-            ? recalledEmbedParent(sessionStorage.getItem(EMBED_PARENT_KEY), isArsParentOrigin)
-            : null);
+        // The top-level hub key is the flags-off Send to Design default, including
+        // when the visitor never came from the hub. It is not proof of this frame's parent.
+        parentOrigin = inIframe
+          ? recalledEmbedParent(sessionStorage.getItem(EMBED_PARENT_KEY), isArsParentOrigin)
+          : recalledHubParent(sessionStorage.getItem(ARS_HUB_PARENT_KEY));
       } catch {
         /* sessionStorage can be unavailable in privacy-restricted iframe contexts. */
       }

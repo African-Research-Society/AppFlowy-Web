@@ -1,4 +1,10 @@
+import { createElement } from 'react';
+import { render } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
+
+import { ArsEmbed } from '@/components/integrations/ArsEmbed';
 import { ARS_HUB_PARENT_KEY } from '@/components/integrations/send-to-design';
+import { EMBED_PARENT_KEY } from '../embed-session';
 import { afterAuth, buildLoginUrl, getSafeRedirectUrl, isSafeRedirectUrl, saveRedirectTo } from '../sign_in';
 
 // Mock localStorage
@@ -343,6 +349,74 @@ describe('ARS embedded sign-in', () => {
       'http://localhost/auth/callback?ars_team=00000000-0000-4000-8000-000000000001&ars_origin=https%3A%2F%2Fevil.example';
     afterAuth();
     expect(new URL(hrefValue).origin).toBe('https://africanresearchsociety.org');
+  });
+
+  function asEmptyReferrerIframe(run: () => void) {
+    const top = Object.getOwnPropertyDescriptor(window, 'top');
+    const parent = Object.getOwnPropertyDescriptor(window, 'parent');
+    const referrer = Object.getOwnPropertyDescriptor(document, 'referrer');
+
+    Object.defineProperty(window, 'top', { configurable: true, value: {} });
+    Object.defineProperty(window, 'parent', { configurable: true, value: {} });
+    Object.defineProperty(document, 'referrer', {
+      configurable: true,
+      get: () => '',
+    });
+    try {
+      run();
+    } finally {
+      if (top) Object.defineProperty(window, 'top', top);
+      if (parent) Object.defineProperty(window, 'parent', parent);
+      if (referrer) Object.defineProperty(document, 'referrer', referrer);
+    }
+  }
+
+  it('follows a stored workspace path from an iframe with an empty referrer when sessionStorage holds an allowlisted embed parent', () => {
+    const workspace =
+      '/app/550e8400-e29b-41d4-a716-446655440000/22222222-2222-4222-8222-222222222222';
+
+    asEmptyReferrerIframe(() => {
+      sessionStorage.setItem(EMBED_PARENT_KEY, 'https://africanresearchsociety.org');
+      localStorage.setItem(
+        'redirectTo',
+        `${workspace}?ars_embed=1&access_token=SECRET&refresh_token=PRIVATE&prompt=hidden&brief=body&transcript=spoken&audio=clip.mp3`
+      );
+      afterAuth();
+      expect(window.location.href).toBe(`${workspace}?ars_embed=1`);
+      expect(window.location.href).not.toMatch(/SECRET|PRIVATE|hidden|body|spoken|clip/);
+    });
+  });
+
+  it('does not follow a stored workspace path when an empty-referrer iframe only has the top-level default hub origin', () => {
+    const workspace =
+      '/app/550e8400-e29b-41d4-a716-446655440000/22222222-2222-4222-8222-222222222222';
+
+    asEmptyReferrerIframe(() => {
+      sessionStorage.setItem(ARS_HUB_PARENT_KEY, 'https://africanresearchsociety.org');
+      const view = render(
+        createElement(
+          MemoryRouter,
+          {
+            initialEntries: ['/login'],
+            future: { v7_startTransition: true, v7_relativeSplatPath: true },
+          },
+          createElement(ArsEmbed)
+        )
+      );
+
+      try {
+        localStorage.setItem(
+          'redirectTo',
+          `${workspace}?ars_embed=1&access_token=SECRET&prompt=hidden&brief=body&transcript=spoken&audio=clip.mp3`
+        );
+        afterAuth();
+        expect(sessionStorage.getItem(EMBED_PARENT_KEY)).toBeNull();
+        expect(window.location.href).toBe('/app');
+        expect(window.location.href).not.toMatch(/SECRET|hidden|body|spoken|clip/);
+      } finally {
+        view.unmount();
+      }
+    });
   });
 
   it('does not follow a user-specific workspace from a top-level ars_embed login', () => {
