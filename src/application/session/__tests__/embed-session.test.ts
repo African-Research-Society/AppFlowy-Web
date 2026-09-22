@@ -17,7 +17,7 @@ describe('embed refresh cookie', () => {
     expect(cookie).toContain(`${EMBED_REFRESH_COOKIE}=refresh-token`);
     expect(cookie).toContain('SameSite=None');
     expect(cookie).toContain('Secure');
-    expect(cookie).toContain('Partitioned');
+    expect(cookie).not.toContain('Partitioned');
     expect(cookie).not.toMatch(/access|SECRET/i);
     expect(parseEmbedRefreshCookie(cookie!)).toBe('refresh-token');
     expect(serializeEmbedRefreshCookie('a'.repeat(4000), 'https:')).toBeNull();
@@ -177,5 +177,26 @@ describe('restoreEmbedSession', () => {
       })
     ).resolves.toBe('missing');
     expect(requestStorageAccess).not.toHaveBeenCalled();
+  });
+
+  it('uses a refresh token captured before storage access resolves', async () => {
+    let cookie = `${EMBED_REFRESH_COOKIE}=refresh-token`;
+    let releaseAccess!: (allowed: boolean) => void;
+    const access = new Promise<boolean>((resolve) => {
+      releaseAccess = resolve;
+    });
+    const refresh = jest.fn(async () => undefined);
+    const restore = restoreEmbedSession({
+      hasToken: false,
+      cookie: () => cookie,
+      refresh,
+      hasStorageAccess: () => access,
+    });
+
+    cookie = '';
+    releaseAccess(false);
+
+    await expect(restore).resolves.toBe('restored');
+    expect(refresh).toHaveBeenCalledWith('refresh-token');
   });
 });

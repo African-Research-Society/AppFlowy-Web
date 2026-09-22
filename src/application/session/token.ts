@@ -111,6 +111,9 @@ function parseAuthToken(tokenData: unknown): GoTrueAuthToken | null {
 // failed parse is never cached so a bad value is removed on each read.
 let memoizedRawToken: string | null = null;
 let memoizedParsedToken: GoTrueAuthToken | null = null;
+// True when the latest session could not be written to localStorage. Callers
+// still need that session for the bearer token and authentication state.
+let memoryOnlySession = false;
 
 function memoizeParsedToken(rawToken: string | null, parsed: GoTrueAuthToken | null) {
   memoizedRawToken = rawToken;
@@ -118,6 +121,7 @@ function memoizeParsedToken(rawToken: string | null, parsed: GoTrueAuthToken | n
 }
 
 function removeStoredToken() {
+  memoryOnlySession = false;
   memoizeParsedToken(null, null);
   clearEmbedRefreshCookie();
 
@@ -139,8 +143,11 @@ export function saveGoTrueAuth(tokenData: string): boolean {
   writeEmbedRefreshCookie(parsed.refresh_token);
   try {
     window.localStorage.setItem(TOKEN_STORAGE_KEY, serialized);
+    memoryOnlySession = false;
   } catch {
-    /* Partitioned iframes can block localStorage; the refresh cookie is enough to restore. */
+    // Partitioned iframes can block localStorage. The in-memory session and
+    // refresh cookie still authenticate this page.
+    memoryOnlySession = true;
   }
 
   memoizeParsedToken(serialized, parsed);
@@ -184,6 +191,8 @@ export function getToken(): string | null {
 }
 
 export function getTokenParsed(): GoTrueAuthToken | null {
+  if (memoryOnlySession && memoizedParsedToken) return memoizedParsedToken;
+
   const token = getToken();
 
   if (!token) return null;

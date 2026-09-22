@@ -223,9 +223,10 @@ export function afterAuth() {
         Log.info('[Auth] afterAuth: following embedded workspace path', { pathname });
         window.location.href = next;
       } else {
-        // Don't redirect to user-specific pages from previous sessions
+        // Don't redirect to user-specific pages from previous sessions.
+        // Keep the embed flag so the frame still waits for the hub hello.
         Log.info('[Auth] afterAuth: blocking user-specific redirect, going to /app', { pathname });
-        window.location.href = '/app';
+        window.location.href = inIframe ? '/app?ars_embed=1' : '/app';
       }
     } else if (pathname === '/' || !pathname) {
       // Preserve query params and hash but redirect to /app path

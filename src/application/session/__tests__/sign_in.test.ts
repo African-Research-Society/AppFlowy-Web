@@ -411,7 +411,7 @@ describe('ARS embedded sign-in', () => {
         );
         afterAuth();
         expect(sessionStorage.getItem(EMBED_PARENT_KEY)).toBeNull();
-        expect(window.location.href).toBe('/app');
+        expect(window.location.href).toBe('/app?ars_embed=1');
         expect(window.location.href).not.toMatch(/SECRET|hidden|body|spoken|clip/);
       } finally {
         view.unmount();

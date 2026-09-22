@@ -101,6 +101,7 @@ export function ArsEmbed() {
       window.parent.postMessage({ channel: 'ars-app', version: 1, type, ...extra }, parentOrigin);
     };
     let restoreOutcome: 'ready' | 'restored' | 'missing' | null = null;
+    let cancelled = false;
     const onAppPath = location.pathname === '/app' || location.pathname.startsWith('/app/');
     const announce = () => {
       if (restoreOutcome === 'missing') {
@@ -112,6 +113,28 @@ export function ArsEmbed() {
         send('ready');
         if (location.pathname.startsWith('/app/')) send('navigation', { path: location.pathname });
       }
+    };
+    const settleRestore = (outcome: 'ready' | 'restored' | 'missing') => {
+      if (cancelled) return;
+      restoreOutcome = outcome;
+      const returnToApp = outcome === 'restored' || (outcome === 'ready' && location.pathname === '/login');
+      if (returnToApp) {
+        const next = embedReturnPath({
+          pathname: location.pathname,
+          referrer: document.referrer,
+          origin: window.location.origin,
+          search: location.search,
+          inIframe,
+          savedPath: savedEmbedPath(),
+        });
+        // A full navigation drops an in-memory session that could not be
+        // written to localStorage. Stay put when the embed URL is already right.
+        if (`${location.pathname}${location.search}` !== next) {
+          window.location.replace(next);
+          return;
+        }
+      }
+      announce();
     };
     const receive = (event: MessageEvent) => {
       if (event.source !== window.parent || event.data?.channel !== 'ars-app' || event.data.version !== 1) return;
@@ -148,51 +171,18 @@ export function ArsEmbed() {
         }
         if (cancelled || (restoreOutcome !== 'missing' && restoreOutcome !== null)) return;
         const outcome = await restore();
-        if (cancelled) return;
-        restoreOutcome = outcome;
-        if (outcome === 'restored' || (outcome === 'ready' && location.pathname === '/login')) {
-          window.location.replace(
-            embedReturnPath({
-              pathname: location.pathname,
-              referrer: document.referrer,
-              origin: window.location.origin,
-              search: location.search,
-              inIframe,
-              savedPath: savedEmbedPath(),
-            })
-          );
-          return;
-        }
-        announce();
+        settleRestore(outcome);
       })();
     };
 
     window.addEventListener('message', receive);
     window.addEventListener('pointerdown', requestAccess, { once: true });
-    let cancelled = false;
     void restore()
       .then((outcome) => {
-        if (cancelled) return;
-        restoreOutcome = outcome;
-        if (outcome === 'restored' || (outcome === 'ready' && location.pathname === '/login')) {
-          window.location.replace(
-            embedReturnPath({
-              pathname: location.pathname,
-              referrer: document.referrer,
-              origin: window.location.origin,
-              search: location.search,
-              inIframe,
-              savedPath: savedEmbedPath(),
-            })
-          );
-          return;
-        }
-        announce();
+        settleRestore(outcome);
       })
       .catch(() => {
-        if (cancelled) return;
-        restoreOutcome = 'missing';
-        announce();
+        settleRestore('missing');
       });
     return () => {
       cancelled = true;

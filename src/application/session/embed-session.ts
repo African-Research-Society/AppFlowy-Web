@@ -6,8 +6,11 @@ export function serializeEmbedRefreshCookie(token: string, protocol: string) {
   const value = encodeURIComponent(token);
   if (!value || value.length > 3500) return null;
   const secure = protocol === 'https:';
+  // Leave this cookie unpartitioned. Storage Access reveals the first-party
+  // cookie in the hub iframe; a Partitioned (CHIPS) cookie is keyed to the
+  // top-level site that set it and stays in the other jar.
   return `${EMBED_REFRESH_COOKIE}=${value}; Path=/; Max-Age=2592000${
-    secure ? '; Secure; SameSite=None; Partitioned' : '; SameSite=Lax'
+    secure ? '; Secure; SameSite=None' : '; SameSite=Lax'
   }`;
 }
 
@@ -37,12 +40,15 @@ export function writeEmbedRefreshCookie(token: string) {
 
 export function clearEmbedRefreshCookie(protocol?: string) {
   try {
-    const secure =
-      (protocol ?? (typeof window === 'undefined' ? 'https:' : window.location.protocol)) ===
-      'https:';
-    document.cookie = `${EMBED_REFRESH_COOKIE}=; Path=/; Max-Age=0${
-      secure ? '; Secure; SameSite=None; Partitioned' : '; SameSite=Lax'
-    }`;
+    const secure = (protocol ?? (typeof window === 'undefined' ? 'https:' : window.location.protocol)) === 'https:';
+    const expired = `${EMBED_REFRESH_COOKIE}=; Path=/; Max-Age=0`;
+    if (!secure) {
+      document.cookie = `${expired}; SameSite=Lax`;
+      return;
+    }
+    document.cookie = `${expired}; Secure; SameSite=None`;
+    // Also drop a CHIPS cookie left by an older session in this top-level site.
+    document.cookie = `${expired}; Secure; SameSite=None; Partitioned`;
   } catch {
     /* ignore */
   }
@@ -164,6 +170,30 @@ export function embedReturnPath(input: {
   return embed ? '/app?ars_embed=1' : '/app';
 }
 
+let embedRestoreCount = 0;
+const embedRestoreListeners = new Set<() => void>();
+
+function retainEmbedRestore() {
+  embedRestoreCount += 1;
+  return () => {
+    embedRestoreCount -= 1;
+    if (embedRestoreCount === 0) {
+      embedRestoreListeners.forEach((listener) => listener());
+    }
+  };
+}
+
+export function isEmbedRestorePending() {
+  return embedRestoreCount > 0;
+}
+
+export function subscribeEmbedRestore(listener: () => void) {
+  embedRestoreListeners.add(listener);
+  return () => {
+    embedRestoreListeners.delete(listener);
+  };
+}
+
 export async function restoreEmbedSession(input: {
   hasToken: boolean;
   cookie: string | (() => string);
@@ -171,17 +201,28 @@ export async function restoreEmbedSession(input: {
   hasStorageAccess?: () => Promise<boolean>;
   requestStorageAccess?: () => Promise<void>;
 }): Promise<'ready' | 'restored' | 'missing'> {
-  if (input.hasToken) return 'ready';
+  const release = retainEmbedRestore();
   try {
-    if (input.hasStorageAccess && !(await input.hasStorageAccess())) {
-      /* Storage Access requires a user gesture; pointerdown retries restore. */
+    if (input.hasToken) return 'ready';
+    const readRefreshToken = () => {
+      const cookie = typeof input.cookie === 'function' ? input.cookie() : input.cookie;
+      return parseEmbedRefreshCookie(cookie);
+    };
+    // Read before storage-access awaits. Logout on an unauthenticated /app
+    // route can clear the cookie while this function is yielded.
+    const snapshottedToken = readRefreshToken();
+    try {
+      if (input.hasStorageAccess && !(await input.hasStorageAccess())) {
+        /* Storage Access requires a user gesture; pointerdown retries restore. */
+      }
+    } catch {
+      /* Storage Access API is best-effort after the first-party Connect visit. */
     }
-  } catch {
-    /* Storage Access API is best-effort after the first-party Connect visit. */
+    const refreshToken = readRefreshToken() ?? snapshottedToken;
+    if (!refreshToken) return 'missing';
+    await input.refresh(refreshToken);
+    return 'restored';
+  } finally {
+    release();
   }
-  const cookie = typeof input.cookie === 'function' ? input.cookie() : input.cookie;
-  const refreshToken = parseEmbedRefreshCookie(cookie);
-  if (!refreshToken) return 'missing';
-  await input.refresh(refreshToken);
-  return 'restored';
 }
