@@ -24,8 +24,10 @@ export function SendToDesign() {
       setEmbedded(document.documentElement.dataset.arsEmbed === 'true');
       setParentOrigin(arsPostMessageOrigin(document.documentElement.dataset.arsParent));
     };
+
     sync();
     const observer = new MutationObserver(sync);
+
     observer.observe(document.documentElement, {
       attributes: true,
       attributeFilter: ['data-ars-embed', 'data-ars-parent'],
@@ -34,6 +36,7 @@ export function SendToDesign() {
   }, []);
 
   const pathname = typeof window === 'undefined' ? '' : window.location.pathname;
+
   if (
     !parentOrigin ||
     !viewId ||
@@ -47,12 +50,13 @@ export function SendToDesign() {
   ) {
     return null;
   }
+
   return (
     <div
       style={{
         position: 'fixed',
-        top: 12,
-        right: 12,
+        bottom: 24,
+        right: 64,
         zIndex: 40,
         display: 'flex',
         flexDirection: 'column',
@@ -69,10 +73,12 @@ export function SendToDesign() {
             workspaceId,
             pathname: window.location.pathname,
           });
+
           if (!handoffWorkspace) {
             setError('Workspace is required');
             return;
           }
+
           if (embedded) {
             window.parent.postMessage(
               buildSendToDesignMessage({
@@ -84,16 +90,19 @@ export function SendToDesign() {
             );
             return;
           }
+
           const href = sendToDesignHandoffHref({
             parentOrigin,
             viewId,
             workspaceId: handoffWorkspace,
             title: view?.name,
           });
+
           if (!href) {
             setError('Could not open Design on the hub');
             return;
           }
+
           window.location.assign(href);
         } catch (err) {
           setError(err instanceof Error ? err.message : 'Could not open Design on the hub');

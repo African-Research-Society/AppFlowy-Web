@@ -142,6 +142,24 @@ describe('documentViewFromPath', () => {
 });
 
 describe('resolveArsParentOrigin', () => {
+  it('does not mistake a same-origin Workspace referrer for the local hub', () => {
+    expect(resolveArsParentOrigin({
+      isIframe: false,
+      referrer: 'http://localhost:3001/app/workspace/page',
+      search: '',
+      origin: 'http://localhost:3001',
+    })).toBeNull();
+    expect(firstPartyHubParent({
+      referrer: 'http://localhost:3001/auth/callback',
+      stored: 'http://localhost:3000',
+      origin: 'http://localhost:3001',
+    })).toBe('http://localhost:3000');
+    expect(firstPartyHubParent({
+      stored: 'http://localhost:3001',
+      origin: 'http://localhost:3001',
+    })).toBe('https://africanresearchsociety.org');
+  });
+
   it('accepts an iframe referrer from the ARS hub', () => {
     expect(
       resolveArsParentOrigin({

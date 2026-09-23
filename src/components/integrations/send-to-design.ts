@@ -10,9 +10,11 @@ const ARS_PARENT_ORIGINS = new Set([
 function isLoopbackHubOrigin(origin: string) {
   try {
     const url = new URL(origin);
+
     if (url.origin !== origin) return false;
     if (url.protocol !== 'http:' && url.protocol !== 'https:') return false;
     const host = url.hostname.toLowerCase();
+
     return host === 'localhost' || host === '127.0.0.1' || host === '[::1]';
   } catch {
     return false;
@@ -28,6 +30,7 @@ export function documentViewFromPath(path: string): {
   viewId: string;
 } | null {
   const match = /^\/app\/([a-f0-9-]{36})\/([a-f0-9-]{36})\/?$/i.exec(path);
+
   if (!match || !UUID.test(match[1]) || !UUID.test(match[2])) return null;
   return { workspaceId: match[1], viewId: match[2] };
 }
@@ -39,7 +42,9 @@ export function sendToDesignWorkspaceId(input: {
   if (input.workspaceId && UUID.test(input.workspaceId)) {
     return input.workspaceId.toLowerCase();
   }
+
   const fromPath = documentViewFromPath(input.pathname ?? '');
+
   return fromPath?.workspaceId.toLowerCase();
 }
 
@@ -54,9 +59,11 @@ export function canSendPageToDesign(input: {
   if (!sendToDesignWorkspaceId({ workspaceId: input.workspaceId, pathname: input.pathname })) {
     return false;
   }
+
   if (input.isDocument === true) return true;
   if (input.isDocument === false) return false;
   const page = documentViewFromPath(input.pathname ?? '');
+
   return Boolean(page && page.viewId.toLowerCase() === input.viewId.toLowerCase());
 }
 
@@ -64,15 +71,18 @@ export function resolveArsParentOrigin(input: {
   isIframe: boolean;
   referrer: string;
   search: string;
+  origin?: string;
 }): string | null {
   try {
     if (input.referrer) {
       const origin = new URL(input.referrer).origin;
-      if (allowsArsParent(origin)) return origin;
+
+      if (origin !== input.origin && allowsArsParent(origin)) return origin;
     }
   } catch {
     /* malformed referrer is not an embed signal */
   }
+
   return null;
 }
 
@@ -91,14 +101,16 @@ export function recalledHubParent(stored?: string | null) {
 export function firstPartyHubParent(input: {
   referrer?: string;
   stored?: string | null;
+  origin?: string;
 }) {
   return (
     resolveArsParentOrigin({
       isIframe: false,
       referrer: input.referrer ?? '',
       search: '',
+      origin: input.origin,
     }) ??
-    recalledHubParent(input.stored) ??
+    recalledHubParent(input.stored === input.origin ? null : input.stored) ??
     ARS_PARENT_ORIGIN
   );
 }
@@ -113,14 +125,18 @@ export function sendToDesignHandoffHref(input: {
   if (!UUID.test(input.viewId)) return null;
   if (!input.workspaceId || !UUID.test(input.workspaceId)) return null;
   const url = new URL('/dashboard', input.parentOrigin);
+
   url.searchParams.set('view', input.viewId.toLowerCase());
   if (input.workspaceId) {
     url.searchParams.set('workspace', input.workspaceId.toLowerCase());
   }
+
   const title = sendToDesignTitle(input.title);
+
   if (title && title !== 'Untitled brief') {
     url.searchParams.set('title', title);
   }
+
   return url.toString();
 }
 
@@ -140,6 +156,7 @@ export function arsPostMessageOrigin(stored?: string | null) {
 
 export function sendToDesignTitle(name?: string) {
   const cleaned = (name ?? '').replace(/\s*[·|].*$/, '').trim();
+
   return cleaned.slice(0, 200) || 'Untitled brief';
 }
 
@@ -152,6 +169,7 @@ export function buildSendToDesignMessage(input: {
   if (!input.workspaceId || !UUID.test(input.workspaceId)) {
     throw new Error('Invalid workspace');
   }
+
   return {
     channel: 'ars-app' as const,
     version: 1 as const,

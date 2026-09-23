@@ -44,7 +44,9 @@ export function ArsEmbed() {
       isIframe: inIframe,
       referrer: document.referrer,
       search: location.search,
+      origin: window.location.origin,
     });
+
     if (!parentOrigin) {
       try {
         // The top-level hub key is the flags-off Send to Design default, including
@@ -56,27 +58,34 @@ export function ArsEmbed() {
         /* sessionStorage can be unavailable in privacy-restricted iframe contexts. */
       }
     }
+
     if (!inIframe) {
       delete document.documentElement.dataset.arsEmbed;
       const hub = firstPartyHubParent({
         referrer: document.referrer,
         stored: parentOrigin,
+        origin: window.location.origin,
       });
+
       document.documentElement.dataset.arsParent = hub;
       try {
         rememberHubParent(hub, sessionStorage);
       } catch {
         /* ignore */
       }
+
       return;
     }
+
     const waiting =
       !parentOrigin && new URLSearchParams(location.search).get('ars_embed') === '1';
+
     if (!parentOrigin && !waiting) {
       delete document.documentElement.dataset.arsEmbed;
       delete document.documentElement.dataset.arsParent;
       return;
     }
+
     const bind = (origin: string) => {
       parentOrigin = origin;
       document.documentElement.dataset.arsEmbed = 'true';
@@ -88,6 +97,7 @@ export function ArsEmbed() {
         storage: sessionStorage,
       });
     };
+
     if (parentOrigin) bind(parentOrigin);
     if (location.pathname.startsWith('/app')) {
       rememberEmbedContext({
@@ -96,10 +106,12 @@ export function ArsEmbed() {
         storage: sessionStorage,
       });
     }
+
     const send = (type: string, extra = {}) => {
       if (!parentOrigin) return;
       window.parent.postMessage({ channel: 'ars-app', version: 1, type, ...extra }, parentOrigin);
     };
+
     let restoreOutcome: 'ready' | 'restored' | 'missing' | null = null;
     let cancelled = false;
     const onAppPath = location.pathname === '/app' || location.pathname.startsWith('/app/');
@@ -108,16 +120,19 @@ export function ArsEmbed() {
         send('session-expired');
         return;
       }
+
       if (restoreOutcome !== 'ready' && restoreOutcome !== 'restored') return;
       if (onAppPath) {
         send('ready');
         if (location.pathname.startsWith('/app/')) send('navigation', { path: location.pathname });
       }
     };
+
     const settleRestore = (outcome: 'ready' | 'restored' | 'missing') => {
       if (cancelled) return;
       restoreOutcome = outcome;
       const returnToApp = outcome === 'restored' || (outcome === 'ready' && location.pathname === '/login');
+
       if (returnToApp) {
         const next = embedReturnPath({
           pathname: location.pathname,
@@ -127,6 +142,7 @@ export function ArsEmbed() {
           inIframe,
           savedPath: savedEmbedPath(),
         });
+
         // A full navigation drops an in-memory session that could not be
         // written to localStorage. Stay put when the embed URL is already right.
         if (`${location.pathname}${location.search}` !== next) {
@@ -134,8 +150,10 @@ export function ArsEmbed() {
           return;
         }
       }
+
       announce();
     };
+
     const receive = (event: MessageEvent) => {
       if (event.source !== window.parent || event.data?.channel !== 'ars-app' || event.data.version !== 1) return;
       if (!parentOrigin) {
@@ -143,8 +161,10 @@ export function ArsEmbed() {
           bind(event.origin);
           announce();
         }
+
         return;
       }
+
       if (event.origin !== parentOrigin) return;
       if (event.data.type === 'hello') announce();
       if (event.data.type === 'sign-out') invalidToken();
@@ -169,8 +189,10 @@ export function ArsEmbed() {
         } catch {
           /* Storage Access API is best-effort after the first-party Connect visit. */
         }
+
         if (cancelled || (restoreOutcome !== 'missing' && restoreOutcome !== null)) return;
         const outcome = await restore();
+
         settleRestore(outcome);
       })();
     };
