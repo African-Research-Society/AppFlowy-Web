@@ -1,3 +1,4 @@
+import { exchangeArsToken } from '@/application/session/ars-auth';
 import axios, { AxiosInstance } from 'axios';
 
 import { getTokenParsed, invalidToken, saveGoTrueAuth, type GoTrueAuthUser } from '@/application/session/token';
@@ -68,11 +69,7 @@ export async function refreshToken(refresh_token: string) {
   Log.info('[Auth] refreshToken: requesting new token');
 
   const promise = (async (): Promise<RefreshedToken> => {
-    const response = await axiosInstance?.post<RefreshedToken>('/token?grant_type=refresh_token', {
-      refresh_token,
-    });
-
-    const newToken = response?.data;
+    const newToken: RefreshedToken = await exchangeArsToken({ refresh_token });
 
     if (newToken) {
       Log.info('[Auth] refreshToken: success, saving token');

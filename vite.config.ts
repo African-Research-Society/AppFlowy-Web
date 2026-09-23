@@ -203,7 +203,7 @@ export default defineConfig({
   // Only these values are browser configuration. A broad `APPFLOWY` prefix
   // also exposes server-only credentials (database, S3, SMTP, Redis, etc.)
   // whenever the deployment platform makes them available during the build.
-  envPrefix: ['APPFLOWY_BASE_URL', 'APPFLOWY_GOTRUE_BASE_URL', 'APPFLOWY_WS_BASE_URL'],
+  envPrefix: ['ARS_AUTH_ORIGIN', 'APPFLOWY_BASE_URL', 'APPFLOWY_GOTRUE_BASE_URL', 'APPFLOWY_WS_BASE_URL'],
   esbuild: {
     keepNames: true,
     sourcesContent: true,

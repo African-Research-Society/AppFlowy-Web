@@ -1,3 +1,5 @@
+const mockExchangeArsToken = jest.fn();
+jest.mock('@/application/session/ars-auth', () => ({ exchangeArsToken: mockExchangeArsToken }));
 const mockGrantClient = {
   interceptors: {
     request: {
@@ -58,7 +60,7 @@ const refreshedToken = {
 describe('refreshToken concurrent deduplication', () => {
   beforeEach(() => {
     jest.clearAllMocks();
-    mockGrantClient.post.mockReset();
+    mockExchangeArsToken.mockReset();
     initGrantService('http://localhost/gotrue');
   });
 
@@ -68,43 +70,43 @@ describe('refreshToken concurrent deduplication', () => {
   // token and gets rejected, forcing a logout. All concurrent callers must
   // share a single network request.
   it('shares one network request among concurrent calls with the same refresh token', async () => {
-    const deferred = createDeferred<{ data: typeof refreshedToken }>();
+    const deferred = createDeferred<typeof refreshedToken>();
 
-    mockGrantClient.post.mockReturnValue(deferred.promise);
+    mockExchangeArsToken.mockReturnValue(deferred.promise);
 
     const first = refreshToken('stored-refresh-token');
     const second = refreshToken('stored-refresh-token');
 
-    deferred.resolve({ data: refreshedToken });
+    deferred.resolve(refreshedToken);
 
     const [firstToken, secondToken] = await Promise.all([first, second]);
 
-    expect(mockGrantClient.post).toHaveBeenCalledTimes(1);
+    expect(mockExchangeArsToken).toHaveBeenCalledTimes(1);
     expect(firstToken).toEqual(refreshedToken);
     expect(secondToken).toEqual(refreshedToken);
     expect(saveGoTrueAuth).toHaveBeenCalledTimes(1);
   });
 
   it('issues a new request once the previous refresh has settled', async () => {
-    mockGrantClient.post.mockResolvedValue({ data: refreshedToken });
+    mockExchangeArsToken.mockResolvedValue(refreshedToken);
 
     await refreshToken('stored-refresh-token');
     await refreshToken('stored-refresh-token');
 
-    expect(mockGrantClient.post).toHaveBeenCalledTimes(2);
+    expect(mockExchangeArsToken).toHaveBeenCalledTimes(2);
   });
 
   it('does not dedupe calls made with different refresh tokens', async () => {
-    mockGrantClient.post.mockResolvedValue({ data: refreshedToken });
+    mockExchangeArsToken.mockResolvedValue(refreshedToken);
 
     await Promise.all([refreshToken('token-A'), refreshToken('token-B')]);
 
-    expect(mockGrantClient.post).toHaveBeenCalledTimes(2);
+    expect(mockExchangeArsToken).toHaveBeenCalledTimes(2);
   });
 
   it('keeps dedupe entries for earlier tokens when a different token refresh interleaves', async () => {
-    const deferredA = createDeferred<{ data: typeof refreshedToken }>();
-    const deferredB = createDeferred<{ data: typeof refreshedToken }>();
+    const deferredA = createDeferred<typeof refreshedToken>();
+    const deferredB = createDeferred<typeof refreshedToken>();
     const tokenARefresh = {
       ...refreshedToken,
       access_token: 'token-A-access-token',
@@ -116,7 +118,7 @@ describe('refreshToken concurrent deduplication', () => {
       refresh_token: 'token-B-next-refresh-token',
     };
 
-    mockGrantClient.post.mockImplementation((_url: string, body: { refresh_token: string }) => {
+    mockExchangeArsToken.mockImplementation((body: { refresh_token: string }) => {
       if (body.refresh_token === 'token-A') return deferredA.promise;
       if (body.refresh_token === 'token-B') return deferredB.promise;
       return Promise.reject(new Error(`unexpected refresh token: ${body.refresh_token}`));
@@ -126,16 +128,16 @@ describe('refreshToken concurrent deduplication', () => {
     const firstB = refreshToken('token-B');
     const secondA = refreshToken('token-A');
 
-    expect(mockGrantClient.post).toHaveBeenCalledTimes(2);
-    expect(mockGrantClient.post).toHaveBeenNthCalledWith(1, '/token?grant_type=refresh_token', {
+    expect(mockExchangeArsToken).toHaveBeenCalledTimes(2);
+    expect(mockExchangeArsToken).toHaveBeenNthCalledWith(1, {
       refresh_token: 'token-A',
     });
-    expect(mockGrantClient.post).toHaveBeenNthCalledWith(2, '/token?grant_type=refresh_token', {
+    expect(mockExchangeArsToken).toHaveBeenNthCalledWith(2, {
       refresh_token: 'token-B',
     });
 
-    deferredA.resolve({ data: tokenARefresh });
-    deferredB.resolve({ data: tokenBRefresh });
+    deferredA.resolve(tokenARefresh);
+    deferredB.resolve(tokenBRefresh);
 
     await expect(firstA).resolves.toEqual(tokenARefresh);
     await expect(secondA).resolves.toEqual(tokenARefresh);
@@ -146,7 +148,7 @@ describe('refreshToken concurrent deduplication', () => {
   it('propagates a shared failure to all concurrent callers and allows a retry', async () => {
     const deferred = createDeferred<never>();
 
-    mockGrantClient.post.mockReturnValueOnce(deferred.promise);
+    mockExchangeArsToken.mockReturnValueOnce(deferred.promise);
 
     const first = refreshToken('stored-refresh-token');
     const second = refreshToken('stored-refresh-token');
@@ -157,11 +159,11 @@ describe('refreshToken concurrent deduplication', () => {
 
     await expect(first).rejects.toBe(failure);
     await expect(second).rejects.toBe(failure);
-    expect(mockGrantClient.post).toHaveBeenCalledTimes(1);
+    expect(mockExchangeArsToken).toHaveBeenCalledTimes(1);
 
     // The failed in-flight entry must be cleared so a later call can retry.
-    mockGrantClient.post.mockResolvedValueOnce({ data: refreshedToken });
+    mockExchangeArsToken.mockResolvedValueOnce(refreshedToken);
     await expect(refreshToken('stored-refresh-token')).resolves.toEqual(refreshedToken);
-    expect(mockGrantClient.post).toHaveBeenCalledTimes(2);
+    expect(mockExchangeArsToken).toHaveBeenCalledTimes(2);
   });
 });

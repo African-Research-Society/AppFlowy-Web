@@ -1,3 +1,9 @@
+const mockExchangeArsToken = jest.fn();
+const mockCompleteArsLogin = jest.fn();
+jest.mock('@/application/session/ars-auth', () => ({
+  exchangeArsToken: mockExchangeArsToken,
+  completeArsLogin: mockCompleteArsLogin,
+}));
 const mockGrantClient = {
   defaults: {
     baseURL: '',
@@ -61,12 +67,14 @@ const { getTokenParsed, invalidToken, saveGoTrueAuth } = require('@/application/
   saveGoTrueAuth: jest.Mock;
 };
 
-type AuthVariant = 'password' | 'oauth' | 'otp';
+type AuthVariant = 'password' | 'otp';
 
 describe('GoTrue login token completion', () => {
   beforeEach(() => {
     jest.clearAllMocks();
     mockGrantClient.post.mockReset();
+    mockExchangeArsToken.mockReset();
+    mockCompleteArsLogin.mockReset();
     localStorage.clear();
     initGrantService('http://localhost/gotrue');
   });
@@ -83,7 +91,8 @@ describe('GoTrue login token completion', () => {
       refresh_token: 'refreshed-refresh-token',
     };
 
-    mockGrantClient.post.mockResolvedValueOnce({ data: loginToken }).mockResolvedValueOnce({ data: refreshedToken });
+    mockGrantClient.post.mockResolvedValueOnce({ data: loginToken });
+    mockExchangeArsToken.mockResolvedValueOnce(refreshedToken);
     (verifyToken as jest.Mock).mockResolvedValueOnce({ is_new: false });
 
     await signInWithPassword({
@@ -97,7 +106,7 @@ describe('GoTrue login token completion', () => {
       password: 'password',
     });
     expect(verifyToken).toHaveBeenCalledWith(loginToken.access_token);
-    expect(mockGrantClient.post).toHaveBeenNthCalledWith(2, '/token?grant_type=refresh_token', {
+    expect(mockExchangeArsToken).toHaveBeenCalledWith({
       refresh_token: loginToken.refresh_token,
     });
     expect(saveGoTrueAuth).toHaveBeenCalledTimes(1);
@@ -111,33 +120,39 @@ describe('GoTrue login token completion', () => {
       refresh_token: 'refreshed-refresh-token',
     };
 
-    mockGrantClient.post.mockResolvedValueOnce({ data: refreshedToken });
+    mockExchangeArsToken.mockResolvedValueOnce(refreshedToken);
     saveGoTrueAuth.mockReturnValueOnce(false);
 
     await expect(refreshToken('stored-refresh-token')).rejects.toThrow('Failed to persist refreshed token');
     expect(saveGoTrueAuth).toHaveBeenCalledWith(JSON.stringify(refreshedToken));
   });
 
-  it('uses the same verify-refresh-save flow for OAuth callback tokens', async () => {
-    const refreshedToken = {
-      access_token: 'oauth-refreshed-access-token',
-      expires_at: 456,
-      refresh_token: 'oauth-refreshed-refresh-token',
-    };
-
-    mockGrantClient.post.mockResolvedValueOnce({ data: refreshedToken });
+  it('exchanges an ARS authorization code and verifies the bridge token', async () => {
+    mockCompleteArsLogin.mockResolvedValueOnce({ access_token: 'ars-bridge-token' });
     verifyToken.mockResolvedValueOnce({ is_new: false });
-
-    await signInWithUrl(
-      'http://localhost/auth/callback#access_token=oauth-access-token&refresh_token=oauth-refresh-token'
+    await signInWithUrl('http://localhost/auth/callback?code=one-use-code&state=bound-state');
+    expect(mockCompleteArsLogin.mock.calls[0][0].href).toBe(
+      'http://localhost/auth/callback?code=one-use-code&state=bound-state'
     );
+    expect(verifyToken).toHaveBeenCalledWith('ars-bridge-token');
+    expect(mockExchangeArsToken).not.toHaveBeenCalled();
+  });
 
-    expect(verifyToken).toHaveBeenCalledWith('oauth-access-token');
-    expect(mockGrantClient.post).toHaveBeenCalledWith('/token?grant_type=refresh_token', {
-      refresh_token: 'oauth-refresh-token',
-    });
-    expect(saveGoTrueAuth).toHaveBeenCalledTimes(1);
-    expect(saveGoTrueAuth).toHaveBeenCalledWith(JSON.stringify(refreshedToken));
+  it('rejects old bearer-token fragment callbacks', async () => {
+    await expect(signInWithUrl('http://localhost/auth/callback#access_token=old&refresh_token=old')).rejects.toThrow(
+      'Start sign-in'
+    );
+    expect(mockCompleteArsLogin).not.toHaveBeenCalled();
+    expect(verifyToken).not.toHaveBeenCalled();
+  });
+
+  it('clears the bridge token when Cloud rejects the new session', async () => {
+    mockCompleteArsLogin.mockResolvedValueOnce({ access_token: 'rejected-bridge' });
+    verifyToken.mockRejectedValueOnce(new Error('Revoked'));
+    await expect(signInWithUrl('http://localhost/auth/callback?code=one-use-code&state=bound-state')).rejects.toThrow(
+      'Revoked'
+    );
+    expect(invalidToken).toHaveBeenCalledTimes(1);
   });
 
   it('uses the same verify-refresh-save flow for email OTP tokens', async () => {
@@ -152,7 +167,8 @@ describe('GoTrue login token completion', () => {
       refresh_token: 'otp-refreshed-refresh-token',
     };
 
-    mockGrantClient.post.mockResolvedValueOnce({ data: otpToken }).mockResolvedValueOnce({ data: refreshedToken });
+    mockGrantClient.post.mockResolvedValueOnce({ data: otpToken });
+    mockExchangeArsToken.mockResolvedValueOnce(refreshedToken);
     verifyToken.mockResolvedValueOnce({ is_new: false });
 
     await signInOTP({
@@ -166,14 +182,14 @@ describe('GoTrue login token completion', () => {
       type: 'magiclink',
     });
     expect(verifyToken).toHaveBeenCalledWith(otpToken.access_token);
-    expect(mockGrantClient.post).toHaveBeenNthCalledWith(2, '/token?grant_type=refresh_token', {
+    expect(mockExchangeArsToken).toHaveBeenCalledWith({
       refresh_token: otpToken.refresh_token,
     });
     expect(saveGoTrueAuth).toHaveBeenCalledTimes(1);
     expect(saveGoTrueAuth).toHaveBeenCalledWith(JSON.stringify(refreshedToken));
   });
 
-  it.each<AuthVariant>(['password', 'oauth', 'otp'])(
+  it.each<AuthVariant>(['password', 'otp'])(
     'rejects and skips refresh/save when AppFlowy Cloud verification fails for %s sign-in',
     async (variant) => {
       const initialToken = createToken(`${variant}-initial`);
@@ -190,38 +206,37 @@ describe('GoTrue login token completion', () => {
     }
   );
 
-  it.each<AuthVariant>(['password', 'oauth', 'otp'])(
-    'clears an existing token before verifying %s sign-in',
-    async (variant) => {
-      const initialToken = createToken(`${variant}-initial`);
-      const refreshedToken = createToken(`${variant}-refreshed`);
-      const removeItemSpy = jest.spyOn(Storage.prototype, 'removeItem');
+  it.each<AuthVariant>(['password', 'otp'])('clears an existing token before verifying %s sign-in', async (variant) => {
+    const initialToken = createToken(`${variant}-initial`);
+    const refreshedToken = createToken(`${variant}-refreshed`);
+    const removeItemSpy = jest.spyOn(Storage.prototype, 'removeItem');
 
-      localStorage.setItem('token', 'old-token');
-      queueInitialSignInResponse(variant, initialToken);
-      queueRefreshResponse(refreshedToken);
-      verifyToken.mockResolvedValueOnce({ is_new: false });
+    localStorage.setItem('token', 'old-token');
+    queueInitialSignInResponse(variant, initialToken);
+    queueRefreshResponse(refreshedToken);
+    verifyToken.mockResolvedValueOnce({ is_new: false });
 
-      try {
-        await runAuthVariant(variant, initialToken);
+    try {
+      await runAuthVariant(variant, initialToken);
 
-        const tokenRemoveCallIndex = removeItemSpy.mock.calls.findIndex(([key]) => key === 'token');
+      const tokenRemoveCallIndex = removeItemSpy.mock.calls.findIndex(([key]) => key === 'token');
 
-        expect(tokenRemoveCallIndex).toBeGreaterThanOrEqual(0);
-        expect(removeItemSpy.mock.invocationCallOrder[tokenRemoveCallIndex]).toBeLessThan(
-          verifyToken.mock.invocationCallOrder[0]
-        );
-      } finally {
-        removeItemSpy.mockRestore();
-      }
+      expect(tokenRemoveCallIndex).toBeGreaterThanOrEqual(0);
+      expect(removeItemSpy.mock.invocationCallOrder[tokenRemoveCallIndex]).toBeLessThan(
+        verifyToken.mock.invocationCallOrder[0]
+      );
+    } finally {
+      removeItemSpy.mockRestore();
     }
-  );
+  });
 });
 
 describe('GoTrue recovery session consistency', () => {
   beforeEach(() => {
     jest.clearAllMocks();
     mockGrantClient.post.mockReset();
+    mockExchangeArsToken.mockReset();
+    mockCompleteArsLogin.mockReset();
     initGrantService('http://localhost/gotrue');
   });
 
@@ -322,25 +337,21 @@ function createToken(prefix: string) {
 }
 
 function queueInitialSignInResponse(variant: AuthVariant, token: ReturnType<typeof createToken>) {
-  if (variant !== 'oauth') {
-    mockGrantClient.post.mockResolvedValueOnce({ data: token });
-  }
-}
-
-function queueRefreshResponse(token: ReturnType<typeof createToken>) {
   mockGrantClient.post.mockResolvedValueOnce({ data: token });
 }
 
+function queueRefreshResponse(token: ReturnType<typeof createToken>) {
+  mockExchangeArsToken.mockResolvedValueOnce(token);
+}
+
 function refreshTokenCalls() {
-  return mockGrantClient.post.mock.calls.filter(([url]) => url === '/token?grant_type=refresh_token');
+  return mockExchangeArsToken.mock.calls;
 }
 
 function expectedVerifyError(variant: AuthVariant) {
   switch (variant) {
     case 'password':
       return { code: 401, message: 'Backend says no' };
-    case 'oauth':
-      return { code: 401, message: 'Verify token failed' };
     case 'otp':
       return { code: 401, message: 'Failed to create user account' };
   }
@@ -354,10 +365,6 @@ function runAuthVariant(variant: AuthVariant, token: ReturnType<typeof createTok
         password: 'password',
         redirectTo: '/app',
       });
-    case 'oauth':
-      return signInWithUrl(
-        `http://localhost/auth/callback#access_token=${token.access_token}&refresh_token=${token.refresh_token}`
-      );
     case 'otp':
       return signInOTP({
         email: 'admin@example.com',
