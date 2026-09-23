@@ -24,6 +24,7 @@ import {
   ViewLayout,
 } from '@/components/chat/types';
 import { ModelList } from '@/components/chat/types/ai-model';
+import { ARS_HUB_PARENT_KEY, arsPostMessageOrigin } from '@/components/integrations/send-to-design';
 
 import { extractNextJsonObject } from './stream-json-parser';
 
@@ -346,8 +347,12 @@ export class ChatRequest {
     onMessage: (text: string, metadata: ChatMessageMetadata[], done?: boolean) => void,
     onProgress?: (step: string) => void
   ) {
-    const baseUrl = this.axiosInstance.defaults.baseURL;
-    const url = `${baseUrl}/api/chat/${this.workspaceId}/${this.chatId}/answer/stream`;
+    const parent = document.documentElement.dataset.arsParent || sessionStorage.getItem(ARS_HUB_PARENT_KEY);
+    const hubOrigin = arsPostMessageOrigin(parent);
+    if (!hubOrigin || !this.workspaceId || !this.chatId) {
+      throw new Error('Kora Work is available when this chat is opened from the ARS hub');
+    }
+    const url = `${hubOrigin}/api/kora/work/complete`;
 
     const token = getAccessToken(); // Assume this function returns a valid token
 
@@ -364,12 +369,11 @@ export class ChatRequest {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
-        'ai-model': payload.model_name || 'Auto',
-        'x-platform': 'web-app',
       },
       body: JSON.stringify({
-        ...payload,
-        chat_id: this.chatId,
+        workspaceId: this.workspaceId,
+        chatId: this.chatId,
+        questionId: payload.question_id,
       }),
     });
 
@@ -714,22 +718,7 @@ export class ChatRequest {
   }
 
   async getModelList(): Promise<ModelList> {
-    if (!this.workspaceId) {
-      return Promise.reject('workspaceId is not defined');
-    }
-
-    const url = `/api/ai/${this.workspaceId}/model/list`;
-    const response = await this.axiosInstance.get<{
-      code: number;
-      data?: ModelList;
-      message?: string;
-    }>(url);
-
-    if (response?.data.code === 0 && response.data.data) {
-      return response.data.data;
-    }
-
-    return Promise.reject(response?.data?.message || 'Failed to fetch model list');
+    return { models: [{ name: 'Kora Auto', metadata: { is_default: true, desc: 'Kora chooses an approved model for this request' } }] };
   }
 
   async getChatSettings(): Promise<ChatSettings> {

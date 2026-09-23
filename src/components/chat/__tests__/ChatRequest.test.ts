@@ -450,27 +450,12 @@ describe('ChatRequest', () => {
   });
 
   describe('getModelList', () => {
-    it('should fetch model list successfully', async () => {
-      const mockModels = {
-        models: [
-          { name: 'Auto', metadata: { is_default: true } },
-          { name: 'GPT-4', provider: 'OpenAI' },
-        ],
-      };
-
-      mockAxiosInstance.get.mockResolvedValue({
-        data: { code: 0, data: mockModels },
-      });
-
+    it('offers only Kora Auto without contacting AppFlowy AI', async () => {
       const result = await chatRequest.getModelList();
-
-      expect(mockAxiosInstance.get).toHaveBeenCalledWith(`/api/ai/${workspaceId}/model/list`);
-      expect(result).toEqual(mockModels);
-    });
-
-    it('should reject when workspaceId missing', async () => {
-      const request = new ChatRequest(undefined, chatId, mockAxiosInstance);
-      await expect(request.getModelList()).rejects.toBe('workspaceId is not defined');
+      expect(result.models).toEqual([
+        { name: 'Kora Auto', metadata: { is_default: true, desc: 'Kora chooses an approved model for this request' } },
+      ]);
+      expect(mockAxiosInstance.get).not.toHaveBeenCalled();
     });
   });
 
