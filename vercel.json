@@ -1,3 +1,8 @@
 {
-  "rewrites": [{ "source": "/((?!api/).*)", "destination": "/" }]
+  "rewrites": [{ "source": "/((?!api/).*)", "destination": "/" }],
+  "git": {
+    "deploymentEnabled": {
+      "cursor/september-26-preview-4d10": false
+    }
+  }
 }
