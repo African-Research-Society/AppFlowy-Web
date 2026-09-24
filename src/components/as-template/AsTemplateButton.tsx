@@ -17,7 +17,7 @@ function AsTemplateButton ({ viewId }: { viewId: string }) {
 
   const handleClick = useCallback(() => {
 
-    window.open(`${window.origin}/as-template?viewUrl=${encodeURIComponent(publishUrl)}&viewName=${view?.name || ''}&viewId=${view?.view_id || ''}`, '_blank');
+    window.open(`${window.origin}/as-template?viewUrl=${encodeURIComponent(publishUrl)}&viewName=${encodeURIComponent(view?.name || '')}&viewId=${encodeURIComponent(view?.view_id || '')}`, '_blank');
   }, [view, publishUrl]);
 
   const currentUser = useCurrentUser();

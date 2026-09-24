@@ -73,12 +73,15 @@ function Creator({ value, onChange }: { value?: string; onChange: (value: string
 
         <div className={'flex flex-wrap gap-2'}>
           {selectedCreator?.account_links?.map((link) => {
+            const href = /^https?:\/\//i.test(link.url) ? link.url : undefined;
+
             return (
               <Tooltip title={link.url} key={link.link_type} placement={'top'} arrow>
                 <a
-                  href={link.url}
+                  href={href}
                   key={link.link_type}
                   target={'_blank'}
+                  rel={'noreferrer'}
                   className={
                     'flex h-10 w-10 items-center justify-between rounded-full border border-line-border p-3 hover:border-content-blue-400 hover:text-text-action'
                   }
