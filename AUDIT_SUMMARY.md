@@ -1,82 +1,103 @@
-# AppFlowy-Web audit
+# AppFlowy-Web audit (second pass)
 
-## Executive Summary
+## Coverage Matrix
 
-Three commits ahead of upstream: rebrand, a Vite `envPrefix` lockdown, and embedding in the ARS member shell. The env lockdown is sound. The embed depends on nginx `frame-ancestors` and on a client query flag `connected=1`. No code change was made. Tightening the handoff needs a signed assertion agreed with AfriNexus, which is a product change.
+| Subsystem | Depth | Notes |
+| --- | --- | --- |
+| Sign-in return to ARS | Deep | `src/application/session/sign_in.ts` |
+| Vite env prefix | Deep | Browser env lockdown in the ARS commit |
+| nginx frame-ancestors | Deep | `docker/nginx.conf`, `docker/nginx-ssr.conf` |
+| Blob and verify client usage | Light | Same client-api patterns as the desktop repo; Web is a consumer |
+| Document editor | Not applicable | Same exclusion as desktop: not the auth boundary |
 
-## Architecture Overview
+## Findings
 
-Browser AppFlowy. ARS iframes it from the member dashboard. CSP `frame-ancestors` is set in the Docker nginx configs to `self` and `https://africanresearchsociety.org`.
+`connected=1` is a query flag after redirect. AfriNexus must not treat it as membership proof. `frame-ancestors` allows only `self` and `https://africanresearchsociety.org`, and only on nginx locations that do not replace headers. `www` and preview hosts are absent.
 
-## Audit Coverage
+No code change. The flag is part of the current handoff.
 
-The three ARS commits and the nginx/sign-in files they touch. Upstream Web was not re-audited.
-
-## Confirmed Issues
-
-`connected=1` on the return URL is a UI flag. AfriNexus must not treat it as proof of membership. Tokens are stripped from the hash before redirect, which is correct.
-
-## Security Findings
-
-- `frame-ancestors` is only on the nginx configs that set it. Locations that use their own `add_header` can drop the inherited CSP. Low–medium, deploy-dependent.
-- Allowlist is the apex host only. `www` or a preview host is not included.
-- Vite `envPrefix` restriction looks correct. Not raised as a bug.
-
-## Bugs
-
-None that are safe to patch without changing the embed contract.
-
-## Compatibility Findings
-
-Preview deployments on another host cannot iframe this build until that origin is added to `frame-ancestors`.
-
-## Dead/Vestigial Code
-
-Not searched upstream.
-
-## Mapping/Consistency Problems
-
-Handoff flag versus server-side membership check. The check belongs in AfriNexus before the iframe mounts.
-
-## Performance/Reliability
-
-Not examined.
-
-## Testing Gaps
-
-No embed test in this repo.
-
-## Improvements
-
-None landed.
-
-## Fixes Implemented
-
-None. Changing `connected=1` without the AfriNexus side would break the current handoff.
-
-## Tests Added
+## Fixed Findings
 
 None.
 
-## Verification Performed
+## Unfixed Findings
 
-Read `src/application/session/sign_in.ts` and `docker/nginx.conf` / `docker/nginx-ssr.conf` against the three-commit range. Not built.
+CSP inheritance, host list, client connected flag.
 
-## Findings Not Fixed
+## Security
 
-CSP inheritance, host allowlist, client `connected` flag.
+Embed and token handling. Tokens are stripped from the hash before the ARS redirect.
 
-## Items Requiring Human Decision
+## Database Integrity
 
-Add every real parent origin to `frame-ancestors`, including preview hosts if those should embed. Replace `connected=1` with a server check in AfriNexus.
+Not in this repo.
 
-## Recommended Future Work
+## Authentication
 
-One signed “connected” assertion, verified by AfriNexus, and CSP on every HTML location.
+Supabase session, then the Cloud verify path.
 
-## Statistics
+## Authorization
 
-- Commits examined: 3.
-- Coverage: ARS delta only.
-- Fixed: 0.
-- Dependencies changed: none.
+Server-side, in Cloud.
+
+## Bugs
+
+None safe to patch alone.
+
+## Race Conditions
+
+Not examined.
+
+## Vestigial Code
+
+Not swept.
+
+## Mapping/Consistency Problems
+
+`connected=1` versus a server session check in AfriNexus.
+
+## Compatibility
+
+Preview hosts cannot iframe this build until they are listed.
+
+## Dependencies
+
+Not upgraded.
+
+## Performance
+
+Not examined.
+
+## Accessibility
+
+Not examined.
+
+## Testing
+
+Not built.
+
+## Cross-Repository Findings
+
+AfriNexus `/workspace` and `/api/integrations/launch` mint the session this app consumes. Referrer policy for `/workspace` is fixed in AfriNexus.
+
+## Product Decisions Required
+
+Parent origins for CSP. Replace `connected=1` with a server check.
+
+## Remaining Risks
+
+Clickjacking if HTML is served from a location that drops the CSP header.
+
+## Areas Where Audit Confidence Is Low
+
+Which nginx file the live host actually uses.
+
+## Verification
+
+Read sign-in and both nginx configs. Not built.
+
+## Metrics
+
+- ARS commits: 3, all read.
+- Upstream editor: not line-reviewed; named exclusion.
+- Code fixes: 0.
