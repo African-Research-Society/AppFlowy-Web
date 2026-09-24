@@ -408,7 +408,7 @@ function mapToBlockData<T extends BlockData>(element: HTMLElement): T {
       const align = styles['text-align'];
 
       if (align === 'end' || align === 'right') {
-        data.align = AlignType.Left;
+        data.align = AlignType.Right;
       } else if (align === 'center') {
         data.align = AlignType.Center;
       } else {

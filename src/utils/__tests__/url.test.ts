@@ -1,4 +1,4 @@
-import { parseAppFlowyPageLink, workspaceIdFromAppPathname } from '@/utils/url';
+import { isPersistableEditorHref, parseAppFlowyPageLink, workspaceIdFromAppPathname } from '@/utils/url';
 
 const workspaceId = '3df0c6bb-417f-4f81-939a-c6114f160f9a';
 const viewId = '5d62b705-fee1-43c5-bd20-75a40aef254d';
@@ -55,5 +55,20 @@ describe('workspaceIdFromAppPathname', () => {
   it('returns undefined for non-workspace app routes', () => {
     expect(workspaceIdFromAppPathname('/app/trash')).toBeUndefined();
     expect(workspaceIdFromAppPathname('/')).toBeUndefined();
+  });
+});
+
+describe('isPersistableEditorHref', () => {
+  it('keeps http, relative, and hash targets', () => {
+    expect(isPersistableEditorHref('https://example.com')).toBe(true);
+    expect(isPersistableEditorHref('/docs/page')).toBe(true);
+    expect(isPersistableEditorHref('#section')).toBe(true);
+    expect(isPersistableEditorHref('mailto:a@example.com')).toBe(true);
+  });
+
+  it('rejects script and protocol-relative targets', () => {
+    expect(isPersistableEditorHref('javascript:alert(1)')).toBe(false);
+    expect(isPersistableEditorHref('data:text/html,hi')).toBe(false);
+    expect(isPersistableEditorHref('//evil.example')).toBe(false);
   });
 });
