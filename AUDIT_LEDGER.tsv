@@ -3027,17 +3027,17 @@ src/components/database/fullcalendar/hooks/useCurrentTimeIndicator.ts	reviewed	b
 src/components/database/fullcalendar/hooks/useDynamicDayMaxEventRows.ts	reviewed	batch 371 last-line length matched; model not tool-verified grok
 src/components/database/fullcalendar/hooks/useScrollDetection.ts	reviewed	batch 371 last-line length matched; model not tool-verified grok
 src/components/database/fullcalendar/hooks/useScrollNavigation.ts	reviewed	batch 371 last-line length matched; model not tool-verified grok
-src/components/database/fullcalendar/hooks/useTimeFormat.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/database/fullcalendar/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/database/fullcalendar/types.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/database/fullcalendar/utils/dayCellContent.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/database/gallery/Gallery.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/database/gallery/GalleryCard.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/database/gallery/GalleryCardToolbar.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/database/gallery/GalleryNewRow.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/database/gallery/GalleryPreview.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/database/gallery/GalleryRowIcon.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/database/gallery/GallerySortState.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
+src/components/database/fullcalendar/hooks/useTimeFormat.tsx	reviewed	batch 372 last-line length matched; model not tool-verified grok
+src/components/database/fullcalendar/index.ts	reviewed	batch 372 last-line length matched; model not tool-verified grok
+src/components/database/fullcalendar/types.ts	reviewed	batch 372 last-line length matched; model not tool-verified grok
+src/components/database/fullcalendar/utils/dayCellContent.tsx	reviewed	batch 372 last-line length matched; model not tool-verified grok
+src/components/database/gallery/Gallery.tsx	reviewed	batch 372 last-line length matched; model not tool-verified grok
+src/components/database/gallery/GalleryCard.tsx	reviewed	batch 372 last-line length matched; model not tool-verified grok
+src/components/database/gallery/GalleryCardToolbar.tsx	reviewed	batch 372 last-line length matched; model not tool-verified grok
+src/components/database/gallery/GalleryNewRow.tsx	reviewed	batch 372 last-line length matched; model not tool-verified grok
+src/components/database/gallery/GalleryPreview.tsx	reviewed	batch 372 last-line length matched; model not tool-verified grok
+src/components/database/gallery/GalleryRowIcon.tsx	reviewed	batch 372 last-line length matched; model not tool-verified grok
+src/components/database/gallery/GallerySortState.tsx	reviewed	batch 372 last-line length matched; model not tool-verified grok
 src/components/database/gallery/__tests__/Gallery.test.tsx	test-fixture	test or fixture path
 src/components/database/gallery/__tests__/GalleryCard.test.tsx	test-fixture	test or fixture path
 src/components/database/gallery/__tests__/GalleryCardToolbar.test.tsx	test-fixture	test or fixture path
@@ -3046,30 +3046,30 @@ src/components/database/gallery/__tests__/GalleryPreview.render.test.tsx	test-fi
 src/components/database/gallery/__tests__/GalleryPreview.test.ts	test-fixture	test or fixture path
 src/components/database/gallery/__tests__/GalleryRowIcon.test.ts	test-fixture	test or fixture path
 src/components/database/gallery/__tests__/gallery.utils.test.ts	test-fixture	test or fixture path
-src/components/database/gallery/gallery.constants.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/database/gallery/gallery.utils.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/database/gallery/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/database/grid/Grid.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/database/grid/GridGroupingContext.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/database/grid/GridProvider.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
+src/components/database/gallery/gallery.constants.ts	reviewed	batch 372 last-line length matched; model not tool-verified grok
+src/components/database/gallery/gallery.utils.ts	reviewed	batch 372 last-line length matched; model not tool-verified grok
+src/components/database/gallery/index.ts	reviewed	batch 372 last-line length matched; model not tool-verified grok
+src/components/database/grid/Grid.tsx	reviewed	batch 372 last-line length matched; model not tool-verified grok
+src/components/database/grid/GridGroupingContext.tsx	reviewed	batch 373 last-line length matched; model not tool-verified grok
+src/components/database/grid/GridProvider.tsx	reviewed	batch 373 last-line length matched; model not tool-verified grok
 src/components/database/grid/__tests__/GridProvider.interactions.test.tsx	test-fixture	test or fixture path
-src/components/database/grid/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/database/grid/useGridContext.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/database/hooks/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/database/hooks/useBindViewSync.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/database/hooks/visibleViewIds/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/database/hooks/visibleViewIds/useContainerVisibleViewIds.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/database/hooks/visibleViewIds/useEmbeddedVisibleViewIds.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/database/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/database/layout.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/database/list/List.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/database/list/ListCell.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/database/list/ListControls.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/database/list/ListGroup.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/database/list/ListGroupingContext.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/database/list/ListRow.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/database/list/ListRowActions.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/database/list/ListSortState.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
+src/components/database/grid/index.ts	reviewed	batch 373 last-line length matched; model not tool-verified grok
+src/components/database/grid/useGridContext.ts	reviewed	batch 373 last-line length matched; model not tool-verified grok
+src/components/database/hooks/index.ts	reviewed	batch 373 last-line length matched; model not tool-verified grok
+src/components/database/hooks/useBindViewSync.ts	reviewed	batch 373 last-line length matched; model not tool-verified grok
+src/components/database/hooks/visibleViewIds/index.ts	reviewed	batch 373 last-line length matched; model not tool-verified grok
+src/components/database/hooks/visibleViewIds/useContainerVisibleViewIds.ts	reviewed	batch 373 last-line length matched; model not tool-verified grok
+src/components/database/hooks/visibleViewIds/useEmbeddedVisibleViewIds.ts	reviewed	batch 373 last-line length matched; model not tool-verified grok
+src/components/database/index.ts	reviewed	batch 373 last-line length matched; model not tool-verified grok
+src/components/database/layout.ts	reviewed	batch 373 last-line length matched; model not tool-verified grok
+src/components/database/list/List.tsx	reviewed	batch 373 last-line length matched; model not tool-verified grok
+src/components/database/list/ListCell.tsx	reviewed	batch 373 last-line length matched; model not tool-verified grok
+src/components/database/list/ListControls.tsx	reviewed	batch 373 last-line length matched; model not tool-verified grok
+src/components/database/list/ListGroup.tsx	reviewed	batch 373 last-line length matched; model not tool-verified grok
+src/components/database/list/ListGroupingContext.tsx	reviewed	batch 374 last-line length matched; model not tool-verified grok
+src/components/database/list/ListRow.tsx	reviewed	batch 374 last-line length matched; model not tool-verified grok
+src/components/database/list/ListRowActions.tsx	reviewed	batch 374 last-line length matched; model not tool-verified grok
+src/components/database/list/ListSortState.tsx	reviewed	batch 374 last-line length matched; model not tool-verified grok
 src/components/database/list/__tests__/List.test.tsx	test-fixture	test or fixture path
 src/components/database/list/__tests__/ListCell.test.tsx	test-fixture	test or fixture path
 src/components/database/list/__tests__/ListControls.test.tsx	test-fixture	test or fixture path
@@ -3077,18 +3077,18 @@ src/components/database/list/__tests__/ListGroup.test.tsx	test-fixture	test or f
 src/components/database/list/__tests__/ListRow.test.tsx	test-fixture	test or fixture path
 src/components/database/list/__tests__/ListRowActions.test.tsx	test-fixture	test or fixture path
 src/components/database/list/__tests__/list.utils.test.ts	test-fixture	test or fixture path
-src/components/database/list/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/database/list/list.constants.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/database/list/list.utils.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/database/utils/field-editing.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/document/Document.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/document/history/DocumentHistoryModal.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/document/history/DocumentHistoryVersionList.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
+src/components/database/list/index.ts	reviewed	batch 374 last-line length matched; model not tool-verified grok
+src/components/database/list/list.constants.ts	reviewed	batch 374 last-line length matched; model not tool-verified grok
+src/components/database/list/list.utils.ts	reviewed	batch 374 last-line length matched; model not tool-verified grok
+src/components/database/utils/field-editing.ts	reviewed	batch 374 last-line length matched; model not tool-verified grok
+src/components/document/Document.tsx	reviewed	batch 374 last-line length matched; model not tool-verified grok
+src/components/document/history/DocumentHistoryModal.tsx	reviewed	batch 374 last-line length matched; model not tool-verified grok
+src/components/document/history/DocumentHistoryVersionList.tsx	reviewed	batch 374 last-line length matched; model not tool-verified grok
 src/components/document/history/__tests__/DocumentHistoryModal.test.tsx	test-fixture	test or fixture path
-src/components/document/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/CollaborativeEditor.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/Editable.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/Editor.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
+src/components/document/index.ts	reviewed	batch 374 last-line length matched; model not tool-verified grok
+src/components/editor/CollaborativeEditor.tsx	reviewed	batch 374 last-line length matched; model not tool-verified grok
+src/components/editor/Editable.tsx	reviewed	batch 374 last-line length matched; model not tool-verified grok
+src/components/editor/Editor.tsx	reviewed	batch 374 last-line length matched; model not tool-verified grok
 src/components/editor/EditorContext.tsx	reviewed	batch 375 last-line length matched; model not tool-verified grok
 src/components/editor/EditorOverlay.tsx	reviewed	batch 375 last-line length matched; model not tool-verified grok
 src/components/editor/StaticEditor.tsx	reviewed	batch 375 last-line length matched; model not tool-verified grok
@@ -3144,28 +3144,28 @@ src/components/editor/components/blocks/code/SelectLanguage.tsx	reviewed	batch 3
 src/components/editor/components/blocks/code/constants.ts	reviewed	batch 377 last-line length matched; model not tool-verified grok
 src/components/editor/components/blocks/code/index.ts	reviewed	batch 377 last-line length matched; model not tool-verified grok
 src/components/editor/components/blocks/code/useDecorate.ts	reviewed	batch 377 last-line length matched; model not tool-verified grok
-src/components/editor/components/blocks/code/utils.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/blocks/columns/Column.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/blocks/columns/Columns.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/blocks/columns/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/blocks/database/DatabaseBlock.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/blocks/database/components/DatabaseContent.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
+src/components/editor/components/blocks/code/utils.ts	reviewed	batch 378 last-line length matched; model not tool-verified grok
+src/components/editor/components/blocks/columns/Column.tsx	reviewed	batch 378 last-line length matched; model not tool-verified grok
+src/components/editor/components/blocks/columns/Columns.tsx	reviewed	batch 378 last-line length matched; model not tool-verified grok
+src/components/editor/components/blocks/columns/index.ts	reviewed	batch 378 last-line length matched; model not tool-verified grok
+src/components/editor/components/blocks/database/DatabaseBlock.tsx	reviewed	batch 378 last-line length matched; model not tool-verified grok
+src/components/editor/components/blocks/database/components/DatabaseContent.tsx	reviewed	batch 378 last-line length matched; model not tool-verified grok
 src/components/editor/components/blocks/database/components/__tests__/DatabaseContent.test.tsx	test-fixture	test or fixture path
 src/components/editor/components/blocks/database/hooks/__tests__/useDatabaseDeletionStatus.test.tsx	test-fixture	test or fixture path
 src/components/editor/components/blocks/database/hooks/__tests__/useDocumentLoader.test.ts	test-fixture	test or fixture path
 src/components/editor/components/blocks/database/hooks/__tests__/useResizePositioning.test.tsx	test-fixture	test or fixture path
 src/components/editor/components/blocks/database/hooks/__tests__/useViewMeta.test.tsx	test-fixture	test or fixture path
-src/components/editor/components/blocks/database/hooks/useDatabaseDeletionStatus.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/blocks/database/hooks/useDocumentLoader.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/blocks/database/hooks/useResizePositioning.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/blocks/database/hooks/useViewMeta.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/blocks/database/hooks/useViewSelection.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/blocks/database/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
+src/components/editor/components/blocks/database/hooks/useDatabaseDeletionStatus.ts	reviewed	batch 378 last-line length matched; model not tool-verified grok
+src/components/editor/components/blocks/database/hooks/useDocumentLoader.ts	reviewed	batch 378 last-line length matched; model not tool-verified grok
+src/components/editor/components/blocks/database/hooks/useResizePositioning.ts	reviewed	batch 378 last-line length matched; model not tool-verified grok
+src/components/editor/components/blocks/database/hooks/useViewMeta.ts	reviewed	batch 378 last-line length matched; model not tool-verified grok
+src/components/editor/components/blocks/database/hooks/useViewSelection.ts	reviewed	batch 378 last-line length matched; model not tool-verified grok
+src/components/editor/components/blocks/database/index.ts	reviewed	batch 378 last-line length matched; model not tool-verified grok
 src/components/editor/components/blocks/database/utils/__tests__/databaseBlockUtils.test.ts	test-fixture	test or fixture path
 src/components/editor/components/blocks/database/utils/__tests__/isViewGoneError.test.ts	test-fixture	test or fixture path
-src/components/editor/components/blocks/database/utils/databaseBlockUtils.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/blocks/divider/DividerNode.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/blocks/divider/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
+src/components/editor/components/blocks/database/utils/databaseBlockUtils.ts	reviewed	batch 378 last-line length matched; model not tool-verified grok
+src/components/editor/components/blocks/divider/DividerNode.tsx	reviewed	batch 378 last-line length matched; model not tool-verified grok
+src/components/editor/components/blocks/divider/index.ts	reviewed	batch 378 last-line length matched; model not tool-verified grok
 src/components/editor/components/blocks/file/FileBlock.tsx	reviewed	batch 379 last-line length matched; model not tool-verified grok
 src/components/editor/components/blocks/file/FileToolbar.tsx	reviewed	batch 379 last-line length matched; model not tool-verified grok
 src/components/editor/components/blocks/file/index.ts	reviewed	batch 379 last-line length matched; model not tool-verified grok
@@ -3199,68 +3199,68 @@ src/components/editor/components/blocks/math-equation/index.ts	unreviewed	produc
 src/components/editor/components/blocks/numbered-list/NumberListIcon.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
 src/components/editor/components/blocks/numbered-list/NumberedList.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
 src/components/editor/components/blocks/numbered-list/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/blocks/outline/Outline.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/blocks/outline/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/blocks/outline/utils.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/blocks/page/Page.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/blocks/page/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/blocks/paragraph/Paragraph.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/blocks/paragraph/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/blocks/pdf/PDFBlock.stories.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/blocks/pdf/PDFBlock.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/blocks/pdf/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/blocks/quote/Quote.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/blocks/quote/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/blocks/simple-table/SimpleTable.hooks.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/blocks/simple-table/SimpleTable.keyboard.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/blocks/simple-table/SimpleTable.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/blocks/simple-table/SimpleTableActionButtons.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/blocks/simple-table/SimpleTableActionOverlay.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/blocks/simple-table/SimpleTableCell.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/blocks/simple-table/SimpleTableColumnResizer.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/blocks/simple-table/SimpleTableContext.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/blocks/simple-table/SimpleTableContextMenu.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/blocks/simple-table/SimpleTableRow.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/blocks/simple-table/const.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/blocks/simple-table/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/blocks/simple-table/simple-table.scss	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/blocks/simple-table/simple-table.utils.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/blocks/sub-page/SubPage.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/blocks/sub-page/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/blocks/table/Table.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/blocks/table/TableCell.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/blocks/table/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/blocks/table/table.scss	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/blocks/text/Placeholder.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/blocks/text/StartIcon.hooks.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/blocks/text/Text.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
+src/components/editor/components/blocks/outline/Outline.tsx	reviewed	batch 381 last-line length matched; model not tool-verified grok
+src/components/editor/components/blocks/outline/index.ts	reviewed	batch 381 last-line length matched; model not tool-verified grok
+src/components/editor/components/blocks/outline/utils.ts	reviewed	batch 381 last-line length matched; model not tool-verified grok
+src/components/editor/components/blocks/page/Page.tsx	reviewed	batch 381 last-line length matched; model not tool-verified grok
+src/components/editor/components/blocks/page/index.ts	reviewed	batch 381 last-line length matched; model not tool-verified grok
+src/components/editor/components/blocks/paragraph/Paragraph.tsx	reviewed	batch 381 last-line length matched; model not tool-verified grok
+src/components/editor/components/blocks/paragraph/index.ts	reviewed	batch 381 last-line length matched; model not tool-verified grok
+src/components/editor/components/blocks/pdf/PDFBlock.stories.tsx	reviewed	batch 381 last-line length matched; model not tool-verified grok
+src/components/editor/components/blocks/pdf/PDFBlock.tsx	reviewed	batch 381 last-line length matched; model not tool-verified grok; main-session only opens http, https, or blob PDF links
+src/components/editor/components/blocks/pdf/index.ts	reviewed	batch 381 last-line length matched; model not tool-verified grok
+src/components/editor/components/blocks/quote/Quote.tsx	reviewed	batch 381 last-line length matched; model not tool-verified grok
+src/components/editor/components/blocks/quote/index.ts	reviewed	batch 381 last-line length matched; model not tool-verified grok
+src/components/editor/components/blocks/simple-table/SimpleTable.hooks.ts	reviewed	batch 381 last-line length matched; model not tool-verified grok; main-session escaped table cell ids in querySelector
+src/components/editor/components/blocks/simple-table/SimpleTable.keyboard.ts	reviewed	batch 381 last-line length matched; model not tool-verified grok
+src/components/editor/components/blocks/simple-table/SimpleTable.tsx	reviewed	batch 381 last-line length matched; model not tool-verified grok
+src/components/editor/components/blocks/simple-table/SimpleTableActionButtons.tsx	reviewed	batch 382 last-line length matched; model not tool-verified grok
+src/components/editor/components/blocks/simple-table/SimpleTableActionOverlay.tsx	reviewed	batch 382 last-line length matched; model not tool-verified grok
+src/components/editor/components/blocks/simple-table/SimpleTableCell.tsx	reviewed	batch 382 last-line length matched; model not tool-verified grok
+src/components/editor/components/blocks/simple-table/SimpleTableColumnResizer.tsx	reviewed	batch 382 last-line length matched; model not tool-verified grok
+src/components/editor/components/blocks/simple-table/SimpleTableContext.tsx	reviewed	batch 382 last-line length matched; model not tool-verified grok
+src/components/editor/components/blocks/simple-table/SimpleTableContextMenu.tsx	reviewed	batch 382 last-line length matched; model not tool-verified grok; main-session escaped the table block id in querySelector
+src/components/editor/components/blocks/simple-table/SimpleTableRow.tsx	reviewed	batch 382 last-line length matched; model not tool-verified grok
+src/components/editor/components/blocks/simple-table/const.ts	reviewed	batch 382 last-line length matched; model not tool-verified grok
+src/components/editor/components/blocks/simple-table/index.ts	reviewed	batch 382 last-line length matched; model not tool-verified grok
+src/components/editor/components/blocks/simple-table/simple-table.scss	reviewed	batch 382 last-line length matched; model not tool-verified grok
+src/components/editor/components/blocks/simple-table/simple-table.utils.ts	reviewed	batch 382 last-line length matched; model not tool-verified grok
+src/components/editor/components/blocks/sub-page/SubPage.tsx	reviewed	batch 382 last-line length matched; model not tool-verified grok
+src/components/editor/components/blocks/sub-page/index.ts	reviewed	batch 382 last-line length matched; model not tool-verified grok
+src/components/editor/components/blocks/table/Table.tsx	reviewed	batch 382 last-line length matched; model not tool-verified grok
+src/components/editor/components/blocks/table/TableCell.tsx	reviewed	batch 382 last-line length matched; model not tool-verified grok
+src/components/editor/components/blocks/table/index.ts	reviewed	batch 383 last-line length matched; model not tool-verified grok
+src/components/editor/components/blocks/table/table.scss	reviewed	batch 383 last-line length matched; model not tool-verified grok
+src/components/editor/components/blocks/text/Placeholder.tsx	reviewed	batch 383 last-line length matched; model not tool-verified grok
+src/components/editor/components/blocks/text/StartIcon.hooks.tsx	reviewed	batch 383 last-line length matched; model not tool-verified grok
+src/components/editor/components/blocks/text/Text.tsx	reviewed	batch 383 last-line length matched; model not tool-verified grok
 src/components/editor/components/blocks/text/__tests__/Placeholder.test.tsx	test-fixture	test or fixture path
-src/components/editor/components/blocks/text/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/blocks/todo-list/CheckboxIcon.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/blocks/todo-list/TodoList.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/blocks/todo-list/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/blocks/toggle-list/ToggleIcon.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/blocks/toggle-list/ToggleList.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/blocks/toggle-list/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/blocks/video/VideoBlock.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/blocks/video/VideoEmpty.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/blocks/video/VideoRender.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/blocks/video/VideoToolbar.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/blocks/video/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/drag-drop/handleBlockDrop.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/drag-drop/useBlockDrag.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/drag-drop/useBlockDrop.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/drag-drop/validation.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/element/BlockNotFound.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/element/Element.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/element/UnSupportedBlock.stories.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/element/UnSupportedBlock.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/element/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/find-replace/FindReplaceContext.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/find-replace/FindReplacePanel.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
+src/components/editor/components/blocks/text/index.ts	reviewed	batch 383 last-line length matched; model not tool-verified grok
+src/components/editor/components/blocks/todo-list/CheckboxIcon.tsx	reviewed	batch 383 last-line length matched; model not tool-verified grok
+src/components/editor/components/blocks/todo-list/TodoList.tsx	reviewed	batch 383 last-line length matched; model not tool-verified grok
+src/components/editor/components/blocks/todo-list/index.ts	reviewed	batch 383 last-line length matched; model not tool-verified grok
+src/components/editor/components/blocks/toggle-list/ToggleIcon.tsx	reviewed	batch 383 last-line length matched; model not tool-verified grok
+src/components/editor/components/blocks/toggle-list/ToggleList.tsx	reviewed	batch 383 last-line length matched; model not tool-verified grok
+src/components/editor/components/blocks/toggle-list/index.ts	reviewed	batch 383 last-line length matched; model not tool-verified grok
+src/components/editor/components/blocks/video/VideoBlock.tsx	reviewed	batch 383 last-line length matched; model not tool-verified grok
+src/components/editor/components/blocks/video/VideoEmpty.tsx	reviewed	batch 383 last-line length matched; model not tool-verified grok
+src/components/editor/components/blocks/video/VideoRender.tsx	reviewed	batch 383 last-line length matched; model not tool-verified grok
+src/components/editor/components/blocks/video/VideoToolbar.tsx	reviewed	batch 384 last-line length matched; model not tool-verified grok
+src/components/editor/components/blocks/video/index.ts	reviewed	batch 384 last-line length matched; model not tool-verified grok
+src/components/editor/components/drag-drop/handleBlockDrop.ts	reviewed	batch 384 last-line length matched; model not tool-verified grok
+src/components/editor/components/drag-drop/useBlockDrag.ts	reviewed	batch 384 last-line length matched; model not tool-verified grok
+src/components/editor/components/drag-drop/useBlockDrop.ts	reviewed	batch 384 last-line length matched; model not tool-verified grok
+src/components/editor/components/drag-drop/validation.ts	reviewed	batch 384 last-line length matched; model not tool-verified grok
+src/components/editor/components/element/BlockNotFound.tsx	reviewed	batch 384 last-line length matched; model not tool-verified grok
+src/components/editor/components/element/Element.tsx	reviewed	batch 384 last-line length matched; model not tool-verified grok
+src/components/editor/components/element/UnSupportedBlock.stories.tsx	reviewed	batch 384 last-line length matched; model not tool-verified grok
+src/components/editor/components/element/UnSupportedBlock.tsx	reviewed	batch 384 last-line length matched; model not tool-verified grok
+src/components/editor/components/element/index.ts	reviewed	batch 384 last-line length matched; model not tool-verified grok
+src/components/editor/components/find-replace/FindReplaceContext.tsx	reviewed	batch 384 last-line length matched; model not tool-verified grok
+src/components/editor/components/find-replace/FindReplacePanel.tsx	reviewed	batch 384 last-line length matched; model not tool-verified grok
 src/components/editor/components/find-replace/__tests__/searchUtils.test.ts	test-fixture	test or fixture path
-src/components/editor/components/find-replace/searchUtils.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/editor/components/leaf/InlineChromiumBugfix.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
+src/components/editor/components/find-replace/searchUtils.ts	reviewed	batch 384 last-line length matched; model not tool-verified grok
+src/components/editor/components/leaf/InlineChromiumBugfix.tsx	reviewed	batch 384 last-line length matched; model not tool-verified grok
 src/components/editor/components/leaf/Leaf.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
 src/components/editor/components/leaf/__tests__/Leaf.inlineComment.test.tsx	test-fixture	test or fixture path
 src/components/editor/components/leaf/formula/FormulaLeaf.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
