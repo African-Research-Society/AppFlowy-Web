@@ -1390,21 +1390,21 @@ scripts/generateTailwindColors.cjs	reviewed	batch 299 last-line length matched; 
 scripts/generate_af_icons.cjs	reviewed	batch 299 last-line length matched; model not tool-verified grok
 scripts/i18n.cjs	reviewed	batch 299 last-line length matched; model not tool-verified grok
 scripts/system-token/convert-tokens.cjs	reviewed	batch 299 last-line length matched; model not tool-verified grok
-scripts/system-token/primitive.json	unreviewed	production-relevant until a pass-3 reviewer records it
-scripts/system-token/semantic.dark.json	unreviewed	production-relevant until a pass-3 reviewer records it
-scripts/system-token/semantic.light.json	unreviewed	production-relevant until a pass-3 reviewer records it
-setup-test-environment.sh	unreviewed	production-relevant until a pass-3 reviewer records it
-src/@types/i18next.d.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/@types/resources.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/@types/translations/am-ET.json	unreviewed	production-relevant until a pass-3 reviewer records it
-src/@types/translations/ar-SA.json	unreviewed	production-relevant until a pass-3 reviewer records it
-src/@types/translations/ca-ES.json	unreviewed	production-relevant until a pass-3 reviewer records it
-src/@types/translations/ckb-KU.json	unreviewed	production-relevant until a pass-3 reviewer records it
-src/@types/translations/cs-CZ.json	unreviewed	production-relevant until a pass-3 reviewer records it
-src/@types/translations/de-DE.json	unreviewed	production-relevant until a pass-3 reviewer records it
-src/@types/translations/el-GR.json	unreviewed	production-relevant until a pass-3 reviewer records it
-src/@types/translations/en.json	unreviewed	production-relevant until a pass-3 reviewer records it
-src/@types/translations/es-VE.json	unreviewed	production-relevant until a pass-3 reviewer records it
+scripts/system-token/primitive.json	reviewed	batch 300 last-line length matched; model not tool-verified grok
+scripts/system-token/semantic.dark.json	reviewed	batch 300 last-line length matched; model not tool-verified grok
+scripts/system-token/semantic.light.json	reviewed	batch 300 last-line length matched; model not tool-verified grok
+setup-test-environment.sh	reviewed	batch 300 last-line length matched; model not tool-verified grok
+src/@types/i18next.d.ts	reviewed	batch 300 last-line length matched; model not tool-verified grok
+src/@types/resources.ts	reviewed	batch 300 last-line length matched; model not tool-verified grok
+src/@types/translations/am-ET.json	reviewed	batch 300 last-line length matched; model not tool-verified grok
+src/@types/translations/ar-SA.json	reviewed	batch 300 last-line length matched; model not tool-verified grok
+src/@types/translations/ca-ES.json	reviewed	batch 300 last-line length matched; model not tool-verified grok
+src/@types/translations/ckb-KU.json	reviewed	batch 300 last-line length matched; model not tool-verified grok
+src/@types/translations/cs-CZ.json	reviewed	batch 300 last-line length matched; model not tool-verified grok
+src/@types/translations/de-DE.json	reviewed	batch 300 last-line length matched; model not tool-verified grok
+src/@types/translations/el-GR.json	reviewed	batch 300 last-line length matched; model not tool-verified grok
+src/@types/translations/en.json	reviewed	batch 300 last-line length matched; model not tool-verified grok
+src/@types/translations/es-VE.json	reviewed	batch 300 last-line length matched; model not tool-verified grok
 src/@types/translations/eu-ES.json	unreviewed	production-relevant until a pass-3 reviewer records it
 src/@types/translations/fa.json	unreviewed	production-relevant until a pass-3 reviewer records it
 src/@types/translations/fr-CA.json	unreviewed	production-relevant until a pass-3 reviewer records it
@@ -1555,21 +1555,21 @@ src/application/database-yjs/fields/checklist/index.ts	reviewed	batch 305 last-l
 src/application/database-yjs/fields/checklist/parse.ts	reviewed	batch 305 last-line length matched; model not tool-verified grok
 src/application/database-yjs/fields/date/date.type.ts	reviewed	batch 305 last-line length matched; model not tool-verified grok
 src/application/database-yjs/fields/date/desktop-parse.ts	reviewed	batch 305 last-line length matched; model not tool-verified grok
-src/application/database-yjs/fields/date/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/database-yjs/fields/date/relativeDate.test.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/database-yjs/fields/date/relativeDate.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/database-yjs/fields/date/utils.test.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/database-yjs/fields/date/utils.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/database-yjs/fields/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/database-yjs/fields/media/parse.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/database-yjs/fields/media/utils.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/database-yjs/fields/number/EnhancedBigStats.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/database-yjs/fields/number/format.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/database-yjs/fields/number/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/database-yjs/fields/number/number.type.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/database-yjs/fields/number/parse.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/database-yjs/fields/person/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/database-yjs/fields/person/parse.ts	unreviewed	production-relevant until a pass-3 reviewer records it
+src/application/database-yjs/fields/date/index.ts	reviewed	batch 306 last-line length matched; model not tool-verified grok
+src/application/database-yjs/fields/date/relativeDate.test.ts	reviewed	batch 306 last-line length matched; model not tool-verified grok
+src/application/database-yjs/fields/date/relativeDate.ts	reviewed	batch 306 last-line length matched; model not tool-verified grok
+src/application/database-yjs/fields/date/utils.test.ts	reviewed	batch 306 last-line length matched; model not tool-verified grok
+src/application/database-yjs/fields/date/utils.ts	reviewed	batch 306 last-line length matched; model not tool-verified grok
+src/application/database-yjs/fields/index.ts	reviewed	batch 306 last-line length matched; model not tool-verified grok
+src/application/database-yjs/fields/media/parse.ts	reviewed	batch 306 last-line length matched; model not tool-verified grok
+src/application/database-yjs/fields/media/utils.ts	reviewed	batch 306 last-line length matched; model not tool-verified grok
+src/application/database-yjs/fields/number/EnhancedBigStats.ts	reviewed	batch 306 last-line length matched; model not tool-verified grok
+src/application/database-yjs/fields/number/format.ts	reviewed	batch 306 last-line length matched; model not tool-verified grok
+src/application/database-yjs/fields/number/index.ts	reviewed	batch 306 last-line length matched; model not tool-verified grok
+src/application/database-yjs/fields/number/number.type.ts	reviewed	batch 306 last-line length matched; model not tool-verified grok
+src/application/database-yjs/fields/number/parse.ts	reviewed	batch 306 last-line length matched; model not tool-verified grok
+src/application/database-yjs/fields/person/index.ts	reviewed	batch 306 last-line length matched; model not tool-verified grok
+src/application/database-yjs/fields/person/parse.ts	reviewed	batch 306 last-line length matched; model not tool-verified grok
 src/application/database-yjs/fields/person/person.type.ts	reviewed	batch 307 last-line length matched; model not tool-verified grok
 src/application/database-yjs/fields/relation/index.ts	reviewed	batch 307 last-line length matched; model not tool-verified grok
 src/application/database-yjs/fields/relation/parse.ts	reviewed	batch 307 last-line length matched; model not tool-verified grok
@@ -1585,96 +1585,96 @@ src/application/database-yjs/fields/select-option/select_option.type.ts	reviewed
 src/application/database-yjs/fields/select-option/utils.ts	reviewed	batch 307 last-line length matched; model not tool-verified grok
 src/application/database-yjs/fields/text/index.ts	reviewed	batch 307 last-line length matched; model not tool-verified grok
 src/application/database-yjs/fields/text/text.type.ts	reviewed	batch 307 last-line length matched; model not tool-verified grok
-src/application/database-yjs/fields/text/utils.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/database-yjs/fields/type_option.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/database-yjs/fields/url/url.type.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/database-yjs/filter.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/database-yjs/gallery-layout.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/database-yjs/group-column.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/database-yjs/group.ts	unreviewed	production-relevant until a pass-3 reviewer records it
+src/application/database-yjs/fields/text/utils.ts	reviewed	batch 308 last-line length matched; model not tool-verified grok
+src/application/database-yjs/fields/type_option.ts	reviewed	batch 308 last-line length matched; model not tool-verified grok
+src/application/database-yjs/fields/url/url.type.ts	reviewed	batch 308 last-line length matched; model not tool-verified grok
+src/application/database-yjs/filter.ts	reviewed	batch 308 last-line length matched; model not tool-verified grok
+src/application/database-yjs/gallery-layout.ts	reviewed	batch 308 last-line length matched; model not tool-verified grok
+src/application/database-yjs/group-column.ts	reviewed	batch 308 last-line length matched; model not tool-verified grok
+src/application/database-yjs/group.ts	reviewed	batch 308 last-line length matched; model not tool-verified grok
 src/application/database-yjs/hooks/__tests__/rollupMetadataLoading.test.tsx	test-fixture	test or fixture path
 src/application/database-yjs/hooks/__tests__/useBackgroundRowDocLoader.test.tsx	test-fixture	test or fixture path
-src/application/database-yjs/hooks/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/database-yjs/hooks/useBackgroundRowDocLoader.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/database-yjs/hooks/useRollupFieldObservers.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/database-yjs/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/database-yjs/list-layout.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/database-yjs/migrations/rollup_fieldtype.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/database-yjs/relation/cache.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/database-yjs/relation/cell.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/database-yjs/rollup/cache.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/database-yjs/rollup/utils.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/database-yjs/row-order-visibility.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/database-yjs/row-sync.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/database-yjs/row.hydration.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/database-yjs/row.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/database-yjs/row_comment.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/database-yjs/row_meta.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/database-yjs/selector.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/database-yjs/shared-yjs-observer.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/database-yjs/sort.ts	unreviewed	production-relevant until a pass-3 reviewer records it
+src/application/database-yjs/hooks/index.ts	reviewed	batch 308 last-line length matched; model not tool-verified grok
+src/application/database-yjs/hooks/useBackgroundRowDocLoader.ts	reviewed	batch 308 last-line length matched; model not tool-verified grok
+src/application/database-yjs/hooks/useRollupFieldObservers.ts	reviewed	batch 308 last-line length matched; model not tool-verified grok
+src/application/database-yjs/index.ts	reviewed	batch 308 last-line length matched; model not tool-verified grok
+src/application/database-yjs/list-layout.ts	reviewed	batch 308 last-line length matched; model not tool-verified grok
+src/application/database-yjs/migrations/rollup_fieldtype.ts	reviewed	batch 308 last-line length matched; model not tool-verified grok
+src/application/database-yjs/relation/cache.ts	reviewed	batch 308 last-line length matched; model not tool-verified grok
+src/application/database-yjs/relation/cell.ts	reviewed	batch 308 last-line length matched; model not tool-verified grok
+src/application/database-yjs/rollup/cache.ts	reviewed	batch 309 last-line length matched; model not tool-verified grok
+src/application/database-yjs/rollup/utils.ts	reviewed	batch 309 last-line length matched; model not tool-verified grok
+src/application/database-yjs/row-order-visibility.ts	reviewed	batch 309 last-line length matched; model not tool-verified grok
+src/application/database-yjs/row-sync.ts	reviewed	batch 309 last-line length matched; model not tool-verified grok
+src/application/database-yjs/row.hydration.ts	reviewed	batch 309 last-line length matched; model not tool-verified grok
+src/application/database-yjs/row.ts	reviewed	batch 309 last-line length matched; model not tool-verified grok
+src/application/database-yjs/row_comment.ts	reviewed	batch 309 last-line length matched; model not tool-verified grok
+src/application/database-yjs/row_meta.ts	reviewed	batch 309 last-line length matched; model not tool-verified grok
+src/application/database-yjs/selector.ts	reviewed	batch 309 last-line length matched; model not tool-verified grok
+src/application/database-yjs/shared-yjs-observer.ts	reviewed	batch 309 last-line length matched; model not tool-verified grok
+src/application/database-yjs/sort.ts	reviewed	batch 309 last-line length matched; model not tool-verified grok; main-session skipped a sort whose field is gone
 src/application/database-yjs/template/__tests__/cell.test.ts	test-fixture	test or fixture path
 src/application/database-yjs/template/__tests__/codec.test.ts	test-fixture	test or fixture path
 src/application/database-yjs/template/__tests__/decoration.test.ts	test-fixture	test or fixture path
 src/application/database-yjs/template/__tests__/store.test.ts	test-fixture	test or fixture path
-src/application/database-yjs/template/cell.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/database-yjs/template/codec.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/database-yjs/template/decoration.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/database-yjs/template/hooks.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/database-yjs/template/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/database-yjs/template/store.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/database-yjs/template/types.ts	unreviewed	production-relevant until a pass-3 reviewer records it
+src/application/database-yjs/template/cell.ts	reviewed	batch 309 last-line length matched; model not tool-verified grok
+src/application/database-yjs/template/codec.ts	reviewed	batch 309 last-line length matched; model not tool-verified grok
+src/application/database-yjs/template/decoration.ts	reviewed	batch 309 last-line length matched; model not tool-verified grok
+src/application/database-yjs/template/hooks.ts	reviewed	batch 309 last-line length matched; model not tool-verified grok
+src/application/database-yjs/template/index.ts	reviewed	batch 310 last-line length matched; model not tool-verified grok
+src/application/database-yjs/template/store.ts	reviewed	batch 310 last-line length matched; model not tool-verified grok
+src/application/database-yjs/template/types.ts	reviewed	batch 310 last-line length matched; model not tool-verified grok
 src/application/db/__tests__/index.test.ts	test-fixture	test or fixture path
 src/application/db/__tests__/indexeddb-exists.test.ts	test-fixture	test or fixture path
-src/application/db/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/db/tables/app_view_cache.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/db/tables/collab_storage.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/db/tables/rows.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/db/tables/sync_outbox.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/db/tables/users.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/db/tables/versions.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/db/tables/view_metas.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/db/tables/workspace_database_catalog.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/db/tables/workspace_member_profiles.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/inline-comment.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/publish-snapshot/__fixtures__/published-page-snapshots.ts	unreviewed	production-relevant until a pass-3 reviewer records it
+src/application/db/index.ts	reviewed	batch 310 last-line length matched; model not tool-verified grok
+src/application/db/tables/app_view_cache.ts	reviewed	batch 310 last-line length matched; model not tool-verified grok
+src/application/db/tables/collab_storage.ts	reviewed	batch 310 last-line length matched; model not tool-verified grok
+src/application/db/tables/rows.ts	reviewed	batch 310 last-line length matched; model not tool-verified grok
+src/application/db/tables/sync_outbox.ts	reviewed	batch 310 last-line length matched; model not tool-verified grok
+src/application/db/tables/users.ts	reviewed	batch 310 last-line length matched; model not tool-verified grok
+src/application/db/tables/versions.ts	reviewed	batch 310 last-line length matched; model not tool-verified grok
+src/application/db/tables/view_metas.ts	reviewed	batch 310 last-line length matched; model not tool-verified grok
+src/application/db/tables/workspace_database_catalog.ts	reviewed	batch 310 last-line length matched; model not tool-verified grok
+src/application/db/tables/workspace_member_profiles.ts	reviewed	batch 310 last-line length matched; model not tool-verified grok
+src/application/inline-comment.ts	reviewed	batch 310 last-line length matched; model not tool-verified grok
+src/application/publish-snapshot/__fixtures__/published-page-snapshots.ts	reviewed	batch 310 last-line length matched; model not tool-verified grok
 src/application/publish-snapshot/__tests__/data-source.test.ts	test-fixture	test or fixture path
 src/application/publish-snapshot/__tests__/database-yjs-render-bridge.test.ts	test-fixture	test or fixture path
 src/application/publish-snapshot/__tests__/document-yjs-render-bridge.test.ts	test-fixture	test or fixture path
 src/application/publish-snapshot/__tests__/http-json-adapter.test.ts	test-fixture	test or fixture path
 src/application/publish-snapshot/__tests__/json-api-adapter.test.ts	test-fixture	test or fixture path
-src/application/publish-snapshot/data-source.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/publish-snapshot/database-yjs-render-bridge.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/publish-snapshot/document-yjs-render-bridge.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/publish-snapshot/http-json-adapter.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/publish-snapshot/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/publish-snapshot/json-api-adapter.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/publish-snapshot/normalize.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/publish-snapshot/types.ts	unreviewed	production-relevant until a pass-3 reviewer records it
+src/application/publish-snapshot/data-source.ts	reviewed	batch 311 last-line length matched; model not tool-verified grok
+src/application/publish-snapshot/database-yjs-render-bridge.ts	reviewed	batch 311 last-line length matched; model not tool-verified grok
+src/application/publish-snapshot/document-yjs-render-bridge.ts	reviewed	batch 311 last-line length matched; model not tool-verified grok
+src/application/publish-snapshot/http-json-adapter.ts	reviewed	batch 311 last-line length matched; model not tool-verified grok
+src/application/publish-snapshot/index.ts	reviewed	batch 311 last-line length matched; model not tool-verified grok
+src/application/publish-snapshot/json-api-adapter.ts	reviewed	batch 311 last-line length matched; model not tool-verified grok
+src/application/publish-snapshot/normalize.ts	reviewed	batch 311 last-line length matched; model not tool-verified grok
+src/application/publish-snapshot/types.ts	reviewed	batch 311 last-line length matched; model not tool-verified grok
 src/application/publish/__tests__/context.test.tsx	test-fixture	test or fixture path
-src/application/publish/context.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/publish/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/row-comment.type.ts	unreviewed	production-relevant until a pass-3 reviewer records it
+src/application/publish/context.tsx	reviewed	batch 311 last-line length matched; model not tool-verified grok
+src/application/publish/index.ts	reviewed	batch 311 last-line length matched; model not tool-verified grok
+src/application/row-comment.type.ts	reviewed	batch 311 last-line length matched; model not tool-verified grok
 src/application/row-document/__tests__/lifecycle.test.ts	test-fixture	test or fixture path
-src/application/row-document/lifecycle.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/row-document/row-page-state.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/services/domains/access.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/services/domains/ai.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/services/domains/auth.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/services/domains/billing.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/services/domains/collab.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/services/domains/export.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/services/domains/file.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/services/domains/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/services/domains/inline-comment.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/services/domains/notification.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/services/domains/page.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/services/domains/publish.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/services/domains/quick-note.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/services/domains/row.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/services/domains/search.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/services/domains/template.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/services/domains/user.ts	unreviewed	production-relevant until a pass-3 reviewer records it
+src/application/row-document/lifecycle.ts	reviewed	batch 311 last-line length matched; model not tool-verified grok
+src/application/row-document/row-page-state.ts	reviewed	batch 311 last-line length matched; model not tool-verified grok
+src/application/services/domains/access.ts	reviewed	batch 311 last-line length matched; model not tool-verified grok
+src/application/services/domains/ai.ts	reviewed	batch 311 last-line length matched; model not tool-verified grok
+src/application/services/domains/auth.ts	reviewed	batch 312 last-line length matched; model not tool-verified grok
+src/application/services/domains/billing.ts	reviewed	batch 312 last-line length matched; model not tool-verified grok
+src/application/services/domains/collab.ts	reviewed	batch 312 last-line length matched; model not tool-verified grok
+src/application/services/domains/export.ts	reviewed	batch 312 last-line length matched; model not tool-verified grok
+src/application/services/domains/file.ts	reviewed	batch 312 last-line length matched; model not tool-verified grok
+src/application/services/domains/index.ts	reviewed	batch 312 last-line length matched; model not tool-verified grok
+src/application/services/domains/inline-comment.ts	reviewed	batch 312 last-line length matched; model not tool-verified grok
+src/application/services/domains/notification.ts	reviewed	batch 312 last-line length matched; model not tool-verified grok
+src/application/services/domains/page.ts	reviewed	batch 312 last-line length matched; model not tool-verified grok
+src/application/services/domains/publish.ts	reviewed	batch 312 last-line length matched; model not tool-verified grok
+src/application/services/domains/quick-note.ts	reviewed	batch 312 last-line length matched; model not tool-verified grok
+src/application/services/domains/row.ts	reviewed	batch 312 last-line length matched; model not tool-verified grok
+src/application/services/domains/search.ts	reviewed	batch 312 last-line length matched; model not tool-verified grok
+src/application/services/domains/template.ts	reviewed	batch 312 last-line length matched; model not tool-verified grok
+src/application/services/domains/user.ts	reviewed	batch 312 last-line length matched; model not tool-verified grok
 src/application/services/domains/view.ts	unreviewed	production-relevant until a pass-3 reviewer records it
 src/application/services/domains/workspace.ts	unreviewed	production-relevant until a pass-3 reviewer records it
 src/application/services/js-services/__tests__/cached-api.app-trash-cache.test.ts	test-fixture	test or fixture path
