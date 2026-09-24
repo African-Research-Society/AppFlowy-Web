@@ -89,7 +89,7 @@ export function processUrl(input: string) {
     return processedUrl;
   }
 
-  if (input.startsWith('http')) {
+  if (/^https?:\/\//i.test(input)) {
     return processedUrl;
   }
 

@@ -116,7 +116,7 @@ function FileMediaMore({
         icon: React.ReactNode;
         onSelect: () => void;
       }[],
-    [file, onPreview, t, updateRowMeta]
+    [file, onPreview, t, updateRowMeta, workspaceId, databasePageId]
   );
 
   return (
