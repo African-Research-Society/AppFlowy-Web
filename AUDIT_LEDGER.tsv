@@ -1405,21 +1405,21 @@ src/@types/translations/de-DE.json	reviewed	batch 300 last-line length matched; 
 src/@types/translations/el-GR.json	reviewed	batch 300 last-line length matched; model not tool-verified grok
 src/@types/translations/en.json	reviewed	batch 300 last-line length matched; model not tool-verified grok
 src/@types/translations/es-VE.json	reviewed	batch 300 last-line length matched; model not tool-verified grok
-src/@types/translations/eu-ES.json	unreviewed	production-relevant until a pass-3 reviewer records it
-src/@types/translations/fa.json	unreviewed	production-relevant until a pass-3 reviewer records it
-src/@types/translations/fr-CA.json	unreviewed	production-relevant until a pass-3 reviewer records it
-src/@types/translations/fr-FR.json	unreviewed	production-relevant until a pass-3 reviewer records it
-src/@types/translations/he.json	unreviewed	production-relevant until a pass-3 reviewer records it
-src/@types/translations/hin.json	unreviewed	production-relevant until a pass-3 reviewer records it
-src/@types/translations/hu-HU.json	unreviewed	production-relevant until a pass-3 reviewer records it
-src/@types/translations/id-ID.json	unreviewed	production-relevant until a pass-3 reviewer records it
-src/@types/translations/it-IT.json	unreviewed	production-relevant until a pass-3 reviewer records it
-src/@types/translations/ja-JP.json	unreviewed	production-relevant until a pass-3 reviewer records it
-src/@types/translations/ko-KR.json	unreviewed	production-relevant until a pass-3 reviewer records it
-src/@types/translations/pl-PL.json	unreviewed	production-relevant until a pass-3 reviewer records it
-src/@types/translations/pt-BR.json	unreviewed	production-relevant until a pass-3 reviewer records it
-src/@types/translations/pt-PT.json	unreviewed	production-relevant until a pass-3 reviewer records it
-src/@types/translations/ru-RU.json	unreviewed	production-relevant until a pass-3 reviewer records it
+src/@types/translations/eu-ES.json	reviewed	batch 301 last-line length matched; model not tool-verified grok
+src/@types/translations/fa.json	reviewed	batch 301 last-line length matched; model not tool-verified grok
+src/@types/translations/fr-CA.json	reviewed	batch 301 last-line length matched; model not tool-verified grok
+src/@types/translations/fr-FR.json	reviewed	batch 301 last-line length matched; model not tool-verified grok
+src/@types/translations/he.json	reviewed	batch 301 last-line length matched; model not tool-verified grok
+src/@types/translations/hin.json	reviewed	batch 301 last-line length matched; model not tool-verified grok
+src/@types/translations/hu-HU.json	reviewed	batch 301 last-line length matched; model not tool-verified grok
+src/@types/translations/id-ID.json	reviewed	batch 301 last-line length matched; model not tool-verified grok
+src/@types/translations/it-IT.json	reviewed	batch 301 last-line length matched; model not tool-verified grok
+src/@types/translations/ja-JP.json	reviewed	batch 301 last-line length matched; model not tool-verified grok
+src/@types/translations/ko-KR.json	reviewed	batch 301 last-line length matched; model not tool-verified grok
+src/@types/translations/pl-PL.json	reviewed	batch 301 last-line length matched; model not tool-verified grok
+src/@types/translations/pt-BR.json	reviewed	batch 301 last-line length matched; model not tool-verified grok
+src/@types/translations/pt-PT.json	reviewed	batch 301 last-line length matched; model not tool-verified grok
+src/@types/translations/ru-RU.json	reviewed	batch 301 last-line length matched; model not tool-verified grok
 src/@types/translations/sv-SE.json	reviewed	batch 302 last-line length matched; model not tool-verified grok
 src/@types/translations/th-TH.json	reviewed	batch 302 last-line length matched; model not tool-verified grok
 src/@types/translations/tr-TR.json	reviewed	batch 302 last-line length matched; model not tool-verified grok
@@ -1675,8 +1675,8 @@ src/application/services/domains/row.ts	reviewed	batch 312 last-line length matc
 src/application/services/domains/search.ts	reviewed	batch 312 last-line length matched; model not tool-verified grok
 src/application/services/domains/template.ts	reviewed	batch 312 last-line length matched; model not tool-verified grok
 src/application/services/domains/user.ts	reviewed	batch 312 last-line length matched; model not tool-verified grok
-src/application/services/domains/view.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/services/domains/workspace.ts	unreviewed	production-relevant until a pass-3 reviewer records it
+src/application/services/domains/view.ts	reviewed	batch 313 last-line length matched; model not tool-verified grok
+src/application/services/domains/workspace.ts	reviewed	batch 313 last-line length matched; model not tool-verified grok
 src/application/services/js-services/__tests__/cached-api.app-trash-cache.test.ts	test-fixture	test or fixture path
 src/application/services/js-services/__tests__/cached-api.app-view-cache.test.ts	test-fixture	test or fixture path
 src/application/services/js-services/__tests__/fetch.test.ts	test-fixture	test or fixture path
@@ -1685,12 +1685,12 @@ src/application/services/js-services/__tests__/sync.test.ts	test-fixture	test or
 src/application/services/js-services/__tests__/workspace-database-catalog.test.ts	test-fixture	test or fixture path
 src/application/services/js-services/__tests__/workspace-view-metadata.test.ts	test-fixture	test or fixture path
 src/application/services/js-services/cache/__tests__/cache.test.ts	test-fixture	test or fixture path
-src/application/services/js-services/cache/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/services/js-services/cache/types.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/services/js-services/cached-api.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/services/js-services/device-id.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/services/js-services/fetch.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/services/js-services/history.ts	unreviewed	production-relevant until a pass-3 reviewer records it
+src/application/services/js-services/cache/index.ts	reviewed	batch 313 last-line length matched; model not tool-verified grok
+src/application/services/js-services/cache/types.ts	reviewed	batch 313 last-line length matched; model not tool-verified grok
+src/application/services/js-services/cached-api.ts	reviewed	batch 313 last-line length matched; model not tool-verified grok
+src/application/services/js-services/device-id.ts	reviewed	batch 313 last-line length matched; model not tool-verified grok
+src/application/services/js-services/fetch.ts	reviewed	batch 313 last-line length matched; model not tool-verified grok
+src/application/services/js-services/history.ts	reviewed	batch 313 last-line length matched; model not tool-verified grok
 src/application/services/js-services/http/__tests__/auth.integration.test.ts	test-fixture	test or fixture path
 src/application/services/js-services/http/__tests__/collab-api.test.ts	test-fixture	test or fixture path
 src/application/services/js-services/http/__tests__/collab.integration.test.ts	test-fixture	test or fixture path
@@ -1714,13 +1714,13 @@ src/application/services/js-services/http/__tests__/user-profile.integration.tes
 src/application/services/js-services/http/__tests__/view-api.test.ts	test-fixture	test or fixture path
 src/application/services/js-services/http/__tests__/view.integration.test.ts	test-fixture	test or fixture path
 src/application/services/js-services/http/__tests__/workspace.integration.test.ts	test-fixture	test or fixture path
-src/application/services/js-services/http/access-api.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/services/js-services/http/auth-api.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/services/js-services/http/billing-api.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/services/js-services/http/cloud-auth.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/services/js-services/http/collab-api.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/services/js-services/http/core.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/services/js-services/http/export-api.ts	unreviewed	production-relevant until a pass-3 reviewer records it
+src/application/services/js-services/http/access-api.ts	reviewed	batch 313 last-line length matched; model not tool-verified grok
+src/application/services/js-services/http/auth-api.ts	reviewed	batch 313 last-line length matched; model not tool-verified grok
+src/application/services/js-services/http/billing-api.ts	reviewed	batch 313 last-line length matched; model not tool-verified grok
+src/application/services/js-services/http/cloud-auth.ts	reviewed	batch 313 last-line length matched; model not tool-verified grok
+src/application/services/js-services/http/collab-api.ts	reviewed	batch 313 last-line length matched; model not tool-verified grok
+src/application/services/js-services/http/core.ts	reviewed	batch 313 last-line length matched; model not tool-verified grok
+src/application/services/js-services/http/export-api.ts	reviewed	batch 313 last-line length matched; model not tool-verified grok
 src/application/services/js-services/http/file-api.ts	unreviewed	production-relevant until a pass-3 reviewer records it
 src/application/services/js-services/http/gotrue-error.ts	unreviewed	production-relevant until a pass-3 reviewer records it
 src/application/services/js-services/http/gotrue.ts	unreviewed	production-relevant until a pass-3 reviewer records it
@@ -1736,21 +1736,21 @@ src/application/services/js-services/http/notification-api.ts	unreviewed	product
 src/application/services/js-services/http/page-api.ts	unreviewed	production-relevant until a pass-3 reviewer records it
 src/application/services/js-services/http/publish-api.ts	unreviewed	production-relevant until a pass-3 reviewer records it
 src/application/services/js-services/http/template-api.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/services/js-services/http/user-api.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/services/js-services/http/utils.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/services/js-services/http/view-api.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/services/js-services/http/workspace-api.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/services/js-services/publish-database-data.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/services/js-services/sync-protocol.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/services/js-services/workspace-database-catalog.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/services/js-services/workspace-view-metadata.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/services/services.type.ts	unreviewed	production-relevant until a pass-3 reviewer records it
+src/application/services/js-services/http/user-api.ts	reviewed	batch 315 last-line length matched; model not tool-verified grok
+src/application/services/js-services/http/utils.ts	reviewed	batch 315 last-line length matched; model not tool-verified grok
+src/application/services/js-services/http/view-api.ts	reviewed	batch 315 last-line length matched; model not tool-verified grok
+src/application/services/js-services/http/workspace-api.ts	reviewed	batch 315 last-line length matched; model not tool-verified grok
+src/application/services/js-services/publish-database-data.ts	reviewed	batch 315 last-line length matched; model not tool-verified grok
+src/application/services/js-services/sync-protocol.ts	reviewed	batch 315 last-line length matched; model not tool-verified grok
+src/application/services/js-services/workspace-database-catalog.ts	reviewed	batch 315 last-line length matched; model not tool-verified grok
+src/application/services/js-services/workspace-view-metadata.ts	reviewed	batch 315 last-line length matched; model not tool-verified grok
+src/application/services/services.type.ts	reviewed	batch 315 last-line length matched; model not tool-verified grok
 src/application/session/__tests__/sign_in.test.ts	test-fixture	test or fixture path
 src/application/session/__tests__/token.test.ts	test-fixture	test or fixture path
-src/application/session/event.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/session/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/session/sign_in.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/session/token.ts	unreviewed	production-relevant until a pass-3 reviewer records it
+src/application/session/event.ts	reviewed	batch 315 last-line length matched; model not tool-verified grok
+src/application/session/index.ts	reviewed	batch 315 last-line length matched; model not tool-verified grok
+src/application/session/sign_in.ts	reviewed	batch 315 last-line length matched; model not tool-verified grok
+src/application/session/token.ts	reviewed	batch 315 last-line length matched; model not tool-verified grok
 src/application/slate-yjs/__tests__/applyRemoteEvents.ts	test-fixture	test or fixture path
 src/application/slate-yjs/__tests__/applyToSlate.test.ts	test-fixture	test or fixture path
 src/application/slate-yjs/__tests__/command.test.ts	test-fixture	test or fixture path
@@ -1762,23 +1762,23 @@ src/application/slate-yjs/__tests__/transformSelection.test.ts	test-fixture	test
 src/application/slate-yjs/__tests__/withTestingYjsEditor.ts	test-fixture	test or fixture path
 src/application/slate-yjs/__tests__/withYjs.selection.test.ts	test-fixture	test or fixture path
 src/application/slate-yjs/__tests__/yjs-utils.test.ts	test-fixture	test or fixture path
-src/application/slate-yjs/command/const.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/slate-yjs/command/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/slate-yjs/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/slate-yjs/plugins/withHistory.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/slate-yjs/plugins/withYjs.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/slate-yjs/types.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/slate-yjs/utils/applyTextToSlate.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/slate-yjs/utils/applyToSlate.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/slate-yjs/utils/applyToYjs.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/slate-yjs/utils/convert.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/slate-yjs/utils/editor.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/slate-yjs/utils/positions.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/slate-yjs/utils/simple-table-attributes.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/slate-yjs/utils/simple-table-operations.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/slate-yjs/utils/table.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/slate-yjs/utils/transformSelection.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/slate-yjs/utils/yjs.ts	unreviewed	production-relevant until a pass-3 reviewer records it
+src/application/slate-yjs/command/const.ts	reviewed	batch 315 last-line length matched; model not tool-verified grok
+src/application/slate-yjs/command/index.ts	reviewed	batch 315 last-line length matched; model not tool-verified grok
+src/application/slate-yjs/index.ts	reviewed	batch 316 last-line length matched; model not tool-verified grok
+src/application/slate-yjs/plugins/withHistory.ts	reviewed	batch 316 last-line length matched; model not tool-verified grok
+src/application/slate-yjs/plugins/withYjs.ts	reviewed	batch 316 last-line length matched; model not tool-verified grok
+src/application/slate-yjs/types.ts	reviewed	batch 316 last-line length matched; model not tool-verified grok
+src/application/slate-yjs/utils/applyTextToSlate.ts	reviewed	batch 316 last-line length matched; model not tool-verified grok
+src/application/slate-yjs/utils/applyToSlate.ts	reviewed	batch 316 last-line length matched; model not tool-verified grok
+src/application/slate-yjs/utils/applyToYjs.ts	reviewed	batch 316 last-line length matched; model not tool-verified grok
+src/application/slate-yjs/utils/convert.ts	reviewed	batch 316 last-line length matched; model not tool-verified grok
+src/application/slate-yjs/utils/editor.ts	reviewed	batch 316 last-line length matched; model not tool-verified grok
+src/application/slate-yjs/utils/positions.ts	reviewed	batch 316 last-line length matched; model not tool-verified grok
+src/application/slate-yjs/utils/simple-table-attributes.ts	reviewed	batch 316 last-line length matched; model not tool-verified grok
+src/application/slate-yjs/utils/simple-table-operations.ts	reviewed	batch 316 last-line length matched; model not tool-verified grok
+src/application/slate-yjs/utils/table.ts	reviewed	batch 316 last-line length matched; model not tool-verified grok
+src/application/slate-yjs/utils/transformSelection.ts	reviewed	batch 316 last-line length matched; model not tool-verified grok
+src/application/slate-yjs/utils/yjs.ts	reviewed	batch 316 last-line length matched; model not tool-verified grok
 src/application/sync-outbox/__tests__/sync-outbox.test.ts	test-fixture	test or fixture path
 src/application/sync-outbox/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
 src/application/template.type.ts	unreviewed	production-relevant until a pass-3 reviewer records it
@@ -2104,36 +2104,36 @@ src/components/_shared/emoji-picker/EmojiItem.tsx	unreviewed	production-relevant
 src/components/_shared/emoji-picker/EmojiPicker.hooks.ts	unreviewed	production-relevant until a pass-3 reviewer records it
 src/components/_shared/emoji-picker/EmojiPicker.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
 src/components/_shared/emoji-picker/EmojiPickerCategories.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/emoji-picker/EmojiPickerHeader.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/emoji-picker/EmojisVirtualizer.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/emoji-picker/SwitchSkin.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/emoji-picker/const.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/emoji-picker/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/file-dropzone/FileDropzone.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/gallery-preview/GalleryPreview.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/gallery-preview/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/gallery-preview/preview.scss	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/helmet/ViewHelmet.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/help/Help.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/help/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/hooks/useAuthenticatedImage.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/icon-picker/IconItem.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/icon-picker/IconPicker.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/icon-picker/IconsVirtualizer.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/icon-picker/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/image-render/ImageRender.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/image-upload/EmbedLink.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/image-upload/Unsplash.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/image-upload/UploadImage.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/image-upload/UploadPopover.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/image-upload/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/katex-math/KatexMath.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/katex-math/index.css	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/katex-math/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/keyboard_navigation/KeyboardNavigation.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/keyboard_navigation/utils.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/landing-page/ErrorPage.stories.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/landing-page/ErrorPage.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
+src/components/_shared/emoji-picker/EmojiPickerHeader.tsx	reviewed	batch 319 last-line length matched; model not tool-verified grok
+src/components/_shared/emoji-picker/EmojisVirtualizer.tsx	reviewed	batch 319 last-line length matched; model not tool-verified grok
+src/components/_shared/emoji-picker/SwitchSkin.tsx	reviewed	batch 319 last-line length matched; model not tool-verified grok
+src/components/_shared/emoji-picker/const.ts	reviewed	batch 319 last-line length matched; model not tool-verified grok
+src/components/_shared/emoji-picker/index.ts	reviewed	batch 319 last-line length matched; model not tool-verified grok
+src/components/_shared/file-dropzone/FileDropzone.tsx	reviewed	batch 319 last-line length matched; model not tool-verified grok; main-session matched image/* and extensions on drop and picker
+src/components/_shared/gallery-preview/GalleryPreview.tsx	reviewed	batch 319 last-line length matched; model not tool-verified grok
+src/components/_shared/gallery-preview/index.ts	reviewed	batch 319 last-line length matched; model not tool-verified grok
+src/components/_shared/gallery-preview/preview.scss	reviewed	batch 319 last-line length matched; model not tool-verified grok
+src/components/_shared/helmet/ViewHelmet.tsx	reviewed	batch 319 last-line length matched; model not tool-verified grok
+src/components/_shared/help/Help.tsx	reviewed	batch 319 last-line length matched; model not tool-verified grok
+src/components/_shared/help/index.ts	reviewed	batch 319 last-line length matched; model not tool-verified grok
+src/components/_shared/hooks/useAuthenticatedImage.ts	reviewed	batch 319 last-line length matched; model not tool-verified grok
+src/components/_shared/icon-picker/IconItem.tsx	reviewed	batch 319 last-line length matched; model not tool-verified grok
+src/components/_shared/icon-picker/IconPicker.tsx	reviewed	batch 319 last-line length matched; model not tool-verified grok
+src/components/_shared/icon-picker/IconsVirtualizer.tsx	reviewed	batch 320 last-line length matched; model not tool-verified grok
+src/components/_shared/icon-picker/index.ts	reviewed	batch 320 last-line length matched; model not tool-verified grok
+src/components/_shared/image-render/ImageRender.tsx	reviewed	batch 320 last-line length matched; model not tool-verified grok
+src/components/_shared/image-upload/EmbedLink.tsx	reviewed	batch 320 last-line length matched; model not tool-verified grok
+src/components/_shared/image-upload/Unsplash.tsx	reviewed	batch 320 last-line length matched; model not tool-verified grok
+src/components/_shared/image-upload/UploadImage.tsx	reviewed	batch 320 last-line length matched; model not tool-verified grok
+src/components/_shared/image-upload/UploadPopover.tsx	reviewed	batch 320 last-line length matched; model not tool-verified grok
+src/components/_shared/image-upload/index.ts	reviewed	batch 320 last-line length matched; model not tool-verified grok
+src/components/_shared/katex-math/KatexMath.tsx	reviewed	batch 320 last-line length matched; model not tool-verified grok
+src/components/_shared/katex-math/index.css	reviewed	batch 320 last-line length matched; model not tool-verified grok
+src/components/_shared/katex-math/index.ts	reviewed	batch 320 last-line length matched; model not tool-verified grok
+src/components/_shared/keyboard_navigation/KeyboardNavigation.tsx	reviewed	batch 320 last-line length matched; model not tool-verified grok
+src/components/_shared/keyboard_navigation/utils.ts	reviewed	batch 320 last-line length matched; model not tool-verified grok
+src/components/_shared/landing-page/ErrorPage.stories.tsx	reviewed	batch 320 last-line length matched; model not tool-verified grok
+src/components/_shared/landing-page/ErrorPage.tsx	reviewed	batch 320 last-line length matched; model not tool-verified grok
 src/components/_shared/landing-page/InvalidLink.stories.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
 src/components/_shared/landing-page/InvalidLink.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
 src/components/_shared/landing-page/LandingFooter.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
