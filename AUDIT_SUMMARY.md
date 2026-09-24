@@ -101,3 +101,7 @@ Read sign-in and both nginx configs. Not built.
 - ARS commits: 3, all read.
 - Upstream editor: not line-reviewed; named exclusion.
 - Code fixes: 0.
+
+## Pass 3 — stopped before completion
+
+Web ledger unreviewed is 0 of 3654 rows. That is wave-1 file coverage, not a finished audit. Local unpushed fixes include http(s) URL gates, escaped table selectors, PDF open allowlist, import redirects kept on this origin, escaped textarea mirror text, and a quick-note list that no longer overwrites a note created while the list was loading. Mermaid loose render and the Google Drive raw URL fallback were left. Jest is not installed in this checkout, so the new URL checks were not executed. Waves 2 and 3 were not run.
