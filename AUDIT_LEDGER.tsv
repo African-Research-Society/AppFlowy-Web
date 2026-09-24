@@ -3530,79 +3530,79 @@ src/components/ui/dropdown-menu.tsx	reviewed	batch 399 last-line length matched;
 src/components/ui/input.tsx	reviewed	batch 399 last-line length matched; model not tool-verified grok
 src/components/ui/label.tsx	reviewed	batch 399 last-line length matched; model not tool-verified grok
 src/components/ui/password-input.tsx	reviewed	batch 399 last-line length matched; model not tool-verified grok
-src/components/ui/popover.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/ui/progress.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/ui/search-input.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/ui/separator.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/ui/sonner.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/ui/switch.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/ui/tabs.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/ui/textarea-autosize.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/ui/tooltip.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/view-meta/AddIconCover.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/view-meta/CoverColors.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/view-meta/CoverPopover.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/view-meta/TitleEditable.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/view-meta/ViewCover.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/view-meta/ViewCoverActions.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/view-meta/ViewMetaPreview.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
+src/components/ui/popover.tsx	reviewed	batch 400 last-line length matched; model not tool-verified grok
+src/components/ui/progress.tsx	reviewed	batch 400 last-line length matched; model not tool-verified grok
+src/components/ui/search-input.tsx	reviewed	batch 400 last-line length matched; model not tool-verified grok
+src/components/ui/separator.tsx	reviewed	batch 400 last-line length matched; model not tool-verified grok
+src/components/ui/sonner.tsx	reviewed	batch 400 last-line length matched; model not tool-verified grok
+src/components/ui/switch.tsx	reviewed	batch 400 last-line length matched; model not tool-verified grok
+src/components/ui/tabs.tsx	reviewed	batch 400 last-line length matched; model not tool-verified grok
+src/components/ui/textarea-autosize.tsx	reviewed	batch 400 last-line length matched; model not tool-verified grok; main-session escapes textarea mirror text before innerHTML
+src/components/ui/tooltip.tsx	reviewed	batch 400 last-line length matched; model not tool-verified grok
+src/components/view-meta/AddIconCover.tsx	reviewed	batch 400 last-line length matched; model not tool-verified grok
+src/components/view-meta/CoverColors.tsx	reviewed	batch 400 last-line length matched; model not tool-verified grok
+src/components/view-meta/CoverPopover.tsx	reviewed	batch 400 last-line length matched; model not tool-verified grok
+src/components/view-meta/TitleEditable.tsx	reviewed	batch 400 last-line length matched; model not tool-verified grok
+src/components/view-meta/ViewCover.tsx	reviewed	batch 400 last-line length matched; model not tool-verified grok
+src/components/view-meta/ViewCoverActions.tsx	reviewed	batch 400 last-line length matched; model not tool-verified grok
+src/components/view-meta/ViewMetaPreview.tsx	reviewed	batch 401 last-line length matched; model not tool-verified grok
 src/components/view-meta/__tests__/TitleEditable.test.tsx	test-fixture	test or fixture path
-src/components/view-meta/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
+src/components/view-meta/index.ts	reviewed	batch 401 last-line length matched; model not tool-verified grok
 src/components/ws/__tests__/useAppflowyWebSocket.test.ts	test-fixture	test or fixture path
 src/components/ws/__tests__/useBroadcastChannel.test.ts	test-fixture	test or fixture path
 src/components/ws/__tests__/useSync.test.ts	test-fixture	test or fixture path
 src/components/ws/__tests__/useWorkspaceRealtimeTransport.test.ts	test-fixture	test or fixture path
 src/components/ws/__tests__/useWorkspaceWebSocketLeader.test.ts	test-fixture	test or fixture path
-src/components/ws/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/ws/sync/rebuildCollabDoc.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/ws/sync/replayQueuedMessages.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/ws/sync/syncRefs.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/ws/sync/types.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/ws/sync/useBatchSync.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/ws/sync/useCollabMessageHandler.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/ws/sync/useCollabVersionRevert.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/ws/sync/useSyncContextLifecycle.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/ws/sync/useWorkspaceNotifications.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/ws/useAppflowyWebSocket.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/ws/useBroadcastChannel.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/ws/useSync.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/ws/useWorkspaceRealtimeTransport.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/ws/useWorkspaceWebSocketLeader.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/config/vite-dependencies.test.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/i18n/config.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/lib/utils.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/main.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/pages/AcceptInvitationPage.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/pages/AfterPaymentPage.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/pages/AppPage.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/pages/AsTemplatePage.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/pages/ImportPage.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/pages/LoginPage.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/pages/PublishPage.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/pages/TrashPage.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
+src/components/ws/index.ts	reviewed	batch 401 last-line length matched; model not tool-verified grok
+src/components/ws/sync/rebuildCollabDoc.ts	reviewed	batch 401 last-line length matched; model not tool-verified grok
+src/components/ws/sync/replayQueuedMessages.ts	reviewed	batch 401 last-line length matched; model not tool-verified grok
+src/components/ws/sync/syncRefs.ts	reviewed	batch 401 last-line length matched; model not tool-verified grok
+src/components/ws/sync/types.ts	reviewed	batch 401 last-line length matched; model not tool-verified grok
+src/components/ws/sync/useBatchSync.ts	reviewed	batch 401 last-line length matched; model not tool-verified grok
+src/components/ws/sync/useCollabMessageHandler.ts	reviewed	batch 401 last-line length matched; model not tool-verified grok
+src/components/ws/sync/useCollabVersionRevert.ts	reviewed	batch 401 last-line length matched; model not tool-verified grok
+src/components/ws/sync/useSyncContextLifecycle.ts	reviewed	batch 401 last-line length matched; model not tool-verified grok
+src/components/ws/sync/useWorkspaceNotifications.ts	reviewed	batch 401 last-line length matched; model not tool-verified grok
+src/components/ws/useAppflowyWebSocket.ts	reviewed	batch 401 last-line length matched; model not tool-verified grok
+src/components/ws/useBroadcastChannel.ts	reviewed	batch 401 last-line length matched; model not tool-verified grok
+src/components/ws/useSync.ts	reviewed	batch 401 last-line length matched; model not tool-verified grok
+src/components/ws/useWorkspaceRealtimeTransport.ts	reviewed	batch 402 last-line length matched; model not tool-verified grok
+src/components/ws/useWorkspaceWebSocketLeader.ts	reviewed	batch 402 last-line length matched; model not tool-verified grok
+src/config/vite-dependencies.test.ts	reviewed	batch 402 last-line length matched; model not tool-verified grok
+src/i18n/config.ts	reviewed	batch 402 last-line length matched; model not tool-verified grok
+src/lib/utils.ts	reviewed	batch 402 last-line length matched; model not tool-verified grok
+src/main.tsx	reviewed	batch 402 last-line length matched; model not tool-verified grok
+src/pages/AcceptInvitationPage.tsx	reviewed	batch 402 last-line length matched; model not tool-verified grok
+src/pages/AfterPaymentPage.tsx	reviewed	batch 402 last-line length matched; model not tool-verified grok
+src/pages/AppPage.tsx	reviewed	batch 402 last-line length matched; model not tool-verified grok
+src/pages/AsTemplatePage.tsx	reviewed	batch 402 last-line length matched; model not tool-verified grok
+src/pages/ImportPage.tsx	reviewed	batch 402 last-line length matched; model not tool-verified grok; main-session only follows a same-origin import redirect
+src/pages/LoginPage.tsx	reviewed	batch 402 last-line length matched; model not tool-verified grok
+src/pages/PublishPage.tsx	reviewed	batch 402 last-line length matched; model not tool-verified grok
+src/pages/TrashPage.tsx	reviewed	batch 402 last-line length matched; model not tool-verified grok
 src/pages/__tests__/AppPage.databaseContainer.test.tsx	test-fixture	test or fixture path
 src/pages/__tests__/DatabaseView.databaseContainer.test.tsx	test-fixture	test or fixture path
 src/pages/__tests__/TrashPage.rowLifecycle.test.tsx	test-fixture	test or fixture path
 src/proto/README.md	doc	readme
-src/proto/collab.proto	unreviewed	production-relevant until a pass-3 reviewer records it
-src/proto/database_blob.d.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/proto/database_blob.js	unreviewed	production-relevant until a pass-3 reviewer records it
-src/proto/database_blob.proto	unreviewed	production-relevant until a pass-3 reviewer records it
-src/proto/messages.d.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/proto/messages.js	unreviewed	production-relevant until a pass-3 reviewer records it
-src/proto/messages.proto	unreviewed	production-relevant until a pass-3 reviewer records it
-src/proto/notification.proto	unreviewed	production-relevant until a pass-3 reviewer records it
-src/shims/protobufjs-inquire.cjs	unreviewed	production-relevant until a pass-3 reviewer records it
-src/slate-editor.d.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/styles/app.scss	unreviewed	production-relevant until a pass-3 reviewer records it
-src/styles/global.css	unreviewed	production-relevant until a pass-3 reviewer records it
-src/styles/mixin.scss	unreviewed	production-relevant until a pass-3 reviewer records it
-src/styles/tailwind.css	unreviewed	production-relevant until a pass-3 reviewer records it
-src/styles/template.css	unreviewed	production-relevant until a pass-3 reviewer records it
-src/styles/variables/dark.variables.css	unreviewed	production-relevant until a pass-3 reviewer records it
-src/styles/variables/light.variables.css	unreviewed	production-relevant until a pass-3 reviewer records it
-src/styles/variables/semantic.dark.css	unreviewed	production-relevant until a pass-3 reviewer records it
-src/styles/variables/semantic.light.css	unreviewed	production-relevant until a pass-3 reviewer records it
+src/proto/collab.proto	reviewed	batch 402 last-line length matched; model not tool-verified grok
+src/proto/database_blob.d.ts	reviewed	batch 403 last-line length matched; model not tool-verified grok
+src/proto/database_blob.js	reviewed	batch 403 last-line length matched; model not tool-verified grok
+src/proto/database_blob.proto	reviewed	batch 403 last-line length matched; model not tool-verified grok
+src/proto/messages.d.ts	reviewed	batch 403 last-line length matched; model not tool-verified grok
+src/proto/messages.js	reviewed	batch 403 last-line length matched; model not tool-verified grok
+src/proto/messages.proto	reviewed	batch 403 last-line length matched; model not tool-verified grok
+src/proto/notification.proto	reviewed	batch 403 last-line length matched; model not tool-verified grok
+src/shims/protobufjs-inquire.cjs	reviewed	batch 403 last-line length matched; model not tool-verified grok
+src/slate-editor.d.ts	reviewed	batch 403 last-line length matched; model not tool-verified grok
+src/styles/app.scss	reviewed	batch 403 last-line length matched; model not tool-verified grok; main-session uses an empty tooltip arrow
+src/styles/global.css	reviewed	batch 403 last-line length matched; model not tool-verified grok
+src/styles/mixin.scss	reviewed	batch 403 last-line length matched; model not tool-verified grok
+src/styles/tailwind.css	reviewed	batch 403 last-line length matched; model not tool-verified grok
+src/styles/template.css	reviewed	batch 403 last-line length matched; model not tool-verified grok
+src/styles/variables/dark.variables.css	reviewed	batch 403 last-line length matched; model not tool-verified grok
+src/styles/variables/light.variables.css	reviewed	batch 404 last-line length matched; model not tool-verified grok
+src/styles/variables/semantic.dark.css	reviewed	batch 404 last-line length matched; model not tool-verified grok
+src/styles/variables/semantic.light.css	reviewed	batch 404 last-line length matched; model not tool-verified grok
 src/utils/__tests__/file-storage-url.test.ts	test-fixture	test or fixture path
 src/utils/__tests__/link-preview-remote.test.ts	test-fixture	test or fixture path
 src/utils/__tests__/link-preview.test.ts	test-fixture	test or fixture path
@@ -3610,46 +3610,46 @@ src/utils/__tests__/timezone.test.ts	test-fixture	test or fixture path
 src/utils/__tests__/upload-tracker.test.ts	test-fixture	test or fixture path
 src/utils/__tests__/url.test.ts	test-fixture	test or fixture path
 src/utils/__tests__/video-url.test.ts	test-fixture	test or fixture path
-src/utils/authenticated-image.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/utils/color.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/utils/copy.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/utils/cover.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/utils/database-view-order.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/utils/deduplicateRequest.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/utils/download.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/utils/emoji.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/utils/errors.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/utils/file-storage-url.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/utils/file.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/utils/font.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/utils/hotkeys.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/utils/image.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/utils/link-preview-remote.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/utils/link-preview.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/utils/log.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/utils/md5.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/utils/open_schema.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/utils/pending-upload.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/utils/platform.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/utils/position.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/utils/publish-error.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/utils/runtime-config.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/utils/subscription.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/utils/time.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/utils/timezone.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/utils/upload-tracker.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/utils/url.ts	reviewed	main-session required http:// or https:// before treating a string as an already-absolute URL
-src/utils/video-url.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/utils/word.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/vite-env.d.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-tailwind.config.cjs	unreviewed	production-relevant until a pass-3 reviewer records it
-tailwind/box-shadow.cjs	unreviewed	production-relevant until a pass-3 reviewer records it
-tailwind/colors.cjs	unreviewed	production-relevant until a pass-3 reviewer records it
-tailwind/new-colors.cjs	unreviewed	production-relevant until a pass-3 reviewer records it
-tsconfig.json	unreviewed	production-relevant until a pass-3 reviewer records it
-tsconfig.node.json	unreviewed	production-relevant until a pass-3 reviewer records it
-tsconfig.web.json	unreviewed	production-relevant until a pass-3 reviewer records it
-vercel.json	unreviewed	production-relevant until a pass-3 reviewer records it
-vite-plugin-strip-testid.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-vite.config.ts	unreviewed	production-relevant until a pass-3 reviewer records it
+src/utils/authenticated-image.ts	reviewed	batch 404 last-line length matched; model not tool-verified grok
+src/utils/color.ts	reviewed	batch 404 last-line length matched; model not tool-verified grok
+src/utils/copy.ts	reviewed	batch 404 last-line length matched; model not tool-verified grok
+src/utils/cover.ts	reviewed	batch 404 last-line length matched; model not tool-verified grok
+src/utils/database-view-order.ts	reviewed	batch 404 last-line length matched; model not tool-verified grok
+src/utils/deduplicateRequest.ts	reviewed	batch 404 last-line length matched; model not tool-verified grok
+src/utils/download.ts	reviewed	batch 404 last-line length matched; model not tool-verified grok; main-session fetches relative storage files from the API origin
+src/utils/emoji.ts	reviewed	batch 404 last-line length matched; model not tool-verified grok
+src/utils/errors.ts	reviewed	batch 404 last-line length matched; model not tool-verified grok
+src/utils/file-storage-url.ts	reviewed	batch 404 last-line length matched; model not tool-verified grok; main-session requires a localhost hostname and resolves relative storage URLs against the API origin
+src/utils/file.ts	reviewed	batch 404 last-line length matched; model not tool-verified grok
+src/utils/font.ts	reviewed	batch 404 last-line length matched; model not tool-verified grok
+src/utils/hotkeys.ts	reviewed	batch 405 last-line length matched; model not tool-verified grok
+src/utils/image.ts	reviewed	batch 405 last-line length matched; model not tool-verified grok; main-session revokes the conversion blob when canvas context is missing
+src/utils/link-preview-remote.ts	reviewed	batch 405 last-line length matched; model not tool-verified grok
+src/utils/link-preview.ts	reviewed	batch 405 last-line length matched; model not tool-verified grok
+src/utils/log.ts	reviewed	batch 405 last-line length matched; model not tool-verified grok
+src/utils/md5.ts	reviewed	batch 405 last-line length matched; model not tool-verified grok
+src/utils/open_schema.ts	reviewed	batch 405 last-line length matched; model not tool-verified grok
+src/utils/pending-upload.ts	reviewed	batch 405 last-line length matched; model not tool-verified grok
+src/utils/platform.ts	reviewed	batch 405 last-line length matched; model not tool-verified grok
+src/utils/position.ts	reviewed	batch 405 last-line length matched; model not tool-verified grok
+src/utils/publish-error.ts	reviewed	batch 405 last-line length matched; model not tool-verified grok
+src/utils/runtime-config.ts	reviewed	batch 405 last-line length matched; model not tool-verified grok
+src/utils/subscription.ts	reviewed	batch 405 last-line length matched; model not tool-verified grok
+src/utils/time.ts	reviewed	batch 405 last-line length matched; model not tool-verified grok
+src/utils/timezone.ts	reviewed	batch 405 last-line length matched; model not tool-verified grok
+src/utils/upload-tracker.ts	reviewed	batch 406 last-line length matched; model not tool-verified grok
+src/utils/url.ts	reviewed	batch 406 last-line length matched; model not tool-verified grok
+src/utils/video-url.ts	reviewed	batch 406 last-line length matched; model not tool-verified grok
+src/utils/word.ts	reviewed	batch 406 last-line length matched; model not tool-verified grok
+src/vite-env.d.ts	reviewed	batch 406 last-line length matched; model not tool-verified grok
+tailwind.config.cjs	reviewed	batch 406 last-line length matched; model not tool-verified grok
+tailwind/box-shadow.cjs	reviewed	batch 406 last-line length matched; model not tool-verified grok
+tailwind/colors.cjs	reviewed	batch 406 last-line length matched; model not tool-verified grok
+tailwind/new-colors.cjs	reviewed	batch 406 last-line length matched; model not tool-verified grok
+tsconfig.json	reviewed	batch 406 last-line length matched; model not tool-verified grok
+tsconfig.node.json	reviewed	batch 406 last-line length matched; model not tool-verified grok
+tsconfig.web.json	reviewed	batch 406 last-line length matched; model not tool-verified grok
+vercel.json	reviewed	batch 406 last-line length matched; model not tool-verified grok
+vite-plugin-strip-testid.ts	reviewed	batch 406 last-line length matched; model not tool-verified grok
+vite.config.ts	reviewed	batch 406 last-line length matched; model not tool-verified grok
 vite.dependencies.ts	reviewed	batch 407 last-line length matched; model not tool-verified grok
