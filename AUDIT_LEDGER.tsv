@@ -30,52 +30,52 @@ CODE_OF_CONDUCT.md	reviewed	batch 288 last-line length matched; model not tool-v
 LICENSE	reviewed	batch 288 last-line length matched; model not tool-verified grok
 README.md	doc	readme
 __mocks__/lodash-es.ts	reviewed	batch 288 last-line length matched; model not tool-verified grok; main-session made isEqual compare values
-__mocks__/lodash-es/debounce.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-__mocks__/lodash-es/isEqual.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-__mocks__/nanoid.ts	unreviewed	production-relevant until a pass-3 reviewer records it
+__mocks__/lodash-es/debounce.ts	reviewed	batch 289 last-line length matched; model not tool-verified grok
+__mocks__/lodash-es/isEqual.ts	reviewed	batch 289 last-line length matched; model not tool-verified grok
+__mocks__/nanoid.ts	reviewed	batch 289 last-line length matched; model not tool-verified grok
 api/_lib/__tests__/unfurl.test.ts	test-fixture	test or fixture path
-api/_lib/unfurl.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-api/_lib/url-safety.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-api/link-preview.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-components.json	unreviewed	production-relevant until a pass-3 reviewer records it
-deploy.env	unreviewed	production-relevant until a pass-3 reviewer records it
-deploy/api.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-deploy/config.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-deploy/html.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-deploy/logger.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-deploy/publish-error.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-deploy/routes.test.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-deploy/routes.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-deploy/server.test.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-deploy/server.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-desktop.md	unreviewed	production-relevant until a pass-3 reviewer records it
-dev.env	unreviewed	production-relevant until a pass-3 reviewer records it
-doc/DEVELOPMENT_GUIDE.md	unreviewed	production-relevant until a pass-3 reviewer records it
-docker/Dockerfile	unreviewed	production-relevant until a pass-3 reviewer records it
-docker/Dockerfile.ssr	unreviewed	production-relevant until a pass-3 reviewer records it
-docker/docker-compose.example.yml	unreviewed	production-relevant until a pass-3 reviewer records it
-docker/entrypoint-ssr.sh	unreviewed	production-relevant until a pass-3 reviewer records it
-docker/entrypoint.sh	unreviewed	production-relevant until a pass-3 reviewer records it
-docker/nginx-ssr.conf	unreviewed	production-relevant until a pass-3 reviewer records it
-docker/nginx.conf	unreviewed	production-relevant until a pass-3 reviewer records it
-docker/supervisord-ssr.conf	unreviewed	production-relevant until a pass-3 reviewer records it
-docs/list-view-flutter-parity.md	unreviewed	production-relevant until a pass-3 reviewer records it
-index.html	unreviewed	production-relevant until a pass-3 reviewer records it
-jest.config.cjs	unreviewed	production-relevant until a pass-3 reviewer records it
-package.json	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright-snapshot.config.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright.bdd.config.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright.config.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/MIGRATION.md	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/features/app/outline-cache.feature	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/features/app/sidebar-drop-indicator.feature	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/features/auth/auth-regressions.feature	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/features/auth/ldap-login.feature	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/features/auth/mock-login-flows.feature	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/features/auth/oidc-login.feature	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/features/database/board-grouping-default.feature	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/features/database/board-hidden-empty-groups.feature	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/features/database/gallery-readonly.feature	unreviewed	production-relevant until a pass-3 reviewer records it
+api/_lib/unfurl.ts	reviewed	batch 289 last-line length matched; model not tool-verified grok
+api/_lib/url-safety.ts	reviewed	batch 289 last-line length matched; model not tool-verified grok
+api/link-preview.ts	reviewed	batch 289 last-line length matched; model not tool-verified grok
+components.json	reviewed	batch 289 last-line length matched; model not tool-verified grok
+deploy.env	reviewed	batch 289 last-line length matched; model not tool-verified grok
+deploy/api.ts	reviewed	batch 289 last-line length matched; model not tool-verified grok
+deploy/config.ts	reviewed	batch 289 last-line length matched; model not tool-verified grok
+deploy/html.ts	reviewed	batch 289 last-line length matched; model not tool-verified grok
+deploy/logger.ts	reviewed	batch 289 last-line length matched; model not tool-verified grok
+deploy/publish-error.ts	reviewed	batch 289 last-line length matched; model not tool-verified grok
+deploy/routes.test.ts	reviewed	batch 289 last-line length matched; model not tool-verified grok
+deploy/routes.ts	reviewed	batch 289 last-line length matched; model not tool-verified grok
+deploy/server.test.ts	reviewed	batch 290 last-line length matched; model not tool-verified grok
+deploy/server.ts	reviewed	batch 290 last-line length matched; model not tool-verified grok
+desktop.md	reviewed	batch 290 last-line length matched; model not tool-verified grok
+dev.env	reviewed	batch 290 last-line length matched; model not tool-verified grok
+doc/DEVELOPMENT_GUIDE.md	reviewed	batch 290 last-line length matched; model not tool-verified grok
+docker/Dockerfile	reviewed	batch 290 last-line length matched; model not tool-verified grok
+docker/Dockerfile.ssr	reviewed	batch 290 last-line length matched; model not tool-verified grok
+docker/docker-compose.example.yml	reviewed	batch 290 last-line length matched; model not tool-verified grok
+docker/entrypoint-ssr.sh	reviewed	batch 290 last-line length matched; model not tool-verified grok
+docker/entrypoint.sh	reviewed	batch 290 last-line length matched; model not tool-verified grok
+docker/nginx-ssr.conf	reviewed	batch 290 last-line length matched; model not tool-verified grok
+docker/nginx.conf	reviewed	batch 290 last-line length matched; model not tool-verified grok
+docker/supervisord-ssr.conf	reviewed	batch 290 last-line length matched; model not tool-verified grok
+docs/list-view-flutter-parity.md	reviewed	batch 290 last-line length matched; model not tool-verified grok
+index.html	reviewed	batch 290 last-line length matched; model not tool-verified grok
+jest.config.cjs	reviewed	batch 291 last-line length matched; model not tool-verified grok
+package.json	reviewed	batch 291 last-line length matched; model not tool-verified grok
+playwright-snapshot.config.ts	reviewed	batch 291 last-line length matched; model not tool-verified grok
+playwright.bdd.config.ts	reviewed	batch 291 last-line length matched; model not tool-verified grok
+playwright.config.ts	reviewed	batch 291 last-line length matched; model not tool-verified grok
+playwright/MIGRATION.md	reviewed	batch 291 last-line length matched; model not tool-verified grok
+playwright/bdd/features/app/outline-cache.feature	reviewed	batch 291 last-line length matched; model not tool-verified grok
+playwright/bdd/features/app/sidebar-drop-indicator.feature	reviewed	batch 291 last-line length matched; model not tool-verified grok
+playwright/bdd/features/auth/auth-regressions.feature	reviewed	batch 291 last-line length matched; model not tool-verified grok
+playwright/bdd/features/auth/ldap-login.feature	reviewed	batch 291 last-line length matched; model not tool-verified grok
+playwright/bdd/features/auth/mock-login-flows.feature	reviewed	batch 291 last-line length matched; model not tool-verified grok
+playwright/bdd/features/auth/oidc-login.feature	reviewed	batch 291 last-line length matched; model not tool-verified grok
+playwright/bdd/features/database/board-grouping-default.feature	reviewed	batch 291 last-line length matched; model not tool-verified grok
+playwright/bdd/features/database/board-hidden-empty-groups.feature	reviewed	batch 291 last-line length matched; model not tool-verified grok
+playwright/bdd/features/database/gallery-readonly.feature	reviewed	batch 291 last-line length matched; model not tool-verified grok
 playwright/bdd/features/database/gallery-relation-prefill.feature	unreviewed	production-relevant until a pass-3 reviewer records it
 playwright/bdd/features/database/gallery-row-detail-no-stacking.feature	unreviewed	production-relevant until a pass-3 reviewer records it
 playwright/bdd/features/database/list-group-visibility.feature	unreviewed	production-relevant until a pass-3 reviewer records it
