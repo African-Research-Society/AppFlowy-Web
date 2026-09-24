@@ -76,83 +76,83 @@ playwright/bdd/features/auth/oidc-login.feature	reviewed	batch 291 last-line len
 playwright/bdd/features/database/board-grouping-default.feature	reviewed	batch 291 last-line length matched; model not tool-verified grok
 playwright/bdd/features/database/board-hidden-empty-groups.feature	reviewed	batch 291 last-line length matched; model not tool-verified grok
 playwright/bdd/features/database/gallery-readonly.feature	reviewed	batch 291 last-line length matched; model not tool-verified grok
-playwright/bdd/features/database/gallery-relation-prefill.feature	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/features/database/gallery-row-detail-no-stacking.feature	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/features/database/list-group-visibility.feature	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/features/database/list-readonly.feature	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/features/database/nested-database-interoperability.feature	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/features/database/published-relation-template.feature	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/features/database/published-relation-unpublish.feature	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/features/database/published-row-document.feature	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/features/database/published-template-multiple-views.feature	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/features/database/relation-picker-first-open.feature	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/features/database/relation-two-way-desktop-parity.feature	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/features/database/row-attribution.feature	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/features/database/row-document-member-permission.feature	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/features/database/row-document.feature	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/features/database/row-page-lifecycle.feature	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/features/database/row-template-relation.feature	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/features/database/seeded-nathan-publish-lifecycle.feature	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/features/database/view-tab-order.feature	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/features/editor/editor-editing.feature	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/features/editor/inline-comment.feature	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/features/editor/mention-search.feature	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/features/editor/paste-at-cursor.feature	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/features/editor/toggle-list-publish.feature	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/features/page/eva-more-actions-permissions.feature	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/features/page/favorite-page.feature	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/features/page/full-access-share-management.feature	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/features/page/public-to-private-move-access.feature	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/features/page/publish-comments-default.feature	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/features/page/publish-custom-url.feature	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/features/page/published-document-template-dependencies.feature	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/features/page/seeded-role-matrix.feature	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/features/page/share-group-invite.feature	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/features/workspace/space-permission-matrix-management.feature	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/features/workspace/workspace-group-management.feature	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/features/workspace/workspace-reorder.feature	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/features/workspace/workspace-switch-race.feature	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/steps/board-hidden-empty-groups.steps.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/steps/database-row-attribution.steps.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/steps/database-row-document.steps.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/steps/database-view-tab-order.steps.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/steps/editor-editing.steps.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/steps/eva-more-actions-permissions.steps.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/steps/favorite-page.steps.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/steps/full-access-share-management.steps.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/steps/gallery-readonly.steps.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/steps/gallery-relation-prefill.steps.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/steps/gallery-row-detail-no-stacking.steps.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/steps/inline-comment.steps.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/steps/ldap-login.steps.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/steps/list-group-visibility.steps.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/steps/list-readonly.steps.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/steps/mention-search.steps.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/steps/mock-login-flows.steps.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/steps/nested-database-interoperability.steps.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/steps/oidc-login.steps.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/steps/outline-cache.steps.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/steps/paste-at-cursor.steps.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/steps/public-to-private-move-access.steps.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/steps/publish-comments-default.steps.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/steps/publish-custom-url.steps.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/steps/published-document-template-dependencies.steps.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/steps/published-relation-template.steps.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/steps/published-row-document.steps.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/steps/published-template-multiple-views.steps.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/steps/relation-picker-first-open.steps.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/steps/relation-two-way-desktop-parity.steps.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/steps/row-document-member-permission.steps.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/steps/row-page-lifecycle.steps.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/steps/row-template-relation.steps.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/steps/seeded-role-matrix.steps.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/steps/share-group-invite.steps.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/steps/sidebar-drop-indicator.steps.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/steps/space-permission-matrix-management.steps.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/steps/toggle-list-publish.steps.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/steps/workspace-group-management.steps.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/steps/workspace-reorder.steps.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/bdd/steps/workspace-switch-race.steps.ts	unreviewed	production-relevant until a pass-3 reviewer records it
+playwright/bdd/features/database/gallery-relation-prefill.feature	reviewed	batch 292 last-line length matched; model not tool-verified grok
+playwright/bdd/features/database/gallery-row-detail-no-stacking.feature	reviewed	batch 292 last-line length matched; model not tool-verified grok
+playwright/bdd/features/database/list-group-visibility.feature	reviewed	batch 292 last-line length matched; model not tool-verified grok
+playwright/bdd/features/database/list-readonly.feature	reviewed	batch 292 last-line length matched; model not tool-verified grok
+playwright/bdd/features/database/nested-database-interoperability.feature	reviewed	batch 292 last-line length matched; model not tool-verified grok
+playwright/bdd/features/database/published-relation-template.feature	reviewed	batch 292 last-line length matched; model not tool-verified grok
+playwright/bdd/features/database/published-relation-unpublish.feature	reviewed	batch 292 last-line length matched; model not tool-verified grok
+playwright/bdd/features/database/published-row-document.feature	reviewed	batch 292 last-line length matched; model not tool-verified grok
+playwright/bdd/features/database/published-template-multiple-views.feature	reviewed	batch 292 last-line length matched; model not tool-verified grok
+playwright/bdd/features/database/relation-picker-first-open.feature	reviewed	batch 292 last-line length matched; model not tool-verified grok
+playwright/bdd/features/database/relation-two-way-desktop-parity.feature	reviewed	batch 292 last-line length matched; model not tool-verified grok
+playwright/bdd/features/database/row-attribution.feature	reviewed	batch 292 last-line length matched; model not tool-verified grok
+playwright/bdd/features/database/row-document-member-permission.feature	reviewed	batch 292 last-line length matched; model not tool-verified grok
+playwright/bdd/features/database/row-document.feature	reviewed	batch 292 last-line length matched; model not tool-verified grok
+playwright/bdd/features/database/row-page-lifecycle.feature	reviewed	batch 292 last-line length matched; model not tool-verified grok
+playwright/bdd/features/database/row-template-relation.feature	reviewed	batch 293 last-line length matched; model not tool-verified grok
+playwright/bdd/features/database/seeded-nathan-publish-lifecycle.feature	reviewed	batch 293 last-line length matched; model not tool-verified grok
+playwright/bdd/features/database/view-tab-order.feature	reviewed	batch 293 last-line length matched; model not tool-verified grok
+playwright/bdd/features/editor/editor-editing.feature	reviewed	batch 293 last-line length matched; model not tool-verified grok
+playwright/bdd/features/editor/inline-comment.feature	reviewed	batch 293 last-line length matched; model not tool-verified grok
+playwright/bdd/features/editor/mention-search.feature	reviewed	batch 293 last-line length matched; model not tool-verified grok
+playwright/bdd/features/editor/paste-at-cursor.feature	reviewed	batch 293 last-line length matched; model not tool-verified grok
+playwright/bdd/features/editor/toggle-list-publish.feature	reviewed	batch 293 last-line length matched; model not tool-verified grok
+playwright/bdd/features/page/eva-more-actions-permissions.feature	reviewed	batch 293 last-line length matched; model not tool-verified grok
+playwright/bdd/features/page/favorite-page.feature	reviewed	batch 293 last-line length matched; model not tool-verified grok
+playwright/bdd/features/page/full-access-share-management.feature	reviewed	batch 293 last-line length matched; model not tool-verified grok
+playwright/bdd/features/page/public-to-private-move-access.feature	reviewed	batch 293 last-line length matched; model not tool-verified grok
+playwright/bdd/features/page/publish-comments-default.feature	reviewed	batch 293 last-line length matched; model not tool-verified grok
+playwright/bdd/features/page/publish-custom-url.feature	reviewed	batch 293 last-line length matched; model not tool-verified grok
+playwright/bdd/features/page/published-document-template-dependencies.feature	reviewed	batch 293 last-line length matched; model not tool-verified grok
+playwright/bdd/features/page/seeded-role-matrix.feature	reviewed	batch 294 last-line length matched; model not tool-verified grok
+playwright/bdd/features/page/share-group-invite.feature	reviewed	batch 294 last-line length matched; model not tool-verified grok
+playwright/bdd/features/workspace/space-permission-matrix-management.feature	reviewed	batch 294 last-line length matched; model not tool-verified grok
+playwright/bdd/features/workspace/workspace-group-management.feature	reviewed	batch 294 last-line length matched; model not tool-verified grok
+playwright/bdd/features/workspace/workspace-reorder.feature	reviewed	batch 294 last-line length matched; model not tool-verified grok
+playwright/bdd/features/workspace/workspace-switch-race.feature	reviewed	batch 294 last-line length matched; model not tool-verified grok
+playwright/bdd/steps/board-hidden-empty-groups.steps.ts	reviewed	batch 294 last-line length matched; model not tool-verified grok
+playwright/bdd/steps/database-row-attribution.steps.ts	reviewed	batch 294 last-line length matched; model not tool-verified grok
+playwright/bdd/steps/database-row-document.steps.ts	reviewed	batch 294 last-line length matched; model not tool-verified grok
+playwright/bdd/steps/database-view-tab-order.steps.ts	reviewed	batch 294 last-line length matched; model not tool-verified grok
+playwright/bdd/steps/editor-editing.steps.ts	reviewed	batch 294 last-line length matched; model not tool-verified grok
+playwright/bdd/steps/eva-more-actions-permissions.steps.ts	reviewed	batch 294 last-line length matched; model not tool-verified grok
+playwright/bdd/steps/favorite-page.steps.ts	reviewed	batch 294 last-line length matched; model not tool-verified grok
+playwright/bdd/steps/full-access-share-management.steps.ts	reviewed	batch 294 last-line length matched; model not tool-verified grok
+playwright/bdd/steps/gallery-readonly.steps.ts	reviewed	batch 294 last-line length matched; model not tool-verified grok
+playwright/bdd/steps/gallery-relation-prefill.steps.ts	reviewed	batch 295 last-line length matched; model not tool-verified grok
+playwright/bdd/steps/gallery-row-detail-no-stacking.steps.ts	reviewed	batch 295 last-line length matched; model not tool-verified grok
+playwright/bdd/steps/inline-comment.steps.ts	reviewed	batch 295 last-line length matched; model not tool-verified grok
+playwright/bdd/steps/ldap-login.steps.ts	reviewed	batch 295 last-line length matched; model not tool-verified grok
+playwright/bdd/steps/list-group-visibility.steps.ts	reviewed	batch 295 last-line length matched; model not tool-verified grok
+playwright/bdd/steps/list-readonly.steps.ts	reviewed	batch 295 last-line length matched; model not tool-verified grok
+playwright/bdd/steps/mention-search.steps.ts	reviewed	batch 295 last-line length matched; model not tool-verified grok
+playwright/bdd/steps/mock-login-flows.steps.ts	reviewed	batch 295 last-line length matched; model not tool-verified grok
+playwright/bdd/steps/nested-database-interoperability.steps.ts	reviewed	batch 295 last-line length matched; model not tool-verified grok
+playwright/bdd/steps/oidc-login.steps.ts	reviewed	batch 295 last-line length matched; model not tool-verified grok
+playwright/bdd/steps/outline-cache.steps.ts	reviewed	batch 295 last-line length matched; model not tool-verified grok
+playwright/bdd/steps/paste-at-cursor.steps.ts	reviewed	batch 295 last-line length matched; model not tool-verified grok
+playwright/bdd/steps/public-to-private-move-access.steps.ts	reviewed	batch 295 last-line length matched; model not tool-verified grok
+playwright/bdd/steps/publish-comments-default.steps.ts	reviewed	batch 295 last-line length matched; model not tool-verified grok
+playwright/bdd/steps/publish-custom-url.steps.ts	reviewed	batch 295 last-line length matched; model not tool-verified grok
+playwright/bdd/steps/published-document-template-dependencies.steps.ts	reviewed	batch 296 last-line length matched; model not tool-verified grok
+playwright/bdd/steps/published-relation-template.steps.ts	reviewed	batch 296 last-line length matched; model not tool-verified grok
+playwright/bdd/steps/published-row-document.steps.ts	reviewed	batch 296 last-line length matched; model not tool-verified grok
+playwright/bdd/steps/published-template-multiple-views.steps.ts	reviewed	batch 296 last-line length matched; model not tool-verified grok
+playwright/bdd/steps/relation-picker-first-open.steps.ts	reviewed	batch 296 last-line length matched; model not tool-verified grok
+playwright/bdd/steps/relation-two-way-desktop-parity.steps.ts	reviewed	batch 296 last-line length matched; model not tool-verified grok
+playwright/bdd/steps/row-document-member-permission.steps.ts	reviewed	batch 296 last-line length matched; model not tool-verified grok
+playwright/bdd/steps/row-page-lifecycle.steps.ts	reviewed	batch 296 last-line length matched; model not tool-verified grok
+playwright/bdd/steps/row-template-relation.steps.ts	reviewed	batch 296 last-line length matched; model not tool-verified grok
+playwright/bdd/steps/seeded-role-matrix.steps.ts	reviewed	batch 296 last-line length matched; model not tool-verified grok
+playwright/bdd/steps/share-group-invite.steps.ts	reviewed	batch 296 last-line length matched; model not tool-verified grok
+playwright/bdd/steps/sidebar-drop-indicator.steps.ts	reviewed	batch 296 last-line length matched; model not tool-verified grok
+playwright/bdd/steps/space-permission-matrix-management.steps.ts	reviewed	batch 296 last-line length matched; model not tool-verified grok
+playwright/bdd/steps/toggle-list-publish.steps.ts	reviewed	batch 296 last-line length matched; model not tool-verified grok
+playwright/bdd/steps/workspace-group-management.steps.ts	reviewed	batch 296 last-line length matched; model not tool-verified grok
+playwright/bdd/steps/workspace-reorder.steps.ts	reviewed	batch 297 last-line length matched; model not tool-verified grok
+playwright/bdd/steps/workspace-switch-race.steps.ts	reviewed	batch 297 last-line length matched; model not tool-verified grok
 playwright/e2e/account/account-settings.spec.ts	test-fixture	test or fixture path
 playwright/e2e/account/avatar/avatar-api.spec.ts	test-fixture	test or fixture path
 playwright/e2e/account/avatar/avatar-awareness-dedupe.spec.ts	test-fixture	test or fixture path
@@ -360,19 +360,19 @@ playwright/fixtures/editor/blocks/paragraph.json	test-fixture	test or fixture pa
 playwright/fixtures/full_doc.json	test-fixture	test or fixture path
 playwright/fixtures/simple_doc.json	test-fixture	test or fixture path
 playwright/fixtures/test-icon.png	test-fixture	test or fixture path
-playwright/support/ai-meeting-helpers.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/support/appflowy-response.test.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/support/appflowy-response.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/support/auth-flow-helpers.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/support/auth-utils.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/support/calendar-test-helpers.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/support/chart-test-helpers.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/support/comment-test-helpers.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/support/database-ui-helpers.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/support/duplicate-test-helpers.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/support/field-type-helpers.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/support/field-type-test-helpers.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-playwright/support/filter-test-helpers.ts	unreviewed	production-relevant until a pass-3 reviewer records it
+playwright/support/ai-meeting-helpers.ts	reviewed	batch 297 last-line length matched; model not tool-verified grok
+playwright/support/appflowy-response.test.ts	reviewed	batch 297 last-line length matched; model not tool-verified grok
+playwright/support/appflowy-response.ts	reviewed	batch 297 last-line length matched; model not tool-verified grok
+playwright/support/auth-flow-helpers.ts	reviewed	batch 297 last-line length matched; model not tool-verified grok
+playwright/support/auth-utils.ts	reviewed	batch 297 last-line length matched; model not tool-verified grok
+playwright/support/calendar-test-helpers.ts	reviewed	batch 297 last-line length matched; model not tool-verified grok
+playwright/support/chart-test-helpers.ts	reviewed	batch 297 last-line length matched; model not tool-verified grok
+playwright/support/comment-test-helpers.ts	reviewed	batch 297 last-line length matched; model not tool-verified grok
+playwright/support/database-ui-helpers.ts	reviewed	batch 297 last-line length matched; model not tool-verified grok
+playwright/support/duplicate-test-helpers.ts	reviewed	batch 297 last-line length matched; model not tool-verified grok
+playwright/support/field-type-helpers.ts	reviewed	batch 297 last-line length matched; model not tool-verified grok
+playwright/support/field-type-test-helpers.ts	reviewed	batch 297 last-line length matched; model not tool-verified grok
+playwright/support/filter-test-helpers.ts	reviewed	batch 297 last-line length matched; model not tool-verified grok
 playwright/support/fixtures.ts	unreviewed	production-relevant until a pass-3 reviewer records it
 playwright/support/gallery-test-helpers.ts	unreviewed	production-relevant until a pass-3 reviewer records it
 playwright/support/i18n-constants.ts	unreviewed	production-relevant until a pass-3 reviewer records it
