@@ -2522,57 +2522,57 @@ src/components/chat/components/ai-writer/render-editor.tsx	reviewed	batch 341 la
 src/components/chat/components/ai-writer/tools/ask-anything.tsx	reviewed	batch 341 last-line length matched; model not tool-verified grok
 src/components/chat/components/ai-writer/tools/explain-toolbar.tsx	reviewed	batch 341 last-line length matched; model not tool-verified grok
 src/components/chat/components/ai-writer/tools/explain.tsx	reviewed	batch 341 last-line length matched; model not tool-verified grok
-src/components/chat/components/ai-writer/tools/fix-spelling.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/components/ai-writer/tools/improve-writing.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/components/ai-writer/tools/with-comment.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/components/ai-writer/use-ensure-bottom-visible.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/components/ai-writer/utils.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/components/ai-writer/view-tree/index.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/components/ai-writer/view-tree/spaces.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/components/ai-writer/writing-input.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/components/ai-writer/writing-more.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/components/chat-input/index.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/components/chat-input/model-selector/index.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/components/chat-input/prompt-modal/index.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/components/chat-input/prompt-modal/prompt-card.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/components/chat-input/prompt-modal/prompt-category.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/components/chat-input/prompt-modal/prompt-database/index.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/components/chat-input/prompt-modal/prompt-database/invalid-database-dialog.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/components/chat-input/prompt-modal/prompt-database/prompt-database-views.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/components/chat-input/prompt-modal/prompt-database/space-list.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/components/chat-input/prompt-modal/prompt-database/view-item.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/components/chat-input/prompt-modal/prompt-database/view-list.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/components/chat-input/prompt-modal/prompt-preview.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
+src/components/chat/components/ai-writer/tools/fix-spelling.tsx	reviewed	batch 342 last-line length matched; model not tool-verified grok
+src/components/chat/components/ai-writer/tools/improve-writing.tsx	reviewed	batch 342 last-line length matched; model not tool-verified grok
+src/components/chat/components/ai-writer/tools/with-comment.tsx	reviewed	batch 342 last-line length matched; model not tool-verified grok
+src/components/chat/components/ai-writer/use-ensure-bottom-visible.ts	reviewed	batch 342 last-line length matched; model not tool-verified grok
+src/components/chat/components/ai-writer/utils.ts	reviewed	batch 342 last-line length matched; model not tool-verified grok
+src/components/chat/components/ai-writer/view-tree/index.tsx	reviewed	batch 342 last-line length matched; model not tool-verified grok
+src/components/chat/components/ai-writer/view-tree/spaces.tsx	reviewed	batch 342 last-line length matched; model not tool-verified grok
+src/components/chat/components/ai-writer/writing-input.tsx	reviewed	batch 342 last-line length matched; model not tool-verified grok
+src/components/chat/components/ai-writer/writing-more.tsx	reviewed	batch 342 last-line length matched; model not tool-verified grok
+src/components/chat/components/chat-input/index.tsx	reviewed	batch 342 last-line length matched; model not tool-verified grok
+src/components/chat/components/chat-input/model-selector/index.tsx	reviewed	batch 342 last-line length matched; model not tool-verified grok
+src/components/chat/components/chat-input/prompt-modal/index.tsx	reviewed	batch 342 last-line length matched; model not tool-verified grok
+src/components/chat/components/chat-input/prompt-modal/prompt-card.tsx	reviewed	batch 342 last-line length matched; model not tool-verified grok
+src/components/chat/components/chat-input/prompt-modal/prompt-category.tsx	reviewed	batch 342 last-line length matched; model not tool-verified grok
+src/components/chat/components/chat-input/prompt-modal/prompt-database/index.tsx	reviewed	batch 342 last-line length matched; model not tool-verified grok
+src/components/chat/components/chat-input/prompt-modal/prompt-database/invalid-database-dialog.tsx	reviewed	batch 343 last-line length matched; model not tool-verified grok
+src/components/chat/components/chat-input/prompt-modal/prompt-database/prompt-database-views.tsx	reviewed	batch 343 last-line length matched; model not tool-verified grok
+src/components/chat/components/chat-input/prompt-modal/prompt-database/space-list.tsx	reviewed	batch 343 last-line length matched; model not tool-verified grok
+src/components/chat/components/chat-input/prompt-modal/prompt-database/view-item.tsx	reviewed	batch 343 last-line length matched; model not tool-verified grok
+src/components/chat/components/chat-input/prompt-modal/prompt-database/view-list.tsx	reviewed	batch 343 last-line length matched; model not tool-verified grok
+src/components/chat/components/chat-input/prompt-modal/prompt-preview.tsx	reviewed	batch 343 last-line length matched; model not tool-verified grok
 src/components/chat/components/chat-input/related-views/__tests__/index.test.tsx	test-fixture	test or fixture path
 src/components/chat/components/chat-input/related-views/__tests__/spaces.test.tsx	test-fixture	test or fixture path
-src/components/chat/components/chat-input/related-views/index.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/components/chat-input/related-views/spaces.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
+src/components/chat/components/chat-input/related-views/index.tsx	reviewed	batch 343 last-line length matched; model not tool-verified grok
+src/components/chat/components/chat-input/related-views/spaces.tsx	reviewed	batch 343 last-line length matched; model not tool-verified grok
 src/components/chat/components/chat-messages/__tests__/answer-md.test.tsx	test-fixture	test or fixture path
 src/components/chat/components/chat-messages/__tests__/citation-markdown.test.ts	test-fixture	test or fixture path
 src/components/chat/components/chat-messages/__tests__/empty-messages.test.tsx	test-fixture	test or fixture path
 src/components/chat/components/chat-messages/__tests__/message-sources.test.tsx	test-fixture	test or fixture path
-src/components/chat/components/chat-messages/add-message-to.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/components/chat-messages/ai-answer.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/components/chat-messages/answer-md.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/components/chat-messages/assistant-message.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/components/chat-messages/citation-markdown.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/components/chat-messages/empty-messages.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/components/chat-messages/human-question.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/components/chat-messages/index.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/components/chat-messages/message-actions.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/components/chat-messages/message-checkbox.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/components/chat-messages/message-sources.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/components/chat-messages/message-suggestions.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/components/chat-messages/message.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/components/chat-messages/regenerations.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/components/chat-messages/use-chat-messages.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/components/multi-selection/banner.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/components/multi-selection/context.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/components/ui/alert.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/components/ui/format-group.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/components/ui/loading-dots.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/components/ui/search-input.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/components/ui/textarea.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
+src/components/chat/components/chat-messages/add-message-to.tsx	reviewed	batch 343 last-line length matched; model not tool-verified grok
+src/components/chat/components/chat-messages/ai-answer.tsx	reviewed	batch 343 last-line length matched; model not tool-verified grok
+src/components/chat/components/chat-messages/answer-md.tsx	reviewed	batch 343 last-line length matched; model not tool-verified grok
+src/components/chat/components/chat-messages/assistant-message.tsx	reviewed	batch 343 last-line length matched; model not tool-verified grok
+src/components/chat/components/chat-messages/citation-markdown.ts	reviewed	batch 343 last-line length matched; model not tool-verified grok
+src/components/chat/components/chat-messages/empty-messages.tsx	reviewed	batch 343 last-line length matched; model not tool-verified grok
+src/components/chat/components/chat-messages/human-question.tsx	reviewed	batch 343 last-line length matched; model not tool-verified grok
+src/components/chat/components/chat-messages/index.tsx	reviewed	batch 344 last-line length matched; model not tool-verified grok
+src/components/chat/components/chat-messages/message-actions.tsx	reviewed	batch 344 last-line length matched; model not tool-verified grok
+src/components/chat/components/chat-messages/message-checkbox.tsx	reviewed	batch 344 last-line length matched; model not tool-verified grok
+src/components/chat/components/chat-messages/message-sources.tsx	reviewed	batch 344 last-line length matched; model not tool-verified grok
+src/components/chat/components/chat-messages/message-suggestions.tsx	reviewed	batch 344 last-line length matched; model not tool-verified grok
+src/components/chat/components/chat-messages/message.tsx	reviewed	batch 344 last-line length matched; model not tool-verified grok
+src/components/chat/components/chat-messages/regenerations.tsx	reviewed	batch 344 last-line length matched; model not tool-verified grok
+src/components/chat/components/chat-messages/use-chat-messages.ts	reviewed	batch 344 last-line length matched; model not tool-verified grok
+src/components/chat/components/multi-selection/banner.tsx	reviewed	batch 344 last-line length matched; model not tool-verified grok
+src/components/chat/components/multi-selection/context.ts	reviewed	batch 344 last-line length matched; model not tool-verified grok
+src/components/chat/components/ui/alert.tsx	reviewed	batch 344 last-line length matched; model not tool-verified grok
+src/components/chat/components/ui/format-group.tsx	reviewed	batch 344 last-line length matched; model not tool-verified grok
+src/components/chat/components/ui/loading-dots.tsx	reviewed	batch 344 last-line length matched; model not tool-verified grok
+src/components/chat/components/ui/search-input.tsx	reviewed	batch 344 last-line length matched; model not tool-verified grok
+src/components/chat/components/ui/textarea.tsx	reviewed	batch 344 last-line length matched; model not tool-verified grok
 src/components/chat/components/view/page-icon.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
 src/components/chat/components/view/space-item.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
 src/components/chat/components/view/view-children.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
@@ -2590,59 +2590,59 @@ src/components/chat/hooks/use-view-content-inserter.ts	unreviewed	production-rel
 src/components/chat/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
 src/components/chat/lib/animations.ts	unreviewed	production-relevant until a pass-3 reviewer records it
 src/components/chat/lib/const.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/lib/copy.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/lib/model-cache.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/lib/requets.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/lib/utils.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/lib/views.ts	unreviewed	production-relevant until a pass-3 reviewer records it
+src/components/chat/lib/copy.ts	reviewed	batch 346 last-line length matched; model not tool-verified grok
+src/components/chat/lib/model-cache.ts	reviewed	batch 346 last-line length matched; model not tool-verified grok
+src/components/chat/lib/requets.ts	reviewed	batch 346 last-line length matched; model not tool-verified grok
+src/components/chat/lib/utils.ts	reviewed	batch 346 last-line length matched; model not tool-verified grok
+src/components/chat/lib/views.ts	reviewed	batch 346 last-line length matched; model not tool-verified grok
 src/components/chat/provider/__tests__/messages-handler-provider.rag-scope.test.tsx	test-fixture	test or fixture path
-src/components/chat/provider/ai-assistant-provider.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/provider/editor-provider.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/provider/message-animation-provider.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/provider/messages-handler-provider.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/provider/messages-provider.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/provider/prompt-modal-provider.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/provider/response-format-provider.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/provider/selection-mode-provider.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/provider/suggestions-provider.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/provider/view-loader-provider.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
+src/components/chat/provider/ai-assistant-provider.tsx	reviewed	batch 346 last-line length matched; model not tool-verified grok
+src/components/chat/provider/editor-provider.tsx	reviewed	batch 346 last-line length matched; model not tool-verified grok
+src/components/chat/provider/message-animation-provider.tsx	reviewed	batch 346 last-line length matched; model not tool-verified grok
+src/components/chat/provider/messages-handler-provider.tsx	reviewed	batch 346 last-line length matched; model not tool-verified grok
+src/components/chat/provider/messages-provider.tsx	reviewed	batch 346 last-line length matched; model not tool-verified grok
+src/components/chat/provider/prompt-modal-provider.tsx	reviewed	batch 346 last-line length matched; model not tool-verified grok
+src/components/chat/provider/response-format-provider.tsx	reviewed	batch 346 last-line length matched; model not tool-verified grok
+src/components/chat/provider/selection-mode-provider.tsx	reviewed	batch 346 last-line length matched; model not tool-verified grok
+src/components/chat/provider/suggestions-provider.tsx	reviewed	batch 346 last-line length matched; model not tool-verified grok
+src/components/chat/provider/view-loader-provider.tsx	reviewed	batch 346 last-line length matched; model not tool-verified grok
 src/components/chat/request/__tests__/stream-json-parser.test.ts	test-fixture	test or fixture path
-src/components/chat/request/chat-request.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/request/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/request/stream-json-parser.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/request/writer-request.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/types/ai-model.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/types/checkbox.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/types/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/types/prompt.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/types/request.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/types/writer.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/vite-env.d.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/writer/ai-writer-menu.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/writer/context-placeholder.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/writer/context.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/writer/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/chat/writer/use-ai-writer.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/database/Database.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/database/DatabaseContext.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/database/DatabaseRow.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/database/DatabaseRowModal.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/database/DatabaseViews.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
+src/components/chat/request/chat-request.ts	reviewed	batch 347 last-line length matched; model not tool-verified grok
+src/components/chat/request/index.ts	reviewed	batch 347 last-line length matched; model not tool-verified grok
+src/components/chat/request/stream-json-parser.ts	reviewed	batch 347 last-line length matched; model not tool-verified grok
+src/components/chat/request/writer-request.ts	reviewed	batch 347 last-line length matched; model not tool-verified grok
+src/components/chat/types/ai-model.ts	reviewed	batch 347 last-line length matched; model not tool-verified grok
+src/components/chat/types/checkbox.ts	reviewed	batch 347 last-line length matched; model not tool-verified grok
+src/components/chat/types/index.ts	reviewed	batch 347 last-line length matched; model not tool-verified grok
+src/components/chat/types/prompt.ts	reviewed	batch 347 last-line length matched; model not tool-verified grok
+src/components/chat/types/request.ts	reviewed	batch 347 last-line length matched; model not tool-verified grok
+src/components/chat/types/writer.ts	reviewed	batch 347 last-line length matched; model not tool-verified grok
+src/components/chat/vite-env.d.ts	reviewed	batch 347 last-line length matched; model not tool-verified grok
+src/components/chat/writer/ai-writer-menu.tsx	reviewed	batch 347 last-line length matched; model not tool-verified grok
+src/components/chat/writer/context-placeholder.tsx	reviewed	batch 347 last-line length matched; model not tool-verified grok
+src/components/chat/writer/context.ts	reviewed	batch 347 last-line length matched; model not tool-verified grok
+src/components/chat/writer/index.ts	reviewed	batch 347 last-line length matched; model not tool-verified grok
+src/components/chat/writer/use-ai-writer.tsx	reviewed	batch 348 last-line length matched; model not tool-verified grok
+src/components/database/Database.tsx	reviewed	batch 348 last-line length matched; model not tool-verified grok
+src/components/database/DatabaseContext.tsx	reviewed	batch 348 last-line length matched; model not tool-verified grok
+src/components/database/DatabaseRow.tsx	reviewed	batch 348 last-line length matched; model not tool-verified grok
+src/components/database/DatabaseRowModal.tsx	reviewed	batch 348 last-line length matched; model not tool-verified grok
+src/components/database/DatabaseViews.tsx	reviewed	batch 348 last-line length matched; model not tool-verified grok
 src/components/database/__tests__/Database.prefetch-lifecycle.test.tsx	test-fixture	test or fixture path
 src/components/database/__tests__/DatabaseRowModal.readonly.test.tsx	test-fixture	test or fixture path
 src/components/database/__tests__/DatabaseViews.order.test.tsx	test-fixture	test or fixture path
 src/components/database/__tests__/database-test-context.test.ts	test-fixture	test or fixture path
 src/components/database/__tests__/layout.test.ts	test-fixture	test or fixture path
 src/components/database/__tests__/view-order.test.ts	test-fixture	test or fixture path
-src/components/database/board/Board.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/database/board/BoardProvider.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/database/board/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/database/chart/Chart.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/database/chart/ChartEmptyState.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/database/chart/ChartProvider.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/database/chart/ChartRowListPopup.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/database/chart/hooks/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/database/chart/hooks/useChartColors.ts	unreviewed	production-relevant until a pass-3 reviewer records it
+src/components/database/board/Board.tsx	reviewed	batch 348 last-line length matched; model not tool-verified grok
+src/components/database/board/BoardProvider.tsx	reviewed	batch 348 last-line length matched; model not tool-verified grok
+src/components/database/board/index.ts	reviewed	batch 348 last-line length matched; model not tool-verified grok
+src/components/database/chart/Chart.tsx	reviewed	batch 348 last-line length matched; model not tool-verified grok
+src/components/database/chart/ChartEmptyState.tsx	reviewed	batch 348 last-line length matched; model not tool-verified grok
+src/components/database/chart/ChartProvider.tsx	reviewed	batch 348 last-line length matched; model not tool-verified grok
+src/components/database/chart/ChartRowListPopup.tsx	reviewed	batch 348 last-line length matched; model not tool-verified grok
+src/components/database/chart/hooks/index.ts	reviewed	batch 348 last-line length matched; model not tool-verified grok
+src/components/database/chart/hooks/useChartColors.ts	reviewed	batch 348 last-line length matched; model not tool-verified grok
 src/components/database/chart/hooks/useChartData.test.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
 src/components/database/chart/hooks/useChartData.ts	unreviewed	production-relevant until a pass-3 reviewer records it
 src/components/database/chart/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
