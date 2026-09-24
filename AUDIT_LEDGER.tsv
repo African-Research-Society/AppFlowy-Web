@@ -1721,21 +1721,21 @@ src/application/services/js-services/http/cloud-auth.ts	reviewed	batch 313 last-
 src/application/services/js-services/http/collab-api.ts	reviewed	batch 313 last-line length matched; model not tool-verified grok
 src/application/services/js-services/http/core.ts	reviewed	batch 313 last-line length matched; model not tool-verified grok
 src/application/services/js-services/http/export-api.ts	reviewed	batch 313 last-line length matched; model not tool-verified grok
-src/application/services/js-services/http/file-api.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/services/js-services/http/gotrue-error.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/services/js-services/http/gotrue.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/services/js-services/http/http_api.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/services/js-services/http/import-api.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/services/js-services/http/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/services/js-services/http/inline-comment-api.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/services/js-services/http/misc-api.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/services/js-services/http/multipart-upload-store.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/services/js-services/http/multipart-upload.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/services/js-services/http/multipart-upload.types.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/services/js-services/http/notification-api.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/services/js-services/http/page-api.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/services/js-services/http/publish-api.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/services/js-services/http/template-api.ts	unreviewed	production-relevant until a pass-3 reviewer records it
+src/application/services/js-services/http/file-api.ts	reviewed	batch 314 last-line length matched; model not tool-verified grok
+src/application/services/js-services/http/gotrue-error.ts	reviewed	batch 314 last-line length matched; model not tool-verified grok
+src/application/services/js-services/http/gotrue.ts	reviewed	batch 314 last-line length matched; model not tool-verified grok
+src/application/services/js-services/http/http_api.ts	reviewed	batch 314 last-line length matched; model not tool-verified grok
+src/application/services/js-services/http/import-api.ts	reviewed	batch 314 last-line length matched; model not tool-verified grok
+src/application/services/js-services/http/index.ts	reviewed	batch 314 last-line length matched; model not tool-verified grok
+src/application/services/js-services/http/inline-comment-api.ts	reviewed	batch 314 last-line length matched; model not tool-verified grok
+src/application/services/js-services/http/misc-api.ts	reviewed	batch 314 last-line length matched; model not tool-verified grok
+src/application/services/js-services/http/multipart-upload-store.ts	reviewed	batch 314 last-line length matched; model not tool-verified grok
+src/application/services/js-services/http/multipart-upload.ts	reviewed	batch 314 last-line length matched; model not tool-verified grok
+src/application/services/js-services/http/multipart-upload.types.ts	reviewed	batch 314 last-line length matched; model not tool-verified grok
+src/application/services/js-services/http/notification-api.ts	reviewed	batch 314 last-line length matched; model not tool-verified grok
+src/application/services/js-services/http/page-api.ts	reviewed	batch 314 last-line length matched; model not tool-verified grok
+src/application/services/js-services/http/publish-api.ts	reviewed	batch 314 last-line length matched; model not tool-verified grok
+src/application/services/js-services/http/template-api.ts	reviewed	batch 314 last-line length matched; model not tool-verified grok
 src/application/services/js-services/http/user-api.ts	reviewed	batch 315 last-line length matched; model not tool-verified grok
 src/application/services/js-services/http/utils.ts	reviewed	batch 315 last-line length matched; model not tool-verified grok
 src/application/services/js-services/http/view-api.ts	reviewed	batch 315 last-line length matched; model not tool-verified grok
@@ -1780,17 +1780,17 @@ src/application/slate-yjs/utils/table.ts	reviewed	batch 316 last-line length mat
 src/application/slate-yjs/utils/transformSelection.ts	reviewed	batch 316 last-line length matched; model not tool-verified grok
 src/application/slate-yjs/utils/yjs.ts	reviewed	batch 316 last-line length matched; model not tool-verified grok
 src/application/sync-outbox/__tests__/sync-outbox.test.ts	test-fixture	test or fixture path
-src/application/sync-outbox/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/template.type.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/types.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/user-metadata.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/user-timezone.types.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/user-uid.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/utils/error-utils.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/view-loader/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/application/view-utils.ts	unreviewed	production-relevant until a pass-3 reviewer records it
+src/application/sync-outbox/index.ts	reviewed	batch 317 last-line length matched; model not tool-verified grok
+src/application/template.type.ts	reviewed	batch 317 last-line length matched; model not tool-verified grok
+src/application/types.ts	reviewed	batch 317 last-line length matched; model not tool-verified grok
+src/application/user-metadata.ts	reviewed	batch 317 last-line length matched; model not tool-verified grok
+src/application/user-timezone.types.ts	reviewed	batch 317 last-line length matched; model not tool-verified grok
+src/application/user-uid.ts	reviewed	batch 317 last-line length matched; model not tool-verified grok
+src/application/utils/error-utils.ts	reviewed	batch 317 last-line length matched; model not tool-verified grok
+src/application/view-loader/index.ts	reviewed	batch 317 last-line length matched; model not tool-verified grok
+src/application/view-utils.ts	reviewed	batch 317 last-line length matched; model not tool-verified grok
 src/application/ydoc/apply/__tests__/document.test.ts	test-fixture	test or fixture path
-src/application/ydoc/apply/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
+src/application/ydoc/apply/index.ts	reviewed	batch 317 last-line length matched; model not tool-verified grok
 src/assets/icons/2_columns.svg	asset	binary or font asset, not executable logic
 src/assets/icons/3_columns.svg	asset	binary or font asset, not executable logic
 src/assets/icons/4_columns.svg	asset	binary or font asset, not executable logic
@@ -2084,26 +2084,26 @@ src/assets/space_icon/space_icon_6.svg	asset	binary or font asset, not executabl
 src/assets/space_icon/space_icon_7.svg	asset	binary or font asset, not executable logic
 src/assets/space_icon/space_icon_8.svg	asset	binary or font asset, not executable logic
 src/assets/space_icon/space_icon_9.svg	asset	binary or font asset, not executable logic
-src/components/_shared/FullScreenLoading.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/LoadingDots.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/appflowy-power/AppFlowyPower.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/breadcrumb/Breadcrumb.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/breadcrumb/BreadcrumbItem.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/breadcrumb/BreadcrumbMoreModal.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/breadcrumb/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/breadcrumb/withAppBreadcrumb.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/breadcrumb/withPublishBreadcrumb.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/color-picker/ColorPicker.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/color-picker/ColorTile.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/color-picker/CustomColorPicker.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/color-picker/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/color-picker/style.css	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/cutsom-icon/CustomIconPopover.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/cutsom-icon/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/emoji-picker/EmojiItem.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/emoji-picker/EmojiPicker.hooks.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/emoji-picker/EmojiPicker.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/emoji-picker/EmojiPickerCategories.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
+src/components/_shared/FullScreenLoading.tsx	reviewed	batch 317 last-line length matched; model not tool-verified grok
+src/components/_shared/LoadingDots.tsx	reviewed	batch 317 last-line length matched; model not tool-verified grok
+src/components/_shared/appflowy-power/AppFlowyPower.tsx	reviewed	batch 317 last-line length matched; model not tool-verified grok
+src/components/_shared/breadcrumb/Breadcrumb.tsx	reviewed	batch 317 last-line length matched; model not tool-verified grok
+src/components/_shared/breadcrumb/BreadcrumbItem.tsx	reviewed	batch 317 last-line length matched; model not tool-verified grok
+src/components/_shared/breadcrumb/BreadcrumbMoreModal.tsx	reviewed	batch 318 last-line length matched; model not tool-verified grok
+src/components/_shared/breadcrumb/index.ts	reviewed	batch 318 last-line length matched; model not tool-verified grok
+src/components/_shared/breadcrumb/withAppBreadcrumb.tsx	reviewed	batch 318 last-line length matched; model not tool-verified grok
+src/components/_shared/breadcrumb/withPublishBreadcrumb.tsx	reviewed	batch 318 last-line length matched; model not tool-verified grok
+src/components/_shared/color-picker/ColorPicker.tsx	reviewed	batch 318 last-line length matched; model not tool-verified grok
+src/components/_shared/color-picker/ColorTile.tsx	reviewed	batch 318 last-line length matched; model not tool-verified grok
+src/components/_shared/color-picker/CustomColorPicker.tsx	reviewed	batch 318 last-line length matched; model not tool-verified grok
+src/components/_shared/color-picker/index.ts	reviewed	batch 318 last-line length matched; model not tool-verified grok
+src/components/_shared/color-picker/style.css	reviewed	batch 318 last-line length matched; model not tool-verified grok
+src/components/_shared/cutsom-icon/CustomIconPopover.tsx	reviewed	batch 318 last-line length matched; model not tool-verified grok
+src/components/_shared/cutsom-icon/index.ts	reviewed	batch 318 last-line length matched; model not tool-verified grok
+src/components/_shared/emoji-picker/EmojiItem.tsx	reviewed	batch 318 last-line length matched; model not tool-verified grok
+src/components/_shared/emoji-picker/EmojiPicker.hooks.ts	reviewed	batch 318 last-line length matched; model not tool-verified grok
+src/components/_shared/emoji-picker/EmojiPicker.tsx	reviewed	batch 318 last-line length matched; model not tool-verified grok
+src/components/_shared/emoji-picker/EmojiPickerCategories.tsx	reviewed	batch 318 last-line length matched; model not tool-verified grok
 src/components/_shared/emoji-picker/EmojiPickerHeader.tsx	reviewed	batch 319 last-line length matched; model not tool-verified grok
 src/components/_shared/emoji-picker/EmojisVirtualizer.tsx	reviewed	batch 319 last-line length matched; model not tool-verified grok
 src/components/_shared/emoji-picker/SwitchSkin.tsx	reviewed	batch 319 last-line length matched; model not tool-verified grok
@@ -2134,86 +2134,86 @@ src/components/_shared/keyboard_navigation/KeyboardNavigation.tsx	reviewed	batch
 src/components/_shared/keyboard_navigation/utils.ts	reviewed	batch 320 last-line length matched; model not tool-verified grok
 src/components/_shared/landing-page/ErrorPage.stories.tsx	reviewed	batch 320 last-line length matched; model not tool-verified grok
 src/components/_shared/landing-page/ErrorPage.tsx	reviewed	batch 320 last-line length matched; model not tool-verified grok
-src/components/_shared/landing-page/InvalidLink.stories.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/landing-page/InvalidLink.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/landing-page/LandingFooter.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/landing-page/LandingPage.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/landing-page/NotInvitationAccount.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/landing-page/errorContent.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/landing-page/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/mobile-drawer/MobileDrawer.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/mobile-drawer/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/mobile-outline/MobileOutline.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/mobile-outline/MobileOutlineWithCover.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/mobile-outline/OutlineItem.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/mobile-outline/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/mobile-topbar/MobileFolder.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/mobile-topbar/MobileMore.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/mobile-topbar/MobileTopBar.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/mobile-topbar/PublishMobileFolder.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/mobile-topbar/index.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/modal/CacheClearingDialog.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/modal/ChangeAccount.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/modal/ConfirmModal.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/modal/IndexedDBCleaner.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/modal/NormalModal.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
+src/components/_shared/landing-page/InvalidLink.stories.tsx	reviewed	batch 321 last-line length matched; model not tool-verified grok
+src/components/_shared/landing-page/InvalidLink.tsx	reviewed	batch 321 last-line length matched; model not tool-verified grok
+src/components/_shared/landing-page/LandingFooter.tsx	reviewed	batch 321 last-line length matched; model not tool-verified grok
+src/components/_shared/landing-page/LandingPage.tsx	reviewed	batch 321 last-line length matched; model not tool-verified grok
+src/components/_shared/landing-page/NotInvitationAccount.tsx	reviewed	batch 321 last-line length matched; model not tool-verified grok
+src/components/_shared/landing-page/errorContent.ts	reviewed	batch 321 last-line length matched; model not tool-verified grok
+src/components/_shared/landing-page/index.ts	reviewed	batch 321 last-line length matched; model not tool-verified grok
+src/components/_shared/mobile-drawer/MobileDrawer.tsx	reviewed	batch 321 last-line length matched; model not tool-verified grok
+src/components/_shared/mobile-drawer/index.ts	reviewed	batch 321 last-line length matched; model not tool-verified grok
+src/components/_shared/mobile-outline/MobileOutline.tsx	reviewed	batch 321 last-line length matched; model not tool-verified grok
+src/components/_shared/mobile-outline/MobileOutlineWithCover.tsx	reviewed	batch 321 last-line length matched; model not tool-verified grok; main-session compared yesterday to the previous day
+src/components/_shared/mobile-outline/OutlineItem.tsx	reviewed	batch 321 last-line length matched; model not tool-verified grok
+src/components/_shared/mobile-outline/index.ts	reviewed	batch 321 last-line length matched; model not tool-verified grok
+src/components/_shared/mobile-topbar/MobileFolder.tsx	reviewed	batch 321 last-line length matched; model not tool-verified grok
+src/components/_shared/mobile-topbar/MobileMore.tsx	reviewed	batch 321 last-line length matched; model not tool-verified grok
+src/components/_shared/mobile-topbar/MobileTopBar.tsx	reviewed	batch 322 last-line length matched; model not tool-verified grok
+src/components/_shared/mobile-topbar/PublishMobileFolder.tsx	reviewed	batch 322 last-line length matched; model not tool-verified grok
+src/components/_shared/mobile-topbar/index.tsx	reviewed	batch 322 last-line length matched; model not tool-verified grok
+src/components/_shared/modal/CacheClearingDialog.tsx	reviewed	batch 322 last-line length matched; model not tool-verified grok
+src/components/_shared/modal/ChangeAccount.tsx	reviewed	batch 322 last-line length matched; model not tool-verified grok
+src/components/_shared/modal/ConfirmModal.tsx	reviewed	batch 322 last-line length matched; model not tool-verified grok
+src/components/_shared/modal/IndexedDBCleaner.tsx	reviewed	batch 322 last-line length matched; model not tool-verified grok
+src/components/_shared/modal/NormalModal.tsx	reviewed	batch 322 last-line length matched; model not tool-verified grok
 src/components/_shared/modal/__tests__/ConfirmModal.test.tsx	test-fixture	test or fixture path
 src/components/_shared/modal/__tests__/NormalModal.test.tsx	test-fixture	test or fixture path
-src/components/_shared/modal/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/more-actions/MoreActions.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/more-actions/MoreActionsContent.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/more-actions/importer/Import.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/more-actions/importer/ImporterDialogContent.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/more-actions/importer/ImporterModal.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
+src/components/_shared/modal/index.ts	reviewed	batch 322 last-line length matched; model not tool-verified grok
+src/components/_shared/more-actions/MoreActions.tsx	reviewed	batch 322 last-line length matched; model not tool-verified grok
+src/components/_shared/more-actions/MoreActionsContent.tsx	reviewed	batch 322 last-line length matched; model not tool-verified grok
+src/components/_shared/more-actions/importer/Import.tsx	reviewed	batch 322 last-line length matched; model not tool-verified grok
+src/components/_shared/more-actions/importer/ImporterDialogContent.tsx	reviewed	batch 322 last-line length matched; model not tool-verified grok
+src/components/_shared/more-actions/importer/ImporterModal.tsx	reviewed	batch 322 last-line length matched; model not tool-verified grok
 src/components/_shared/more-actions/importer/__tests__/ImporterDialogContent.test.tsx	test-fixture	test or fixture path
-src/components/_shared/more-actions/importer/useImport.hook.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/notify/CustomSnackbar.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/notify/InfoSnackbar.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/notify/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/outline/Outline.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/outline/OutlineDrawer.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/outline/OutlineIcon.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/outline/OutlineItem.databaseContainer.test.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/outline/OutlineItem.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/outline/OutlineItemContent.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/outline/OutlinePopover.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/outline/Resizer.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
+src/components/_shared/more-actions/importer/useImport.hook.ts	reviewed	batch 322 last-line length matched; model not tool-verified grok
+src/components/_shared/notify/CustomSnackbar.tsx	reviewed	batch 323 last-line length matched; model not tool-verified grok
+src/components/_shared/notify/InfoSnackbar.tsx	reviewed	batch 323 last-line length matched; model not tool-verified grok
+src/components/_shared/notify/index.ts	reviewed	batch 323 last-line length matched; model not tool-verified grok
+src/components/_shared/outline/Outline.tsx	reviewed	batch 323 last-line length matched; model not tool-verified grok
+src/components/_shared/outline/OutlineDrawer.tsx	reviewed	batch 323 last-line length matched; model not tool-verified grok
+src/components/_shared/outline/OutlineIcon.tsx	reviewed	batch 323 last-line length matched; model not tool-verified grok
+src/components/_shared/outline/OutlineItem.databaseContainer.test.tsx	reviewed	batch 323 last-line length matched; model not tool-verified grok
+src/components/_shared/outline/OutlineItem.tsx	reviewed	batch 323 last-line length matched; model not tool-verified grok
+src/components/_shared/outline/OutlineItemContent.tsx	reviewed	batch 323 last-line length matched; model not tool-verified grok
+src/components/_shared/outline/OutlinePopover.tsx	reviewed	batch 323 last-line length matched; model not tool-verified grok
+src/components/_shared/outline/Resizer.tsx	reviewed	batch 323 last-line length matched; model not tool-verified grok
 src/components/_shared/outline/__tests__/mergeOutline.test.ts	test-fixture	test or fixture path
-src/components/_shared/outline/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/outline/mergeOutline.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/outline/outline.hooks.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/outline/utils.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/popover/Popover.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/popover/RichTooltip.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/popover/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/progress/ComponentLoading.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/progress/LinearProgressWithLabel.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/reorder/useReorderMonitor.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/reorder/useReorderableItem.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/scroller/AFScroller.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/scroller/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/skeleton/BreadcrumbSkeleton.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/skeleton/CalendarSkeleton.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/skeleton/DirectoryStructure.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/skeleton/DocumentSkeleton.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/skeleton/EditorSkeleton.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/skeleton/GridSkeleton.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/skeleton/KanbanSkeleton.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/skeleton/RecentListSkeleton.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/skeleton/TabbarSkeleton.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/skeleton/TableSkeleton.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/skeleton/TitleSkeleton.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/switch/Switch.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/switch/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/tabs/ViewTabs.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/tag/Tag.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/tag/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/view-icon/PageIcon.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/view-icon/PublishIcon.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/view-icon/SpaceIcon.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/_shared/view-icon/ViewIcon.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
+src/components/_shared/outline/index.ts	reviewed	batch 323 last-line length matched; model not tool-verified grok
+src/components/_shared/outline/mergeOutline.ts	reviewed	batch 323 last-line length matched; model not tool-verified grok
+src/components/_shared/outline/outline.hooks.ts	reviewed	batch 323 last-line length matched; model not tool-verified grok
+src/components/_shared/outline/utils.ts	reviewed	batch 323 last-line length matched; model not tool-verified grok
+src/components/_shared/popover/Popover.tsx	reviewed	batch 324 last-line length matched; model not tool-verified grok
+src/components/_shared/popover/RichTooltip.tsx	reviewed	batch 324 last-line length matched; model not tool-verified grok
+src/components/_shared/popover/index.ts	reviewed	batch 324 last-line length matched; model not tool-verified grok
+src/components/_shared/progress/ComponentLoading.tsx	reviewed	batch 324 last-line length matched; model not tool-verified grok
+src/components/_shared/progress/LinearProgressWithLabel.tsx	reviewed	batch 324 last-line length matched; model not tool-verified grok
+src/components/_shared/reorder/useReorderMonitor.ts	reviewed	batch 324 last-line length matched; model not tool-verified grok
+src/components/_shared/reorder/useReorderableItem.ts	reviewed	batch 324 last-line length matched; model not tool-verified grok
+src/components/_shared/scroller/AFScroller.tsx	reviewed	batch 324 last-line length matched; model not tool-verified grok
+src/components/_shared/scroller/index.ts	reviewed	batch 324 last-line length matched; model not tool-verified grok
+src/components/_shared/skeleton/BreadcrumbSkeleton.tsx	reviewed	batch 324 last-line length matched; model not tool-verified grok
+src/components/_shared/skeleton/CalendarSkeleton.tsx	reviewed	batch 324 last-line length matched; model not tool-verified grok
+src/components/_shared/skeleton/DirectoryStructure.tsx	reviewed	batch 324 last-line length matched; model not tool-verified grok
+src/components/_shared/skeleton/DocumentSkeleton.tsx	reviewed	batch 324 last-line length matched; model not tool-verified grok
+src/components/_shared/skeleton/EditorSkeleton.tsx	reviewed	batch 324 last-line length matched; model not tool-verified grok
+src/components/_shared/skeleton/GridSkeleton.tsx	reviewed	batch 324 last-line length matched; model not tool-verified grok
+src/components/_shared/skeleton/KanbanSkeleton.tsx	reviewed	batch 325 last-line length matched; model not tool-verified grok
+src/components/_shared/skeleton/RecentListSkeleton.tsx	reviewed	batch 325 last-line length matched; model not tool-verified grok
+src/components/_shared/skeleton/TabbarSkeleton.tsx	reviewed	batch 325 last-line length matched; model not tool-verified grok
+src/components/_shared/skeleton/TableSkeleton.tsx	reviewed	batch 325 last-line length matched; model not tool-verified grok
+src/components/_shared/skeleton/TitleSkeleton.tsx	reviewed	batch 325 last-line length matched; model not tool-verified grok
+src/components/_shared/switch/Switch.tsx	reviewed	batch 325 last-line length matched; model not tool-verified grok
+src/components/_shared/switch/index.ts	reviewed	batch 325 last-line length matched; model not tool-verified grok
+src/components/_shared/tabs/ViewTabs.tsx	reviewed	batch 325 last-line length matched; model not tool-verified grok
+src/components/_shared/tag/Tag.tsx	reviewed	batch 325 last-line length matched; model not tool-verified grok
+src/components/_shared/tag/index.ts	reviewed	batch 325 last-line length matched; model not tool-verified grok
+src/components/_shared/view-icon/PageIcon.tsx	reviewed	batch 325 last-line length matched; model not tool-verified grok
+src/components/_shared/view-icon/PublishIcon.tsx	reviewed	batch 325 last-line length matched; model not tool-verified grok
+src/components/_shared/view-icon/SpaceIcon.tsx	reviewed	batch 325 last-line length matched; model not tool-verified grok
+src/components/_shared/view-icon/ViewIcon.tsx	reviewed	batch 325 last-line length matched; model not tool-verified grok
 src/components/_shared/view-icon/__tests__/PageIcon.test.tsx	test-fixture	test or fixture path
-src/components/_shared/view-icon/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
+src/components/_shared/view-icon/index.ts	reviewed	batch 325 last-line length matched; model not tool-verified grok
 src/components/_shared/view-icon/utils.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
 src/components/ai-chat/AIChat.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
 src/components/ai-chat/AIChatDrawer.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
@@ -2237,25 +2237,25 @@ src/components/ai-chat/utils.ts	unreviewed	production-relevant until a pass-3 re
 src/components/app/AppRouter.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
 src/components/app/AppWorkspaceRedirect.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
 src/components/app/AuthLayout.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/app/ConnectBanner.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/app/DatabaseView.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/app/Main.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/app/MainLayout.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/app/MobileMainLayout.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/app/RevertedDialog.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/app/SideBar.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/app/SideBarBottom.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/app/ViewModal.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/app/WorkspaceLoadingAnimation.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
+src/components/app/ConnectBanner.tsx	reviewed	batch 327 last-line length matched; model not tool-verified grok
+src/components/app/DatabaseView.tsx	reviewed	batch 327 last-line length matched; model not tool-verified grok
+src/components/app/Main.tsx	reviewed	batch 327 last-line length matched; model not tool-verified grok
+src/components/app/MainLayout.tsx	reviewed	batch 327 last-line length matched; model not tool-verified grok
+src/components/app/MobileMainLayout.tsx	reviewed	batch 327 last-line length matched; model not tool-verified grok
+src/components/app/RevertedDialog.tsx	reviewed	batch 327 last-line length matched; model not tool-verified grok
+src/components/app/SideBar.tsx	reviewed	batch 327 last-line length matched; model not tool-verified grok
+src/components/app/SideBarBottom.tsx	reviewed	batch 327 last-line length matched; model not tool-verified grok
+src/components/app/ViewModal.tsx	reviewed	batch 327 last-line length matched; model not tool-verified grok
+src/components/app/WorkspaceLoadingAnimation.tsx	reviewed	batch 327 last-line length matched; model not tool-verified grok
 src/components/app/__tests__/ConnectBanner.test.tsx	test-fixture	test or fixture path
 src/components/app/__tests__/MobileMainLayout.noAccess.test.tsx	test-fixture	test or fixture path
 src/components/app/__tests__/ViewModal.permissionCleanup.test.tsx	test-fixture	test or fixture path
 src/components/app/__tests__/app.hooks.eventEmitter.test.tsx	test-fixture	test or fixture path
-src/components/app/app-overlay/AppOverlayContext.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/app/app-overlay/AppOverlayProvider.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/app/app.hooks.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/app/components/AppContextConsumer.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-src/components/app/contexts/AppEventEmitterContext.ts	unreviewed	production-relevant until a pass-3 reviewer records it
+src/components/app/app-overlay/AppOverlayContext.ts	reviewed	batch 327 last-line length matched; model not tool-verified grok
+src/components/app/app-overlay/AppOverlayProvider.tsx	reviewed	batch 327 last-line length matched; model not tool-verified grok
+src/components/app/app.hooks.tsx	reviewed	batch 327 last-line length matched; model not tool-verified grok
+src/components/app/components/AppContextConsumer.tsx	reviewed	batch 327 last-line length matched; model not tool-verified grok
+src/components/app/contexts/AppEventEmitterContext.ts	reviewed	batch 327 last-line length matched; model not tool-verified grok
 src/components/app/contexts/AppNavigationContext.ts	unreviewed	production-relevant until a pass-3 reviewer records it
 src/components/app/contexts/AppOperationsContext.ts	unreviewed	production-relevant until a pass-3 reviewer records it
 src/components/app/contexts/AppOutlineContext.ts	unreviewed	production-relevant until a pass-3 reviewer records it
