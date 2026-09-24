@@ -50,6 +50,7 @@ export function QuickNote() {
   const [currentNote, setCurrentNote] = React.useState<QuickNoteType | undefined>(undefined);
   const [noteList, setNoteList] = React.useState<QuickNoteType[]>([]);
   const hasMoreRef = React.useRef(true);
+  const listRequestRef = useRef(0);
   const listParamsRef = useRef({
     offset: 0,
     limit: LISI_LIMIT,
@@ -82,6 +83,7 @@ export function QuickNote() {
 
   const handleAdd = useCallback(async () => {
     if (!currentWorkspaceId) return;
+
     try {
       const note = await QuickNoteService.create(currentWorkspaceId, [
         {
@@ -91,6 +93,7 @@ export function QuickNote() {
         },
       ]);
 
+      listRequestRef.current += 1;
       setNoteList((prev) => [note, ...prev]);
 
       handleEnterNote(note);
@@ -118,12 +121,15 @@ export function QuickNote() {
   );
 
   const initNoteList = useCallback(async () => {
+    const requestId = listRequestRef.current;
     const params = {
       offset: 0,
       limit: LISI_LIMIT,
       searchTerm: '',
     };
     const notes = await loadNoteList(params);
+
+    if (requestId !== listRequestRef.current) return notes;
 
     if (notes) {
       setNoteList(notes.data);
