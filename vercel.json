@@ -2,7 +2,8 @@
   "rewrites": [{ "source": "/((?!api/).*)", "destination": "/" }],
   "git": {
     "deploymentEnabled": {
-      "cursor/september-26-preview-4d10": false
+      "cursor/september-26-preview-4d10": false,
+      "kora-work-ai-bridge": false
     }
   }
 }
