@@ -14,6 +14,7 @@ import { verifyAndRefreshGoTrueToken } from './gotrue';
 import { APIError, APIResponse, executeAPIRequest, getAxios } from './core';
 
 import { verifyToken } from './cloud-auth';
+
 export { verifyToken } from './cloud-auth';
 
 export interface ServerInfo {
@@ -32,10 +33,12 @@ const SERVER_INFO_REQUEST_TIMEOUT_MS = 10_000;
 
 export async function signInWithUrl(url: string) {
   const callback = new URL(url);
+
   if (!callback.searchParams.has('code')) throw new Error('Start sign-in from the ARS login page.');
   localStorage.removeItem('token');
   try {
     const token = await completeArsLogin(callback);
+
     await verifyToken(token.access_token);
   } catch (error) {
     invalidToken();
