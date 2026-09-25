@@ -4,8 +4,10 @@ export const EMBED_PATH_KEY = 'ars_embed_path';
 
 export function serializeEmbedRefreshCookie(token: string, protocol: string) {
   const value = encodeURIComponent(token);
+
   if (!value || value.length > 3500) return null;
   const secure = protocol === 'https:';
+
   // Leave this cookie unpartitioned. Storage Access reveals the first-party
   // cookie in the hub iframe; a Partitioned (CHIPS) cookie is keyed to the
   // top-level site that set it and stays in the other jar.
@@ -19,9 +21,11 @@ export function parseEmbedRefreshCookie(cookie: string) {
     .split(';')
     .map((part) => part.trim())
     .find((part) => part.startsWith(`${EMBED_REFRESH_COOKIE}=`));
+
   if (!match) return null;
   try {
     const value = decodeURIComponent(match.slice(EMBED_REFRESH_COOKIE.length + 1));
+
     return value || null;
   } catch {
     return null;
@@ -32,6 +36,7 @@ export function writeEmbedRefreshCookie(token: string) {
   try {
     const protocol = typeof window === 'undefined' ? 'https:' : window.location.protocol;
     const serialized = serializeEmbedRefreshCookie(token, protocol);
+
     if (serialized) document.cookie = serialized;
   } catch {
     /* Storage can be unavailable in privacy-restricted browser contexts. */
@@ -42,10 +47,12 @@ export function clearEmbedRefreshCookie(protocol?: string) {
   try {
     const secure = (protocol ?? (typeof window === 'undefined' ? 'https:' : window.location.protocol)) === 'https:';
     const expired = `${EMBED_REFRESH_COOKIE}=; Path=/; Max-Age=0`;
+
     if (!secure) {
       document.cookie = `${expired}; SameSite=Lax`;
       return;
     }
+
     document.cookie = `${expired}; Secure; SameSite=None`;
     // Also drop a CHIPS cookie left by an older session in this top-level site.
     document.cookie = `${expired}; Secure; SameSite=None; Partitioned`;
@@ -60,6 +67,7 @@ export function clearEmbedRefreshCookie(protocol?: string) {
  */
 export function withEmbedQuery(path: string, _search = '') {
   const pathname = path.split(/[?#]/)[0] ?? '';
+
   if (
     !pathname.startsWith('/') ||
     pathname.startsWith('//') ||
@@ -71,6 +79,7 @@ export function withEmbedQuery(path: string, _search = '') {
   ) {
     return '/app?ars_embed=1';
   }
+
   return `${pathname}?ars_embed=1`;
 }
 
@@ -81,6 +90,7 @@ export function rememberEmbedContext(input: {
   storage?: Pick<Storage, 'setItem'>;
 }) {
   const storage = input.storage;
+
   if (!storage) return;
   if (input.parent) storage.setItem(EMBED_PARENT_KEY, input.parent);
   if (input.path?.startsWith('/app')) {
@@ -121,6 +131,7 @@ export function embedWorkspaceParentAllowed(input: {
   if (!input.referrer) return Boolean(input.storedParent && input.allowlisted(input.storedParent));
   try {
     const url = new URL(input.referrer);
+
     if (url.username || url.password) return false;
     if (url.protocol !== 'https:' && url.protocol !== 'http:') return false;
     if (input.allowlisted(url.origin)) return true;
@@ -128,6 +139,7 @@ export function embedWorkspaceParentAllowed(input: {
   } catch {
     return false;
   }
+
   return Boolean(input.storedParent && input.allowlisted(input.storedParent));
 }
 
@@ -150,6 +162,7 @@ export function embedReturnPath(input: {
   if (input.savedPath) {
     try {
       const from = new URL(input.savedPath, input.origin);
+
       if (from.origin === input.origin && from.pathname.startsWith('/app')) {
         return keep(from.pathname, from.search);
       }
@@ -160,6 +173,7 @@ export function embedReturnPath(input: {
 
   try {
     const from = new URL(input.referrer);
+
     if (from.origin === input.origin && from.pathname.startsWith('/app/')) {
       return keep(from.pathname, from.search);
     }
@@ -202,15 +216,19 @@ export async function restoreEmbedSession(input: {
   requestStorageAccess?: () => Promise<void>;
 }): Promise<'ready' | 'restored' | 'missing'> {
   const release = retainEmbedRestore();
+
   try {
     if (input.hasToken) return 'ready';
     const readRefreshToken = () => {
       const cookie = typeof input.cookie === 'function' ? input.cookie() : input.cookie;
+
       return parseEmbedRefreshCookie(cookie);
     };
+
     // Read before storage-access awaits. Logout on an unauthenticated /app
     // route can clear the cookie while this function is yielded.
     const snapshottedToken = readRefreshToken();
+
     try {
       if (input.hasStorageAccess && !(await input.hasStorageAccess())) {
         /* Storage Access requires a user gesture; pointerdown retries restore. */
@@ -218,7 +236,9 @@ export async function restoreEmbedSession(input: {
     } catch {
       /* Storage Access API is best-effort after the first-party Connect visit. */
     }
+
     const refreshToken = readRefreshToken() ?? snapshottedToken;
+
     if (!refreshToken) return 'missing';
     await input.refresh(refreshToken);
     return 'restored';
