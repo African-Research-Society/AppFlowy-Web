@@ -1,3 +1,4 @@
+import { getAccessToken } from '@/components/chat/lib/requets';
 import { emit, EventType } from '@/application/session/event';
 
 import { getToken, getTokenParsed, invalidToken, isTokenValid, saveGoTrueAuth } from '../token';
@@ -145,6 +146,7 @@ describe('GoTrue token storage', () => {
     expect(saveGoTrueAuth(JSON.stringify(token))).toBe(true);
     expect(getToken()).toBeNull();
     expect(getTokenParsed()).toEqual(token);
+    expect(getAccessToken()).toBe(token.access_token);
     expect(isTokenValid()).toBe(true);
     expect(emitMock).toHaveBeenCalledWith(EventType.SESSION_REFRESH, expect.any(String));
     expect(document.cookie).toContain('af_embed_rt=refresh-token');
@@ -155,6 +157,7 @@ describe('GoTrue token storage', () => {
     });
 
     expect(getTokenParsed()).toEqual(token);
+    expect(getAccessToken()).toBe(token.access_token);
     expect(isTokenValid()).toBe(true);
 
     getItem.mockRestore();
