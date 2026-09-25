@@ -50,6 +50,9 @@ export function QuickNote() {
   const [currentNote, setCurrentNote] = React.useState<QuickNoteType | undefined>(undefined);
   const [noteList, setNoteList] = React.useState<QuickNoteType[]>([]);
   const hasMoreRef = React.useRef(true);
+  // Notes created while the first list page is loading, so a late list response
+  // can be merged instead of either dropping them or replacing the whole list.
+  const createdDuringListRef = useRef<QuickNoteType[]>([]);
   const listParamsRef = useRef({
     offset: 0,
     limit: LISI_LIMIT,
@@ -82,6 +85,7 @@ export function QuickNote() {
 
   const handleAdd = useCallback(async () => {
     if (!currentWorkspaceId) return;
+
     try {
       const note = await QuickNoteService.create(currentWorkspaceId, [
         {
@@ -91,6 +95,7 @@ export function QuickNote() {
         },
       ]);
 
+      createdDuringListRef.current = [note, ...createdDuringListRef.current];
       setNoteList((prev) => [note, ...prev]);
 
       handleEnterNote(note);
@@ -118,6 +123,7 @@ export function QuickNote() {
   );
 
   const initNoteList = useCallback(async () => {
+    createdDuringListRef.current = [];
     const params = {
       offset: 0,
       limit: LISI_LIMIT,
@@ -126,7 +132,10 @@ export function QuickNote() {
     const notes = await loadNoteList(params);
 
     if (notes) {
-      setNoteList(notes.data);
+      const fetchedIds = new Set(notes.data.map((note) => note.id));
+      const created = createdDuringListRef.current.filter((note) => !fetchedIds.has(note.id));
+
+      setNoteList([...created, ...notes.data]);
       hasMoreRef.current = notes.has_more;
     }
 

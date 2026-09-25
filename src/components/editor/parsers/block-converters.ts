@@ -1,5 +1,6 @@
 
 import { BlockData, BlockType, HeadingBlockData, ImageBlockData, ImageType } from '@/application/types';
+import { isPersistableEditorHref } from '@/utils/url';
 
 import { extractInlineFormatsFromHAST, extractTextFromHAST } from './inline-converters';
 import { parseHTMLTable } from './table-parser';
@@ -130,7 +131,7 @@ function getElementFormats(node: HastElement, activeFormats: ActiveInlineFormat[
     case 'a': {
       const href = node.properties?.href as string | undefined;
 
-      if (href) {
+      if (href && isPersistableEditorHref(href)) {
         addActiveFormat(formats, { type: 'link', data: { href } });
       }
 

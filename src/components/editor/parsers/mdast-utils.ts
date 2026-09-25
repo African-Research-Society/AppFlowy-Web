@@ -1,3 +1,5 @@
+import { isPersistableEditorHref } from '@/utils/url';
+
 import { InlineFormat } from './types';
 
 import type { InlineCode, Link, Text as MdastText } from 'mdast';
@@ -98,12 +100,14 @@ export function extractInlineFormatsFromMDAST(node: unknown, baseOffset = 0): In
         const startOffset = currentOffset;
         const text = (obj.children || []).map((child) => walk(child, newTypes)).join('');
 
-        formats.push({
-          start: startOffset,
-          end: currentOffset,
-          type: 'link',
-          data: { href: linkNode.url },
-        });
+        if (isPersistableEditorHref(linkNode.url)) {
+          formats.push({
+            start: startOffset,
+            end: currentOffset,
+            type: 'link',
+            data: { href: linkNode.url },
+          });
+        }
 
         return text;
       }
