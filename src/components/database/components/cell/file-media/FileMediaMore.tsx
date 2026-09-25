@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { RowMetaKey } from '@/application/database-yjs';
+import { RowMetaKey, useDatabaseContext } from '@/application/database-yjs';
 import { FileMediaCellDataItem, FileMediaType } from '@/application/database-yjs/cell.type';
 import { useUpdateRowMetaDispatch } from '@/application/database-yjs/dispatch';
 import { RowCoverType } from '@/application/types';
@@ -17,7 +17,6 @@ import RenameFile from '@/components/database/components/cell/file-media/RenameF
 import { Button } from '@/components/ui/button';
 import { dropdownMenuItemVariants } from '@/components/ui/dropdown-menu';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import { useDatabaseContext } from '@/application/database-yjs';
 import { cn } from '@/lib/utils';
 import { downloadFile } from '@/utils/download';
 import { resolveFileUrl } from '@/utils/file-storage-url';
