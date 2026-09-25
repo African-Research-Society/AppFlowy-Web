@@ -108,9 +108,11 @@ const TextareaAutosize = forwardRef<HTMLTextAreaElement, TextareaAutosizeProps>(
       } else {
         // Replace newlines with <br> and preserve spaces
         content = content
-          .replace(/\n/g, '<br>\u200B') // Replace newlines with <br> and add zero-width space
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/\n/g, '<br>\u200B')
           .replace(/\s{2,}/g, (match) => {
-            // Replace multiple spaces with non-breaking spaces
             return match.replace(/ /g, '&nbsp;');
           });
       }

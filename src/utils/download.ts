@@ -1,7 +1,7 @@
 import download from 'downloadjs';
 
 import { getTokenParsed } from '@/application/session/token';
-import { isAppFlowyFileStorageUrl } from '@/utils/file-storage-url';
+import { fileStorageRequestUrl, isAppFlowyFileStorageUrl } from '@/utils/file-storage-url';
 
 export function downloadBlob(blob: Blob, filename: string): void {
   download(blob, filename);
@@ -18,7 +18,7 @@ export async function downloadFile(url: string, filename?: string): Promise<void
         throw new Error('Authentication required for blob download');
       }
 
-      response = await fetch(url, {
+      response = await fetch(fileStorageRequestUrl(url), {
         headers: {
           Authorization: `Bearer ${token.access_token}`,
           'x-platform': 'web-app',

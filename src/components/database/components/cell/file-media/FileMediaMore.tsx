@@ -17,8 +17,10 @@ import RenameFile from '@/components/database/components/cell/file-media/RenameF
 import { Button } from '@/components/ui/button';
 import { dropdownMenuItemVariants } from '@/components/ui/dropdown-menu';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { useDatabaseContext } from '@/application/database-yjs';
 import { cn } from '@/lib/utils';
 import { downloadFile } from '@/utils/download';
+import { resolveFileUrl } from '@/utils/file-storage-url';
 import { openUrl } from '@/utils/url';
 
 function FileMediaMore({
@@ -35,6 +37,7 @@ function FileMediaMore({
   onDelete: () => void;
 }) {
   const { t } = useTranslation();
+  const { workspaceId, databasePageId } = useDatabaseContext();
 
   const updateRowMeta = useUpdateRowMetaDispatch(rowId);
 
@@ -72,7 +75,11 @@ function FileMediaMore({
           label: t('grid.media.openInBrowser'),
           icon: <OpenIcon />,
           onSelect: () => {
-            void openUrl(file.url, '_blank');
+            const resolved = resolveFileUrl(file.url, workspaceId, databasePageId);
+
+            if (resolved) {
+              void openUrl(resolved, '_blank');
+            }
           },
         },
         {
@@ -88,7 +95,11 @@ function FileMediaMore({
           label: t('button.download'),
           icon: <DownloadIcon />,
           onSelect: () => {
-            void downloadFile(file.url, file.name);
+            const resolved = resolveFileUrl(file.url, workspaceId, databasePageId);
+
+            if (resolved) {
+              void downloadFile(resolved, file.name);
+            }
           },
         },
         {
@@ -105,7 +116,7 @@ function FileMediaMore({
         icon: React.ReactNode;
         onSelect: () => void;
       }[],
-    [file, onPreview, t, updateRowMeta]
+    [file, onPreview, t, updateRowMeta, workspaceId, databasePageId]
   );
 
   return (

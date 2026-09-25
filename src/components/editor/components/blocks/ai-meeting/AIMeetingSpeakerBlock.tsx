@@ -15,7 +15,7 @@ import { cn } from '@/lib/utils';
 // Returns true only for actual image/URL sources (not emojis or non-URL strings)
 const isImageSource = (value?: string) => {
   if (!value) return false;
-  return /^https?:\/\//i.test(value) || value.startsWith('data:') || value.startsWith('blob:') || value.startsWith('/');
+  return /^https?:\/\//i.test(value) || value.startsWith('data:') || value.startsWith('blob:') || (value.startsWith('/') && !value.startsWith('//'));
 };
 
 const resolveSpeakerInfo = (
