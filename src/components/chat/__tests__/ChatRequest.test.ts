@@ -1,5 +1,6 @@
-import { expect, describe, it, beforeEach, afterEach } from '@jest/globals';
+import { expect, describe, it, beforeAll, beforeEach, afterEach } from '@jest/globals';
 import axios, { AxiosInstance } from 'axios';
+import { TextDecoder as NodeTextDecoder, TextEncoder as NodeTextEncoder } from 'util';
 
 // Mock axios
 jest.mock('axios');
@@ -446,6 +447,75 @@ describe('ChatRequest', () => {
         full_workspace: true,
         rag_ids: [],
       });
+    });
+  });
+
+  describe('fetchAnswerStream (Kora Work)', () => {
+    const originalFetch = global.fetch;
+
+    beforeAll(() => {
+      // jsdom does not provide the Encoding API that the stream reader uses.
+      Object.assign(global, { TextEncoder: NodeTextEncoder, TextDecoder: NodeTextDecoder });
+    });
+
+    afterEach(() => {
+      global.fetch = originalFetch;
+      delete document.documentElement.dataset.arsParent;
+    });
+
+    it('posts to the hub and reads the Kora `text` stream key', async () => {
+      const { readableStreamToAsyncIterator } = jest.requireMock('@/components/chat/lib/requets') as {
+        readableStreamToAsyncIterator: jest.Mock;
+      };
+      const encoder = new TextEncoder();
+
+      readableStreamToAsyncIterator.mockImplementation(async function* () {
+        yield encoder.encode('{"text":"Hel');
+        yield encoder.encode('lo"}{"text":" world"}');
+      });
+      document.documentElement.dataset.arsParent = 'https://africanresearchsociety.org';
+      const fetchMock = jest.fn(async () => ({
+        ok: true,
+        status: 200,
+        headers: { get: () => 'text/event-stream; charset=utf-8' },
+        body: { getReader: () => ({ releaseLock: jest.fn(), cancel: jest.fn() }), cancel: jest.fn() },
+      }));
+
+      global.fetch = fetchMock as unknown as typeof fetch;
+      const onMessage = jest.fn();
+      const request = new ChatRequest(
+        '3df0c6bb-417f-4f81-939a-c6114f160f9a',
+        '5d62b705-fee1-43c5-bd20-75a40aef254d',
+        mockAxiosInstance
+      );
+      const { streamPromise } = await request.fetchAnswerStream(
+        { question_id: 7, format: {} as never },
+        onMessage
+      );
+
+      await streamPromise;
+      const [url, init] = fetchMock.mock.calls[0] as unknown as [string, RequestInit];
+
+      expect(url).toBe('https://africanresearchsociety.org/api/kora/work/complete');
+      expect(JSON.parse(init.body as string)).toEqual({
+        workspaceId: '3df0c6bb-417f-4f81-939a-c6114f160f9a',
+        chatId: '5d62b705-fee1-43c5-bd20-75a40aef254d',
+        questionId: 7,
+      });
+      expect(onMessage).toHaveBeenLastCalledWith('Hello world', [], true);
+    });
+
+    it('surfaces the hub error message on refusal', async () => {
+      document.documentElement.dataset.arsParent = 'https://africanresearchsociety.org';
+      global.fetch = jest.fn(async () => ({
+        ok: false,
+        status: 503,
+        json: async () => ({ error: 'Kora AI Gateway is not configured' }),
+      })) as unknown as typeof fetch;
+
+      await expect(
+        chatRequest.fetchAnswerStream({ question_id: 1, format: {} as never }, jest.fn())
+      ).rejects.toThrow('Kora AI Gateway is not configured');
     });
   });
 

@@ -186,4 +186,6 @@ export enum StreamType {
   COMMENT = '4',
   PROGRESS = '5',
   REASONING = '6',
+  // Kora Work (`/api/kora/work/complete` on the ARS hub) streams `{"text": delta}`.
+  KORA_TEXT = 'text',
 }

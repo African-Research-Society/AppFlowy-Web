@@ -349,9 +349,11 @@ export class ChatRequest {
   ) {
     const parent = document.documentElement.dataset.arsParent || sessionStorage.getItem(ARS_HUB_PARENT_KEY);
     const hubOrigin = arsPostMessageOrigin(parent);
+
     if (!hubOrigin || !this.workspaceId || !this.chatId) {
       throw new Error('Kora Work is available when this chat is opened from the ARS hub');
     }
+
     const url = `${hubOrigin}/api/kora/work/complete`;
 
     const token = getAccessToken(); // Assume this function returns a valid token
@@ -378,7 +380,10 @@ export class ChatRequest {
     });
 
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+      // Kora Work replies with `{ error }` JSON on refusals (403/429/503).
+      const body = (await response.json().catch(() => null)) as { error?: unknown } | null;
+
+      throw new Error(typeof body?.error === 'string' ? body.error : `HTTP error! status: ${response.status}`);
     }
 
     const streamPromise = (async () => {
@@ -432,7 +437,7 @@ export class ChatRequest {
                 }
 
                 // Only append known content types to the answer text
-                if (key === StreamType.TEXT || key === StreamType.IMAGE) {
+                if (key === StreamType.TEXT || key === StreamType.KORA_TEXT || key === StreamType.IMAGE) {
                   text += value;
                 }
               });
