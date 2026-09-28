@@ -15,12 +15,30 @@ interface FileDropzoneProps {
   progress?: number;
 }
 
+function fileMatchesAccept(file: File, accept: string) {
+  return accept.split(',').some((raw) => {
+    const type = raw.trim().toLowerCase();
+
+    if (!type) return false;
+
+    if (type.endsWith('/*')) {
+      return file.type.toLowerCase().startsWith(type.slice(0, -1));
+    }
+
+    if (type.startsWith('.')) {
+      return file.name.toLowerCase().endsWith(type);
+    }
+
+    return file.type.toLowerCase() === type || file.name.toLowerCase().endsWith(type);
+  });
+}
+
 function FileDropzone({ onChange, accept, multiple, disabled, placeholder, loading, progress }: FileDropzoneProps) {
   const { t } = useTranslation();
   const [dragging, setDragging] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const handleFiles = (files: FileList) => {
+  const handleFiles = (files: FileList | File[]) => {
     const fileArray = Array.from(files);
 
     if (onChange) {
@@ -47,11 +65,7 @@ function FileDropzone({ onChange, accept, multiple, disabled, placeholder, loadi
     const files = Array.from(event.dataTransfer.files);
 
     if (accept) {
-      const isEveryFileValid = files.every((file: File) => {
-        const acceptedTypes = accept.split(',');
-
-        return acceptedTypes.some((type) => file.name.endsWith(type) || file.type === type);
-      });
+      const isEveryFileValid = files.every((file: File) => fileMatchesAccept(file, accept));
 
       if (!isEveryFileValid) {
         toastError();
@@ -82,7 +96,13 @@ function FileDropzone({ onChange, accept, multiple, disabled, placeholder, loadi
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
-      handleFiles(event.target.files);
+      const files = Array.from(event.target.files);
+      const accepted = accept ? files.filter((file) => fileMatchesAccept(file, accept)) : files;
+
+      if (accepted.length > 0) {
+        handleFiles(accepted);
+      }
+
       event.target.value = '';
     }
   };

@@ -40,6 +40,7 @@ import {
   getViewReadOnlyStatus,
 } from '@/components/app/hooks/useViewOperations';
 import { RevertedDialog } from '@/components/app/RevertedDialog';
+import { SendToDesign } from '@/components/integrations/SendToDesign';
 import { Document } from '@/components/document';
 import RecordNotFound from '@/components/error/RecordNotFound';
 import { useCurrentUser } from '@/components/main/app.hooks';
@@ -766,6 +767,7 @@ function AppPage() {
         </div>
       )}
       {view && <Help />}
+      <SendToDesign />
       <RevertedDialog open={showRevertedDialog} onDismiss={handleDismissRevertedDialog} />
     </div>
   );

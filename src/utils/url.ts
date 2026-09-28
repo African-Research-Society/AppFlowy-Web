@@ -82,6 +82,19 @@ export function parseAppFlowyPageLink(input: string, appHostname: string): AppFl
 
 // Process the URL to make sure it's a valid URL
 // If it's not a valid URL(eg: 'appflowy.io' or '192.168.1.2'), we'll add 'https://' to the URL
+/** Editor marks may keep relative, hash, http(s), mailto, and tel targets. */
+export function isPersistableEditorHref(url: string) {
+  const value = url.trim();
+
+  if (!value || value.startsWith('//')) return false;
+
+  const scheme = /^([a-z][a-z0-9+.-]*):/i.exec(value);
+
+  if (!scheme) return true;
+
+  return /^(https?|mailto|tel)$/i.test(scheme[1]);
+}
+
 export function processUrl(input: string) {
   let processedUrl = input;
 
@@ -89,7 +102,7 @@ export function processUrl(input: string) {
     return processedUrl;
   }
 
-  if (input.startsWith('http')) {
+  if (/^https?:\/\//i.test(input)) {
     return processedUrl;
   }
 

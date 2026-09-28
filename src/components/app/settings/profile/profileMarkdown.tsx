@@ -17,7 +17,7 @@ const STRIKE = /~~([^~]+)~~/;
 const CODE = /`([^`]+)`/;
 const ITALIC = /\*([^*]+)\*|_([^_]+)_/;
 
-const SAFE_HREF = /^(https?:\/\/|mailto:|\/|#)/i;
+const SAFE_HREF = /^(https?:\/\/|mailto:|\/(?!\/)|#)/i;
 const PARAGRAPH_BREAK = /\n+/;
 
 function isSafeHref(href: string): boolean {

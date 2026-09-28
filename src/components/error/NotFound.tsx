@@ -20,24 +20,6 @@ const NotFound = () => {
               <div className='mb-4 w-full rounded-lg border border-border-primary bg-fill-content p-4 text-left text-sm text-text-primary'>
                 <div className='font-semibold text-text-action'>{t('landingPage.noAccess.title')}</div>
                 <p className='mt-1 break-words text-text-secondary'>{publishError.message}</p>
-                {publishError.detail && (
-                  <p className='mt-2 break-words text-xs text-text-secondary'>{publishError.detail}</p>
-                )}
-                {(publishError.namespace || publishError.publishName) && (
-                  <p className='mt-2 text-xs text-text-tertiary'>
-                    {publishError.namespace && (
-                      <>
-                        Namespace: <code className='text-xs'>{publishError.namespace}</code>
-                      </>
-                    )}
-                    {publishError.publishName && (
-                      <>
-                        {' '}
-                        · Publish page: <code className='text-xs'>{publishError.publishName}</code>
-                      </>
-                    )}
-                  </p>
-                )}
               </div>
             )}
             <div className='w-full text-center'>

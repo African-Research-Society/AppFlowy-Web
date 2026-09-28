@@ -71,11 +71,14 @@ function AvatarImage({ className, src, ...props }: React.ComponentProps<typeof A
     Log.debug('[AvatarImage] src', src);
     getImageUrl(src)
       .then((url) => {
-        if (isMounted) {
-          setAuthenticatedSrc(url);
-          blobUrlRef.current = url;
-          setIsLoading(false);
+        if (!isMounted) {
+          revokeBlobUrl(url);
+          return;
         }
+
+        setAuthenticatedSrc(url);
+        blobUrlRef.current = url;
+        setIsLoading(false);
       })
       .catch((error) => {
         console.error('Failed to load avatar image:', error);

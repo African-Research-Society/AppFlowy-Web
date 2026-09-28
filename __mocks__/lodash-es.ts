@@ -1,5 +1,5 @@
 // Mock for lodash-es module
-const isEqual = jest.fn((a: any, b: any) => true);
+const isEqual = jest.fn((a: unknown, b: unknown) => JSON.stringify(a) === JSON.stringify(b));
 
 const debounce = jest.fn((func: Function, wait?: number) => {
   const debouncedFn = jest.fn((...args: any[]) => {

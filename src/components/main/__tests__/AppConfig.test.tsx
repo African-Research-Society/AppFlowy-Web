@@ -136,6 +136,24 @@ describe('AppConfig authentication startup', () => {
     );
   });
 
+  it('authenticates a same-tab session refresh', () => {
+    render(
+      <AppConfig>
+        <AuthenticationState />
+      </AppConfig>
+    );
+
+    expect(screen.getByTestId('authentication-state').textContent).toBe('false');
+
+    mockTokenValid = true;
+    act(() => {
+      emit(EventType.SESSION_REFRESH);
+    });
+
+    expect(screen.getByTestId('authentication-state').textContent).toBe('true');
+    expect(screen.getByTestId('authenticated-user-id').textContent).toBe('user-1');
+  });
+
   it('reacts to a same-tab invalidation without delayed token polling', async () => {
     mockTokenValid = true;
 

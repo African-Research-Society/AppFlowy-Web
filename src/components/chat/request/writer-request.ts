@@ -9,13 +9,12 @@ import {
 import {
   AIAssistantType,
   CompletionResult,
-  OutputContent,
-  OutputLayout,
   ResponseFormat,
   StreamType,
   View,
 } from '@/components/chat/types';
 import { AvailableModel } from '@/components/chat/types/ai-model';
+import { ARS_HUB_PARENT_KEY, arsPostMessageOrigin } from '@/components/integrations/send-to-design';
 import { extractNextJsonObject } from './stream-json-parser';
 
 export class WriterRequest {
@@ -46,8 +45,14 @@ export class WriterRequest {
     customPrompt?: string;
     modelName?: string;
   }, onMessage: (text: string, comment: string, done?: boolean) => void) => {
-    const baseUrl = this.axiosInstance.defaults.baseURL;
-    const url = `${baseUrl}/api/ai/${this.workspaceId}/v2/complete/stream`;
+    const parent = document.documentElement.dataset.arsParent || sessionStorage.getItem(ARS_HUB_PARENT_KEY);
+    const hubOrigin = arsPostMessageOrigin(parent);
+
+    if(!hubOrigin || !this.workspaceId || !this.viewId) {
+      throw new Error('Kora Work is available when this page is opened from the ARS hub');
+    }
+
+    const url = `${hubOrigin}/api/kora/work/complete`;
 
     const token = getAccessToken(); // Assume this function returns a valid token
 
@@ -63,29 +68,22 @@ export class WriterRequest {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`,
-        'ai-model': payload.modelName || 'Auto',
-        'x-platform': 'web-app',
       },
       body: JSON.stringify({
         text: payload.inputText,
-        completion_type: payload.assistantType,
-        format: payload.format || {
-          output_content: OutputContent.TEXT,
-          output_layout: OutputLayout.Paragraph,
-        },
-        metadata: {
-          object_id: this.viewId,
-          workspace_id: this.workspaceId,
-          rag_ids: payload.ragIds.length === 0 ? [this.viewId] : payload.ragIds,
-          completion_history: payload.completionHistory,
-          prompt_id: payload.promptId,
-          custom_prompt: payload.customPrompt ? { system: payload.customPrompt } : undefined,
-        },
+        completionType: payload.assistantType,
+        workspaceId: this.workspaceId,
+        viewId: this.viewId,
+        completionHistory: payload.completionHistory,
+        customPrompt: payload.customPrompt,
       }),
     });
 
     if(!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+      // Kora Work replies with `{ error }` JSON on refusals (403/429/503).
+      const body = (await response.json().catch(() => null)) as { error?: unknown } | null;
+
+      throw new Error(typeof body?.error === 'string' ? body.error : `HTTP error! status: ${response.status}`);
     }
 
     const streamPromise = (async() => {
@@ -131,7 +129,7 @@ export class WriterRequest {
                 }
 
                 // Only append known content types to the answer text
-                if(key === StreamType.TEXT || key === StreamType.IMAGE) {
+                if(key === StreamType.TEXT || key === StreamType.KORA_TEXT || key === StreamType.IMAGE) {
                   text += value;
                 }
               });
@@ -200,21 +198,6 @@ export class WriterRequest {
   };
 
   async getModelList(): Promise<{ models: AvailableModel[] }> {
-    if (!this.workspaceId) {
-      return Promise.reject('workspaceId is not defined');
-    }
-
-    const url = `/api/ai/${this.workspaceId}/model/list`;
-    const response = await this.axiosInstance.get<{
-      code: number;
-      data?: { models: AvailableModel[] };
-      message?: string;
-    }>(url);
-
-    if (response?.data.code === 0 && response.data.data) {
-      return response.data.data;
-    }
-
-    return Promise.reject(response?.data.message || 'Failed to load models');
+    return {models:[{name:'Kora Auto',metadata:{is_default:true,desc:'Kora chooses an approved model for this request'}}]};
   }
 }

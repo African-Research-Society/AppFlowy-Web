@@ -1,5 +1,7 @@
 import axios, { InternalAxiosRequestConfig } from 'axios';
 
+import { getTokenParsed } from '@/application/session/token';
+
 /* Create an axios instance with the default configuration
  * **Note**: This function is used to create the initial instance of axios, it's used in development mode
  */
@@ -13,15 +15,7 @@ export function createInitialInstance() {
 }
 
 export function getAccessToken() {
-  const token = localStorage.getItem('token');
-
-  if(!token) {
-    return null;
-  }
-
-  const parsedToken = JSON.parse(token);
-
-  return parsedToken.access_token;
+  return getTokenParsed()?.access_token ?? null;
 }
 
 export function requestInterceptor(config: InternalAxiosRequestConfig) {

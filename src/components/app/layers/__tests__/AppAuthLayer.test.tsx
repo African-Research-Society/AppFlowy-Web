@@ -2,7 +2,8 @@ import { act, render, screen, waitFor } from '@testing-library/react';
 import { useContext } from 'react';
 
 import { UserService, WorkspaceService, AuthService } from '@/application/services/domains';
-import { invalidToken } from '@/application/session/token';
+import { restoreEmbedSession } from '@/application/session/embed-session';
+import { invalidToken, isTokenValid } from '@/application/session/token';
 import { type UserWorkspaceInfo } from '@/application/types';
 import { AppProvider } from '@/components/app/app.hooks';
 import { AuthInternalContext, type AuthInternalContextType } from '@/components/app/contexts/AuthInternalContext';
@@ -21,6 +22,7 @@ jest.mock('react-router-dom', () => ({
 
 jest.mock('@/application/session/token', () => ({
   invalidToken: jest.fn(),
+  isTokenValid: jest.fn(() => false),
 }));
 
 jest.mock('@/application/services/domains', () => ({
@@ -68,9 +70,11 @@ describe('AppAuthLayer workspace info loading', () => {
   const mockOpenWorkspace = WorkspaceService.open as jest.MockedFunction<typeof WorkspaceService.open>;
   const mockGetServerInfo = AuthService.getServerInfo as jest.MockedFunction<typeof AuthService.getServerInfo>;
   const mockInvalidToken = invalidToken as jest.MockedFunction<typeof invalidToken>;
+  const mockIsTokenValid = isTokenValid as jest.MockedFunction<typeof isTokenValid>;
 
   beforeEach(() => {
     jest.clearAllMocks();
+    mockIsTokenValid.mockReturnValue(false);
     mockWorkspaceId = undefined;
     mockPathname = '/login';
     mockGetServerInfo.mockResolvedValue({
@@ -100,6 +104,48 @@ describe('AppAuthLayer workspace info loading', () => {
     await waitFor(() => expect(mockInvalidToken).toHaveBeenCalledTimes(1));
     expect(mockNavigate).toHaveBeenCalledWith(`/login?redirectTo=${encodeURIComponent(window.location.href)}`);
     expect(mockGetWorkspaceInfo).not.toHaveBeenCalled();
+  });
+
+  it('does not log out while an embed refresh cookie is being restored', async () => {
+    mockPathname = '/app/workspace-old';
+    let releaseRefresh!: (value: unknown) => void;
+    const refresh = new Promise((resolve) => {
+      releaseRefresh = resolve;
+    });
+    const restore = restoreEmbedSession({
+      hasToken: false,
+      cookie: 'af_embed_rt=refresh-token',
+      refresh: () => refresh,
+    });
+
+    render(
+      <AFConfigContext.Provider
+        value={{
+          isAuthenticated: false,
+          updateCurrentUser: jest.fn(),
+          openLoginModal: jest.fn(),
+        }}
+      >
+        <AppAuthLayer>
+          <div />
+        </AppAuthLayer>
+      </AFConfigContext.Provider>
+    );
+
+    try {
+      expect(mockInvalidToken).not.toHaveBeenCalled();
+
+      mockIsTokenValid.mockReturnValue(true);
+      await act(async () => {
+        releaseRefresh(undefined);
+        await restore;
+      });
+
+      expect(mockInvalidToken).not.toHaveBeenCalled();
+    } finally {
+      releaseRefresh(undefined);
+      await restore;
+    }
   });
 
   it('remounts the account-scoped layers when authentication is invalidated or the account changes', async () => {

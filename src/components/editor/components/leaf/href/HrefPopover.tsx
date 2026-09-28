@@ -67,9 +67,13 @@ function HrefPopover({ open, onClose, updatedSelection }: HrefPopoverProps) {
 
   const formatLink = useCallback(
     (value: string) => {
+      const url = processUrl(value);
+
+      if (!url) return;
+
       CustomEditor.addMark(editor, {
         key: EditorMarkFormat.Href,
-        value,
+        value: url,
       });
       handleClose();
       setIsActivated(true);
@@ -175,10 +179,12 @@ function HrefPopover({ open, onClose, updatedSelection }: HrefPopoverProps) {
     const text = editor.string(editor.selection);
 
     const saveLink = (value: string) => {
-      if (value === hrefNode.href || !urlValid) return;
+      const url = processUrl(value);
+
+      if (!url || url === hrefNode.href || !urlValid) return;
       CustomEditor.addMark(editor, {
         key: EditorMarkFormat.Href,
-        value,
+        value: url,
       });
     };
 

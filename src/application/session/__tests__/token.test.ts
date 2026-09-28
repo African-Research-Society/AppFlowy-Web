@@ -1,6 +1,7 @@
+import { getAccessToken } from '@/components/chat/lib/requets';
 import { emit, EventType } from '@/application/session/event';
 
-import { getToken, getTokenParsed, isTokenValid, saveGoTrueAuth } from '../token';
+import { getToken, getTokenParsed, invalidToken, isTokenValid, saveGoTrueAuth } from '../token';
 
 jest.mock('@/application/session/event', () => ({
   emit: jest.fn(),
@@ -42,6 +43,7 @@ function createToken(overrides: Record<string, unknown> = {}) {
 describe('GoTrue token storage', () => {
   beforeEach(() => {
     localStorage.clear();
+    invalidToken();
     emitMock.mockClear();
   });
 
@@ -135,14 +137,38 @@ describe('GoTrue token storage', () => {
     getItem.mockRestore();
   });
 
-  it('does not emit or throw when storage writes are blocked', () => {
+  it('keeps a readable session when storage writes are blocked', () => {
+    const token = createToken();
     const setItem = jest.spyOn(Storage.prototype, 'setItem').mockImplementation(() => {
       throw new DOMException('Storage is blocked', 'SecurityError');
     });
 
-    expect(saveGoTrueAuth(JSON.stringify(createToken()))).toBe(false);
-    expect(emitMock).not.toHaveBeenCalled();
+    expect(saveGoTrueAuth(JSON.stringify(token))).toBe(true);
+    expect(getToken()).toBeNull();
+    expect(getTokenParsed()).toEqual(token);
+    expect(getAccessToken()).toBe(token.access_token);
+    expect(isTokenValid()).toBe(true);
+    expect(emitMock).toHaveBeenCalledWith(EventType.SESSION_REFRESH, expect.any(String));
+    expect(document.cookie).toContain('af_embed_rt=refresh-token');
 
     setItem.mockRestore();
+    const getItem = jest.spyOn(Storage.prototype, 'getItem').mockImplementation(() => {
+      throw new DOMException('Storage is blocked', 'SecurityError');
+    });
+
+    expect(getTokenParsed()).toEqual(token);
+    expect(getAccessToken()).toBe(token.access_token);
+    expect(isTokenValid()).toBe(true);
+
+    getItem.mockRestore();
+  });
+
+  it('does not revive an in-memory session after the stored token is removed', () => {
+    expect(saveGoTrueAuth(JSON.stringify(createToken()))).toBe(true);
+
+    localStorage.removeItem('token');
+
+    expect(getTokenParsed()).toBeNull();
+    expect(isTokenValid()).toBe(false);
   });
 });

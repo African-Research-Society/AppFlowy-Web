@@ -250,6 +250,7 @@ function RelationPropertyMenuContent({ fieldId }: { fieldId: string }) {
                   <Switch
                     checked={isTwoWay}
                     data-testid='relation-two-way-enable'
+                    onClick={(event) => event.stopPropagation()}
                     onCheckedChange={handleToggleTwoWay}
                   />
                 </div>

@@ -75,7 +75,14 @@ export function getPopoverPosition(): {
   const position = localStorage.getItem('quick_note_popover_position');
 
   if (position) {
-    return JSON.parse(position);
+    try {
+      return JSON.parse(position);
+    } catch {
+      return {
+        expand: null,
+        normal: null,
+      };
+    }
   }
 
   return {
