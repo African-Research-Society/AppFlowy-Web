@@ -5,7 +5,8 @@ import { User } from '@/application/types';
 import { getConfigValue } from '@/utils/runtime-config';
 
 const baseURL = getConfigValue('APPFLOWY_BASE_URL', 'https://test.appflowy.cloud');
-const gotrueURL = getConfigValue('APPFLOWY_GOTRUE_BASE_URL', 'https://test.appflowy.cloud/gotrue');
+// Legacy service interfaces retain this field; authentication belongs to ARS.
+const gotrueURL = `${getConfigValue('ARS_AUTH_ORIGIN', 'https://africanresearchsociety.org')}/api/auth`;
 
 export const defaultConfig: AFCloudConfig = {
   baseURL,
