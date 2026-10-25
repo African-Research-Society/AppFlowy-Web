@@ -66,6 +66,9 @@ export function sortBy(
       if (!fieldId) return '';
 
       const field = fields.get(fieldId);
+
+      if (!field) return '';
+
       const fieldType = Number(field.get(YjsDatabaseKey.type));
       const isRollupNumeric =
         fieldType === FieldType.Rollup

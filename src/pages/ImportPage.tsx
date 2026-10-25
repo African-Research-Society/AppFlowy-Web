@@ -3,17 +3,19 @@ import Typography from '@mui/material/Typography';
 import React from 'react';
 import { useSearchParams } from 'react-router-dom';
 
+import { getSafeRedirectUrl } from '@/application/session/sign_in';
 import { ReactComponent as AppflowyLogo } from '@/assets/icons/appflowy.svg';
 import Import from '@/components/_shared/more-actions/importer/Import';
 
 function ImportPage() {
   const [search] = useSearchParams();
   const redirectTo = search.get('redirectToImport');
+  const safeRedirectTo = redirectTo ? getSafeRedirectUrl(redirectTo) : null;
   const onSuccess = React.useCallback(() => {
-    if (redirectTo) {
-      window.location.href = redirectTo;
+    if (safeRedirectTo) {
+      window.location.href = safeRedirectTo;
     }
-  }, [redirectTo]);
+  }, [safeRedirectTo]);
 
   return (
     <div className={'flex h-screen w-screen flex-col bg-[#EEEEFD]'}>

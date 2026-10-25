@@ -46,8 +46,8 @@ export const PDFBlock = memo(
     const openPDFInNewTab = useCallback(() => {
       const link = url || localUrl;
 
-      if (link) {
-        window.open(link, '_blank');
+      if (link && (/^https?:\/\//i.test(link) || link.startsWith('blob:'))) {
+        window.open(link, '_blank', 'noopener,noreferrer');
       }
     }, [url, localUrl]);
 

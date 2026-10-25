@@ -2,8 +2,9 @@ import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } 
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 import { AuthService, UserService, WorkspaceService } from '@/application/services/domains';
+import { isEmbedRestorePending, subscribeEmbedRestore } from '@/application/session/embed-session';
 import { buildLoginUrl } from '@/application/session/sign_in';
-import { invalidToken } from '@/application/session/token';
+import { invalidToken, isTokenValid } from '@/application/session/token';
 import { UserWorkspaceInfo } from '@/application/types';
 import { determineErrorType, ErrorType } from '@/application/utils/error-utils';
 import { AFConfigContext } from '@/components/main/app.hooks';
@@ -173,11 +174,20 @@ export const AppAuthLayer: React.FC<AppAuthLayerProps> = ({ children }) => {
 
   // AppConfig initializes synchronously from storage and owns all session events,
   // so this layer does not need timer-based token polling or a second auth source.
+  // An embed /app load can still be unauthenticated while restoreEmbedSession
+  // exchanges af_embed_rt. Logging out in that window deletes the cookie and
+  // navigates to /login before the refreshed session can stick.
   useEffect(() => {
-    if (!hasConfigContext || isAuthenticated) return;
+    if (!hasConfigContext || isAuthenticated || isTokenValid()) return;
     if (location.pathname === '/login' || location.pathname.startsWith('/auth/callback')) return;
 
-    logout();
+    const logoutUnlessRestored = () => {
+      if (isEmbedRestorePending() || isTokenValid()) return;
+      logout();
+    };
+
+    logoutUnlessRestored();
+    return subscribeEmbedRestore(logoutUnlessRestored);
   }, [hasConfigContext, isAuthenticated, location.pathname, logout]);
 
   // Load user workspace info and server info on mount. An unauthenticated

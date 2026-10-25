@@ -31,6 +31,7 @@ import {
   WorkspaceMember,
 } from '@/application/types';
 import { canonicalizeUserUid } from '@/application/user-uid';
+import { isUnsupportedRouteError } from '@/utils/errors';
 
 import { APIResponse, executeAPIRequest, executeAPIVoidRequest, getAxios } from './core';
 
@@ -163,10 +164,23 @@ function iterateFolder(folder: WorkspaceFolder): FolderView {
 }
 
 export async function getWorkspaceFolder(workspaceId: string, depth = 50): Promise<FolderView> {
-  const url = `/api/workspace/${workspaceId}/view/${workspaceId}?depth=${depth}`;
-  const payload = await executeAPIRequest<WorkspaceFolder>(() =>
-    getAxios()?.get<APIResponse<WorkspaceFolder>>(url)
-  );
+  const modernUrl = `/api/workspace/${workspaceId}/view/${workspaceId}?depth=${depth}`;
+  let payload: WorkspaceFolder;
+
+  try {
+    payload = await executeAPIRequest<WorkspaceFolder>(() =>
+      getAxios()?.get<APIResponse<WorkspaceFolder>>(modernUrl)
+    );
+  } catch (error) {
+    // Local/older Cloud still serves the tree at /folder.
+    if (!isUnsupportedRouteError(error)) throw error;
+
+    const legacyUrl = `/api/workspace/${workspaceId}/folder?depth=${depth}&root_view_id=${workspaceId}`;
+
+    payload = await executeAPIRequest<WorkspaceFolder>(() =>
+      getAxios()?.get<APIResponse<WorkspaceFolder>>(legacyUrl)
+    );
+  }
 
   return iterateFolder(payload);
 }

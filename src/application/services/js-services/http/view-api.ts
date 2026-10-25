@@ -4,6 +4,8 @@ import {
   WorkspaceDatabaseWithViews,
 } from '@/application/services/services.type';
 import { CreateOrphanedViewPayload, View } from '@/application/types';
+import { isUnsupportedRouteError } from '@/utils/errors';
+import { Log } from '@/utils/log';
 
 import { APIResponse, executeAPIRequest, getAxios } from './core';
 
@@ -11,25 +13,57 @@ const MAX_WORKSPACE_VIEW_SUBTREES_GET_URL_BYTES = 4096;
 const WORKSPACE_VIEW_SUBTREES_BATCH_CHUNK_SIZE = 50;
 const WORKSPACE_DATABASE_LIST_PAGE_SIZE = 200;
 
-export async function getAppOutline(workspaceId: string): Promise<AppOutlineResponse> {
-  const url = `/api/workspace/${workspaceId}/view/${workspaceId}?depth=6`;
+/**
+ * Newer AppFlowy Cloud builds expose `/view/{id}`; older ones (including this
+ * local trial Cloud) still serve the folder tree at `/folder?root_view_id=`.
+ */
+async function getViewTree(workspaceId: string, viewId: string, depth: number): Promise<View> {
+  const modernUrl = `/api/workspace/${workspaceId}/view/${viewId}?depth=${depth}`;
 
-  return executeAPIRequest<View>(() => getAxios()?.get<APIResponse<View>>(url)).then((data) => ({
+  try {
+    return await executeAPIRequest<View>(() => getAxios()?.get<APIResponse<View>>(modernUrl));
+  } catch (error) {
+    if (!isUnsupportedRouteError(error)) throw error;
+
+    Log.warn('[getViewTree] /view endpoint unavailable, falling back to legacy /folder', {
+      workspaceId,
+      viewId,
+      depth,
+    });
+
+    const legacyUrl = `/api/workspace/${workspaceId}/folder?depth=${depth}&root_view_id=${viewId}`;
+
+    return executeAPIRequest<View>(() => getAxios()?.get<APIResponse<View>>(legacyUrl));
+  }
+}
+
+export async function getAppOutline(workspaceId: string): Promise<AppOutlineResponse> {
+  return getViewTree(workspaceId, workspaceId, 6).then((data) => ({
     outline: Array.isArray(data.children) ? data.children : [],
     folderRid: data.folder_rid,
   }));
 }
 
 export async function getView(workspaceId: string, viewId: string, depth: number = 1) {
-  const url = `/api/workspace/${workspaceId}/view/${viewId}?depth=${depth}`;
-
-  return executeAPIRequest<View>(() => getAxios()?.get<APIResponse<View>>(url));
+  return getViewTree(workspaceId, viewId, depth);
 }
 
 export async function getViewNavigation(workspaceId: string, viewId: string, depth: number = 0) {
   const url = `/api/workspace/${workspaceId}/view/${viewId}/navigation?depth=${depth}`;
 
-  return executeAPIRequest<View>(() => getAxios()?.get<APIResponse<View>>(url));
+  try {
+    return await executeAPIRequest<View>(() => getAxios()?.get<APIResponse<View>>(url));
+  } catch (error) {
+    if (!isUnsupportedRouteError(error)) throw error;
+
+    Log.warn('[getViewNavigation] /navigation unavailable, falling back to legacy /folder', {
+      workspaceId,
+      viewId,
+      depth,
+    });
+
+    return getViewTree(workspaceId, viewId, depth);
+  }
 }
 
 export async function getWorkspaceDatabaseListPage(

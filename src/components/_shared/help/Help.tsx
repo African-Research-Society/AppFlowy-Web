@@ -1,4 +1,4 @@
-import { Button, Divider, Portal, Tooltip } from '@mui/material';
+import { Button, Portal, Tooltip } from '@mui/material';
 import Box from '@mui/material/Box';
 import { PopoverProps } from '@mui/material/Popover';
 import * as React from 'react';

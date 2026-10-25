@@ -39,6 +39,16 @@ function resolveAppflowyOriginAndPathname(): { origin: string | null; pathname: 
 }
 
 
+function isLocalhostUrl(url: string): boolean {
+  try {
+    const parsed = new URL(url);
+
+    return parsed.hostname === 'localhost' && (parsed.protocol === 'http:' || parsed.protocol === 'https:');
+  } catch {
+    return false;
+  }
+}
+
 export function isFileURL(url: string): boolean {
   if (isAppFlowyFileStorageUrl(url)) {
     return true;
@@ -47,11 +57,25 @@ export function isFileURL(url: string): boolean {
   // validator/lib/isURL may fail for localhost if strict options are used,
   // or simply return false for some valid internal URLs.
   // We specifically allow localhost URLs.
-  if (url.startsWith('http://localhost') || url.startsWith('https://localhost')) {
+  if (isLocalhostUrl(url)) {
     return true;
   }
 
   return isURL(url);
+}
+
+export function fileStorageRequestUrl(url: string): string {
+  if (/^https?:\/\//i.test(url)) return url;
+
+  const { origin } = resolveAppflowyOriginAndPathname();
+
+  if (!origin) return url;
+
+  try {
+    return new URL(url, origin).toString();
+  } catch {
+    return url;
+  }
 }
 
 /**

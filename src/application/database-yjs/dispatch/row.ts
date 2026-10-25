@@ -141,6 +141,11 @@ function reorderRow(rowId: string, beforeRowId: string | undefined, view: YDatab
   }[];
 
   const sourceIndex = rowArray.findIndex((row) => row.id === rowId);
+
+  if (sourceIndex === -1) {
+    return;
+  }
+
   const targetIndex = beforeRowId !== undefined ? rowArray.findIndex((row) => row.id === beforeRowId) + 1 : 0;
 
   const row = rows.get(sourceIndex);
@@ -315,6 +320,10 @@ export function useDeleteRowDispatch() {
           }[];
 
           const sourceIndex = rowArray.findIndex((row) => row.id === rowId);
+
+          if (sourceIndex === -1) {
+            return;
+          }
 
           rows.delete(sourceIndex);
         },

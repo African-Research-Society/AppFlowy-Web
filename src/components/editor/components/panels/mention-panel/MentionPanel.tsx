@@ -202,7 +202,7 @@ function delay(ms: number) {
 function isImageSource(value?: string) {
   if (!value) return false;
 
-  return /^https?:\/\//i.test(value) || value.startsWith('data:') || value.startsWith('blob:') || value.startsWith('/');
+  return /^https?:\/\//i.test(value) || value.startsWith('data:') || value.startsWith('blob:') || (value.startsWith('/') && !value.startsWith('//'));
 }
 
 function MentionPersonAvatar({ item, title }: { item: MentionSearchResultItem; title: string }) {

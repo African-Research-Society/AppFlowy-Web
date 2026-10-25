@@ -1,4 +1,6 @@
 
+import { isPersistableEditorHref } from '@/utils/url';
+
 import { InlineFormat } from './types';
 
 import type { Element as HastElement, Text as HastText } from 'hast';
@@ -119,7 +121,7 @@ export function extractInlineFormatsFromHAST(node: HastElement, baseOffset = 0):
           // Links are handled separately with data
           const href = elem.properties?.href as string;
 
-          if (href) {
+          if (href && isPersistableEditorHref(href)) {
             const startOffset = currentOffset;
             const text = elem.children.map((child) => walkNode(child as HastElement | HastText, newFormats)).join('');
 

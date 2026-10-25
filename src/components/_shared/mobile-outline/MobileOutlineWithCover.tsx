@@ -27,7 +27,7 @@ function MobileOutlineWithCover({
     (time: string) => {
       const justNow = dayjs().diff(dayjs(time), 'minute') < 1;
       const isToday = dayjs().isSame(dayjs(time), 'day');
-      const isYesterday = dayjs().isSame(dayjs(time), 'day');
+      const isYesterday = dayjs().subtract(1, 'day').isSame(dayjs(time), 'day');
 
       if (justNow) {
         return t('time.justNow');

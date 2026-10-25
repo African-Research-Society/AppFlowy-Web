@@ -60,6 +60,7 @@ jest.mock('@/components/app/DatabaseView', () => () => null);
 jest.mock('@/components/document', () => ({ Document: () => null }));
 jest.mock('@/components/ai-chat', () => ({ AIChat: () => null }));
 jest.mock('@/components/_shared/help/Help', () => () => null);
+jest.mock('@/components/integrations/SendToDesign', () => ({ SendToDesign: () => null }));
 jest.mock('@/components/error/RecordNotFound', () => () => null);
 jest.mock('@/components/_shared/helmet/ViewHelmet', () => () => null);
 

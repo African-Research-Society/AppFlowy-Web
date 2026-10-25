@@ -54,7 +54,8 @@ export const LinkPreview = memo(
 
       return () => controller.abort();
     }, [url]);
-    const imageUrl = data?.image?.url || data?.logo?.url;
+    const rawImageUrl = data?.image?.url || data?.logo?.url;
+    const imageUrl = rawImageUrl && /^https?:\/\//i.test(rawImageUrl) ? rawImageUrl : undefined;
     const handleClick = useCallback(() => {
       if (!url) {
         if (!readOnly && emptyRef.current) {

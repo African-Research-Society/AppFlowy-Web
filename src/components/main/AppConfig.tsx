@@ -91,11 +91,13 @@ function AppConfig({ children }: { children: React.ReactNode }) {
     };
 
     const unsubscribeValid = on(EventType.SESSION_VALID, syncAuthenticationState);
+    const unsubscribeRefresh = on(EventType.SESSION_REFRESH, syncAuthenticationState);
     const unsubscribeInvalid = on(EventType.SESSION_INVALID, invalidateAuthenticationState);
 
     window.addEventListener('storage', handleStorageChange);
     return () => {
       unsubscribeValid();
+      unsubscribeRefresh();
       unsubscribeInvalid();
       window.removeEventListener('storage', handleStorageChange);
     };

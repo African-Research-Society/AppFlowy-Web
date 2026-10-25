@@ -311,7 +311,7 @@ function useHighlight(type: 'row' | 'column', index: number, isOpen: boolean) {
 
     // Find the table by walking up from any element with the blockId,
     // or by finding the closest .simple-table ancestor
-    const blockEl = document.querySelector(`[data-block-id="${context.tableNode.blockId}"]`);
+    const blockEl = document.querySelector(`[data-block-id="${CSS.escape(String(context.tableNode.blockId))}"]`);
     const tableEl = blockEl?.closest('.simple-table') || blockEl?.querySelector('.simple-table') || blockEl;
 
     if (!tableEl) return;

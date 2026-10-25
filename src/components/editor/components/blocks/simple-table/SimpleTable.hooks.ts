@@ -221,7 +221,7 @@ function updateCellHighlights(prev: Map<string, CellHighlightInfo>, current: Map
   // Remove highlight from cells no longer selected
   for (const [id] of prev) {
     if (!current.has(id)) {
-      const el = document.querySelector(`td[data-block-cell="${id}"]`);
+      const el = document.querySelector(`td[data-block-cell="${CSS.escape(String(id))}"]`);
 
       if (el) el.classList.remove(...HIGHLIGHT_CLASSES);
     }
@@ -229,7 +229,7 @@ function updateCellHighlights(prev: Map<string, CellHighlightInfo>, current: Map
 
   // Add/update highlight on selected cells
   for (const [id, info] of current) {
-    const el = document.querySelector(`td[data-block-cell="${id}"]`);
+    const el = document.querySelector(`td[data-block-cell="${CSS.escape(String(id))}"]`);
 
     if (!el) continue;
 
@@ -246,7 +246,7 @@ function updateCellHighlights(prev: Map<string, CellHighlightInfo>, current: Map
  */
 function clearCellHighlights(prev: Map<string, CellHighlightInfo>) {
   for (const [id] of prev) {
-    const el = document.querySelector(`td[data-block-cell="${id}"]`);
+    const el = document.querySelector(`td[data-block-cell="${CSS.escape(String(id))}"]`);
 
     if (el) el.classList.remove(...HIGHLIGHT_CLASSES);
   }
