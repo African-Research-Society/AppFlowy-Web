@@ -39,17 +39,17 @@ function Calendar ({
         ),
         day: cn(
           buttonVariants({ variant: 'ghost', size: 'icon' }),
-          'aria-selected:bg-fill-theme-thick aria-selected:text-text-on-fill rounded-full cursor-pointer',
+          'aria-selected:bg-fill-theme-thick aria-selected:text-content-on-fill rounded-full cursor-pointer',
         ),
         day_range_start:
-          'day-range-start aria-selected:bg-fill-theme-thick aria-selected:text-text-on-fill',
+          'day-range-start aria-selected:bg-fill-theme-thick aria-selected:text-content-on-fill',
         day_range_end:
-          'day-range-end aria-selected:bg-fill-theme-thick aria-selected:text-text-on-fill',
+          'day-range-end aria-selected:bg-fill-theme-thick aria-selected:text-content-on-fill',
         day_selected:
           'bg-surface-primary text-text-primary hover:bg-surface-primary-hover focus:bg-surface-primary focus:text-text-primary',
         day_today: 'bg-transparent border border-border-theme-thick text-text-primary',
         day_outside:
-          'day-outside text-text-tertiary aria-selected:text-text-on-fill',
+          'day-outside text-text-tertiary aria-selected:text-content-on-fill',
         day_disabled: 'text-text-tertiary',
         day_range_middle:
           'aria-selected:bg-transparent aria-selected:text-text-primary',

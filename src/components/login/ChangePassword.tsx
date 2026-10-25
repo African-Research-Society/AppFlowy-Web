@@ -120,7 +120,7 @@ export function ChangePassword({ email, redirectTo }: { email: string; redirectT
       >
         <Logo className={'h-10 w-10'} />
       </div>
-      <div className={'text-xl font-semibold text-text-primary'}>{t('changePassword.title')}</div>
+      <div className={'font-serif text-xl font-semibold text-text-primary'}>{t('changePassword.title')}</div>
       <div className={'w-full text-center text-sm font-normal'}>
         <Trans
           i18nKey='changePassword.description'

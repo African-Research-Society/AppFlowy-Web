@@ -77,7 +77,7 @@ export default function LandingPage({
         <div className='flex w-[400px] flex-col items-center justify-center gap-10'>
           <div className='flex w-full flex-col items-center justify-center gap-6'>
             {Logo && <Logo className='h-16 w-16' />}
-            <div className='w-full whitespace-pre-wrap break-words text-center text-xl font-bold text-text-primary'>
+            <div className='w-full whitespace-pre-wrap break-words text-center font-serif text-xl font-semibold text-text-primary'>
               {title}
             </div>
             {workspace && (

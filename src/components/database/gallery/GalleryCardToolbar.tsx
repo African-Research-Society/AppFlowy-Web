@@ -26,7 +26,7 @@ export function GalleryCardToolbar({ onEdit, rowId }: { onEdit: () => void; rowI
   return (
     <>
       <div
-        className='pointer-events-none absolute right-[7px] top-[7px] z-20 flex items-center overflow-hidden rounded-[4px] border border-[rgba(31,35,41,0.12)] bg-white opacity-0 shadow-[0_0_4px_rgba(31,35,41,0.02),0_0_4px_-2px_rgba(31,35,41,0.02)] transition-opacity duration-200 group-focus-within/gallery-card:pointer-events-auto group-focus-within/gallery-card:opacity-100 group-hover/gallery-card:pointer-events-auto group-hover/gallery-card:opacity-100 motion-reduce:transition-none [[data-dark-mode=true]_&]:border-[#59647A] [[data-dark-mode=true]_&]:bg-[#1A202C]'
+        className='pointer-events-none absolute right-[7px] top-[7px] z-20 flex items-center overflow-hidden rounded-[4px] border border-border-primary bg-surface-primary opacity-0 shadow-none transition-opacity duration-200 group-focus-within/gallery-card:pointer-events-auto group-focus-within/gallery-card:opacity-100 group-hover/gallery-card:pointer-events-auto group-hover/gallery-card:opacity-100 motion-reduce:transition-none'
         data-gallery-interactive='true'
         data-testid={`gallery-card-toolbar-${rowId}`}
         onClick={(event) => event.stopPropagation()}
@@ -35,7 +35,7 @@ export function GalleryCardToolbar({ onEdit, rowId }: { onEdit: () => void; rowI
           <TooltipTrigger asChild>
             <Button
               aria-label={t('button.edit')}
-              className='h-[22px] w-6 rounded-none p-[3px] text-[#828282] hover:bg-white focus-visible:relative focus-visible:z-10 focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-fill-theme-thick [[data-dark-mode=true]_&]:text-[#59647A] [[data-dark-mode=true]_&]:hover:bg-[#1A202C]'
+              className='h-[22px] w-6 rounded-none p-[3px] text-[var(--text-tertiary)] hover:bg-fill-content-hover focus-visible:relative focus-visible:z-10 focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-fill-theme-thick'
               data-testid={`gallery-card-edit-${rowId}`}
               onClick={(event) => {
                 event.stopPropagation();
@@ -52,7 +52,7 @@ export function GalleryCardToolbar({ onEdit, rowId }: { onEdit: () => void; rowI
 
         <span
           aria-hidden='true'
-          className='h-[22px] w-px shrink-0 bg-[rgba(31,35,41,0.12)] [[data-dark-mode=true]_&]:bg-[#59647A]'
+          className='h-[22px] w-px shrink-0 bg-border-primary'
           data-testid='gallery-card-toolbar-divider'
         />
 
@@ -62,7 +62,7 @@ export function GalleryCardToolbar({ onEdit, rowId }: { onEdit: () => void; rowI
               <DropdownMenuTrigger asChild>
                 <Button
                   aria-label={t('tooltip.openMenu')}
-                  className='h-[22px] w-6 rounded-none p-[3px] text-[#828282] hover:bg-white focus-visible:relative focus-visible:z-10 focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-fill-theme-thick [[data-dark-mode=true]_&]:text-[#59647A] [[data-dark-mode=true]_&]:hover:bg-[#1A202C]'
+                  className='h-[22px] w-6 rounded-none p-[3px] text-[var(--text-tertiary)] hover:bg-fill-content-hover focus-visible:relative focus-visible:z-10 focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-fill-theme-thick'
                   data-testid={`gallery-card-more-${rowId}`}
                   onClick={(event) => event.stopPropagation()}
                   type='button'

@@ -173,7 +173,7 @@ function AddCommentInput({ parentCommentId, showThreadLine = false }: { parentCo
                   className={cn(
                     'flex h-5 w-5 items-center justify-center rounded-full transition-colors',
                     canSend
-                      ? 'bg-fill-theme-thick text-text-on-fill hover:opacity-90'
+                      ? 'bg-fill-theme-thick text-content-on-fill hover:opacity-90'
                       : 'bg-border-primary text-text-tertiary'
                   )}
                 >

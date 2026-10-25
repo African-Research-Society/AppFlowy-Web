@@ -10,7 +10,7 @@ const baseTextareaStyles = cn(
   'placeholder:text-text-tertiary',
 
   // Selection styling
-  'selection:bg-fill-theme-thick selection:text-text-on-fill focus:caret-fill-theme-thick',
+  'selection:bg-fill-theme-thick selection:text-content-on-fill focus:caret-fill-theme-thick',
 
   'bg-fill-content',
 

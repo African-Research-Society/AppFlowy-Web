@@ -222,7 +222,7 @@ function GalleryPreviewFrame({
         'gallery-card-cover-placeholder h-full w-full overflow-hidden',
         value.src
           ? preview === GalleryCardPreview.PageCover
-            ? 'bg-white [[data-dark-mode=true]_&]:bg-[#282E3A]'
+            ? 'bg-surface-primary'
             : 'bg-[var(--gallery-card-surface)]'
           : GALLERY_COVER_PLACEHOLDER_BACKGROUND_CLASS_NAME
       )}

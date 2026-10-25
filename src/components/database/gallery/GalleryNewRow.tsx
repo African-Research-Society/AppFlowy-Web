@@ -38,19 +38,13 @@ export function GalleryNewRow({ cardSize }: { cardSize: GalleryCardSize }) {
         aria-busy={creating}
         aria-label={t('grid.row.newRow')}
         className={cn(
-          'flex h-full w-full items-center justify-center rounded-[10px] border bg-white',
-          'border-[rgba(31,35,41,0.14)] text-[rgba(23,23,23,0.4)]',
+          'flex h-full w-full items-center justify-center rounded-[6px] border bg-surface-primary',
+          'border-border-primary text-text-tertiary',
           'transition-[border-color,box-shadow] ease-out [transition-duration:120ms] motion-reduce:transition-none',
-          'hover:border-[rgba(0,188,240,0.65)] hover:shadow-[0_6px_12px_rgba(31,35,41,0.10)]',
-          'focus-visible:border-[rgba(0,188,240,0.65)] focus-visible:outline-none',
-          'focus-visible:shadow-[0_6px_12px_rgba(31,35,41,0.10)]',
-          'disabled:cursor-wait',
-          '[[data-dark-mode=true]_&]:border-[#59647A] [[data-dark-mode=true]_&]:bg-[#1A202C]',
-          '[[data-dark-mode=true]_&]:text-[rgba(255,255,255,0.4)]',
-          '[[data-dark-mode=true]_&]:hover:border-[rgba(0,188,240,0.65)]',
-          '[[data-dark-mode=true]_&]:hover:shadow-[0_6px_12px_rgba(0,0,0,0.22)]',
-          '[[data-dark-mode=true]_&]:focus-visible:border-[rgba(0,188,240,0.65)]',
-          '[[data-dark-mode=true]_&]:focus-visible:shadow-[0_6px_12px_rgba(0,0,0,0.22)]'
+          'hover:border-border-theme-thick hover:shadow-none',
+          'focus-visible:border-border-theme-thick focus-visible:outline-none',
+          'focus-visible:shadow-none',
+          'disabled:cursor-wait'
         )}
         data-testid='gallery-new-row'
         disabled={creating}

@@ -165,16 +165,13 @@ describe('GalleryCard rendering lifecycle', () => {
     expect(title.id).toBe('gallery-card-title-label-row-1');
     expect(tile.style.contentVisibility).toBe('auto');
     expect(tile.style.containIntrinsicSize).toContain('198px');
-    expect(card.className).toContain('border-[rgba(31,35,41,0.14)]');
-    expect(card.className).toContain('[[data-dark-mode=true]_&]:border-[#59647A]');
-    expect(card.className).toContain('[--gallery-card-surface:#FFFFFF]');
-    expect(card.className).toContain('[[data-dark-mode=true]_&]:[--gallery-card-surface:#1A202C]');
-    expect(card.className).toContain('hover:border-[rgba(0,188,240,0.65)]');
+    expect(card.className).toContain('border-border-primary');
+    expect(card.className).toContain('[--gallery-card-surface:var(--surface-primary)]');
+    expect(card.className).toContain('hover:border-border-theme-thick');
     expect(card.className).toContain('[transition-duration:120ms]');
     expect(title.className).toContain('font-semibold');
     expect(title.className).toContain('text-[var(--gallery-card-title)]');
-    expect(titleSurface.className).toContain('bg-[rgba(31,35,41,0.06)]');
-    expect(titleSurface.className).toContain('[[data-dark-mode=true]_&]:bg-[rgba(0,0,0,0.12)]');
+    expect(titleSurface.className).toContain('bg-fill-content-hover');
 
     opener.focus();
     expect(document.activeElement).toBe(opener);
@@ -190,10 +187,7 @@ describe('GalleryCard rendering lifecycle', () => {
     renderCard();
 
     expect(screen.queryByTestId('mounted-gallery-preview-row-1')).toBeNull();
-    expect(screen.getByTestId('gallery-card-preview-row-1').className).toContain('bg-[rgba(31,35,41,0.08)]');
-    expect(screen.getByTestId('gallery-card-preview-row-1').className).toContain(
-      '[[data-dark-mode=true]_&]:bg-[rgba(89,100,122,0.25)]'
-    );
+    expect(screen.getByTestId('gallery-card-preview-row-1').className).toContain('bg-fill-content-hover');
 
     act(() => {
       intersectionCallback([{ isIntersecting: true } as IntersectionObserverEntry], {} as IntersectionObserver);

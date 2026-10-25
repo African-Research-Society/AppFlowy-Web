@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { startArsLogin } from '@/application/session/ars-auth';
+import { Button } from '@/components/ui/button';
 
 export function Login({ redirectTo }: { redirectTo: string }) {
   const [busy, setBusy] = useState(false);
@@ -26,12 +27,16 @@ export function Login({ redirectTo }: { redirectTo: string }) {
   return (
     <div className='flex h-full flex-col items-center justify-center gap-5 px-4 py-10 text-text-primary'>
       <h1 className='text-xl font-semibold'>ARS Workspace</h1>
-      {busy ? <p role='status'>Opening Workspace…</p> : <>
-        <p>Continue with your African Research Society account.</p>
-        <button className='rounded bg-fill-content px-6 py-3' onClick={connect}>
-          Continue with ARS
-        </button>
-      </>}
+      {busy ? (
+        <p role='status'>Opening Workspace…</p>
+      ) : (
+        <>
+          <p>Continue with your African Research Society account.</p>
+          <Button size='lg' onClick={connect}>
+            Continue with ARS
+          </Button>
+        </>
+      )}
       {error && <p role='alert'>{error}</p>}
     </div>
   );

@@ -70,7 +70,7 @@ function GridGroupHeader({ data }: { data: RenderRow }) {
             aria-readonly='true'
             className={cn(
               'flex h-[18px] w-[18px] shrink-0 items-center justify-center rounded-100 border border-border-primary',
-              isChecked && 'border-fill-theme-thick bg-fill-theme-thick text-text-on-fill'
+              isChecked && 'border-fill-theme-thick bg-fill-theme-thick text-content-on-fill'
             )}
             role='checkbox'
             tabIndex={-1}

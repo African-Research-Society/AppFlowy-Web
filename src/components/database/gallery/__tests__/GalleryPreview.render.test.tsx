@@ -60,9 +60,6 @@ describe('GalleryPreview subscriptions', () => {
     render(<GalleryPreview fitImage={false} meta={undefined} preview={GalleryCardPreview.PageCover} rowId='row-1' />);
 
     expect(mockUseCellSelector).not.toHaveBeenCalled();
-    expect(screen.getByTestId('gallery-card-preview-row-1').className).toContain('bg-[rgba(31,35,41,0.08)]');
-    expect(screen.getByTestId('gallery-card-preview-row-1').className).toContain(
-      '[[data-dark-mode=true]_&]:bg-[rgba(89,100,122,0.25)]'
-    );
+    expect(screen.getByTestId('gallery-card-preview-row-1').className).toContain('bg-fill-content-hover');
   });
 });

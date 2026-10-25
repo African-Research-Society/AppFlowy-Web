@@ -12,14 +12,19 @@ module.exports = {
   darkMode: 'class',
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['var(--font-sans)'],
+        serif: ['var(--font-display)'],
+        mono: ['var(--font-mono)'],
+      },
       colors,
       boxShadow,
       borderRadius: {
         100: '4px',
-        200: '6px',
-        300: '8px',
-        400: '12px',
-        500: '16px',
+        200: '4px',
+        300: '4px',
+        400: '5px',
+        500: '6px',
         600: '20px',
       },
       padding: {

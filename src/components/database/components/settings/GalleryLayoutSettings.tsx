@@ -29,7 +29,7 @@ const GALLERY_OPTION_ROW_CLASS_NAME = 'h-[26px] !min-h-[26px] w-full py-0';
 
 // Flutter paints this 1px stroke outside the popover, so a ring preserves its fixed content dimensions.
 export const GALLERY_POPOVER_SHELL_CLASS_NAME =
-  'rounded-[10px] border-0 bg-white ring-1 ring-[#EDEDEE] shadow-[0_4px_20px_rgba(31,35,41,0.102)] [[data-dark-mode=true]_&]:bg-[#282E3A] [[data-dark-mode=true]_&]:ring-[#3A3F49] [[data-dark-mode=true]_&]:shadow-[0_2px_16px_rgba(0,0,0,0.478)]';
+  'rounded-[12px] border-0 bg-surface-primary ring-1 ring-[var(--border-primary)] shadow-[var(--custom-shadow-sm)]';
 
 function GallerySectionHeader({ children }: { children: ReactNode }) {
   return (
@@ -209,14 +209,14 @@ export function GalleryLayoutSettings() {
               aria-hidden='true'
               className={cn(
                 'relative ml-auto h-4 w-[27px] shrink-0 rounded-full',
-                settings.fitImage ? 'bg-[#00BCF0]' : 'bg-[#E0E0E0] [[data-dark-mode=true]_&]:bg-[#828282]'
+                settings.fitImage ? 'bg-function-success' : 'bg-fill-secondary'
               )}
               data-state={settings.fitImage ? 'checked' : 'unchecked'}
               data-testid='gallery-fit-image-switch'
             >
               <span
                 className={cn(
-                  'absolute left-px top-px h-3.5 w-3.5 rounded-full bg-white transition-transform duration-150 motion-reduce:transition-none',
+                  'absolute left-px top-px h-3.5 w-3.5 rounded-full bg-surface-primary transition-transform duration-150 motion-reduce:transition-none',
                   settings.fitImage && 'translate-x-[11px]'
                 )}
               />

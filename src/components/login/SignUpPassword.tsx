@@ -159,7 +159,7 @@ export function SignUpPassword({ redirectTo }: { redirectTo: string }) {
       >
         <Logo className={'h-10 w-10'} />
       </div>
-      <div className={'text-xl font-semibold text-text-primary'}>{t('signUp.title')}</div>
+      <div className={'font-serif text-xl font-semibold text-text-primary'}>{t('signUp.title')}</div>
 
       <div className={'flex w-full flex-col gap-3'}>
         <div className={'flex flex-col gap-1'}>

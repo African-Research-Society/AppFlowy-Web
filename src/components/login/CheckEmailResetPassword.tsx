@@ -69,7 +69,7 @@ function CheckEmailResetPassword({ email, redirectTo }: { email: string; redirec
       >
         <Logo className={'h-10 w-10'} />
       </div>
-      <div className={'text-center text-xl font-semibold text-text-primary'}>
+      <div className={'text-center font-serif text-xl font-semibold text-text-primary'}>
         {isEnter ? t('resetPassword.enterCode') : t('resetPassword.checkYourEmail')}
       </div>
       <div className={'w-full text-center text-sm font-normal'}>

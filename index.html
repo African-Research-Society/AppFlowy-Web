@@ -2,6 +2,23 @@
 <html lang="en" translate="no">
 <head>
     <meta charset="UTF-8" />
+    <script>
+      // Paint the workspace in its resolved ground before React or CSS loads.
+      (() => {
+        const params = new URLSearchParams(window.location.search);
+        const theme = params.get('theme');
+        let stored = null;
+        try { stored = localStorage.getItem('dark-mode'); } catch { /* Storage may be blocked in an iframe. */ }
+        const dark = theme === 'dark' || (theme !== 'light' && (
+          params.get('ars_embed') === '1' || (stored === null
+            ? window.matchMedia('(prefers-color-scheme: dark)').matches
+            : stored === 'true')
+        ));
+        document.documentElement.setAttribute('data-dark-mode', String(dark));
+        document.documentElement.style.colorScheme = dark ? 'dark' : 'light';
+        document.documentElement.style.backgroundColor = dark ? '#0b0c15' : '#f2ede2';
+      })();
+    </script>
     <meta name="google" content="notranslate" />
     <link
             rel="icon"
@@ -56,6 +73,19 @@
     <meta
             name="twitter:image"
             content="/og-image.png"
+    />
+    <link
+            rel="preconnect"
+            href="https://fonts.googleapis.com"
+    />
+    <link
+            rel="preconnect"
+            href="https://fonts.gstatic.com"
+            crossorigin
+    />
+    <link
+            href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600&family=IBM+Plex+Mono:wght@400;500&display=swap"
+            rel="stylesheet"
     />
     <link
             href="https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&display=swap"

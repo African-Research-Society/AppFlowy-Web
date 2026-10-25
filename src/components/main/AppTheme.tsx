@@ -12,7 +12,7 @@ function AppTheme({ children }: { children: React.ReactNode }) {
     () =>
       createTheme({
         typography: {
-          fontFamily: ['inherit'].join(','),
+          fontFamily: 'var(--font-sans)',
           fontSize: 14,
           button: {
             textTransform: 'none',
@@ -71,7 +71,10 @@ function AppTheme({ children }: { children: React.ReactNode }) {
           MuiButton: {
             styleOverrides: {
               text: {
-                borderRadius: '8px',
+                borderRadius: '4px',
+                '&.MuiButton-textPrimary': {
+                  color: 'var(--text-action)',
+                },
                 '&:hover': {
                   backgroundColor: 'var(--fill-content-hover)',
                 },
@@ -80,12 +83,13 @@ function AppTheme({ children }: { children: React.ReactNode }) {
                 color: 'var(--text-on-fill)',
                 boxShadow: 'none',
                 '&.MuiButton-containedPrimary': {
+                  color: 'var(--content-on-fill)',
                   '&:hover': {
                     backgroundColor: 'var(--fill-theme-thick-hover)',
                   },
                 },
 
-                borderRadius: '8px',
+                borderRadius: '4px',
                 '&.Mui-disabled': {
                   backgroundColor: 'var(--fill-theme-thick)',
                   opacity: 0.3,
@@ -93,7 +97,7 @@ function AppTheme({ children }: { children: React.ReactNode }) {
                 },
                 '&.MuiButton-containedInherit': {
                   color: 'var(--text-primary)',
-                  backgroundColor: isDark ? 'rgba(0, 0, 0, 0.4)' : 'rgba(255, 255, 255, 0.4)',
+                  backgroundColor: 'var(--surface-primary)',
                   '&:hover': {
                     backgroundColor: 'var(--surface-primary)',
                     boxShadow: 'none',
@@ -108,10 +112,14 @@ function AppTheme({ children }: { children: React.ReactNode }) {
                 },
               },
               outlined: {
+                '&.MuiButton-outlinedPrimary': {
+                  color: 'var(--text-action)',
+                  borderColor: 'var(--border-primary)',
+                },
                 '&.MuiButton-outlinedInherit': {
                   borderColor: 'var(--border-primary)',
                 },
-                borderRadius: '8px',
+                borderRadius: '4px',
                 '&.MuiButton-outlinedSecondary': {
                   color: 'var(--billing-primary)',
                   borderColor: 'var(--billing-primary)',
@@ -140,7 +148,7 @@ function AppTheme({ children }: { children: React.ReactNode }) {
                   },
                 },
                 '&.MuiMenuItem-root': {
-                  borderRadius: '8px',
+                  borderRadius: '4px',
                 },
 
                 borderRadius: '4px',
@@ -154,7 +162,7 @@ function AppTheme({ children }: { children: React.ReactNode }) {
               root: {
                 backgroundImage: 'none',
                 boxShadow: 'var(--custom-shadow-sm)',
-                borderRadius: '10px',
+                borderRadius: '12px',
                 backgroundColor: 'var(--background-primary)',
               },
             },
@@ -204,7 +212,7 @@ function AppTheme({ children }: { children: React.ReactNode }) {
                 backgroundColor: 'var(--fill-toolbar)',
                 color: 'white',
                 fontSize: '0.85rem',
-                borderRadius: '8px',
+                borderRadius: '4px',
                 fontWeight: 400,
               },
             },
@@ -223,7 +231,7 @@ function AppTheme({ children }: { children: React.ReactNode }) {
                   color: 'var(--text-secondary)',
                   WebkitTextFillColor: 'var(--text-secondary) !important',
                 },
-                borderRadius: '8px',
+                borderRadius: '5px',
               },
             },
             styleOverrides: {
@@ -245,6 +253,8 @@ function AppTheme({ children }: { children: React.ReactNode }) {
           primary: {
             main: '#E8B23A',
             dark: '#C4952F',
+            light: '#F6CF6B',
+            contrastText: '#221703',
           },
           secondary: {
             main: '#6D5AE0',
@@ -267,14 +277,14 @@ function AppTheme({ children }: { children: React.ReactNode }) {
             dark: '#5CC493',
           },
           text: {
-            primary: isDark ? '#C9C8D6' : '#17161B',
-            secondary: isDark ? '#8E8FA6' : '#666157',
-            disabled: isDark ? '#363D49' : '#F2F2F2',
+            primary: isDark ? '#EFEDE4' : '#17161B',
+            secondary: isDark ? '#C9C8D6' : '#37343C',
+            disabled: isDark ? '#8E8FA6' : '#666157',
           },
-          divider: isDark ? '#34374D' : '#D8CFBC',
+          divider: isDark ? 'rgba(220, 214, 255, 0.12)' : '#D8CFBC',
           background: {
-            default: isDark ? '#0B0C15' : '#FFFFFF',
-            paper: isDark ? '#11131F' : '#FFFFFF',
+            default: isDark ? '#0B0C15' : '#F2EDE2',
+            paper: isDark ? '#11131F' : '#E9E2D0',
           },
         },
       }),

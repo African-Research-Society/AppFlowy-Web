@@ -10,7 +10,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          'bg-fill-theme-thick text-text-on-fill hover:bg-fill-theme-thick-hover disabled:bg-fill-content-hover disabled:text-text-tertiary',
+          'bg-fill-theme-thick text-content-on-fill hover:bg-fill-theme-thick-hover disabled:bg-fill-content-hover disabled:text-text-tertiary',
         destructive:
           'bg-fill-error-thick text-text-on-fill hover:bg-fill-error-thick-hover disabled:bg-fill-content-hover disabled:text-text-tertiary',
         outline:

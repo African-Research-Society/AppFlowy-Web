@@ -46,7 +46,7 @@ export function EnterPassword({ email, redirectTo }: { email: string; redirectTo
       >
         <Logo className={'h-10 w-10'} />
       </div>
-      <div className={'text-xl font-semibold text-text-primary'}>{t('signIn.enterPassword')}</div>
+      <div className={'font-serif text-xl font-semibold text-text-primary'}>{t('signIn.enterPassword')}</div>
       <div className={'flex w-full items-center justify-center gap-1.5 text-center text-sm'}>
         <Trans
           i18nKey='signIn.enterPasswordTip'

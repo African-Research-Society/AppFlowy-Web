@@ -1,0 +1,266 @@
+/* ARS brand adapter. Keep this after the upstream semantic and legacy tokens:
+   both AppFlowy component systems must resolve to the same Observatory ground.
+   Authored document colors, covers, tags, and charts retain their own palette. */
+:root,
+:root[data-dark-mode='true'] {
+  --font-sans: 'Archivo', 'Helvetica Neue', Helvetica, Arial, system-ui, sans-serif;
+  --font-display: 'Fraunces', 'Iowan Old Style', Palatino, Georgia, serif;
+  --font-mono: 'IBM Plex Mono', 'SFMono-Regular', Menlo, Consolas, monospace;
+  --ars-gold: #e8b23a;
+  --ars-gold-hover: #f6cf6b;
+  --ars-on-gold: #221703;
+  --ars-ground: #f2ede2;
+  --ars-panel: #e9e2d0;
+  --ars-control: #f2ede2;
+  --ars-ink: #17161b;
+  --ars-body: #37343c;
+  --ars-muted: #666157;
+  --ars-line: #d8cfbc;
+  --ars-line-strong: #c4b99f;
+  --ars-hover: #17161b0d;
+  --ars-active: #176f471a;
+  --ars-action: #176f47;
+  --ars-action-hover: #125b3a;
+  --ars-info: #5b46c4;
+  --ars-alert: #a33227;
+  --ars-warning: #7f5a0c;
+  --ars-focus: #7f5a0c;
+  --ars-selection: #e8b23a33;
+  --ars-overlay-shadow: 0 16px 40px -16px #17161b40;
+  --shadow-color: #17161b26;
+
+  color-scheme: light;
+  background-color: var(--ars-ground);
+  color: var(--ars-ink);
+
+  /* Current semantic tokens. Gold belongs to decisive fills; routine links
+     and active navigation use the site's malachite working signal. */
+  --background-primary: var(--ars-ground);
+  --text-primary: var(--ars-ink);
+  --text-secondary: var(--ars-body);
+  --text-tertiary: var(--ars-muted);
+  --text-quaternary: var(--ars-muted);
+  --text-action: var(--ars-action);
+  --text-action-hover: var(--ars-action-hover);
+  --text-info: var(--ars-info);
+  --text-info-hover: var(--ars-info);
+  --text-info-on-fill: var(--ars-info);
+  --text-success: var(--ars-action);
+  --text-success-hover: var(--ars-action-hover);
+  --text-warning: var(--ars-warning);
+  --text-waring-light: var(--ars-warning);
+  --text-warning-hover: var(--ars-warning);
+  --text-error: var(--ars-alert);
+  --text-error-hover: var(--ars-alert);
+  --text-featured: var(--ars-info);
+  --text-featured-hover: var(--ars-info);
+  --icon-primary: var(--ars-ink);
+  --icon-secondary: var(--ars-body);
+  --icon-tertiary: var(--ars-muted);
+  --icon-quaternary: var(--ars-muted);
+  --icon-info-thick: var(--ars-info);
+  --icon-info-thick-hover: var(--ars-info);
+  --icon-success-thick: var(--ars-action);
+  --icon-success-thick-hover: var(--ars-action-hover);
+  --icon-warning-thick: var(--ars-warning);
+  --icon-warning-thick-hover: var(--ars-warning);
+  --icon-error-thick: var(--ars-alert);
+  --icon-error-thick-hover: var(--ars-alert);
+  --icon-featured-thick: var(--ars-info);
+  --icon-featured-thick-hover: var(--ars-info);
+  --border-primary: var(--ars-line);
+  --border-primary-hover: var(--ars-line-strong);
+  --border-secondary: var(--ars-line-strong);
+  --border-secondary-hover: var(--ars-muted);
+  --border-theme-thick: var(--ars-gold);
+  --border-theme-thick-hover: var(--ars-gold-hover);
+  --fill-primary: var(--ars-control);
+  --fill-primary-hover: var(--ars-hover);
+  --fill-secondary: var(--ars-line-strong);
+  --fill-secondary-hover: var(--ars-muted);
+  --fill-content-hover: var(--ars-hover);
+  --fill-content-visible: var(--ars-hover);
+  --fill-content-visible-hover: var(--ars-active);
+  --fill-theme-thick: var(--ars-gold);
+  --fill-theme-thick-hover: var(--ars-gold-hover);
+  --fill-theme-select: var(--ars-active);
+  --fill-text-select: var(--ars-selection);
+  --fill-button-active: var(--ars-active);
+  --fill-info-light: #6d5ae01a;
+  --fill-info-light-hover: #6d5ae026;
+  --fill-info-thick: #5b46c4;
+  --fill-info-thick-hover: #4e3baa;
+  --fill-success-light: var(--ars-active);
+  --fill-success-light-hover: #2e9e6b33;
+  --fill-success-thick: #176f47;
+  --fill-success-thick-hover: #125b3a;
+  --fill-warning-light: var(--ars-selection);
+  --fill-warning-light-hover: #e8b23a40;
+  --fill-error-light: #a332271a;
+  --fill-error-light-hover: #a3322726;
+  --fill-error-select: #a332271a;
+  --fill-error-thick: #a33227;
+  --fill-error-thick-hover: #87281f;
+  --fill-featured-light: #6d5ae01a;
+  --fill-featured-light-hover: #6d5ae026;
+  --fill-featured-thick: #5b46c4;
+  --fill-featured-thick-hover: #4e3baa;
+  --surface-primary: var(--ars-panel);
+  --surface-primary-hover: var(--ars-hover);
+  --surface-layer-01: var(--ars-panel);
+  --surface-layer-01-hover: var(--ars-hover);
+  --surface-layer-02: var(--ars-control);
+  --surface-layer-02-hover: var(--ars-hover);
+  --surface-layer-03: var(--ars-control);
+  --surface-layer-03-hover: var(--ars-hover);
+  --surface-layer-04: var(--ars-control);
+  --surface-layer-04-hover: var(--ars-hover);
+  --surface-container-layer-00: var(--ars-ground);
+  --surface-container-layer-01: var(--ars-panel);
+  --surface-container-layer-02: var(--ars-control);
+  --surface-container-layer-03: var(--ars-control);
+  --surface-inverse: #17161b;
+
+  /* Legacy editor, date picker, and shadcn tokens. */
+  --bg-body: var(--ars-ground);
+  --bg-base: var(--ars-panel);
+  --bg-header: var(--ars-ground);
+  --bg-footer: var(--ars-ground);
+  --bg-tips: var(--ars-panel);
+  --bg-selection: var(--ars-selection);
+  --text-title: var(--ars-ink);
+  --text-caption: var(--ars-muted);
+  --text-placeholder: var(--ars-muted);
+  --text-link-default: var(--ars-action);
+  --text-link-hover: var(--ars-action-hover);
+  --text-link-pressed: var(--ars-action-hover);
+  --line-border: var(--ars-line);
+  --line-divider: var(--ars-line);
+  --line-default: var(--ars-line);
+  --line-card: var(--ars-line);
+  --fill-default: var(--ars-gold);
+  --fill-hover: var(--ars-gold-hover);
+  --fill-pressed: var(--ars-gold-hover);
+  --fill-active: var(--ars-active);
+  --fill-selector: var(--ars-panel);
+  --fill-list-active: var(--ars-active);
+  --fill-list-hover: var(--ars-hover);
+  --fill-toolbar: #17161b;
+  --content-on-fill: var(--ars-on-gold);
+  --content-on-fill-hover: var(--ars-on-gold);
+  --content-on-tag: var(--ars-body);
+  --content-blue-400: var(--ars-gold);
+  --content-blue-300: var(--ars-gold-hover);
+  --content-blue-600: var(--ars-action);
+  --content-blue-100: var(--ars-active);
+  --content-blue-200: var(--ars-selection);
+  --content-blue-50: var(--ars-panel);
+  --function-error: var(--ars-alert);
+  --function-error-hover: var(--ars-alert);
+  --function-warning: var(--ars-warning);
+  --function-warning-hover: var(--ars-warning);
+  --function-success: var(--ars-action);
+  --function-success-hover: var(--ars-action-hover);
+  --function-info: var(--ars-info);
+  --billing-primary: var(--ars-info);
+  --billing-primary-hover: var(--ars-info);
+  --ai-primary: var(--ars-info);
+  --writer-placeholder: var(--ars-muted);
+  --note-header: var(--ars-panel);
+  --input-background: var(--ars-control);
+  --secondary-background: var(--ars-panel);
+  --selection: var(--ars-selection);
+  --scrollbar-track: transparent;
+  --scrollbar-thumb: var(--ars-line-strong);
+  --shadow: var(--ars-overlay-shadow);
+  --custom-shadow-sm: var(--ars-overlay-shadow);
+  --custom-shadow-md: var(--ars-overlay-shadow);
+  --shadows-sm: var(--ars-overlay-shadow);
+  --shadows-md: var(--ars-overlay-shadow);
+  --background: 41 38% 92%;
+  --foreground: 252 10% 10%;
+  --card: 43 36% 86%;
+  --card-foreground: var(--foreground);
+  --popover: var(--background);
+  --popover-foreground: var(--foreground);
+  --primary: 41 79% 57%;
+  --primary-foreground: 39 84% 7%;
+  --secondary: var(--card);
+  --secondary-foreground: var(--foreground);
+  --muted: var(--card);
+  --muted-foreground: 40 8% 37%;
+  --placeholder: var(--muted-foreground);
+  --accent: var(--card);
+  --accent-foreground: var(--foreground);
+  --border: 41 26% 79%;
+  --input: var(--border);
+  --ring: var(--primary);
+  --icon: var(--muted-foreground);
+  --radius: 6px;
+}
+
+:root[data-dark-mode='true'] {
+  color-scheme: dark;
+  --ars-ground: #0b0c15;
+  --ars-panel: #11131f;
+  --ars-control: #171a2a;
+  --ars-ink: #efede4;
+  --ars-body: #c9c8d6;
+  --ars-muted: #8e8fa6;
+  --ars-line: #dcd6ff1f;
+  --ars-line-strong: #dcd6ff3d;
+  --ars-hover: #dcd6ff0d;
+  --ars-active: #2e9e6b26;
+  --ars-action: #5cc493;
+  --ars-action-hover: #8ad7b2;
+  --ars-info: #a99bf0;
+  --ars-alert: #e59a90;
+  --ars-warning: #f6cf6b;
+  --ars-focus: var(--ars-gold);
+  --ars-overlay-shadow: 0 24px 60px -24px #000000d9;
+  --shadow-color: #0000007a;
+  --background: 234 31% 6%;
+  --foreground: 49 26% 92%;
+  --card: 231 29% 9%;
+  --muted-foreground: 238 12% 60%;
+  --border: 249 100% 92% / 0.12;
+}
+
+/* Match the site's working type. Narrative headings use its display voice;
+   controls and navigation stay in Archivo, code stays in Plex Mono. */
+body {
+  font-family: var(--font-sans);
+  background-color: var(--background-primary);
+  color: var(--text-primary);
+}
+
+h1,
+h2,
+h3,
+.heading,
+.toggle-heading,
+[id^='editor-title-'] {
+  font-family: var(--font-display);
+}
+
+code,
+pre,
+kbd,
+samp {
+  font-family: var(--font-mono);
+}
+
+::selection {
+  background-color: var(--ars-selection);
+}
+
+#body :focus-visible {
+  outline: 2px solid var(--ars-focus);
+  outline-offset: 2px;
+}
+
+input,
+textarea,
+[contenteditable='true'] {
+  caret-color: var(--ars-action);
+}

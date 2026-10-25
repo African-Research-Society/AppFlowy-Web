@@ -60,7 +60,7 @@ jest.mock('@/components/database/components/database-row/DeleteRowConfirm', () =
 
 const mockUseDuplicateRowDispatch = useDuplicateRowDispatch as jest.MockedFunction<typeof useDuplicateRowDispatch>;
 
-describe('GalleryCardToolbar Flutter desktop parity', () => {
+describe('GalleryCardToolbar Observatory theme', () => {
   const duplicateRow = jest.fn();
   const onEdit = jest.fn();
 
@@ -80,11 +80,9 @@ describe('GalleryCardToolbar Flutter desktop parity', () => {
     expect(toolbar.className).toContain('right-[7px]');
     expect(toolbar.className).toContain('top-[7px]');
     expect(toolbar.className).toContain('rounded-[4px]');
-    expect(toolbar.className).toContain('border-[rgba(31,35,41,0.12)]');
-    expect(toolbar.className).toContain('[[data-dark-mode=true]_&]:border-[#59647A]');
-    expect(toolbar.className).toContain('bg-white');
-    expect(toolbar.className).toContain('[[data-dark-mode=true]_&]:bg-[#1A202C]');
-    expect(toolbar.className).toContain('shadow-[0_0_4px_rgba(31,35,41,0.02),0_0_4px_-2px_rgba(31,35,41,0.02)]');
+    expect(toolbar.className).toContain('border-border-primary');
+    expect(toolbar.className).toContain('bg-surface-primary');
+    expect(toolbar.className).toContain('shadow-none');
     expect(toolbar.className).toContain('duration-200');
     expect(toolbar.className).toContain('motion-reduce:transition-none');
 
@@ -92,18 +90,15 @@ describe('GalleryCardToolbar Flutter desktop parity', () => {
       expect(action.className).toContain('h-[22px]');
       expect(action.className).toContain('w-6');
       expect(action.className).toContain('p-[3px]');
-      expect(action.className).toContain('text-[#828282]');
-      expect(action.className).toContain('[[data-dark-mode=true]_&]:text-[#59647A]');
-      expect(action.className).toContain('hover:bg-white');
-      expect(action.className).toContain('[[data-dark-mode=true]_&]:hover:bg-[#1A202C]');
+      expect(action.className).toContain('text-[var(--text-tertiary)]');
+      expect(action.className).toContain('hover:bg-fill-content-hover');
       expect(action.className).toContain('focus-visible:ring-1');
       expect(action.querySelector('svg')?.getAttribute('aria-hidden')).toBe('true');
     }
 
     expect(divider.className).toContain('h-[22px]');
     expect(divider.className).toContain('w-px');
-    expect(divider.className).toContain('bg-[rgba(31,35,41,0.12)]');
-    expect(divider.className).toContain('[[data-dark-mode=true]_&]:bg-[#59647A]');
+    expect(divider.className).toContain('bg-border-primary');
   });
 
   it('aligns the 180px menu below the right edge with the Flutter offset', () => {

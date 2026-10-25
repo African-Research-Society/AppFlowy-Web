@@ -70,15 +70,10 @@ const propertyCellStyle: CSSProperties = {
 const GALLERY_PREVIEW_ROOT_MARGIN = '400px 0px';
 const galleryCardClassName = cn(
   GALLERY_CARD_THEME_CLASS_NAME,
-  'group/gallery-card relative flex h-full w-full flex-col overflow-hidden rounded-[10px] border bg-[var(--gallery-card-surface)]',
-  'border-[rgba(31,35,41,0.14)] transition-[border-color,box-shadow,transform] ease-out [transition-duration:120ms] motion-reduce:transition-none',
-  'focus-within:border-[rgba(0,188,240,0.65)] focus-within:shadow-[0_6px_12px_rgba(31,35,41,0.10)]',
-  'hover:border-[rgba(0,188,240,0.65)] hover:shadow-[0_6px_12px_rgba(31,35,41,0.10)]',
-  '[[data-dark-mode=true]_&]:border-[#59647A]',
-  '[[data-dark-mode=true]_&]:focus-within:border-[rgba(0,188,240,0.65)]',
-  '[[data-dark-mode=true]_&]:focus-within:shadow-[0_6px_12px_rgba(0,0,0,0.22)]',
-  '[[data-dark-mode=true]_&]:hover:border-[rgba(0,188,240,0.65)]',
-  '[[data-dark-mode=true]_&]:hover:shadow-[0_6px_12px_rgba(0,0,0,0.22)]'
+  'group/gallery-card relative flex h-full w-full flex-col overflow-hidden rounded-[6px] border bg-[var(--gallery-card-surface)]',
+  'border-border-primary transition-[border-color,box-shadow,transform] ease-out [transition-duration:120ms] motion-reduce:transition-none',
+  'focus-within:border-border-theme-thick focus-within:shadow-none',
+  'hover:border-border-theme-thick hover:shadow-none'
 );
 
 function useGalleryPreviewNearViewport(
@@ -478,7 +473,7 @@ export const GalleryCard = memo(function GalleryCard({
             }
             aria-keyshortcuts={reorderable ? 'Alt+ArrowLeft Alt+ArrowRight' : undefined}
             aria-labelledby={`${openLabelId} ${titleLabelId}`}
-            className='absolute inset-0 z-10 cursor-pointer rounded-[10px] bg-transparent focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-[rgba(0,188,240,0.65)]'
+            className='absolute inset-0 z-10 cursor-pointer rounded-[6px] bg-transparent focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-[rgba(0,188,240,0.65)]'
             data-testid={`gallery-card-open-${rowId}`}
             onClick={(event) => {
               event.stopPropagation();

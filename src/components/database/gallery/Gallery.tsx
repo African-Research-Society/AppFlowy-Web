@@ -250,7 +250,7 @@ export function Gallery() {
   const effectivePaddingStart = paddingStart ?? GALLERY_DESKTOP_INLINE_PADDING;
   const effectivePaddingEnd = paddingEnd ?? GALLERY_DESKTOP_INLINE_PADDING;
   const containerClassName = cn(
-    'database-gallery appflowy-custom-scroller min-h-0 w-full [color-scheme:light] [[data-dark-mode=true]_&]:[color-scheme:dark]',
+    'database-gallery appflowy-custom-scroller min-h-0 w-full',
     isDocumentBlock ? 'overflow-visible' : 'h-full flex-1 overflow-y-auto overflow-x-hidden'
   );
 

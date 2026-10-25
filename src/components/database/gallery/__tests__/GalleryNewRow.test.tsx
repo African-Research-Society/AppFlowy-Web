@@ -29,7 +29,7 @@ jest.mock('@/utils/log', () => ({
 
 const mockUseNewRowDispatch = useNewRowDispatch as jest.MockedFunction<typeof useNewRowDispatch>;
 
-describe('GalleryNewRow Flutter desktop parity', () => {
+describe('GalleryNewRow Observatory theme', () => {
   const createRow = jest.fn();
 
   beforeEach(() => {
@@ -49,28 +49,23 @@ describe('GalleryNewRow Flutter desktop parity', () => {
     expect(screen.getByTestId('gallery-new-row-tile').style.minHeight).toBe(tileHeight);
   });
 
-  it('uses the Flutter surface, border, interaction, motion, and plus-icon tokens', () => {
+  it('uses the shared surface, border, interaction, motion, and plus-icon tokens', () => {
     render(<GalleryNewRow cardSize={GalleryCardSize.Medium} />);
 
     const button = screen.getByTestId('gallery-new-row');
     const icon = button.querySelector('svg');
 
-    expect(button.className).toContain('rounded-[10px]');
-    expect(button.className).toContain('bg-white');
-    expect(button.className).toContain('[[data-dark-mode=true]_&]:bg-[#1A202C]');
-    expect(button.className).toContain('border-[rgba(31,35,41,0.14)]');
-    expect(button.className).toContain('[[data-dark-mode=true]_&]:border-[#59647A]');
-    expect(button.className).toContain('hover:border-[rgba(0,188,240,0.65)]');
-    expect(button.className).toContain('focus-visible:border-[rgba(0,188,240,0.65)]');
-    expect(button.className).toContain('hover:shadow-[0_6px_12px_rgba(31,35,41,0.10)]');
-    expect(button.className).toContain('focus-visible:shadow-[0_6px_12px_rgba(31,35,41,0.10)]');
-    expect(button.className).toContain('[[data-dark-mode=true]_&]:hover:shadow-[0_6px_12px_rgba(0,0,0,0.22)]');
-    expect(button.className).toContain('[[data-dark-mode=true]_&]:focus-visible:shadow-[0_6px_12px_rgba(0,0,0,0.22)]');
+    expect(button.className).toContain('rounded-[6px]');
+    expect(button.className).toContain('bg-surface-primary');
+    expect(button.className).toContain('border-border-primary');
+    expect(button.className).toContain('hover:border-border-theme-thick');
+    expect(button.className).toContain('focus-visible:border-border-theme-thick');
+    expect(button.className).toContain('hover:shadow-none');
+    expect(button.className).toContain('focus-visible:shadow-none');
     expect(button.className).toContain('[transition-duration:120ms]');
     expect(button.className).toContain('ease-out');
     expect(button.className).toContain('motion-reduce:transition-none');
-    expect(button.className).toContain('text-[rgba(23,23,23,0.4)]');
-    expect(button.className).toContain('[[data-dark-mode=true]_&]:text-[rgba(255,255,255,0.4)]');
+    expect(button.className).toContain('text-text-tertiary');
     expect(icon?.classList.contains('h-4')).toBe(true);
     expect(icon?.classList.contains('w-4')).toBe(true);
   });

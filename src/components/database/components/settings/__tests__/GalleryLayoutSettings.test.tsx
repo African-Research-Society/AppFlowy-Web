@@ -69,15 +69,12 @@ describe('GalleryLayoutSettings', () => {
     expect(panel.className).toContain('w-[220px]');
     expect(panel.className).toContain('!min-w-[220px]');
     expect(panel.className).toContain('p-0');
-    expect(panel.className).toContain('rounded-[10px]');
+    expect(panel.className).toContain('rounded-[12px]');
     expect(panel.className).toContain('border-0');
-    expect(panel.className).toContain('bg-white');
+    expect(panel.className).toContain('bg-surface-primary');
     expect(panel.className).toContain('ring-1');
-    expect(panel.className).toContain('ring-[#EDEDEE]');
-    expect(panel.className).toContain('shadow-[0_4px_20px_rgba(31,35,41,0.102)]');
-    expect(panel.className).toContain('[[data-dark-mode=true]_&]:bg-[#282E3A]');
-    expect(panel.className).toContain('[[data-dark-mode=true]_&]:ring-[#3A3F49]');
-    expect(panel.className).toContain('[[data-dark-mode=true]_&]:shadow-[0_2px_16px_rgba(0,0,0,0.478)]');
+    expect(panel.className).toContain('ring-[var(--border-primary)]');
+    expect(panel.className).toContain('shadow-[var(--custom-shadow-sm)]');
     expect(panel.querySelectorAll('[data-slot="dropdown-menu-separator"]')).toHaveLength(0);
     expect(panel.querySelectorAll('[data-gallery-settings-section-gap]')).toHaveLength(3);
 
@@ -107,8 +104,8 @@ describe('GalleryLayoutSettings', () => {
     expect(sizeMenu.className).toContain('w-[112px]');
     expect(sizeMenu.className).toContain('!min-w-[112px]');
     expect(sizeMenu.className).toContain('p-1.5');
-    expect(sizeMenu.className).toContain('rounded-[10px]');
-    expect(sizeMenu.className).toContain('ring-[#EDEDEE]');
+    expect(sizeMenu.className).toContain('rounded-[12px]');
+    expect(sizeMenu.className).toContain('ring-[var(--border-primary)]');
     expect(sizeMenu.className).toContain('gap-1');
     screen.getAllByTestId(/^gallery-card-size-(small|medium|large)$/).forEach((option) => {
       expect(option.className).toContain('h-[26px]');
@@ -120,8 +117,8 @@ describe('GalleryLayoutSettings', () => {
     expect(previewMenu.className).toContain('w-[152px]');
     expect(previewMenu.className).toContain('!min-w-[152px]');
     expect(previewMenu.className).toContain('p-1.5');
-    expect(previewMenu.className).toContain('rounded-[10px]');
-    expect(previewMenu.className).toContain('ring-[#EDEDEE]');
+    expect(previewMenu.className).toContain('rounded-[12px]');
+    expect(previewMenu.className).toContain('ring-[var(--border-primary)]');
     expect(previewMenu.className).toContain('gap-1');
     screen.getAllByTestId(/^gallery-card-preview-\d+$/).forEach((option) => {
       expect(option.className).toContain('h-[26px]');
@@ -142,7 +139,7 @@ describe('GalleryLayoutSettings', () => {
     expect(visualSwitch.getAttribute('aria-hidden')).toBe('true');
     expect(visualSwitch.className).toContain('h-4');
     expect(visualSwitch.className).toContain('w-[27px]');
-    expect(visualSwitch.className).toContain('bg-[#E0E0E0]');
+    expect(visualSwitch.className).toContain('bg-fill-secondary');
 
     fireEvent.click(item);
     await waitFor(() =>

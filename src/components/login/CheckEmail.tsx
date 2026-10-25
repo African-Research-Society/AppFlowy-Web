@@ -63,7 +63,7 @@ function CheckEmail({ email, redirectTo, otpType }: { email: string; redirectTo:
       >
         <Logo className={'h-10 w-10'} />
       </div>
-      <div className={'text-xl font-semibold text-text-primary'}>{isEnter ? t('enterCode') : t('checkYourEmail')}</div>
+      <div className={'font-serif text-xl font-semibold text-text-primary'}>{isEnter ? t('enterCode') : t('checkYourEmail')}</div>
       <div className={'flex w-[320px] flex-col items-center justify-center text-center text-sm'}>
         <div className={'font-normal'}>{isEnter ? t('checkCodeTip') : t('checkEmailTip')}</div>
         <div className={'font-semibold'}>{email}</div>
