@@ -31,3 +31,5 @@
         animation: progress-container 1s linear infinite;
     }
 }
+
+html[data-ars-embed="true"], html[data-ars-embed="true"] body { min-width: 0 !important; width: 100%; overflow: hidden; }

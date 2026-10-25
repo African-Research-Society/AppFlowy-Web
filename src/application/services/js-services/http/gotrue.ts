@@ -1,3 +1,4 @@
+import { exchangeArsToken } from '@/application/session/ars-auth';
 import axios, { AxiosInstance } from 'axios';
 
 import { emit, EventType } from '@/application/session';
@@ -24,24 +25,19 @@ export function initGrantService(baseURL: string) {
   });
 }
 
-export async function refreshToken(refresh_token: string) {
-  const response = await axiosInstance?.post<{
-    access_token: string;
-    expires_at: number;
-    refresh_token: string;
-  }>('/token?grant_type=refresh_token', {
-    refresh_token,
-  });
-
-  const newToken = response?.data;
-
-  if (newToken) {
-    refreshSessionToken(JSON.stringify(newToken));
-  } else {
-    return Promise.reject('Failed to refresh token');
-  }
-
-  return newToken;
+type ArsSession = NonNullable<ReturnType<typeof getTokenParsed>>;
+let refreshing: Promise<ArsSession> | undefined;
+export async function refreshToken(refresh_token: string): Promise<ArsSession> {
+  const current = getTokenParsed();
+  if (current && current.refresh_token !== refresh_token && current.expires_at > Date.now() / 1000) return current;
+  if (refreshing) return refreshing;
+  refreshing = (async () => {
+    const result = await exchangeArsToken({ refresh_token });
+    if (!result || typeof result.access_token !== 'string' || typeof result.refresh_token !== 'string' || typeof result.expires_at !== 'number' || typeof result.user?.id !== 'string') throw new Error('Invalid ARS session response');
+    refreshSessionToken(JSON.stringify(result));
+    return result as ArsSession;
+  })();
+  try { return await refreshing; } finally { refreshing = undefined; }
 }
 
 export async function signInWithPassword(params: { email: string; password: string; redirectTo: string }) {

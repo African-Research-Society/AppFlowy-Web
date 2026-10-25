@@ -1,8 +1,10 @@
 import * as random from 'lib0/random';
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import useWebSocket from 'react-use-websocket';
 
 import { getTokenParsed } from '@/application/session/token';
+import { arsSocketAccessToken } from '@/application/session/ars-socket';
+import { EventType, on } from '@/application/session/event';
 import { messages } from '@/proto/messages';
 
 const wsURL = import.meta.env.AF_WS_V2_URL || 'ws://localhost:8000/ws/v2';
@@ -95,7 +97,25 @@ export const useAppflowyWebSocket = (options: Options): AppflowyWebSocketType =>
   options.token = options.token || getTokenParsed()?.access_token;
   options.clientId = options.clientId || random.uint32();
   options.deviceId = options.deviceId || random.uuidv4();
-  const url = `${options.url}/${options.workspaceId}/?clientId=${options.clientId}&deviceId=${options.deviceId}&token=${options.token}`;
+  const [connectionGeneration, setConnectionGeneration] = useState(0);
+  const { workspaceId, clientId, deviceId, url: origin } = options;
+  const url = useCallback(async () => {
+    const token = await arsSocketAccessToken();
+    return `${origin}/${workspaceId}/?clientId=${clientId}&deviceId=${deviceId}&token=${encodeURIComponent(token)}&connection=${connectionGeneration}`;
+  }, [origin, workspaceId, clientId, deviceId, connectionGeneration]);
+  useEffect(() => {
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    const schedule = () => {
+      clearTimeout(timer);
+      const session = getTokenParsed();
+      if (session) timer = setTimeout(() => setConnectionGeneration((value) => value + 1), Math.max(1000, session.expires_at * 1000 - Date.now() - 30000));
+    };
+    schedule();
+    const unsubscribe = on(EventType.SESSION_REFRESH, schedule);
+    const visible = () => { if (!document.hidden && (getTokenParsed()?.expires_at ?? 0) <= Date.now() / 1000 + 30) setConnectionGeneration((value) => value + 1); };
+    document.addEventListener('visibilitychange', visible);
+    return () => { clearTimeout(timer); unsubscribe(); document.removeEventListener('visibilitychange', visible); };
+  }, [workspaceId]);
   const [reconnectAttempt, setReconnectAttempt] = useState(0);
   const { lastMessage, sendMessage, readyState, getWebSocket } = useWebSocket(url, {
     share: true,
@@ -111,8 +131,7 @@ export const useAppflowyWebSocket = (options: Options): AppflowyWebSocketType =>
 
       // Determine if reconnect is needed based on the close code
       if (closeEvent.code === CloseCode.NormalClose) {
-        // Normal close, no reconnect
-        return false;
+        return Boolean(getTokenParsed());
       }
 
       if (closeEvent.code === CloseCode.EndpointLeft) {
@@ -176,13 +195,8 @@ export const useAppflowyWebSocket = (options: Options): AppflowyWebSocketType =>
 
   const manualReconnect = useCallback(() => {
     console.log('Manual reconnect triggered');
-    const ws = getWebSocket();
-
-    if (ws) {
-      // Close the current connection and let the automatic reconnect logic handle the reconnection
-      ws.close(1000, 'Manual reconnect');
-    }
-  }, [getWebSocket]);
+    setConnectionGeneration((value) => value + 1);
+  }, []);
   const lastProtobufMessage = useMemo(
     () => (lastMessage ? messages.Message.decode(new Uint8Array(lastMessage.data)) : null),
     [lastMessage]

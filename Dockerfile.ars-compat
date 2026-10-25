@@ -1,0 +1,5 @@
+FROM ars/appflowy_web:better-auth-a293b771
+LABEL org.opencontainers.image.description="ARS AppFlowy Web compatible with Cloud 0.17.12; ARS PKCE and dashboard embedding retained"
+LABEL org.opencontainers.image.revision="14a7f5a2+ars-auth-20261025"
+RUN rm -rf /usr/share/nginx/html/*
+COPY dist/ /usr/share/nginx/html/

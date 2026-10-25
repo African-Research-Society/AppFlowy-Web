@@ -1,4 +1,4 @@
-export const databasePrefix = 'af_database';
+export const databasePrefix = 'ars_appflowy_01712';
 
 export const HEADER_HEIGHT = 48;
 

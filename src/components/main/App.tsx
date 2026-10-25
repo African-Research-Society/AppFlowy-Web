@@ -1,3 +1,4 @@
+import { ArsEmbed } from '@/components/integrations/ArsEmbed';
 import { AUTH_CALLBACK_PATH } from '@/application/session/sign_in';
 import NotFound from '@/components/error/NotFound';
 import LoginAuth from '@/components/login/LoginAuth';
@@ -18,6 +19,8 @@ import { Toaster } from '../ui/sonner';
 
 const AppMain = withAppWrapper(() => {
   return (
+    <>
+    <ArsEmbed />
     <Routes>
       <Route
         path={'/:namespace/:publishName'}
@@ -71,6 +74,7 @@ const AppMain = withAppWrapper(() => {
         element={<NotFound />}
       />
     </Routes>
+    </>
   );
 });
 

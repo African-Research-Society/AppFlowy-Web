@@ -1,3 +1,4 @@
+import { completeArsLogin } from '@/application/session/ars-auth';
 import { RepeatedChatMessage } from '@appflowyinc/ai-chat';
 import axios, { AxiosInstance } from 'axios';
 import dayjs from 'dayjs';
@@ -142,39 +143,15 @@ export function initAPIService(config: AFCloudConfig) {
 }
 
 export async function signInWithUrl(url: string) {
-  const hash = new URL(url).hash;
-
-  if (!hash) {
-    return Promise.reject('No hash found');
-  }
-
-  const params = new URLSearchParams(hash.slice(1));
-  const accessToken = params.get('access_token');
-  const refresh_token = params.get('refresh_token');
-
-  if (!accessToken || !refresh_token) {
-    return Promise.reject({
-      code: -1,
-      message: 'No access token or refresh token found',
-    });
-  }
-
+  const callback = new URL(url);
+  if (!callback.searchParams.has('code')) throw new Error('Start sign-in from the ARS login page.');
+  invalidToken();
   try {
-    await verifyToken(accessToken);
-  } catch (e) {
-    return Promise.reject({
-      code: -1,
-      message: 'Verify token failed',
-    });
-  }
-
-  try {
-    await refreshToken(refresh_token);
-  } catch (e) {
-    return Promise.reject({
-      code: -1,
-      message: 'Refresh token failed',
-    });
+    const token = await completeArsLogin(callback);
+    await verifyToken(token.access_token);
+  } catch (error) {
+    invalidToken();
+    throw error;
   }
 }
 
